@@ -1,6 +1,5951 @@
---[[
-   Library: Sakura Team
-   Author: Nguyen Nhat Sakura
-   License: MIT
-]]
-local a=game:GetService("Lighting")local b=game:GetService("RunService")local c=game:GetService("Players").LocalPlayer;local d=game:GetService("UserInputService")local e=game:GetService("TweenService")local f=game:GetService("Workspace").CurrentCamera;local g=c:GetMouse()local h=game:GetService("HttpService")loadstring(game:HttpGet("https://raw.githubusercontent.com/NguyenNhatSakura/SakuraTeam/refs/heads/main/ThongTin.lua"))()local i=b.RenderStepped;local j=protectgui or syn and syn.protect_gui or function()end;local k={Names={"Dark","Darker","Light","Aqua","Amethyst","Rose","Sakura","Sakura"},Sakura={Name="Sakura",Accent=Color3.fromRGB(0,255,0),AcrylicMain=Color3.fromRGB(0,0,0),AcrylicBorder=Color3.fromRGB(50,0,100),AcrylicGradient=ColorSequence.new(Color3.fromRGB(20,20,20),Color3.fromRGB(0,0,0)),TitleBarLine=Color3.fromRGB(255,0,255),Tab=Color3.fromRGB(100,0,255),Element=Color3.fromRGB(60,60,60),ElementBorder=Color3.fromRGB(80,80,80),InElementBorder=Color3.fromRGB(100,100,100),ElementTransparency=0.85,ToggleSlider=Color3.fromRGB(0,255,0),ToggleCorner=Color3.fromRGB(96,96,99),ToggleToggled=Color3.fromRGB(0,0,0),SliderRail=Color3.fromRGB(80,0,160),DropdownFrame=Color3.fromRGB(50,50,50),DropdownHolder=Color3.fromRGB(30,30,30),DropdownBorder=Color3.fromRGB(60,60,60),DropdownOption=Color3.fromRGB(0,255,0),Keybind=Color3.fromRGB(0,255,0),Input=Color3.fromRGB(40,40,40),InputFocused=Color3.fromRGB(0,0,0),InputIndicator=Color3.fromRGB(80,80,80),Dialog=Color3.fromRGB(0,0,0),DialogHolder=Color3.fromRGB(20,20,20),DialogHolderLine=Color3.fromRGB(40,40,40),DialogButton=Color3.fromRGB(30,30,30),DialogButtonBorder=Color3.fromRGB(0,255,0),DialogBorder=Color3.fromRGB(0,255,0),DialogInput=Color3.fromRGB(40,40,40),DialogInputLine=Color3.fromRGB(0,255,0),Text=Color3.fromRGB(255,255,255),SubText=Color3.fromRGB(200,200,200),Hover=Color3.fromRGB(100,0,255),HoverChange=0.1},Dark={Name="Dark",Accent=Color3.fromRGB(96,205,255),AcrylicMain=Color3.fromRGB(60,60,60),AcrylicBorder=Color3.fromRGB(90,90,90),AcrylicGradient=ColorSequence.new(Color3.fromRGB(40,40,40),Color3.fromRGB(40,40,40)),AcrylicNoise=0.9,TitleBarLine=Color3.fromRGB(75,75,75),Tab=Color3.fromRGB(120,120,120),Element=Color3.fromRGB(120,120,120),ElementBorder=Color3.fromRGB(35,35,35),InElementBorder=Color3.fromRGB(90,90,90),ElementTransparency=0.87,ToggleSlider=Color3.fromRGB(120,120,120),ToggleToggled=Color3.fromRGB(0,0,0),SliderRail=Color3.fromRGB(120,120,120),DropdownFrame=Color3.fromRGB(160,160,160),DropdownHolder=Color3.fromRGB(45,45,45),DropdownBorder=Color3.fromRGB(35,35,35),DropdownOption=Color3.fromRGB(120,120,120),Keybind=Color3.fromRGB(120,120,120),Input=Color3.fromRGB(160,160,160),InputFocused=Color3.fromRGB(10,10,10),InputIndicator=Color3.fromRGB(150,150,150),Dialog=Color3.fromRGB(45,45,45),DialogHolder=Color3.fromRGB(35,35,35),DialogHolderLine=Color3.fromRGB(30,30,30),DialogButton=Color3.fromRGB(45,45,45),DialogButtonBorder=Color3.fromRGB(80,80,80),DialogBorder=Color3.fromRGB(70,70,70),DialogInput=Color3.fromRGB(55,55,55),DialogInputLine=Color3.fromRGB(160,160,160),Text=Color3.fromRGB(240,240,240),SubText=Color3.fromRGB(170,170,170),Hover=Color3.fromRGB(120,120,120),HoverChange=0.07},Darker={Name="Darker",Accent=Color3.fromRGB(72,138,182),AcrylicMain=Color3.fromRGB(30,30,30),AcrylicBorder=Color3.fromRGB(60,60,60),AcrylicGradient=ColorSequence.new(Color3.fromRGB(25,25,25),Color3.fromRGB(15,15,15)),AcrylicNoise=0.94,TitleBarLine=Color3.fromRGB(65,65,65),Tab=Color3.fromRGB(100,100,100),Element=Color3.fromRGB(70,70,70),ElementBorder=Color3.fromRGB(25,25,25),InElementBorder=Color3.fromRGB(55,55,55),ElementTransparency=0.82,DropdownFrame=Color3.fromRGB(120,120,120),DropdownHolder=Color3.fromRGB(35,35,35),DropdownBorder=Color3.fromRGB(25,25,25),Dialog=Color3.fromRGB(35,35,35),DialogHolder=Color3.fromRGB(25,25,25),DialogHolderLine=Color3.fromRGB(20,20,20),DialogButton=Color3.fromRGB(35,35,35),DialogButtonBorder=Color3.fromRGB(55,55,55),DialogBorder=Color3.fromRGB(50,50,50),DialogInput=Color3.fromRGB(45,45,45),DialogInputLine=Color3.fromRGB(120,120,120)},Light={Name="Light",Accent=Color3.fromRGB(0,103,192),AcrylicMain=Color3.fromRGB(200,200,200),AcrylicBorder=Color3.fromRGB(120,120,120),AcrylicGradient=ColorSequence.new(Color3.fromRGB(255,255,255),Color3.fromRGB(255,255,255)),AcrylicNoise=0.96,TitleBarLine=Color3.fromRGB(160,160,160),Tab=Color3.fromRGB(90,90,90),Element=Color3.fromRGB(255,255,255),ElementBorder=Color3.fromRGB(180,180,180),InElementBorder=Color3.fromRGB(150,150,150),ElementTransparency=0.65,ToggleSlider=Color3.fromRGB(40,40,40),ToggleToggled=Color3.fromRGB(255,255,255),SliderRail=Color3.fromRGB(40,40,40),DropdownFrame=Color3.fromRGB(200,200,200),DropdownHolder=Color3.fromRGB(240,240,240),DropdownBorder=Color3.fromRGB(200,200,200),DropdownOption=Color3.fromRGB(150,150,150),Keybind=Color3.fromRGB(120,120,120),Input=Color3.fromRGB(200,200,200),InputFocused=Color3.fromRGB(100,100,100),InputIndicator=Color3.fromRGB(80,80,80),InputIndicatorFocus=Color3.fromRGB(0,103,192),Dialog=Color3.fromRGB(255,255,255),DialogHolder=Color3.fromRGB(240,240,240),DialogHolderLine=Color3.fromRGB(228,228,228),DialogButton=Color3.fromRGB(255,255,255),DialogButtonBorder=Color3.fromRGB(190,190,190),DialogBorder=Color3.fromRGB(140,140,140),DialogInput=Color3.fromRGB(250,250,250),DialogInputLine=Color3.fromRGB(160,160,160),Text=Color3.fromRGB(0,0,0),SubText=Color3.fromRGB(40,40,40),Hover=Color3.fromRGB(50,50,50),HoverChange=0.16},Aqua={Name="Aqua",Accent=Color3.fromRGB(60,165,165),AcrylicMain=Color3.fromRGB(20,20,20),AcrylicBorder=Color3.fromRGB(50,100,100),AcrylicGradient=ColorSequence.new(Color3.fromRGB(60,140,140),Color3.fromRGB(40,80,80)),AcrylicNoise=0.92,TitleBarLine=Color3.fromRGB(60,120,120),Tab=Color3.fromRGB(140,180,180),Element=Color3.fromRGB(110,160,160),ElementBorder=Color3.fromRGB(40,70,70),InElementBorder=Color3.fromRGB(80,110,110),ElementTransparency=0.84,ToggleSlider=Color3.fromRGB(110,160,160),ToggleToggled=Color3.fromRGB(0,0,0),SliderRail=Color3.fromRGB(110,160,160),DropdownFrame=Color3.fromRGB(160,200,200),DropdownHolder=Color3.fromRGB(40,80,80),DropdownBorder=Color3.fromRGB(40,65,65),DropdownOption=Color3.fromRGB(110,160,160),Keybind=Color3.fromRGB(110,160,160),Input=Color3.fromRGB(110,160,160),InputFocused=Color3.fromRGB(20,10,30),InputIndicator=Color3.fromRGB(130,170,170),InputIndicatorFocus=Color3.fromRGB(60,165,165),Dialog=Color3.fromRGB(40,80,80),DialogHolder=Color3.fromRGB(30,60,60),DialogHolderLine=Color3.fromRGB(25,50,50),DialogButton=Color3.fromRGB(40,80,80),DialogButtonBorder=Color3.fromRGB(80,110,110),DialogBorder=Color3.fromRGB(50,100,100),DialogInput=Color3.fromRGB(45,90,90),DialogInputLine=Color3.fromRGB(130,170,170),Text=Color3.fromRGB(240,240,240),SubText=Color3.fromRGB(170,170,170),Hover=Color3.fromRGB(110,160,160),HoverChange=0.04},Amethyst={Name="Amethyst",Accent=Color3.fromRGB(97,62,167),AcrylicMain=Color3.fromRGB(20,20,20),AcrylicBorder=Color3.fromRGB(110,90,130),AcrylicGradient=ColorSequence.new(Color3.fromRGB(85,57,139),Color3.fromRGB(40,25,65)),AcrylicNoise=0.92,TitleBarLine=Color3.fromRGB(95,75,110),Tab=Color3.fromRGB(160,140,180),Element=Color3.fromRGB(140,120,160),ElementBorder=Color3.fromRGB(60,50,70),InElementBorder=Color3.fromRGB(100,90,110),ElementTransparency=0.87,ToggleSlider=Color3.fromRGB(140,120,160),ToggleToggled=Color3.fromRGB(0,0,0),SliderRail=Color3.fromRGB(140,120,160),DropdownFrame=Color3.fromRGB(170,160,200),DropdownHolder=Color3.fromRGB(60,45,80),DropdownBorder=Color3.fromRGB(50,40,65),DropdownOption=Color3.fromRGB(140,120,160),Keybind=Color3.fromRGB(140,120,160),Input=Color3.fromRGB(140,120,160),InputFocused=Color3.fromRGB(20,10,30),InputIndicator=Color3.fromRGB(170,150,190),InputIndicatorFocus=Color3.fromRGB(97,62,167),Dialog=Color3.fromRGB(60,45,80),DialogHolder=Color3.fromRGB(45,30,65),DialogHolderLine=Color3.fromRGB(40,25,60),DialogButton=Color3.fromRGB(60,45,80),DialogButtonBorder=Color3.fromRGB(95,80,110),DialogBorder=Color3.fromRGB(85,70,100),DialogInput=Color3.fromRGB(70,55,85),DialogInputLine=Color3.fromRGB(175,160,190),Text=Color3.fromRGB(240,240,240),SubText=Color3.fromRGB(170,170,170),Hover=Color3.fromRGB(140,120,160),HoverChange=0.04},Rose={Name="Rose",Accent=Color3.fromRGB(180,55,90),AcrylicMain=Color3.fromRGB(40,40,40),AcrylicBorder=Color3.fromRGB(130,90,110),AcrylicGradient=ColorSequence.new(Color3.fromRGB(190,60,135),Color3.fromRGB(165,50,70)),AcrylicNoise=0.92,TitleBarLine=Color3.fromRGB(140,85,105),Tab=Color3.fromRGB(180,140,160),Element=Color3.fromRGB(200,120,170),ElementBorder=Color3.fromRGB(110,70,85),InElementBorder=Color3.fromRGB(120,90,90),ElementTransparency=0.86,ToggleSlider=Color3.fromRGB(200,120,170),ToggleToggled=Color3.fromRGB(0,0,0),SliderRail=Color3.fromRGB(200,120,170),DropdownFrame=Color3.fromRGB(200,160,180),DropdownHolder=Color3.fromRGB(120,50,75),DropdownBorder=Color3.fromRGB(90,40,55),DropdownOption=Color3.fromRGB(200,120,170),Keybind=Color3.fromRGB(200,120,170),Input=Color3.fromRGB(200,120,170),InputFocused=Color3.fromRGB(20,10,30),InputIndicator=Color3.fromRGB(170,150,190),InputIndicatorFocus=Color3.fromRGB(180,55,90),Dialog=Color3.fromRGB(120,50,75),DialogHolder=Color3.fromRGB(95,40,60),DialogHolderLine=Color3.fromRGB(90,35,55),DialogButton=Color3.fromRGB(120,50,75),DialogButtonBorder=Color3.fromRGB(155,90,115),DialogBorder=Color3.fromRGB(100,70,90),DialogInput=Color3.fromRGB(135,55,80),DialogInputLine=Color3.fromRGB(190,160,180),Text=Color3.fromRGB(240,240,240),SubText=Color3.fromRGB(170,170,170),Hover=Color3.fromRGB(200,120,170),HoverChange=0.04},Sakura={Name="Sakura",Accent=Color3.fromRGB(252,209,215),AcrylicMain=Color3.fromRGB(40,40,40),AcrylicBorder=Color3.fromRGB(130,90,110),AcrylicGradient=ColorSequence.new{ColorSequenceKeypoint.new(0,Color3.fromRGB(252,209,215)),ColorSequenceKeypoint.new(0.25,Color3.fromRGB(255,231,222)),ColorSequenceKeypoint.new(0.50,Color3.fromRGB(233,177,205)),ColorSequenceKeypoint.new(0.75,Color3.fromRGB(195,130,158)),ColorSequenceKeypoint.new(1,Color3.fromRGB(86,33,53))},AcrylicNoise=0.92,TitleBarLine=Color3.fromRGB(140,85,105),Tab=Color3.fromRGB(132,89,95),Element=Color3.fromRGB(220,140,190),ElementBorder=Color3.fromRGB(110,70,85),InElementBorder=Color3.fromRGB(120,90,90),ElementTransparency=0.86,ToggleSlider=Color3.fromRGB(252,209,215),ToggleToggled=Color3.fromRGB(252,209,215),TransparenToggle=0.5,SliderRail=Color3.fromRGB(252,209,215),DropdownFrame=Color3.fromRGB(252,209,215),DropdownHolder=Color3.fromRGB(156,103,123),DropdownBorder=Color3.fromRGB(90,40,55),DropdownOption=Color3.fromRGB(252,209,215),Keybind=Color3.fromRGB(200,120,170),Input=Color3.fromRGB(200,120,170),InputFocused=Color3.fromRGB(200,200,200),InputIndicator=Color3.fromRGB(170,150,190),InputIndicatorFocus=Color3.fromRGB(252,209,215),Dialog=Color3.fromRGB(120,50,75),DialogHolder=Color3.fromRGB(95,40,60),DialogHolderLine=Color3.fromRGB(90,35,55),DialogButton=Color3.fromRGB(120,50,75),DialogButtonBorder=Color3.fromRGB(155,90,115),DialogBorder=Color3.fromRGB(100,70,90),DialogInput=Color3.fromRGB(135,55,80),DialogInputLine=Color3.fromRGB(190,160,180),Text=Color3.fromRGB(240,240,240),SubText=Color3.fromRGB(220,220,220),Hover=Color3.fromRGB(200,120,170),HoverChange=0.04}}local l={Version="1.1.0",OpenFrames={},Options={},Themes=k.Names,Window=nil,WindowFrame=nil,Unloaded=false,Creator=nil,DialogOpen=false,UseAcrylic=false,Acrylic=false,Transparency=true,MinimizeKeybind=nil,MinimizeKey=Enum.KeyCode.LeftControl}local function m(n)local o=tostring(n):match("^Motor%((.+)%)$")if o then return true,o else return false end end;local p={}p.__index=p;function p.new(q,r)return setmetatable({signal=q,connected=true,_handler=r},p)end;function p:disconnect()if self.connected then self.connected=false;for s,t in pairs(self.signal._connections)do if t==self then table.remove(self.signal._connections,s)return end end end end;local u={}u.__index=u;function u.new()return setmetatable({_connections={},_threads={}},u)end;function u:fire(...)for v,t in pairs(self._connections)do t._handler(...)end;for v,w in pairs(self._threads)do coroutine.resume(w,...)end;self._threads={}end;function u:connect(r)local t=p.new(self,r)table.insert(self._connections,t)return t end;function u:wait()table.insert(self._threads,coroutine.running())return coroutine.yield()end;local x={}x.__index=x;function x.new(y,z)assert(y,"Missing argument #1: targetValue")z=z or{}return setmetatable({_targetValue=y,_velocity=z.velocity or 1},x)end;function x:step(A,B)local C=A.value;local D=self._velocity;local E=self._targetValue;local F=B*D;local G=F>=math.abs(E-C)C=C+F*(E>C and 1 or-1)if G then C=self._targetValue;D=0 end;return{complete=G,value=C,velocity=D}end;local H={}H.__index=H;function H.new(y)return setmetatable({_targetValue=y},H)end;function H:step()return{complete=true,value=self._targetValue}end;local I=0.001;local J=0.001;local K=0.0001;local L={}L.__index=L;function L.new(y,z)assert(y,"Missing argument #1: targetValue")z=z or{}return setmetatable({_targetValue=y,_frequency=z.frequency or 4,_dampingRatio=z.dampingRatio or 1},L)end;function L:step(A,B)local M=self._dampingRatio;local N=self._frequency*2*math.pi;local y=self._targetValue;local O=A.value;local D=A.velocity or 0;local P=O-y;local Q=math.exp(-M*N*B)local R,S;if M==1 then R=(P*(1+N*B)+D*B)*Q+y;S=(D*(1-N*B)-P*N^2*B)*Q elseif M<1 then local T=math.sqrt(1-M^2)local U=math.cos(N*T*B)local V=math.sin(N*T*B)local W=T>K and V/T or N*B;local X=N*T>K and V/(N*T)or B;R=(P*(U+M*W)+D*X)*Q+y;S=(D*(U-W*M)-P*N*W)*Q else local T=math.sqrt(M^2-1)local Y=-N*(M-T)local Z=-N*(M+T)local _=(D-P*Y)/(2*N*T)local a0=P-_;local a1=a0*math.exp(Y*B)local a2=_*math.exp(Z*B)R=a1+a2+y;S=a1*Y+a2*Z end;local G=math.abs(S)<I and math.abs(R-y)<J;return{complete=G,value=G and y or R,velocity=S}end;local a3=function()end;local a4={}a4.__index=a4;function a4.new()return setmetatable({_onStep=u.new(),_onStart=u.new(),_onComplete=u.new()},a4)end;function a4:onStep(r)return self._onStep:connect(r)end;function a4:onStart(r)return self._onStart:connect(r)end;function a4:onComplete(r)return self._onComplete:connect(r)end;function a4:start()if not self._connection then self._connection=b.RenderStepped:Connect(function(a5)self:step(a5)end)end end;function a4:stop()if self._connection then self._connection:Disconnect()self._connection=nil end end;a4.destroy=a4.stop;a4.step=a3;a4.getValue=a3;a4.setGoal=a3;function a4:__tostring()return"Motor"end;local a6=setmetatable({},a4)a6.__index=a6;function a6.new(a7,a8)assert(a7,"Missing argument #1: initialValue")assert(typeof(a7)=="number","initialValue must be a number!")local self=setmetatable(a4.new(),a6)if a8~=nil then self._useImplicitConnections=a8 else self._useImplicitConnections=true end;self._goal=nil;self._state={complete=true,value=a7}return self end;function a6:step(a5)if self._state.complete then return true end;local a9=self._goal:step(self._state,a5)self._state=a9;self._onStep:fire(a9.value)if a9.complete then if self._useImplicitConnections then self:stop()end;self._onComplete:fire()end;return a9.complete end;function a6:getValue()return self._state.value end;function a6:setGoal(E)self._state.complete=false;self._goal=E;self._onStart:fire()if self._useImplicitConnections then self:start()end end;function a6:__tostring()return"Motor(Single)"end;local aa=setmetatable({},a4)aa.__index=aa;local function ab(n)if m(n)then return n end;local ac=typeof(n)if ac=="number"then return a6.new(n,false)elseif ac=="table"then return aa.new(n,false)end;error(("Unable to convert %q to motor; type %s is unsupported"):format(n,ac),2)end;function aa.new(ad,a8)assert(ad,"Missing argument #1: initialValues")assert(typeof(ad)=="table","initialValues must be a table!")assert(not ad.step,'initialValues contains disallowed property "step". Did you mean to put a table of values here?')local self=setmetatable(a4.new(),aa)if a8~=nil then self._useImplicitConnections=a8 else self._useImplicitConnections=true end;self._complete=true;self._motors={}for ae,n in pairs(ad)do self._motors[ae]=ab(n)end;return self end;function aa:step(a5)if self._complete then return true end;local af=true;for v,ag in pairs(self._motors)do local G=ag:step(a5)if not G then af=false end end;self._onStep:fire(self:getValue())if af then if self._useImplicitConnections then self:stop()end;self._complete=true;self._onComplete:fire()end;return af end;function aa:setGoal(ah)assert(not ah.step,'goals contains disallowed property "step". Did you mean to put a table of goals here?')self._complete=false;self._onStart:fire()for ae,E in pairs(ah)do local ag=assert(self._motors[ae],("Unknown motor for key %s"):format(ae))ag:setGoal(E)end;if self._useImplicitConnections then self:start()end end;function aa:getValue()local ai={}for ae,ag in pairs(self._motors)do ai[ae]=ag:getValue()end;return ai end;function aa:__tostring()return"Motor(Group)"end;local aj={SingleMotor=a6,GroupMotor=aa,Instant=H,Linear=x,Spring=L,isMotor=m}local ak={Registry={},Signals={},TransparencyMotors={},DefaultProperties={ScreenGui={ResetOnSpawn=false,ZIndexBehavior=Enum.ZIndexBehavior.Sibling},Frame={BackgroundColor3=Color3.new(1,1,1),BorderColor3=Color3.new(0,0,0),BorderSizePixel=0},ScrollingFrame={BackgroundColor3=Color3.new(1,1,1),BorderColor3=Color3.new(0,0,0),ScrollBarImageColor3=Color3.new(0,0,0)},TextLabel={BackgroundColor3=Color3.new(1,1,1),BorderColor3=Color3.new(0,0,0),Font=Enum.Font.SourceSans,Text="",TextColor3=Color3.new(0,0,0),BackgroundTransparency=1,TextSize=14},TextButton={BackgroundColor3=Color3.new(1,1,1),BorderColor3=Color3.new(0,0,0),AutoButtonColor=false,Font=Enum.Font.SourceSans,Text="",TextColor3=Color3.new(0,0,0),TextSize=14},TextBox={BackgroundColor3=Color3.new(1,1,1),BorderColor3=Color3.new(0,0,0),ClearTextOnFocus=false,Font=Enum.Font.SourceSans,Text="",TextColor3=Color3.new(0,0,0),TextSize=14},ImageLabel={BackgroundTransparency=1,BackgroundColor3=Color3.new(1,1,1),BorderColor3=Color3.new(0,0,0),BorderSizePixel=0},ImageButton={BackgroundColor3=Color3.new(1,1,1),BorderColor3=Color3.new(0,0,0),AutoButtonColor=false},CanvasGroup={BackgroundColor3=Color3.new(1,1,1),BorderColor3=Color3.new(0,0,0),BorderSizePixel=0}}}local function al(am,an)if an.ThemeTag then ak.AddThemeObject(am,an.ThemeTag)end end;function ak.AddSignal(u,ao)local ap=u:Connect(ao)table.insert(ak.Signals,ap)return ap end;function ak.Disconnect()for aq=#ak.Signals,1,-1 do local p=table.remove(ak.Signals,aq)if p.Disconnect then p:Disconnect()end end end;function ak.UpdateTheme()for Instance,am in next,ak.Registry do for ar,as in next,am.Properties do Instance[ar]=ak.GetThemeProperty(as)end end;for v,at in next,ak.TransparencyMotors do at:setGoal(aj.Instant.new(ak.GetThemeProperty("ElementTransparency")))end end;function ak.AddThemeObject(am,au)local aq=#ak.Registry+1;local av={Object=am,Properties=au,Idx=aq}ak.Registry[am]=av;ak.UpdateTheme()return am end;function ak.OverrideTag(am,au)ak.Registry[am].Properties=au;ak.UpdateTheme()end;function ak.GetThemeProperty(ar)if k[l.Theme][ar]then return k[l.Theme][ar]end;return k["Dark"][ar]end;function ak.New(aw,au,ax)local am=Instance.new(aw)for aw,ay in next,ak.DefaultProperties[aw]or{}do am[aw]=ay end;for aw,ay in next,au or{}do if aw~="ThemeTag"then am[aw]=ay end end;for v,az in next,ax or{}do az.Parent=am end;al(am,au)return am end;function ak.SpringMotor(aA,Instance,aB,aC,aD)aC=aC or false;aD=aD or false;local at=aj.SingleMotor.new(aA)at:onStep(function(n)Instance[aB]=n end)if aD then table.insert(ak.TransparencyMotors,at)end;local function aE(ay,aF)aF=aF or false;if not aC then if not aF then if aB=="BackgroundTransparency"and l.DialogOpen then return end end end;at:setGoal(aj.Spring.new(ay,{frequency=8}))end;return at,aE end;l.Creator=ak;local aG=ak.New;local aH=aG("ScreenGui",{Parent=b:IsStudio()and c.PlayerGui or game:GetService("CoreGui")})l.GUI=aH;j(aH)function l:SafeCallback(ao,...)if not ao then return end;local aI,aJ=pcall(ao,...)if not aI then local v,aK=aJ:find(":%d+: ")if not aK then return l:Notify({Title="Interface",Content="Callback error",SubContent=aJ,Duration=5})end;return l:Notify({Title="Interface",Content="Callback error",SubContent=aJ:sub(aK+1),Duration=5})end end;function l:Round(aL,aM)if aM==0 then return math.floor(aL)end;aL=tostring(aL)return aL:find("%.")and tonumber(aL:sub(1,aL:find("%.")+aM))or aL end;local function aN(n,aO,aP,aQ,aR)return(n-aO)*(aR-aQ)/(aP-aO)+aQ end;local function aS(aT,aU)local aV=game:GetService("Workspace").CurrentCamera:ScreenPointToRay(aT.X,aT.Y)return aV.Origin+aV.Direction*aU end;local function aW()local aX=game:GetService("Workspace").CurrentCamera.ViewportSize.Y;return aN(aX,0,2560,8,56)end;local aS,aW=unpack({aS,aW})local aY=Instance.new("Folder",game:GetService("Workspace").CurrentCamera)local function aZ()local a_=ak.New("Part",{Name="Body",Color=Color3.new(0,0,0),Material=Enum.Material.Glass,Size=Vector3.new(1,1,0),Anchored=true,CanCollide=false,Locked=true,CastShadow=false,Transparency=0.98},{ak.New("SpecialMesh",{MeshType=Enum.MeshType.Brick,Offset=Vector3.new(0,0,-0.000001)})})return a_ end;function AcrylicBlur()local function b0(aU)local b1={}aU=aU or 0.001;local b2={topLeft=Vector2.new(),topRight=Vector2.new(),bottomRight=Vector2.new()}local b3=aZ()b3.Parent=aY;local function b4(b5,C)b2.topLeft=C;b2.topRight=C+Vector2.new(b5.X,0)b2.bottomRight=C+b5 end;local function b6()local b7=game:GetService("Workspace").CurrentCamera;if b7 then b7=b7.CFrame end;local b8=b7;if not b8 then b8=CFrame.new()end;local b9=b8;local ba=b2.topLeft;local bb=b2.topRight;local bc=b2.bottomRight;local bd=aS(ba,aU)local be=aS(bb,aU)local bf=aS(bc,aU)local bg=(be-bd).Magnitude;local bh=(be-bf).Magnitude;b3.CFrame=CFrame.fromMatrix((bd+bf)/2,b9.XVector,b9.YVector,b9.ZVector)b3.Mesh.Scale=Vector3.new(bg,bh,0)end;local function bi(bj)local P=aW()local b5=bj.AbsoluteSize-Vector2.new(P,P)local C=bj.AbsolutePosition+Vector2.new(P/2,P/2)b4(b5,C)task.spawn(b6)end;local function bk()local b9=game:GetService("Workspace").CurrentCamera;if not b9 then return end;table.insert(b1,b9:GetPropertyChangedSignal("CFrame"):Connect(b6))table.insert(b1,b9:GetPropertyChangedSignal("ViewportSize"):Connect(b6))table.insert(b1,b9:GetPropertyChangedSignal("FieldOfView"):Connect(b6))task.spawn(b6)end;b3.Destroying:Connect(function()for v,bl in b1 do pcall(function()bl:Disconnect()end)end end)bk()return bi,b3 end;return function(aU)local bm={}local bi,b3=b0(aU)local bn=ak.New("Frame",{BackgroundTransparency=1,Size=UDim2.fromScale(1,1)})ak.AddSignal(bn:GetPropertyChangedSignal("AbsolutePosition"),function()bi(bn)end)ak.AddSignal(bn:GetPropertyChangedSignal("AbsoluteSize"),function()bi(bn)end)bm.AddParent=function(bo)ak.AddSignal(bo:GetPropertyChangedSignal("Visible"),function()bm.SetVisibility(bo.Visible)end)end;bm.SetVisibility=function(ay)b3.Transparency=ay and 0.98 or 1 end;bm.Frame=bn;bm.Model=b3;return bm end end;function AcrylicPaint()local aG=ak.New;local AcrylicBlur=AcrylicBlur()return function(bp)local AcrylicPaint={}AcrylicPaint.Frame=aG("Frame",{Size=UDim2.fromScale(1,1),BackgroundTransparency=0.9,BackgroundColor3=Color3.fromRGB(255,255,255),BorderSizePixel=0},{aG("ImageLabel",{Image="rbxassetid://8992230677",ScaleType="Slice",SliceCenter=Rect.new(Vector2.new(99,99),Vector2.new(99,99)),AnchorPoint=Vector2.new(0.5,0.5),Size=UDim2.new(1,120,1,116),Position=UDim2.new(0.5,0,0.5,0),BackgroundTransparency=1,ImageColor3=Color3.fromRGB(0,0,0),ImageTransparency=0.7}),aG("UICorner",{CornerRadius=UDim.new(0,8)}),aG("Frame",{BackgroundTransparency=0.45,Size=UDim2.fromScale(1,1),Name="Background",ThemeTag={BackgroundColor3="AcrylicMain"}},{aG("UICorner",{CornerRadius=UDim.new(0,8)})}),aG("Frame",{BackgroundColor3=Color3.fromRGB(255,255,255),BackgroundTransparency=0.4,Size=UDim2.fromScale(1,1)},{aG("UICorner",{CornerRadius=UDim.new(0,8)}),aG("UIGradient",{Rotation=90,ThemeTag={Color="AcrylicGradient"}})}),aG("ImageLabel",{Image="rbxassetid://9968344105",ImageTransparency=0.98,ScaleType=Enum.ScaleType.Tile,TileSize=UDim2.new(0,128,0,128),Size=UDim2.fromScale(1,1),BackgroundTransparency=1},{aG("UICorner",{CornerRadius=UDim.new(0,8)})}),aG("ImageLabel",{Image="rbxassetid://9968344227",ImageTransparency=0.9,ScaleType=Enum.ScaleType.Tile,TileSize=UDim2.new(0,128,0,128),Size=UDim2.fromScale(1,1),BackgroundTransparency=1,ThemeTag={ImageTransparency="AcrylicNoise"}},{aG("UICorner",{CornerRadius=UDim.new(0,8)})}),aG("Frame",{BackgroundTransparency=1,Size=UDim2.fromScale(1,1),ZIndex=2},{aG("UICorner",{CornerRadius=UDim.new(0,8)}),aG("UIStroke",{Transparency=0.5,Thickness=1,ThemeTag={Color="AcrylicBorder"}})})})local bm;if l.UseAcrylic then bm=AcrylicBlur()bm.Frame.Parent=AcrylicPaint.Frame;AcrylicPaint.Model=bm.Model;AcrylicPaint.AddParent=bm.AddParent;AcrylicPaint.SetVisibility=bm.SetVisibility end;return AcrylicPaint end end;local bq={AcrylicBlur=AcrylicBlur(),CreateAcrylic=aZ,AcrylicPaint=AcrylicPaint()}function bq.init()local br=Instance.new("DepthOfFieldEffect")br.FarIntensity=0;br.InFocusRadius=0.1;br.NearIntensity=1;local bs={}function bq.Enable()for v,bt in pairs(bs)do bt.Enabled=false end;br.Parent=game:GetService("Lighting")end;function bq.Disable()for v,bt in pairs(bs)do bt.Enabled=bt.enabled end;br.Parent=nil end;local function bu()local function bv(bw)if bw:IsA("DepthOfFieldEffect")then bs[bw]={enabled=bw.Enabled}end end;for v,bx in pairs(game:GetService("Lighting"):GetChildren())do bv(bx)end;if game:GetService("Workspace").CurrentCamera then for v,bx in pairs(game:GetService("Workspace").CurrentCamera:GetChildren())do bv(bx)end end end;bu()bq.Enable()end;local by={Assets={Close="rbxassetid://9886659671",Min="rbxassetid://9886659276",Max="rbxassetid://9886659406",Restore="rbxassetid://9886659001"}}by.Element=(function()local aG=ak.New;local L=aj.Spring.new;return function(bz,bA,bo,bB,bC)local bD={}local bC=bC or{}bD.TitleLabel=aG("TextLabel",{FontFace=Font.new("rbxasset://fonts/families/GothamSSm.json",Enum.FontWeight.Medium,Enum.FontStyle.Normal),Text=bz,TextColor3=Color3.fromRGB(240,240,240),TextSize=13,TextXAlignment=Enum.TextXAlignment.Left,Size=UDim2.new(1,0,0,14),BackgroundColor3=Color3.fromRGB(255,255,255),BackgroundTransparency=1,ThemeTag={TextColor3="Text"}})bD.DescLabel=aG("TextLabel",{FontFace=Font.new("rbxasset://fonts/families/GothamSSm.json"),Text=bA,TextColor3=Color3.fromRGB(200,200,200),TextSize=12,TextWrapped=true,TextXAlignment=Enum.TextXAlignment.Left,BackgroundColor3=Color3.fromRGB(255,255,255),AutomaticSize=Enum.AutomaticSize.Y,BackgroundTransparency=1,Size=UDim2.new(1,0,0,14),ThemeTag={TextColor3="SubText"}})bD.LabelHolder=aG("Frame",{AutomaticSize=Enum.AutomaticSize.Y,BackgroundColor3=Color3.fromRGB(255,255,255),BackgroundTransparency=1,Position=UDim2.fromOffset(10,0),Size=UDim2.new(1,-28,0,0)},{aG("UIListLayout",{SortOrder=Enum.SortOrder.LayoutOrder,VerticalAlignment=Enum.VerticalAlignment.Center}),aG("UIPadding",{PaddingBottom=UDim.new(0,13),PaddingTop=UDim.new(0,13)}),bD.TitleLabel,bD.DescLabel})bD.Border=aG("UIStroke",{Transparency=0.5,ApplyStrokeMode=Enum.ApplyStrokeMode.Border,Color=Color3.fromRGB(0,0,0),ThemeTag={Color="ElementBorder"}})bD.Frame=aG("TextButton",{Visible=bC.Visible and bC.Visible or true,Size=UDim2.new(1,0,0,0),BackgroundTransparency=0.89,BackgroundColor3=Color3.fromRGB(130,130,130),Parent=bo,AutomaticSize=Enum.AutomaticSize.Y,Text="",LayoutOrder=7,ThemeTag={BackgroundColor3="Element",BackgroundTransparency="ElementTransparency"}},{aG("UICorner",{CornerRadius=UDim.new(0,9)}),bD.Border,bD.LabelHolder})function bD:SetTitle(bE)bD.TitleLabel.Text=bE end;function bD:Visible(bF)bD.Frame.Visible=bF end;function bD:SetDesc(bE)if bE==nil then bE=""end;if bE==""then bD.DescLabel.Visible=false else bD.DescLabel.Visible=true end;bD.DescLabel.Text=bE end;function bD:GetTitle()return bD.TitleLabel.Text end;function bD:GetDesc()return bD.DescLabel.Text end;function bD:Destroy()bD.Frame:Destroy()end;bD:SetTitle(bz)bD:SetDesc(bA)if bB then local k=l.Themes;local at,bG=ak.SpringMotor(ak.GetThemeProperty("ElementTransparency"),bD.Frame,"BackgroundTransparency",false,true)ak.AddSignal(bD.Frame.MouseEnter,function()bG(ak.GetThemeProperty("ElementTransparency")-ak.GetThemeProperty("HoverChange"))end)ak.AddSignal(bD.Frame.MouseLeave,function()bG(ak.GetThemeProperty("ElementTransparency"))end)ak.AddSignal(bD.Frame.MouseButton1Down,function()bG(ak.GetThemeProperty("ElementTransparency")+ak.GetThemeProperty("HoverChange"))end)ak.AddSignal(bD.Frame.MouseButton1Up,function()bG(ak.GetThemeProperty("ElementTransparency")-ak.GetThemeProperty("HoverChange"))end)end;return bD end end)()by.Section=(function()local aG=ak.New;return function(bz,bo)local bH={}bH.Layout=aG("UIListLayout",{Padding=UDim.new(0,5)})bH.Container=aG("Frame",{Size=UDim2.new(1,0,0,26),Position=UDim2.fromOffset(0,24),BackgroundTransparency=1},{bH.Layout})bH.Root=aG("Frame",{BackgroundTransparency=1,Size=UDim2.new(1,0,0,26),LayoutOrder=7,Parent=bo},{aG("TextLabel",{RichText=true,Text=bz,TextTransparency=0,FontFace=Font.new("rbxassetid://12187365364",Enum.FontWeight.SemiBold,Enum.FontStyle.Normal),TextSize=18,TextXAlignment="Center",TextYAlignment="Center",Size=UDim2.new(1,-16,0,18),Position=UDim2.fromOffset(0,2),ThemeTag={TextColor3="Text"}}),bH.Container})ak.AddSignal(bH.Layout:GetPropertyChangedSignal("AbsoluteContentSize"),function()bH.Container.Size=UDim2.new(1,0,0,bH.Layout.AbsoluteContentSize.Y)bH.Root.Size=UDim2.new(1,0,0,bH.Layout.AbsoluteContentSize.Y+25)end)return bH end end)()by.Tab=(function()local aG=ak.New;local L=aj.Spring.new;local H=aj.Instant.new;local by=by;local bI={Window=nil,Tabs={},Containers={},SelectedTab=0,TabCount=0}function bI:Init(bJ)bI.Window=bJ;return bI end;function bI:GetCurrentTabPos()local bK=bI.Window.TabHolder.AbsolutePosition.Y;local bL=bI.Tabs[bI.SelectedTab].Frame.AbsolutePosition.Y;return bL-bK end;function bI:New(bz,bM,bo)local bJ=bI.Window;local bN=l.Elements;bI.TabCount=bI.TabCount+1;local bO=bI.TabCount;local bP={Selected=false,Name=bz,Type="Tab"}if l:GetIcon(bM)then bM=l:GetIcon(bM)end;if bM==""or nil then bM=nil end;bP.Frame=aG("TextButton",{Size=UDim2.new(1,0,0,34),BackgroundTransparency=1,Parent=bo,ThemeTag={BackgroundColor3="Tab"}},{aG("UICorner",{CornerRadius=UDim.new(0,6)}),aG("TextLabel",{AnchorPoint=Vector2.new(0,0.5),Position=bM and UDim2.new(0,30,0.5,0)or UDim2.new(0,12,0.5,0),Text=bz,RichText=true,TextColor3=Color3.fromRGB(255,255,255),TextTransparency=0,FontFace=Font.new("rbxasset://fonts/families/GothamSSm.json",Enum.FontWeight.Regular,Enum.FontStyle.Normal),TextSize=12,TextXAlignment="Left",TextYAlignment="Center",Size=UDim2.new(1,-12,1,0),BackgroundTransparency=1,ThemeTag={TextColor3="Text"}}),aG("ImageLabel",{AnchorPoint=Vector2.new(0,0.5),Size=UDim2.fromOffset(16,16),Position=UDim2.new(0,8,0.5,0),BackgroundTransparency=1,Image=bM and bM or nil,ThemeTag={ImageColor3="Text"}})})local bQ=aG("UIListLayout",{Padding=UDim.new(0,5),SortOrder=Enum.SortOrder.LayoutOrder})bP.ContainerFrame=aG("ScrollingFrame",{Size=UDim2.fromScale(1,1),BackgroundTransparency=1,Parent=bJ.ContainerHolder,Visible=false,BottomImage="rbxassetid://6889812791",MidImage="rbxassetid://6889812721",TopImage="rbxassetid://6276641225",ScrollBarImageColor3=Color3.fromRGB(255,255,255),ScrollBarImageTransparency=0.95,ScrollBarThickness=3,BorderSizePixel=0,CanvasSize=UDim2.fromScale(0,0),ScrollingDirection=Enum.ScrollingDirection.Y},{bQ,aG("UIPadding",{PaddingRight=UDim.new(0,10),PaddingLeft=UDim.new(0,1),PaddingTop=UDim.new(0,1),PaddingBottom=UDim.new(0,1)})})ak.AddSignal(bQ:GetPropertyChangedSignal("AbsoluteContentSize"),function()bP.ContainerFrame.CanvasSize=UDim2.new(0,0,0,bQ.AbsoluteContentSize.Y+2)end)bP.Motor,bP.SetTransparency=ak.SpringMotor(1,bP.Frame,"BackgroundTransparency")ak.AddSignal(bP.Frame.MouseEnter,function()bP.SetTransparency(bP.Selected and 0.85 or 0.89)end)ak.AddSignal(bP.Frame.MouseLeave,function()bP.SetTransparency(bP.Selected and 0.89 or 1)end)ak.AddSignal(bP.Frame.MouseButton1Down,function()bP.SetTransparency(0.92)end)ak.AddSignal(bP.Frame.MouseButton1Up,function()bP.SetTransparency(bP.Selected and 0.85 or 0.89)end)ak.AddSignal(bP.Frame.MouseButton1Click,function()bI:SelectTab(bO)end)bI.Containers[bO]=bP.ContainerFrame;bI.Tabs[bO]=bP;bP.Container=bP.ContainerFrame;bP.ScrollFrame=bP.Container;function bP:AddSection(bR)local bH={Type="Section"}local bS=by.Section(bR,bP.Container)bH.Container=bS.Container;bH.ScrollFrame=bP.Container;setmetatable(bH,bN)return bH end;setmetatable(bP,bN)return bP end;function bI:SelectTab(bP)local bJ=bI.Window;bI.SelectedTab=bP;for v,bT in next,bI.Tabs do bT.SetTransparency(1)bT.Selected=false end;bI.Tabs[bP].SetTransparency(0.89)bI.Tabs[bP].Selected=true;bJ.TabDisplay.Text=bI.Tabs[bP].Name;bJ.SelectorPosMotor:setGoal(L(bI:GetCurrentTabPos(),{frequency=6}))task.spawn(function()bJ.ContainerHolder.Parent=bJ.ContainerAnim;bJ.ContainerPosMotor:setGoal(L(15,{frequency=10}))bJ.ContainerBackMotor:setGoal(L(1,{frequency=10}))task.wait(0.12)for v,bU in next,bI.Containers do bU.Visible=false end;bI.Containers[bP].Visible=true;bJ.ContainerPosMotor:setGoal(L(0,{frequency=5}))bJ.ContainerBackMotor:setGoal(L(0,{frequency=8}))task.wait(0.12)bJ.ContainerHolder.Parent=bJ.ContainerCanvas end)end;return bI end)()by.Button=(function()local aG=ak.New;local L=aj.Spring.new;return function(bV,bo,bW)bW=bW or false;local bX={}bX.Title=aG("TextLabel",{FontFace=Font.new("rbxasset://fonts/families/GothamSSm.json"),TextColor3=Color3.fromRGB(200,200,200),TextSize=14,TextWrapped=true,TextXAlignment=Enum.TextXAlignment.Center,TextYAlignment=Enum.TextYAlignment.Center,BackgroundColor3=Color3.fromRGB(255,255,255),AutomaticSize=Enum.AutomaticSize.Y,BackgroundTransparency=1,Size=UDim2.fromScale(1,1),ThemeTag={TextColor3="Text"}})bX.HoverFrame=aG("Frame",{Size=UDim2.fromScale(1,1),BackgroundTransparency=1,ThemeTag={BackgroundColor3="Hover"}},{aG("UICorner",{CornerRadius=UDim.new(0,4)})})bX.Frame=aG("TextButton",{Size=UDim2.new(0,0,0,32),Parent=bo,ThemeTag={BackgroundColor3="DialogButton"}},{aG("UICorner",{CornerRadius=UDim.new(0,4)}),aG("UIStroke",{ApplyStrokeMode=Enum.ApplyStrokeMode.Border,Transparency=0.65,ThemeTag={Color="DialogButtonBorder"}}),bX.HoverFrame,bX.Title})local at,bG=ak.SpringMotor(1,bX.HoverFrame,"BackgroundTransparency",bW)ak.AddSignal(bX.Frame.MouseEnter,function()bG(0.97)end)ak.AddSignal(bX.Frame.MouseLeave,function()bG(1)end)ak.AddSignal(bX.Frame.MouseButton1Down,function()bG(1)end)ak.AddSignal(bX.Frame.MouseButton1Up,function()bG(0.97)end)return bX end end)()by.Dialog=(function()local L=aj.Spring.new;local H=aj.Instant.new;local aG=ak.New;local bY={Window=nil}function bY:Init(bJ)bY.Window=bJ;return bY end;function bY:Create()local bZ={Buttons=0}bZ.TintFrame=aG("TextButton",{Text="",Size=UDim2.fromScale(1,1),BackgroundColor3=Color3.fromRGB(0,0,0),BackgroundTransparency=1,Parent=bY.Window.Root},{aG("UICorner",{CornerRadius=UDim.new(0,8)})})local b_,c0=ak.SpringMotor(1,bZ.TintFrame,"BackgroundTransparency",true)bZ.ButtonHolder=aG("Frame",{Size=UDim2.new(1,-40,1,-40),AnchorPoint=Vector2.new(0.5,0.5),Position=UDim2.fromScale(0.5,0.5),BackgroundTransparency=1},{aG("UIListLayout",{Padding=UDim.new(0,10),FillDirection=Enum.FillDirection.Horizontal,HorizontalAlignment=Enum.HorizontalAlignment.Center,SortOrder=Enum.SortOrder.LayoutOrder})})bZ.ButtonHolderFrame=aG("Frame",{Size=UDim2.new(1,0,0,70),Position=UDim2.new(0,0,1,-70),ThemeTag={BackgroundColor3="DialogHolder"}},{aG("Frame",{Size=UDim2.new(1,0,0,1),ThemeTag={BackgroundColor3="DialogHolderLine"}}),bZ.ButtonHolder})bZ.Title=aG("TextLabel",{FontFace=Font.new("rbxasset://fonts/families/GothamSSm.json",Enum.FontWeight.SemiBold,Enum.FontStyle.Normal),Text="Dialog",TextColor3=Color3.fromRGB(240,240,240),TextSize=22,TextXAlignment=Enum.TextXAlignment.Left,Size=UDim2.new(1,0,0,22),Position=UDim2.fromOffset(20,25),BackgroundColor3=Color3.fromRGB(255,255,255),BackgroundTransparency=1,ThemeTag={TextColor3="Text"}})bZ.Scale=aG("UIScale",{Scale=1})local c1,c2=ak.SpringMotor(1.1,bZ.Scale,"Scale")bZ.Root=aG("CanvasGroup",{Size=UDim2.fromOffset(300,165),AnchorPoint=Vector2.new(0.5,0.5),Position=UDim2.fromScale(0.5,0.5),GroupTransparency=1,Parent=bZ.TintFrame,ThemeTag={BackgroundColor3="Dialog"}},{aG("UICorner",{CornerRadius=UDim.new(0,8)}),aG("UIStroke",{Transparency=0.5,ThemeTag={Color="DialogBorder"}}),bZ.Scale,bZ.Title,bZ.ButtonHolderFrame})local c3,c4=ak.SpringMotor(1,bZ.Root,"GroupTransparency")function bZ:Open()l.DialogOpen=true;bZ.Scale.Scale=1.1;c0(0.75)c4(0)c2(1)end;function bZ:Close()l.DialogOpen=false;c0(1)c4(1)c2(1.1)bZ.Root.UIStroke:Destroy()task.wait(0.15)bZ.TintFrame:Destroy()end;function bZ:Button(bz,c5)bZ.Buttons=bZ.Buttons+1;bz=bz or"Button"c5=c5 or function()end;local bX=by.Button("",bZ.ButtonHolder,true)bX.Title.Text=bz;for v,c6 in next,bZ.ButtonHolder:GetChildren()do if c6:IsA("TextButton")then c6.Size=UDim2.new(1/bZ.Buttons,-((bZ.Buttons-1)*10/bZ.Buttons),0,32)end end;ak.AddSignal(bX.Frame.MouseButton1Click,function()l:SafeCallback(c5)pcall(function()bZ:Close()end)end)return bX end;return bZ end;return bY end)()by.Notification=(function()local L=aj.Spring.new;local H=aj.Instant.new;local aG=ak.New;local c7={}function c7:Init(aH)c7.Holder=aG("Frame",{Position=UDim2.new(1,-30,1,-30),Size=UDim2.new(0,310,1,-30),AnchorPoint=Vector2.new(1,1),BackgroundTransparency=1,Parent=aH},{aG("UIListLayout",{HorizontalAlignment=Enum.HorizontalAlignment.Center,SortOrder=Enum.SortOrder.LayoutOrder,VerticalAlignment=Enum.VerticalAlignment.Bottom,Padding=UDim.new(0,20)})})end;function c7:New(c8)c8.Title=c8.Title or"Title"c8.Content=c8.Content or"Content"c8.SubContent=c8.SubContent or""c8.Duration=c8.Duration or nil;c8.Buttons=c8.Buttons or{}local c9={Closed=false}c9.AcrylicPaint=bq.AcrylicPaint()c9.Title=aG("TextLabel",{Position=UDim2.new(0,14,0,17),Text=c8.Title,RichText=true,TextColor3=Color3.fromRGB(255,255,255),TextTransparency=0,FontFace=Font.new("rbxasset://fonts/families/GothamSSm.json"),TextSize=13,TextXAlignment="Left",TextYAlignment="Center",Size=UDim2.new(1,-12,0,12),TextWrapped=true,BackgroundTransparency=1,ThemeTag={TextColor3="Text"}})c9.ContentLabel=aG("TextLabel",{FontFace=Font.new("rbxasset://fonts/families/GothamSSm.json"),Text=c8.Content,TextColor3=Color3.fromRGB(240,240,240),TextSize=14,TextXAlignment=Enum.TextXAlignment.Left,AutomaticSize=Enum.AutomaticSize.Y,Size=UDim2.new(1,0,0,14),BackgroundColor3=Color3.fromRGB(255,255,255),BackgroundTransparency=1,TextWrapped=true,ThemeTag={TextColor3="Text"}})c9.SubContentLabel=aG("TextLabel",{FontFace=Font.new("rbxasset://fonts/families/GothamSSm.json"),Text=c8.SubContent,TextColor3=Color3.fromRGB(240,240,240),TextSize=14,TextXAlignment=Enum.TextXAlignment.Left,AutomaticSize=Enum.AutomaticSize.Y,Size=UDim2.new(1,0,0,14),BackgroundColor3=Color3.fromRGB(255,255,255),BackgroundTransparency=1,TextWrapped=true,ThemeTag={TextColor3="SubText"}})c9.LabelHolder=aG("Frame",{AutomaticSize=Enum.AutomaticSize.Y,BackgroundColor3=Color3.fromRGB(255,255,255),BackgroundTransparency=1,Position=UDim2.fromOffset(14,40),Size=UDim2.new(1,-28,0,0)},{aG("UIListLayout",{SortOrder=Enum.SortOrder.LayoutOrder,VerticalAlignment=Enum.VerticalAlignment.Center,Padding=UDim.new(0,3)}),c9.ContentLabel,c9.SubContentLabel})c9.CloseButton=aG("TextButton",{Text="",Position=UDim2.new(1,-14,0,13),Size=UDim2.fromOffset(20,20),AnchorPoint=Vector2.new(1,0),BackgroundTransparency=1},{aG("ImageLabel",{Image=by.Close,Size=UDim2.fromOffset(16,16),Position=UDim2.fromScale(0.5,0.5),AnchorPoint=Vector2.new(0.5,0.5),BackgroundTransparency=1,ThemeTag={ImageColor3="Text"}})})c9.Root=aG("Frame",{BackgroundTransparency=1,Size=UDim2.new(1,0,1,0),Position=UDim2.fromScale(1,0)},{c9.AcrylicPaint.Frame,c9.Title,c9.CloseButton,c9.LabelHolder})if c8.Content==""then c9.ContentLabel.Visible=false end;if c8.SubContent==""then c9.SubContentLabel.Visible=false end;c9.Holder=aG("Frame",{BackgroundTransparency=1,Size=UDim2.new(1,0,0,200),Parent=c7.Holder},{c9.Root})local c3=aj.GroupMotor.new({Scale=1,Offset=60})c3:onStep(function(ca)c9.Root.Position=UDim2.new(ca.Scale,ca.Offset,0,0)end)ak.AddSignal(c9.CloseButton.MouseButton1Click,function()c9:Close()end)function c9:Open()local cb=c9.LabelHolder.AbsoluteSize.Y;c9.Holder.Size=UDim2.new(1,0,0,58+cb)c3:setGoal({Scale=L(0,{frequency=5}),Offset=L(0,{frequency=5})})end;function c9:Close()if not c9.Closed then c9.Closed=true;task.spawn(function()c3:setGoal({Scale=L(1,{frequency=5}),Offset=L(60,{frequency=5})})task.wait(0.4)if l.UseAcrylic then c9.AcrylicPaint.Model:Destroy()end;c9.Holder:Destroy()end)end end;c9:Open()if c8.Duration then task.delay(c8.Duration,function()c9:Close()end)end;return c9 end;return c7 end)()by.Textbox=(function()local aG=ak.New;return function(bo,bq)bq=bq or false;local cc={}cc.Input=aG("TextBox",{FontFace=Font.new("rbxasset://fonts/families/GothamSSm.json"),TextColor3=Color3.fromRGB(200,200,200),TextSize=14,TextXAlignment=Enum.TextXAlignment.Left,TextYAlignment=Enum.TextYAlignment.Center,BackgroundColor3=Color3.fromRGB(255,255,255),AutomaticSize=Enum.AutomaticSize.Y,BackgroundTransparency=1,Size=UDim2.fromScale(1,1),Position=UDim2.fromOffset(10,0),ThemeTag={TextColor3="Text",PlaceholderColor3="SubText"}})cc.Container=aG("Frame",{BackgroundTransparency=1,ClipsDescendants=true,Position=UDim2.new(0,6,0,0),Size=UDim2.new(1,-12,1,0)},{cc.Input})cc.Indicator=aG("Frame",{Size=UDim2.new(1,-4,0,1),Position=UDim2.new(0,2,1,0),AnchorPoint=Vector2.new(0,1),BackgroundTransparency=bq and 0.5 or 0,ThemeTag={BackgroundColor3=bq and"InputIndicator"or"DialogInputLine"}})cc.Frame=aG("Frame",{Size=UDim2.new(0,0,0,30),BackgroundTransparency=bq and 0.9 or 0,Parent=bo,ThemeTag={BackgroundColor3=bq and"Input"or"DialogInput"}},{aG("UICorner",{CornerRadius=UDim.new(0,9)}),aG("UIStroke",{ApplyStrokeMode=Enum.ApplyStrokeMode.Border,Transparency=bq and 0.5 or 0.65,ThemeTag={Color=bq and"InElementBorder"or"DialogButtonBorder"}}),cc.Indicator,cc.Container})local function cd()local ce=2;local cf=cc.Container.AbsoluteSize.X;if not cc.Input:IsFocused()or cc.Input.TextBounds.X<=cf-2*ce then cc.Input.Position=UDim2.new(0,ce,0,0)else local cg=cc.Input.CursorPosition;if cg~=-1 then local ch=string.sub(cc.Input.Text,1,cg-1)local bg=TextService:GetTextSize(ch,cc.Input.TextSize,cc.Input.Font,Vector2.new(math.huge,math.huge)).X;local ci=cc.Input.Position.X.Offset+bg;if ci<ce then cc.Input.Position=UDim2.fromOffset(ce-bg,0)elseif ci>cf-ce-1 then cc.Input.Position=UDim2.fromOffset(cf-bg-ce-1,0)end end end end;task.spawn(cd)ak.AddSignal(cc.Input:GetPropertyChangedSignal("Text"),cd)ak.AddSignal(cc.Input:GetPropertyChangedSignal("CursorPosition"),cd)ak.AddSignal(cc.Input.Focused,function()cd()cc.Indicator.Size=UDim2.new(1,-2,0,2)cc.Indicator.Position=UDim2.new(0,1,1,0)cc.Indicator.BackgroundTransparency=0;ak.OverrideTag(cc.Frame,{BackgroundColor3=bq and"InputFocused"or"DialogHolder"})ak.OverrideTag(cc.Indicator,{BackgroundColor3="InputIndicatorFocus"})end)ak.AddSignal(cc.Input.FocusLost,function()cd()cc.Indicator.Size=UDim2.new(1,-4,0,1)cc.Indicator.Position=UDim2.new(0,2,1,0)cc.Indicator.BackgroundTransparency=0.5;ak.OverrideTag(cc.Frame,{BackgroundColor3=bq and"Input"or"DialogInput"})ak.OverrideTag(cc.Indicator,{BackgroundColor3=bq and"InputIndicator"or"DialogInputLine"})end)return cc end end)()by.TitleBar=(function()local aG=ak.New;local cj=ak.AddSignal;return function(c8)local ck={}local function cl(bM,cm,bo,c5)local bX={Callback=c5 or function()end}bX.Frame=aG("TextButton",{Size=UDim2.new(0,34,1,-8),AnchorPoint=Vector2.new(1,0),BackgroundTransparency=1,Parent=bo,Position=cm,Text="",ThemeTag={BackgroundColor3="Text"}},{aG("UICorner",{CornerRadius=UDim.new(0,7)}),aG("ImageLabel",{Image=bM,Size=UDim2.fromOffset(16,16),Position=UDim2.fromScale(0.5,0.5),AnchorPoint=Vector2.new(0.5,0.5),BackgroundTransparency=1,Name="Icon",ThemeTag={ImageColor3="Text"}})})local at,bG=ak.SpringMotor(1,bX.Frame,"BackgroundTransparency")cj(bX.Frame.MouseEnter,function()bG(0.94)end)cj(bX.Frame.MouseLeave,function()bG(1,true)end)cj(bX.Frame.MouseButton1Down,function()bG(0.96)end)cj(bX.Frame.MouseButton1Up,function()bG(0.94)end)cj(bX.Frame.MouseButton1Click,bX.Callback)bX.SetCallback=function(cn)bX.Callback=cn end;return bX end;ck.Frame=aG("Frame",{Size=UDim2.new(1,0,0,42),BackgroundTransparency=1,Parent=c8.Parent},{aG("Frame",{Size=UDim2.new(1,-16,1,0),Position=UDim2.new(0,16,0,0),BackgroundTransparency=1},{aG("UIListLayout",{Padding=UDim.new(0,5),FillDirection=Enum.FillDirection.Horizontal,SortOrder=Enum.SortOrder.LayoutOrder}),aG("TextLabel",{RichText=true,Text=c8.Title,FontFace=Font.new("rbxasset://fonts/families/GothamSSm.json",Enum.FontWeight.Regular,Enum.FontStyle.Normal),TextSize=12,TextXAlignment="Left",TextYAlignment="Center",Size=UDim2.fromScale(0,1),AutomaticSize=Enum.AutomaticSize.X,BackgroundTransparency=1,ThemeTag={TextColor3="Text"}}),aG("TextLabel",{RichText=true,Text=c8.SubTitle,TextTransparency=0.4,FontFace=Font.new("rbxasset://fonts/families/GothamSSm.json",Enum.FontWeight.Regular,Enum.FontStyle.Normal),TextSize=12,TextXAlignment="Left",TextYAlignment="Center",Size=UDim2.fromScale(0,1),AutomaticSize=Enum.AutomaticSize.X,BackgroundTransparency=1,ThemeTag={TextColor3="Text"}})}),aG("Frame",{BackgroundTransparency=0.5,Size=UDim2.new(1,0,0,1),Position=UDim2.new(0,0,1,0),ThemeTag={BackgroundColor3="TitleBarLine"}})})ck.CloseButton=cl(by.Assets.Close,UDim2.new(1,-4,0,4),ck.Frame,function()l.Window:Dialog({Title="Close  Hub",Content="Are you sure you want to exit Sakura Hub?",Buttons={{Title="Yes",Callback=function()l:Destroy()end},{Title="No"}}})end)ck.MinButton=cl(by.Assets.Min,UDim2.new(1,-40,0,4),ck.Frame,function()l.Window:Minimize()end)return ck end end)()by.Window=(function()local L=aj.Spring.new;local H=aj.Instant.new;local aG=ak.New;return function(c8)local bJ={Minimized=false,Maximized=false,Size=c8.Size,CurrentPos=0,TabWidth=0,Position=UDim2.fromOffset(f.ViewportSize.X/2-c8.Size.X.Offset/2,f.ViewportSize.Y/2-c8.Size.Y.Offset/2)}local co,cp,cq,cr=false;local cs,ct=false;local cu=false;bJ.AcrylicPaint=bq.AcrylicPaint()bJ.TabWidth=c8.TabWidth;local cv=aG("Frame",{Size=UDim2.fromOffset(4,0),BackgroundColor3=Color3.fromRGB(76,194,255),Position=UDim2.fromOffset(0,17),AnchorPoint=Vector2.new(0,0.5),ThemeTag={BackgroundColor3="Accent"}},{aG("UICorner",{CornerRadius=UDim.new(1,9)})})local cw=aG("Frame",{Size=UDim2.fromOffset(20,20),BackgroundTransparency=1,Position=UDim2.new(1,-20,1,-20)})bJ.TabHolder=aG("ScrollingFrame",{Size=UDim2.fromScale(1,1),BackgroundTransparency=1,ScrollBarImageTransparency=1,ScrollBarThickness=0,BorderSizePixel=0,CanvasSize=UDim2.fromScale(0,0),ScrollingDirection=Enum.ScrollingDirection.Y},{aG("UIListLayout",{Padding=UDim.new(0,4)})})local cx=aG("Frame",{Size=UDim2.new(0,bJ.TabWidth,1,-66),Position=UDim2.new(0,12,0,54),BackgroundTransparency=1,ClipsDescendants=true},{bJ.TabHolder,cv})bJ.TabDisplay=aG("TextLabel",{RichText=true,Text="Tab",TextTransparency=0,FontFace=Font.new("rbxassetid://12187365364",Enum.FontWeight.SemiBold,Enum.FontStyle.Normal),TextSize=28,TextXAlignment="Left",TextYAlignment="Center",Size=UDim2.new(1,-16,0,28),Position=UDim2.fromOffset(bJ.TabWidth+26,56),BackgroundTransparency=1,ThemeTag={TextColor3="Text"}})bJ.ContainerHolder=aG("Frame",{Size=UDim2.fromScale(1,1),BackgroundTransparency=1})bJ.ContainerAnim=aG("CanvasGroup",{Size=UDim2.fromScale(1,1),BackgroundTransparency=1})bJ.ContainerCanvas=aG("Frame",{Size=UDim2.new(1,-bJ.TabWidth-32,1,-102),Position=UDim2.fromOffset(bJ.TabWidth+26,90),BackgroundTransparency=1},{bJ.ContainerAnim,bJ.ContainerHolder})bJ.Root=aG("Frame",{BackgroundTransparency=0.7,Size=bJ.Size,Position=bJ.Position,Parent=c8.Parent},{aG("UICorner",{CornerRadius=UDim.new(0,10)}),aG("ImageLabel",{Size=UDim2.fromScale(1,1),Position=UDim2.fromScale(0,0),BackgroundTransparency=0.7,Image="rbxassetid://73588662119305",ZIndex=0},{aG("UICorner",{CornerRadius=UDim.new(0,10)})}),bJ.AcrylicPaint.Frame,bJ.TabDisplay,bJ.ContainerCanvas,cx,cw})bJ.TitleBar=by.TitleBar({Title=c8.Title,SubTitle=c8.SubTitle,Parent=bJ.Root,Window=bJ},{aG("ImageLabel",{Size=UDim2.fromOffset(24,24),Position=UDim2.new(0,8,0.5,-12),AnchorPoint=Vector2.new(0,0.5),Image=_G.Background,BackgroundTransparency=1}),bJ.TitleBar})if l.UseAcrylic then bJ.AcrylicPaint.AddParent(bJ.Root)end;local cy=aj.GroupMotor.new({X=bJ.Size.X.Offset,Y=bJ.Size.Y.Offset})local cz=aj.GroupMotor.new({X=bJ.Position.X.Offset,Y=bJ.Position.Y.Offset})bJ.SelectorPosMotor=aj.SingleMotor.new(17)bJ.SelectorSizeMotor=aj.SingleMotor.new(0)bJ.ContainerBackMotor=aj.SingleMotor.new(0)bJ.ContainerPosMotor=aj.SingleMotor.new(94)cy:onStep(function(ai)bJ.Root.Size=UDim2.new(0,ai.X,0,ai.Y)end)cz:onStep(function(ai)bJ.Root.Position=UDim2.new(0,ai.X,0,ai.Y)end)local cA=0;local cB=0;bJ.SelectorPosMotor:onStep(function(ay)cv.Position=UDim2.new(0,0,0,ay+17)local cC=tick()local cD=cC-cB;if cA~=nil then bJ.SelectorSizeMotor:setGoal(L(math.abs(ay-cA)/(cD*60)+16))cA=ay end;cB=cC end)bJ.SelectorSizeMotor:onStep(function(ay)cv.Size=UDim2.new(0,4,0,ay)end)bJ.ContainerBackMotor:onStep(function(ay)bJ.ContainerAnim.GroupTransparency=ay end)bJ.ContainerPosMotor:onStep(function(ay)bJ.ContainerAnim.Position=UDim2.fromOffset(0,ay)end)local cE;local cF;bJ.Maximize=function(ay,cG,H)bJ.Maximized=ay;bJ.TitleBar.MaxButton.Frame.Icon.Image=ay and by.Assets.Restore or by.Assets.Max;if ay then cE=bJ.Size.X.Offset;cF=bJ.Size.Y.Offset end;local cH=ay and f.ViewportSize.X or cE;local cI=ay and f.ViewportSize.Y or cF;cy:setGoal({X=aj[H and"Instant"or"Spring"].new(cH,{frequency=6}),Y=aj[H and"Instant"or"Spring"].new(cI,{frequency=6})})bJ.Size=UDim2.fromOffset(cH,cI)if not cG then cz:setGoal({X=L(ay and 0 or bJ.Position.X.Offset,{frequency=6}),Y=L(ay and 0 or bJ.Position.Y.Offset,{frequency=6})})end end;ak.AddSignal(bJ.TitleBar.Frame.InputBegan,function(cJ)if cJ.UserInputType==Enum.UserInputType.MouseButton1 or cJ.UserInputType==Enum.UserInputType.Touch then co=true;cq=cJ.Position;cr=bJ.Root.Position;if bJ.Maximized then cr=UDim2.fromOffset(g.X-g.X*(cE-100)/bJ.Root.AbsoluteSize.X,g.Y-g.Y*cF/bJ.Root.AbsoluteSize.Y)end;cJ.Changed:Connect(function()if cJ.UserInputState==Enum.UserInputState.End then co=false end end)end end)ak.AddSignal(bJ.TitleBar.Frame.InputChanged,function(cJ)if cJ.UserInputType==Enum.UserInputType.MouseMovement or cJ.UserInputType==Enum.UserInputType.Touch then cp=cJ end end)ak.AddSignal(cw.InputBegan,function(cJ)if cJ.UserInputType==Enum.UserInputType.MouseButton1 or cJ.UserInputType==Enum.UserInputType.Touch then cs=true;ct=cJ.Position end end)ak.AddSignal(d.InputChanged,function(cJ)if cJ==cp and co then local cK=cJ.Position-cq;bJ.Position=UDim2.fromOffset(cr.X.Offset+cK.X,cr.Y.Offset+cK.Y)cz:setGoal({X=H(bJ.Position.X.Offset),Y=H(bJ.Position.Y.Offset)})if bJ.Maximized then bJ.Maximize(false,true,true)end end;if(cJ.UserInputType==Enum.UserInputType.MouseMovement or cJ.UserInputType==Enum.UserInputType.Touch)and cs then local cK=cJ.Position-ct;local cL=bJ.Size;local cM=Vector3.new(cL.X.Offset,cL.Y.Offset,0)+Vector3.new(1,1,0)*cK;local cN=Vector2.new(math.clamp(cM.X,470,2048),math.clamp(cM.Y,380,2048))cy:setGoal({X=aj.Instant.new(cN.X),Y=aj.Instant.new(cN.Y)})end end)ak.AddSignal(d.InputEnded,function(cJ)if cs==true or cJ.UserInputType==Enum.UserInputType.Touch then cs=false;bJ.Size=UDim2.fromOffset(cy:getValue().X,cy:getValue().Y)end end)ak.AddSignal(bJ.TabHolder.UIListLayout:GetPropertyChangedSignal("AbsoluteContentSize"),function()bJ.TabHolder.CanvasSize=UDim2.new(0,0,0,bJ.TabHolder.UIListLayout.AbsoluteContentSize.Y)end)ak.AddSignal(d.InputBegan,function(cJ)if type(l.MinimizeKeybind)=="table"and l.MinimizeKeybind.Type=="Keybind"and not d:GetFocusedTextBox()then if cJ.KeyCode.Name==l.MinimizeKeybind.Value then bJ:Minimize()end elseif cJ.KeyCode==l.MinimizeKey and not d:GetFocusedTextBox()then bJ:Minimize()end end)function bJ:Minimize()bJ.Minimized=not bJ.Minimized;bJ.Root.Visible=not bJ.Minimized;if not cu then cu=true;local cO=l.MinimizeKeybind and l.MinimizeKeybind.Value or l.MinimizeKey.Name;l:Notify({Title="Interface",Content="Press "..cO.." to toggle the interface.",Duration=6})end;pcall(SwapIco)end;function bJ:Destroy()if l.UseAcrylic then bJ.AcrylicPaint.Model:Destroy()end;bJ.Root:Destroy()end;local cP=by.Dialog:Init(bJ)function bJ:Dialog(c8)local bY=cP:Create()bY.Title.Text=c8.Title;local cQ=aG("TextLabel",{FontFace=Font.new("rbxasset://fonts/families/GothamSSm.json"),Text=c8.Content,TextColor3=Color3.fromRGB(240,240,240),TextSize=14,TextXAlignment=Enum.TextXAlignment.Left,TextYAlignment=Enum.TextYAlignment.Top,Size=UDim2.new(1,-40,1,0),Position=UDim2.fromOffset(20,60),BackgroundTransparency=1,Parent=bY.Root,ClipsDescendants=false,ThemeTag={TextColor3="Text"}})aG("UISizeConstraint",{MinSize=Vector2.new(300,165),MaxSize=Vector2.new(620,math.huge),Parent=bY.Root})bY.Root.Size=UDim2.fromOffset(cQ.TextBounds.X+40,165)if cQ.TextBounds.X+40>bJ.Size.X.Offset-120 then bY.Root.Size=UDim2.fromOffset(bJ.Size.X.Offset-120,165)cQ.TextWrapped=true;bY.Root.Size=UDim2.fromOffset(bJ.Size.X.Offset-120,cQ.TextBounds.Y+150)end;for v,bX in next,c8.Buttons do bY:Button(bX.Title,bX.Callback)end;bY:Open()end;local bI=by.Tab:Init(bJ)function bJ:AddTab(cR)return bI:New(cR.Title,cR.Icon,bJ.TabHolder)end;function bJ:SelectTab(bP)bI:SelectTab(bP)end;ak.AddSignal(bJ.TabHolder:GetPropertyChangedSignal("CanvasPosition"),function()cA=bI:GetCurrentTabPos()+16;cB=0;bJ.SelectorPosMotor:setGoal(H(bI:GetCurrentTabPos()))end)return bJ end end)()local cS={}local cj=ak.AddSignal;cS.Button=(function()local bD={}bD.__index=bD;bD.__type="Button"function bD:New(c8)assert(c8.Title,"Button - Missing Title")c8.Callback=c8.Callback or function()end;local cT=by.Element(c8.Title,c8.Description,self.Container,true,c8)local cU=aG("ImageLabel",{Image="rbxassetid://17293879614",Size=UDim2.fromOffset(20,20),AnchorPoint=Vector2.new(1,0.5),Position=UDim2.new(1,-10,0.5,0),BackgroundTransparency=1,Parent=cT.Frame,ThemeTag={ImageColor3="Text"}})ak.AddSignal(cT.Frame.MouseButton1Click,function()l:SafeCallback(c8.Callback)end)return cT end;return bD end)()cS.Toggle=(function()local bD={}bD.__index=bD;bD.__type="Toggle"function bD:New(aq,c8)assert(c8.Title,"Toggle - Missing Title")local cV={Value=c8.Default or false,Callback=c8.Callback or function(ay)end,Type="Toggle"}local cW=by.Element(c8.Title,c8.Description,self.Container,true,c8)cW.DescLabel.Size=UDim2.new(1,-54,0,14)cV.SetTitle=cW.SetTitle;cV.SetDesc=cW.SetDesc;cV.Visible=cW.Visible;cV.Elements=cW;local cX=aG("ImageLabel",{AnchorPoint=Vector2.new(0,0.5),Size=UDim2.fromOffset(14,14),Position=UDim2.new(0,2,0.5,0),Image="http://www.roblox.com/asset/?id=12288739321",ImageTransparency=0,ThemeTag={ImageColor3="ToggleCorner"}})local cY=aG("UIStroke",{Transparency=0.5,ThemeTag={Color="ToggleCorner"}})local cZ=aG("Frame",{Size=UDim2.fromOffset(36,18),AnchorPoint=Vector2.new(1,0.5),Position=UDim2.new(1,-10,0.5,0),Parent=cW.Frame,BackgroundTransparency=1,ThemeTag={BackgroundColor3="Accent"}},{aG("UICorner",{CornerRadius=UDim.new(0,10)}),cY,cX})function cV:OnChanged(cn)cV.Changed=cn;cn(cV.Value)end;function cV:SetValue(ay)ay=not not ay;cV.Value=ay;ak.OverrideTag(cY,{Color=cV.Value and"Accent"or"ToggleCorner"})ak.OverrideTag(cX,{ImageColor3=cV.Value and"ToggleToggled"or"ToggleCorner"})e:Create(cX,TweenInfo.new(0.25,Enum.EasingStyle.Quint,Enum.EasingDirection.Out),{Position=UDim2.new(0,cV.Value and 19 or 2,0.5,0)}):Play()e:Create(cZ,TweenInfo.new(0.25,Enum.EasingStyle.Quint,Enum.EasingDirection.Out),{BackgroundTransparency=cV.Value and 0.45 or 1}):Play()cX.ImageTransparency=cV.Value and 0 or 0.5;l:SafeCallback(cV.Callback,cV.Value)l:SafeCallback(cV.Changed,cV.Value)end;function cV:Destroy()cW:Destroy()l.Options[aq]=nil end;ak.AddSignal(cW.Frame.MouseButton1Click,function()cV:SetValue(not cV.Value)end)cV:SetValue(cV.Value)l.Options[aq]=cV;return cV end;return bD end)()cS.Dropdown=(function()local bD={}bD.__index=bD;bD.__type="Dropdown"function bD:New(aq,c8)local c_={Values=c8.Values,Value=c8.Default,Multi=c8.Multi,Buttons={},Opened=false,Type="Dropdown",Callback=c8.Callback or function()end}if c_.Multi and c8.AllowNull then c_.Value={}end;local d0=by.Element(c8.Title,c8.Description,self.Container,false,c8)d0.DescLabel.Size=UDim2.new(1,-170,0,14)c_.SetTitle=d0.SetTitle;c_.SetDesc=d0.SetDesc;c_.Visible=d0.Visible;c_.Elements=d0;local d1=aG("TextLabel",{FontFace=Font.new("rbxasset://fonts/families/GothamSSm.json",Enum.FontWeight.Regular,Enum.FontStyle.Normal),Text="Value",TextColor3=Color3.fromRGB(240,240,240),TextSize=13,TextXAlignment=Enum.TextXAlignment.Left,Size=UDim2.new(1,-30,0,14),Position=UDim2.new(0,8,0.5,0),AnchorPoint=Vector2.new(0,0.5),BackgroundColor3=Color3.fromRGB(255,255,255),BackgroundTransparency=1,TextTruncate=Enum.TextTruncate.AtEnd,ThemeTag={TextColor3="Text"}})local d2=aG("ImageLabel",{Image="rbxassetid://16848361091",Size=UDim2.fromOffset(16,16),AnchorPoint=Vector2.new(1,0.5),Position=UDim2.new(1,-8,0.5,0),BackgroundTransparency=1,ThemeTag={ImageColor3="SubText"}})local d3=aG("TextButton",{Size=UDim2.fromOffset(160,30),Position=UDim2.new(1,-10,0.5,0),AnchorPoint=Vector2.new(1,0.5),BackgroundTransparency=0.9,Parent=d0.Frame,ThemeTag={BackgroundColor3="DropdownFrame"}},{aG("UICorner",{CornerRadius=UDim.new(0,9)}),aG("UIStroke",{Transparency=0.5,ApplyStrokeMode=Enum.ApplyStrokeMode.Border,ThemeTag={Color="InElementBorder"}}),d2,d1})local d4=aG("UIListLayout",{Padding=UDim.new(0,3)})local d5=aG("ScrollingFrame",{Size=UDim2.new(1,-5,1,-10),Position=UDim2.fromOffset(5,5),BackgroundTransparency=1,BottomImage="rbxassetid://6889812791",MidImage="rbxassetid://6889812721",TopImage="rbxassetid://6276641225",ScrollBarImageColor3=Color3.fromRGB(255,255,255),ScrollBarImageTransparency=0.75,ScrollBarThickness=5,BorderSizePixel=0,CanvasSize=UDim2.fromScale(0,0),ScrollingDirection=Enum.ScrollingDirection.Y},{d4})local d6=aG("Frame",{Size=UDim2.fromScale(1,0.6),ThemeTag={BackgroundColor3="DropdownHolder"}},{d5,aG("UICorner",{CornerRadius=UDim.new(0,9)}),aG("UIStroke",{ApplyStrokeMode=Enum.ApplyStrokeMode.Border,ThemeTag={Color="DropdownBorder"}}),aG("ImageLabel",{BackgroundTransparency=1,Image="http://www.roblox.com/asset/?id=5554236805",ScaleType=Enum.ScaleType.Slice,SliceCenter=Rect.new(23,23,277,277),Size=UDim2.fromScale(1,1)+UDim2.fromOffset(30,30),Position=UDim2.fromOffset(-15,-15),ImageColor3=Color3.fromRGB(0,0,0),ImageTransparency=0.1})})local d7=aG("Frame",{BackgroundTransparency=1,Size=UDim2.fromOffset(170,300),Parent=l.GUI,Visible=false},{d6,aG("UISizeConstraint",{MinSize=Vector2.new(170,0)})})table.insert(l.OpenFrames,d7)local function d8()local d9=0;if f.ViewportSize.Y-d3.AbsolutePosition.Y<d7.AbsoluteSize.Y-5 then d9=d7.AbsoluteSize.Y-5-(f.ViewportSize.Y-d3.AbsolutePosition.Y)+40 end;d7.Position=UDim2.fromOffset(d3.AbsolutePosition.X-1,d3.AbsolutePosition.Y-5-d9)end;local da=0;local function db()if#c_.Values>10 then d7.Size=UDim2.fromOffset(da,392)else d7.Size=UDim2.fromOffset(da,d4.AbsoluteContentSize.Y+10)end end;local function dc()d5.CanvasSize=UDim2.fromOffset(0,d4.AbsoluteContentSize.Y)end;d8()db()ak.AddSignal(d3:GetPropertyChangedSignal("AbsolutePosition"),d8)ak.AddSignal(d3.MouseButton1Click,function()c_:Open()end)ak.AddSignal(d.InputBegan,function(cJ)if cJ.UserInputType==Enum.UserInputType.MouseButton1 or cJ.UserInputType==Enum.UserInputType.Touch then local dd,de=d6.AbsolutePosition,d6.AbsoluteSize;if g.X<dd.X or g.X>dd.X+de.X or g.Y<dd.Y-20-1 or g.Y>dd.Y+de.Y then c_:Close()end end end)local df=self.ScrollFrame;function c_:Open()c_.Opened=true;df.ScrollingEnabled=false;d7.Visible=true;e:Create(d6,TweenInfo.new(0.3,Enum.EasingStyle.Quart,Enum.EasingDirection.Out),{Size=UDim2.fromScale(1,1)}):Play()end;function c_:Close()c_.Opened=false;df.ScrollingEnabled=true;d6.Size=UDim2.fromScale(1,0.6)d7.Visible=false end;function c_:Display()local ca=c_.Values;local dg=""if c8.Multi then for aq,ay in next,ca do if c_.Value[ay]then dg=dg..ay..", "end end;dg=dg:sub(1,#dg-2)else dg=c_.Value or""end;d1.Text=dg==""and"--"or dg end;function c_:GetActiveValues()if c8.Multi then local dh={}for ay,bF in next,c_.Value do table.insert(dh,ay)end;return dh else return c_.Value and 1 or 0 end end;function c_:BuildDropdownList()local ca=c_.Values;local di={}for v,bD in next,d5:GetChildren()do if not bD:IsA("UIListLayout")then bD:Destroy()end end;local dj=0;for aq,ay in next,ca do local dk={}dj=dj+1;local dl=aG("Frame",{Size=UDim2.fromOffset(4,14),BackgroundColor3=Color3.fromRGB(76,194,255),Position=UDim2.fromOffset(-1,16),AnchorPoint=Vector2.new(0,0.5),ThemeTag={BackgroundColor3="Accent"}},{aG("UICorner",{CornerRadius=UDim.new(0,9)})})local dm=aG("TextLabel",{FontFace=Font.new("rbxasset://fonts/families/GothamSSm.json"),Text=ay,TextColor3=Color3.fromRGB(200,200,200),TextSize=13,TextXAlignment=Enum.TextXAlignment.Left,BackgroundColor3=Color3.fromRGB(255,255,255),AutomaticSize=Enum.AutomaticSize.Y,BackgroundTransparency=1,Size=UDim2.fromScale(1,1),Position=UDim2.fromOffset(10,0),Name="ButtonLabel",ThemeTag={TextColor3="Text"}})local bX=aG("TextButton",{Size=UDim2.new(1,-5,0,32),BackgroundTransparency=1,ZIndex=23,Text="",Parent=d5,ThemeTag={BackgroundColor3="DropdownOption"}},{dl,dm,aG("UICorner",{CornerRadius=UDim.new(0,9)})})local dn;if c8.Multi then dn=c_.Value[ay]else dn=c_.Value==ay end;local dp,dq=ak.SpringMotor(1,bX,"BackgroundTransparency")local dr,ds=ak.SpringMotor(1,dl,"BackgroundTransparency")local dt=aj.SingleMotor.new(6)dt:onStep(function(n)dl.Size=UDim2.new(0,4,0,n)end)ak.AddSignal(bX.MouseEnter,function()dq(dn and 0.85 or 0.89)end)ak.AddSignal(bX.MouseLeave,function()dq(dn and 0.89 or 1)end)ak.AddSignal(bX.MouseButton1Down,function()dq(0.92)end)ak.AddSignal(bX.MouseButton1Up,function()dq(dn and 0.85 or 0.89)end)function dk:UpdateButton()if c8.Multi then dn=c_.Value[ay]if dn then dq(0.89)end else dn=c_.Value==ay;dq(dn and 0.89 or 1)end;dt:setGoal(aj.Spring.new(dn and 14 or 6,{frequency=6}))ds(dn and 0 or 1)end;dm.InputBegan:Connect(function(cJ)if cJ.UserInputType==Enum.UserInputType.MouseButton1 or cJ.UserInputType==Enum.UserInputType.Touch then local du=not dn;if c_:GetActiveValues()==1 and not du and not c8.AllowNull then else if c8.Multi then dn=du;c_.Value[ay]=dn and true or nil else dn=du;c_.Value=dn and ay or nil;for v,dv in next,di do dv:UpdateButton()end end;dk:UpdateButton()c_:Display()l:SafeCallback(c_.Callback,c_.Value)l:SafeCallback(c_.Changed,c_.Value)end end end)dk:UpdateButton()c_:Display()di[bX]=dk end;da=0;for bX,dk in next,di do if bX.ButtonLabel then if bX.ButtonLabel.TextBounds.X>da then da=bX.ButtonLabel.TextBounds.X end end end;da=da+30;dc()db()end;function c_:SetValues(dw)if dw then c_.Values=dw end;c_:BuildDropdownList()end;function c_:OnChanged(cn)c_.Changed=cn;cn(c_.Value)end;function c_:SetValue(dx)if c_.Multi then local dy={}for ay,bF in next,dx do if table.find(c_.Values,ay)then dy[ay]=true end end;c_.Value=dy else if not dx then c_.Value=nil elseif table.find(c_.Values,dx)then c_.Value=dx end end;c_:BuildDropdownList()l:SafeCallback(c_.Callback,c_.Value)l:SafeCallback(c_.Changed,c_.Value)end;function c_:Destroy()d0:Destroy()l.Options[aq]=nil end;c_:BuildDropdownList()c_:Display()local dz={}if type(c8.Default)=="string"then local aq=table.find(c_.Values,c8.Default)if aq then table.insert(dz,aq)end elseif type(c8.Default)=="table"then for v,ay in next,c8.Default do local aq=table.find(c_.Values,ay)if aq then table.insert(dz,aq)end end elseif type(c8.Default)=="number"and c_.Values[c8.Default]~=nil then table.insert(dz,c8.Default)end;if next(dz)then for aK=1,#dz do local dA=dz[aK]if c8.Multi then c_.Value[c_.Values[dA]]=true else c_.Value=c_.Values[dA]end;if not c8.Multi then break end end;c_:BuildDropdownList()c_:Display()end;l.Options[aq]=c_;return c_ end;return bD end)()cS.Paragraph=(function()local dB={}dB.__index=dB;dB.__type="Paragraph"function dB:New(c8)assert(c8.Title,"Paragraph - Missing Title")c8.Content=c8.Content or""local dB=by.Element(c8.Title,c8.Content,dB.Container,false,c8)dB.Frame.BackgroundTransparency=0.92;dB.Border.Transparency=0.6;dB.SetTitle=dB.SetTitle;dB.SetDesc=dB.SetDesc;dB.Visible=dB.Visible;dB.Elements=dB;return dB end;return dB end)()cS.Slider=(function()local bD={}bD.__index=bD;bD.__type="Slider"function bD:New(aq,c8)assert(c8.Title,"Slider - Missing Title.")assert(c8.Default,"Slider - Missing default value.")assert(c8.Min,"Slider - Missing minimum value.")assert(c8.Max,"Slider - Missing maximum value.")assert(c8.Rounding,"Slider - Missing rounding value.")local dC={Value=nil,Min=c8.Min,Max=c8.Max,Rounding=c8.Rounding,Callback=c8.Callback or function(ay)end,Type="Slider"}local co=false;local dD=by.Element(c8.Title,c8.Description,self.Container,false,c8)dD.DescLabel.Size=UDim2.new(1,-170,0,14)dC.Elements=dD;dC.SetTitle=dD.SetTitle;dC.SetDesc=dD.SetDesc;dC.Visible=dD.Visible;local dE=aG("ImageLabel",{AnchorPoint=Vector2.new(0,0.5),Position=UDim2.new(0,-7,0.5,0),Size=UDim2.fromOffset(20,20),Image="http://www.roblox.com/asset/?id=15969672655",ThemeTag={ImageColor3="Accent"}})local dF=aG("Frame",{BackgroundTransparency=1,Position=UDim2.fromOffset(7,0),Size=UDim2.new(1,-10,1,0)},{dE})local dG=aG("Frame",{Size=UDim2.new(1,0,1,0),ThemeTag={BackgroundColor3="Accent"}},{aG("UICorner",{CornerRadius=UDim.new(1,0)})})local dH=aG("TextLabel",{FontFace=Font.new("rbxasset://fonts/families/GothamSSm.json"),Text="Value",TextSize=12,TextWrapped=true,TextXAlignment=Enum.TextXAlignment.Right,BackgroundColor3=Color3.fromRGB(255,255,255),BackgroundTransparency=1,Size=UDim2.new(0,100,0,14),Position=UDim2.new(0,-4,0.5,0),AnchorPoint=Vector2.new(1,0.5),ThemeTag={TextColor3="SubText"}})local dI=aG("Frame",{Size=UDim2.new(1,0,0,4),AnchorPoint=Vector2.new(1,0.5),Position=UDim2.new(1,-10,0.5,0),BackgroundTransparency=0.4,Parent=dD.Frame,ThemeTag={BackgroundColor3="SliderRail"}},{aG("UICorner",{CornerRadius=UDim.new(1,0)}),aG("UISizeConstraint",{MaxSize=Vector2.new(150,math.huge)}),dH,dG,dF})ak.AddSignal(dE.InputBegan,function(cJ)if cJ.UserInputType==Enum.UserInputType.MouseButton1 or cJ.UserInputType==Enum.UserInputType.Touch then co=true end end)ak.AddSignal(dE.InputEnded,function(cJ)if cJ.UserInputType==Enum.UserInputType.MouseButton1 or cJ.UserInputType==Enum.UserInputType.Touch then co=false end end)ak.AddSignal(d.InputChanged,function(cJ)if co and(cJ.UserInputType==Enum.UserInputType.MouseMovement or cJ.UserInputType==Enum.UserInputType.Touch)then local dJ=math.clamp((cJ.Position.X-dF.AbsolutePosition.X)/dF.AbsoluteSize.X,0,1)dC:SetValue(dC.Min+(dC.Max-dC.Min)*dJ)end end)function dC:OnChanged(cn)dC.Changed=cn;cn(dC.Value)end;function dC:SetValue(ay)self.Value=l:Round(math.clamp(ay,dC.Min,dC.Max),dC.Rounding)dE.Position=UDim2.new((self.Value-dC.Min)/(dC.Max-dC.Min),-7,0.5,0)dG.Size=UDim2.fromScale((self.Value-dC.Min)/(dC.Max-dC.Min),1)dH.Text=tostring(self.Value)l:SafeCallback(dC.Callback,self.Value)l:SafeCallback(dC.Changed,self.Value)end;function dC:Destroy()dD:Destroy()l.Options[aq]=nil end;dC:SetValue(c8.Default)l.Options[aq]=dC;return dC end;return bD end)()cS.Keybind=(function()local bD={}bD.__index=bD;bD.__type="Keybind"function bD:New(aq,c8)assert(c8.Title,"KeyBind - Missing Title")assert(c8.Default,"KeyBind - Missing default value.")local dK={Value=c8.Default,Toggled=false,Mode=c8.Mode or"Toggle",Type="Keybind",Callback=c8.Callback or function(ay)end,ChangedCallback=c8.ChangedCallback or function(aG)end}local dL=false;local dM=by.Element(c8.Title,c8.Description,self.Container,true)dK.SetTitle=dM.SetTitle;dK.SetDesc=dM.SetDesc;dK.Visible=dM.Visible;dK.Elements=dM;local dN=aG("TextLabel",{FontFace=Font.new("rbxasset://fonts/families/GothamSSm.json",Enum.FontWeight.Regular,Enum.FontStyle.Normal),Text=c8.Default,TextColor3=Color3.fromRGB(240,240,240),TextSize=13,TextXAlignment=Enum.TextXAlignment.Center,Size=UDim2.new(0,0,0,14),Position=UDim2.new(0,0,0.5,0),AnchorPoint=Vector2.new(0,0.5),BackgroundColor3=Color3.fromRGB(255,255,255),AutomaticSize=Enum.AutomaticSize.X,BackgroundTransparency=1,ThemeTag={TextColor3="Text"}})local dO=aG("TextButton",{Size=UDim2.fromOffset(0,30),Position=UDim2.new(1,-10,0.5,0),AnchorPoint=Vector2.new(1,0.5),BackgroundTransparency=0.9,Parent=dM.Frame,AutomaticSize=Enum.AutomaticSize.X,ThemeTag={BackgroundColor3="Keybind"}},{aG("UICorner",{CornerRadius=UDim.new(0,9)}),aG("UIPadding",{PaddingLeft=UDim.new(0,8),PaddingRight=UDim.new(0,8)}),aG("UIStroke",{Transparency=0.5,ApplyStrokeMode=Enum.ApplyStrokeMode.Border,ThemeTag={Color="InElementBorder"}}),dN})function dK:GetState()if d:GetFocusedTextBox()and dK.Mode~="Always"then return false end;if dK.Mode=="Always"then return true elseif dK.Mode=="Hold"then if dK.Value=="None"then return false end;local cO=dK.Value;if cO=="MouseLeft"or cO=="MouseRight"then return cO=="MouseLeft"and d:IsMouseButtonPressed(Enum.UserInputType.MouseButton1)or cO=="MouseRight"and d:IsMouseButtonPressed(Enum.UserInputType.MouseButton2)else return d:IsKeyDown(Enum.KeyCode[dK.Value])end else return dK.Toggled end end;function dK:SetValue(cO,dP)cO=cO or dK.Key;dP=dP or dK.Mode;dN.Text=cO;dK.Value=cO;dK.Mode=dP end;function dK:OnClick(c5)dK.Clicked=c5 end;function dK:OnChanged(c5)dK.Changed=c5;c5(dK.Value)end;function dK:DoClick()l:SafeCallback(dK.Callback,dK.Toggled)l:SafeCallback(dK.Clicked,dK.Toggled)end;function dK:Destroy()dM:Destroy()l.Options[aq]=nil end;ak.AddSignal(dO.InputBegan,function(cJ)if cJ.UserInputType==Enum.UserInputType.MouseButton1 or cJ.UserInputType==Enum.UserInputType.Touch then dL=true;dN.Text="..."wait(0.2)local aJ;aJ=d.InputBegan:Connect(function(cJ)local cO;if cJ.UserInputType==Enum.UserInputType.Keyboard then cO=cJ.KeyCode.Name elseif cJ.UserInputType==Enum.UserInputType.MouseButton1 then cO="MouseLeft"elseif cJ.UserInputType==Enum.UserInputType.MouseButton2 then cO="MouseRight"end;local dQ;dQ=d.InputEnded:Connect(function(cJ)if cJ.KeyCode.Name==cO or cO=="MouseLeft"and cJ.UserInputType==Enum.UserInputType.MouseButton1 or cO=="MouseRight"and cJ.UserInputType==Enum.UserInputType.MouseButton2 then dL=false;dN.Text=cO;dK.Value=cO;l:SafeCallback(dK.ChangedCallback,cJ.KeyCode or cJ.UserInputType)l:SafeCallback(dK.Changed,cJ.KeyCode or cJ.UserInputType)aJ:Disconnect()dQ:Disconnect()end end)end)end end)ak.AddSignal(d.InputBegan,function(cJ)if not dL and not d:GetFocusedTextBox()then if dK.Mode=="Toggle"then local cO=dK.Value;if cO=="MouseLeft"or cO=="MouseRight"then if cO=="MouseLeft"and cJ.UserInputType==Enum.UserInputType.MouseButton1 or cO=="MouseRight"and cJ.UserInputType==Enum.UserInputType.MouseButton2 then dK.Toggled=not dK.Toggled;dK:DoClick()end elseif cJ.UserInputType==Enum.UserInputType.Keyboard then if cJ.KeyCode.Name==cO then dK.Toggled=not dK.Toggled;dK:DoClick()end end end end end)l.Options[aq]=dK;return dK end;return bD end)()cS.Colorpicker=(function()local bD={}bD.__index=bD;bD.__type="Colorpicker"function bD:New(aq,c8)assert(c8.Title,"Colorpicker - Missing Title")assert(c8.Default,"AddColorPicker: Missing default value.")local dR={Value=c8.Default,Transparency=c8.Transparency or 0,Type="Colorpicker",Title=type(c8.Title)=="string"and c8.Title or"Colorpicker",Callback=c8.Callback or function(dS)end}function dR:SetHSVFromRGB(dS)local dT,dU,dV=Color3.toHSV(dS)dR.Hue=dT;dR.Sat=dU;dR.Vib=dV end;dR:SetHSVFromRGB(dR.Value)local dW=by.Element(c8.Title,c8.Description,self.Container,true)dR.SetTitle=dW.SetTitle;dR.SetDesc=dW.SetDesc;dR.Visible=dW.Visible;dR.Elements=dW;local dX=aG("Frame",{Size=UDim2.fromScale(1,1),BackgroundColor3=dR.Value,Parent=dW.Frame},{aG("UICorner",{CornerRadius=UDim.new(0,4)})})local dY=aG("ImageLabel",{Size=UDim2.fromOffset(26,26),Position=UDim2.new(1,-10,0.5,0),AnchorPoint=Vector2.new(1,0.5),Parent=dW.Frame,Image="http://www.roblox.com/asset/?id=14204231522",ImageTransparency=0.45,ScaleType=Enum.ScaleType.Tile,TileSize=UDim2.fromOffset(40,40)},{aG("UICorner",{CornerRadius=UDim.new(0,4)}),dX})local function dZ()local bY=by.Dialog:Create()bY.Title.Text=dR.Title;bY.Root.Size=UDim2.fromOffset(430,330)local d_,e0,e1=dR.Hue,dR.Sat,dR.Vib;local e2=dR.Transparency;local function e3()local e4=by.Textbox()e4.Frame.Parent=bY.Root;e4.Frame.Size=UDim2.new(0,90,0,32)return e4 end;local function e5(e6,cm)return aG("TextLabel",{FontFace=Font.new("rbxasset://fonts/families/GothamSSm.json",Enum.FontWeight.Medium,Enum.FontStyle.Normal),Text=e6,TextColor3=Color3.fromRGB(240,240,240),TextSize=13,TextXAlignment=Enum.TextXAlignment.Left,Size=UDim2.new(1,0,0,32),Position=cm,BackgroundTransparency=1,Parent=bY.Root,ThemeTag={TextColor3="Text"}})end;local function e7()local ay=Color3.fromHSV(d_,e0,e1)return{R=math.floor(ay.r*255),G=math.floor(ay.g*255),B=math.floor(ay.b*255)}end;local e8=aG("ImageLabel",{Size=UDim2.new(0,18,0,18),ScaleType=Enum.ScaleType.Fit,AnchorPoint=Vector2.new(0.5,0.5),BackgroundTransparency=1,Image="http://www.roblox.com/asset/?id=4805639000"})local e9=aG("ImageLabel",{Size=UDim2.fromOffset(180,160),Position=UDim2.fromOffset(20,55),Image="rbxassetid://4155801252",BackgroundColor3=dR.Value,BackgroundTransparency=0,Parent=bY.Root},{aG("UICorner",{CornerRadius=UDim.new(0,4)}),e8})local ea=aG("Frame",{BackgroundColor3=dR.Value,Size=UDim2.fromScale(1,1),BackgroundTransparency=dR.Transparency},{aG("UICorner",{CornerRadius=UDim.new(0,4)})})local eb=aG("ImageLabel",{Image="http://www.roblox.com/asset/?id=14204231522",ImageTransparency=0.45,ScaleType=Enum.ScaleType.Tile,TileSize=UDim2.fromOffset(40,40),BackgroundTransparency=1,Position=UDim2.fromOffset(112,220),Size=UDim2.fromOffset(88,24),Parent=bY.Root},{aG("UICorner",{CornerRadius=UDim.new(0,4)}),aG("UIStroke",{Thickness=2,Transparency=0.75}),ea})local ec=aG("Frame",{BackgroundColor3=dR.Value,Size=UDim2.fromScale(1,1),BackgroundTransparency=0},{aG("UICorner",{CornerRadius=UDim.new(0,4)})})local ed=aG("ImageLabel",{Image="http://www.roblox.com/asset/?id=14204231522",ImageTransparency=0.45,ScaleType=Enum.ScaleType.Tile,TileSize=UDim2.fromOffset(40,40),BackgroundTransparency=1,Position=UDim2.fromOffset(20,220),Size=UDim2.fromOffset(88,24),Parent=bY.Root},{aG("UICorner",{CornerRadius=UDim.new(0,4)}),aG("UIStroke",{Thickness=2,Transparency=0.75}),ec})local ee={}for dS=0,1,0.1 do table.insert(ee,ColorSequenceKeypoint.new(dS,Color3.fromHSV(dS,1,1)))end;local ef=aG("UIGradient",{Color=ColorSequence.new(ee),Rotation=90})local eg=aG("Frame",{Size=UDim2.new(1,0,1,-10),Position=UDim2.fromOffset(0,5),BackgroundTransparency=1})local eh=aG("ImageLabel",{Size=UDim2.fromOffset(14,14),Image="http://www.roblox.com/asset/?id=12266946128",Parent=eg,ThemeTag={ImageColor3="DialogInput"}})local ei=aG("Frame",{Size=UDim2.fromOffset(12,190),Position=UDim2.fromOffset(210,55),Parent=bY.Root},{aG("UICorner",{CornerRadius=UDim.new(1,0)}),ef,eg})local ej=e3()ej.Frame.Position=UDim2.fromOffset(c8.Transparency and 260 or 240,55)e5("Hex",UDim2.fromOffset(c8.Transparency and 360 or 340,55))local ek=e3()ek.Frame.Position=UDim2.fromOffset(c8.Transparency and 260 or 240,95)e5("Red",UDim2.fromOffset(c8.Transparency and 360 or 340,95))local el=e3()el.Frame.Position=UDim2.fromOffset(c8.Transparency and 260 or 240,135)e5("Green",UDim2.fromOffset(c8.Transparency and 360 or 340,135))local em=e3()em.Frame.Position=UDim2.fromOffset(c8.Transparency and 260 or 240,175)e5("Blue",UDim2.fromOffset(c8.Transparency and 360 or 340,175))local en;if c8.Transparency then en=e3()en.Frame.Position=UDim2.fromOffset(260,215)e5("Alpha",UDim2.fromOffset(360,215))end;local eo,ep,eq;if c8.Transparency then local er=aG("Frame",{Size=UDim2.new(1,0,1,-10),Position=UDim2.fromOffset(0,5),BackgroundTransparency=1})ep=aG("ImageLabel",{Size=UDim2.fromOffset(14,14),Image="http://www.roblox.com/asset/?id=12266946128",Parent=er,ThemeTag={ImageColor3="DialogInput"}})eq=aG("Frame",{Size=UDim2.fromScale(1,1)},{aG("UIGradient",{Transparency=NumberSequence.new({NumberSequenceKeypoint.new(0,0),NumberSequenceKeypoint.new(1,1)}),Rotation=270}),aG("UICorner",{CornerRadius=UDim.new(1,0)})})eo=aG("Frame",{Size=UDim2.fromOffset(12,190),Position=UDim2.fromOffset(230,55),Parent=bY.Root,BackgroundTransparency=1},{aG("UICorner",{CornerRadius=UDim.new(1,0)}),aG("ImageLabel",{Image="http://www.roblox.com/asset/?id=14204231522",ImageTransparency=0.45,ScaleType=Enum.ScaleType.Tile,TileSize=UDim2.fromOffset(40,40),BackgroundTransparency=1,Size=UDim2.fromScale(1,1),Parent=bY.Root},{aG("UICorner",{CornerRadius=UDim.new(1,0)})}),eq,er})end;local function es()e9.BackgroundColor3=Color3.fromHSV(d_,1,1)eh.Position=UDim2.new(0,-1,d_,-6)e8.Position=UDim2.new(e0,0,1-e1,0)ec.BackgroundColor3=Color3.fromHSV(d_,e0,e1)ej.Input.Text="#"..Color3.fromHSV(d_,e0,e1):ToHex()ek.Input.Text=e7()["R"]el.Input.Text=e7()["G"]em.Input.Text=e7()["B"]if c8.Transparency then eq.BackgroundColor3=Color3.fromHSV(d_,e0,e1)ec.BackgroundTransparency=e2;ep.Position=UDim2.new(0,-1,1-e2,-6)en.Input.Text=l:Round((1-e2)*100,0).."%"end end;ak.AddSignal(ej.Input.FocusLost,function(et)if et then local aI,eu=pcall(Color3.fromHex,ej.Input.Text)if aI and typeof(eu)=="Color3"then d_,e0,e1=Color3.toHSV(eu)end end;es()end)ak.AddSignal(ek.Input.FocusLost,function(et)if et then local ev=e7()local aI,eu=pcall(Color3.fromRGB,ek.Input.Text,ev["G"],ev["B"])if aI and typeof(eu)=="Color3"then if tonumber(ek.Input.Text)<=255 then d_,e0,e1=Color3.toHSV(eu)end end end;es()end)ak.AddSignal(el.Input.FocusLost,function(et)if et then local ev=e7()local aI,eu=pcall(Color3.fromRGB,ev["R"],el.Input.Text,ev["B"])if aI and typeof(eu)=="Color3"then if tonumber(el.Input.Text)<=255 then d_,e0,e1=Color3.toHSV(eu)end end end;es()end)ak.AddSignal(em.Input.FocusLost,function(et)if et then local ev=e7()local aI,eu=pcall(Color3.fromRGB,ev["R"],ev["G"],em.Input.Text)if aI and typeof(eu)=="Color3"then if tonumber(em.Input.Text)<=255 then d_,e0,e1=Color3.toHSV(eu)end end end;es()end)if c8.Transparency then ak.AddSignal(en.Input.FocusLost,function(et)if et then pcall(function()local ay=tonumber(en.Input.Text)if ay>=0 and ay<=100 then e2=1-ay*0.01 end end)end;es()end)end;ak.AddSignal(e9.InputBegan,function(cJ)if cJ.UserInputType==Enum.UserInputType.MouseButton1 or cJ.UserInputType==Enum.UserInputType.Touch then while d:IsMouseButtonPressed(Enum.UserInputType.MouseButton1)do local ew=e9.AbsolutePosition.X;local ex=ew+e9.AbsoluteSize.X;local ey=math.clamp(g.X,ew,ex)local ez=e9.AbsolutePosition.Y;local eA=ez+e9.AbsoluteSize.Y;local eB=math.clamp(g.Y,ez,eA)e0=(ey-ew)/(ex-ew)e1=1-(eB-ez)/(eA-ez)es()i:Wait()end end end)ak.AddSignal(ei.InputBegan,function(cJ)if cJ.UserInputType==Enum.UserInputType.MouseButton1 or cJ.UserInputType==Enum.UserInputType.Touch then while d:IsMouseButtonPressed(Enum.UserInputType.MouseButton1)do local ez=ei.AbsolutePosition.Y;local eA=ez+ei.AbsoluteSize.Y;local eB=math.clamp(g.Y,ez,eA)d_=(eB-ez)/(eA-ez)es()i:Wait()end end end)if c8.Transparency then ak.AddSignal(eo.InputBegan,function(cJ)if cJ.UserInputType==Enum.UserInputType.MouseButton1 then while d:IsMouseButtonPressed(Enum.UserInputType.MouseButton1)do local ez=eo.AbsolutePosition.Y;local eA=ez+eo.AbsoluteSize.Y;local eB=math.clamp(g.Y,ez,eA)e2=1-(eB-ez)/(eA-ez)es()i:Wait()end end end)end;es()bY:Button("Done",function()dR:SetValue({d_,e0,e1},e2)end)bY:Button("Cancel")bY:Open()end;function dR:Display()dR.Value=Color3.fromHSV(dR.Hue,dR.Sat,dR.Vib)dX.BackgroundColor3=dR.Value;dX.BackgroundTransparency=dR.Transparency;bD.Library:SafeCallback(dR.Callback,dR.Value)bD.Library:SafeCallback(dR.Changed,dR.Value)end;function dR:SetValue(eC,e2)local dS=Color3.fromHSV(eC[1],eC[2],eC[3])dR.Transparency=e2 or 0;dR:SetHSVFromRGB(dS)dR:Display()end;function dR:SetValueRGB(dS,e2)dR.Transparency=e2 or 0;dR:SetHSVFromRGB(dS)dR:Display()end;function dR:OnChanged(cn)dR.Changed=cn;cn(dR.Value)end;function dR:Destroy()dW:Destroy()l.Options[aq]=nil end;ak.AddSignal(dW.Frame.MouseButton1Click,function()dZ()end)dR:Display()l.Options[aq]=dR;return dR end;return bD end)()cS.Input=(function()local bD={}bD.__index=bD;bD.__type="Input"function bD:New(aq,c8)assert(c8.Title,"Input - Missing Title")c8.Callback=c8.Callback or function()end;local cJ={Value=c8.Default or"",Numeric=c8.Numeric or false,Finished=c8.Finished or false,Callback=c8.Callback or function(ay)end,Type="Input"}local eD=by.Element(c8.Title,c8.Description,self.Container,false)cJ.SetTitle=eD.SetTitle;cJ.SetDesc=eD.SetDesc;cJ.Visible=eD.Visible;cJ.Elements=eD;local cc=by.Textbox(eD.Frame,true)cc.Frame.Position=UDim2.new(1,-10,0.5,0)cc.Frame.AnchorPoint=Vector2.new(1,0.5)cc.Frame.Size=UDim2.fromOffset(160,30)cc.Input.Text=c8.Default or""cc.Input.PlaceholderText=c8.Placeholder or""local e4=cc.Input;function cJ:SetValue(e6)if c8.MaxLength and#e6>c8.MaxLength then e6=e6:sub(1,c8.MaxLength)end;if cJ.Numeric then if not tonumber(e6)and e6:len()>0 then e6=cJ.Value end end;cJ.Value=e6;e4.Text=e6;l:SafeCallback(cJ.Callback,cJ.Value)l:SafeCallback(cJ.Changed,cJ.Value)end;if cJ.Finished then cj(e4.FocusLost,function(eE)if not eE then return end;cJ:SetValue(e4.Text)end)else cj(e4:GetPropertyChangedSignal("Text"),function()cJ:SetValue(e4.Text)end)end;function cJ:OnChanged(cn)cJ.Changed=cn;cn(cJ.Value)end;function cJ:Destroy()eD:Destroy()l.Options[aq]=nil end;l.Options[aq]=cJ;return cJ end;return bD end)()local eF=by.Notification;eF:Init(aH)local aG=ak.New;local eG={["lucide-accessibility"]="rbxassetid://10709751939",["lucide-activity"]="rbxassetid://10709752035",["lucide-air-vent"]="rbxassetid://10709752131",["lucide-airplay"]="rbxassetid://10709752254",["lucide-alarm-check"]="rbxassetid://10709752405",["lucide-alarm-clock"]="rbxassetid://10709752630",["lucide-alarm-clock-off"]="rbxassetid://10709752508",["lucide-alarm-minus"]="rbxassetid://10709752732",["lucide-alarm-plus"]="rbxassetid://10709752825",["lucide-album"]="rbxassetid://10709752906",["lucide-alert-circle"]="rbxassetid://10709752996",["lucide-alert-octagon"]="rbxassetid://10709753064",["lucide-alert-triangle"]="rbxassetid://10709753149",["lucide-align-center"]="rbxassetid://10709753570",["lucide-align-center-horizontal"]="rbxassetid://10709753272",["lucide-align-center-vertical"]="rbxassetid://10709753421",["lucide-align-end-horizontal"]="rbxassetid://10709753692",["lucide-align-end-vertical"]="rbxassetid://10709753808",["lucide-align-horizontal-distribute-center"]="rbxassetid://10747779791",["lucide-align-horizontal-distribute-end"]="rbxassetid://10747784534",["lucide-align-horizontal-distribute-start"]="rbxassetid://10709754118",["lucide-align-horizontal-justify-center"]="rbxassetid://10709754204",["lucide-align-horizontal-justify-end"]="rbxassetid://10709754317",["lucide-align-horizontal-justify-start"]="rbxassetid://10709754436",["lucide-align-horizontal-space-around"]="rbxassetid://10709754590",["lucide-align-horizontal-space-between"]="rbxassetid://10709754749",["lucide-align-justify"]="rbxassetid://10709759610",["lucide-align-left"]="rbxassetid://10709759764",["lucide-align-right"]="rbxassetid://10709759895",["lucide-align-start-horizontal"]="rbxassetid://10709760051",["lucide-align-start-vertical"]="rbxassetid://10709760244",["lucide-align-vertical-distribute-center"]="rbxassetid://10709760351",["lucide-align-vertical-distribute-end"]="rbxassetid://10709760434",["lucide-align-vertical-distribute-start"]="rbxassetid://10709760612",["lucide-align-vertical-justify-center"]="rbxassetid://10709760814",["lucide-align-vertical-justify-end"]="rbxassetid://10709761003",["lucide-align-vertical-justify-start"]="rbxassetid://10709761176",["lucide-align-vertical-space-around"]="rbxassetid://10709761324",["lucide-align-vertical-space-between"]="rbxassetid://10709761434",["lucide-anchor"]="rbxassetid://10709761530",["lucide-angry"]="rbxassetid://10709761629",["lucide-annoyed"]="rbxassetid://10709761722",["lucide-aperture"]="rbxassetid://10709761813",["lucide-apple"]="rbxassetid://10709761889",["lucide-archive"]="rbxassetid://10709762233",["lucide-archive-restore"]="rbxassetid://10709762058",["lucide-armchair"]="rbxassetid://10709762327",["lucide-arrow-big-down"]="rbxassetid://10747796644",["lucide-arrow-big-left"]="rbxassetid://10709762574",["lucide-arrow-big-right"]="rbxassetid://10709762727",["lucide-arrow-big-up"]="rbxassetid://10709762879",["lucide-arrow-down"]="rbxassetid://10709767827",["lucide-arrow-down-circle"]="rbxassetid://10709763034",["lucide-arrow-down-left"]="rbxassetid://10709767656",["lucide-arrow-down-right"]="rbxassetid://10709767750",["lucide-arrow-left"]="rbxassetid://10709768114",["lucide-arrow-left-circle"]="rbxassetid://10709767936",["lucide-arrow-left-right"]="rbxassetid://10709768019",["lucide-arrow-right"]="rbxassetid://10709768347",["lucide-arrow-right-circle"]="rbxassetid://10709768226",["lucide-arrow-up"]="rbxassetid://10709768939",["lucide-arrow-up-circle"]="rbxassetid://10709768432",["lucide-arrow-up-down"]="rbxassetid://10709768538",["lucide-arrow-up-left"]="rbxassetid://10709768661",["lucide-arrow-up-right"]="rbxassetid://10709768787",["lucide-asterisk"]="rbxassetid://10709769095",["lucide-at-sign"]="rbxassetid://10709769286",["lucide-award"]="rbxassetid://10709769406",["lucide-axe"]="rbxassetid://10709769508",["lucide-axis-3d"]="rbxassetid://10709769598",["lucide-baby"]="rbxassetid://10709769732",["lucide-backpack"]="rbxassetid://10709769841",["lucide-baggage-claim"]="rbxassetid://10709769935",["lucide-banana"]="rbxassetid://10709770005",["lucide-banknote"]="rbxassetid://10709770178",["lucide-bar-chart"]="rbxassetid://10709773755",["lucide-bar-chart-2"]="rbxassetid://10709770317",["lucide-bar-chart-3"]="rbxassetid://10709770431",["lucide-bar-chart-4"]="rbxassetid://10709770560",["lucide-bar-chart-horizontal"]="rbxassetid://10709773669",["lucide-barcode"]="rbxassetid://10747360675",["lucide-baseline"]="rbxassetid://10709773863",["lucide-bath"]="rbxassetid://10709773963",["lucide-battery"]="rbxassetid://10709774640",["lucide-battery-charging"]="rbxassetid://10709774068",["lucide-battery-full"]="rbxassetid://10709774206",["lucide-battery-low"]="rbxassetid://10709774370",["lucide-battery-medium"]="rbxassetid://10709774513",["lucide-beaker"]="rbxassetid://10709774756",["lucide-bed"]="rbxassetid://10709775036",["lucide-bed-double"]="rbxassetid://10709774864",["lucide-bed-single"]="rbxassetid://10709774968",["lucide-beer"]="rbxassetid://10709775167",["lucide-bell"]="rbxassetid://10709775704",["lucide-bell-minus"]="rbxassetid://10709775241",["lucide-bell-off"]="rbxassetid://10709775320",["lucide-bell-plus"]="rbxassetid://10709775448",["lucide-bell-ring"]="rbxassetid://10709775560",["lucide-bike"]="rbxassetid://10709775894",["lucide-binary"]="rbxassetid://10709776050",["lucide-bitcoin"]="rbxassetid://10709776126",["lucide-bluetooth"]="rbxassetid://10709776655",["lucide-bluetooth-connected"]="rbxassetid://10709776240",["lucide-bluetooth-off"]="rbxassetid://10709776344",["lucide-bluetooth-searching"]="rbxassetid://10709776501",["lucide-bold"]="rbxassetid://10747813908",["lucide-bomb"]="rbxassetid://10709781460",["lucide-bone"]="rbxassetid://10709781605",["lucide-book"]="rbxassetid://10709781824",["lucide-book-open"]="rbxassetid://10709781717",["lucide-bookmark"]="rbxassetid://10709782154",["lucide-bookmark-minus"]="rbxassetid://10709781919",["lucide-bookmark-plus"]="rbxassetid://10709782044",["lucide-bot"]="rbxassetid://10709782230",["lucide-box"]="rbxassetid://10709782497",["lucide-box-select"]="rbxassetid://10709782342",["lucide-boxes"]="rbxassetid://10709782582",["lucide-briefcase"]="rbxassetid://10709782662",["lucide-brush"]="rbxassetid://10709782758",["lucide-bug"]="rbxassetid://10709782845",["lucide-building"]="rbxassetid://10709783051",["lucide-building-2"]="rbxassetid://10709782939",["lucide-bus"]="rbxassetid://10709783137",["lucide-cake"]="rbxassetid://10709783217",["lucide-calculator"]="rbxassetid://10709783311",["lucide-calendar"]="rbxassetid://10709789505",["lucide-calendar-check"]="rbxassetid://10709783474",["lucide-calendar-check-2"]="rbxassetid://10709783392",["lucide-calendar-clock"]="rbxassetid://10709783577",["lucide-calendar-days"]="rbxassetid://10709783673",["lucide-calendar-heart"]="rbxassetid://10709783835",["lucide-calendar-minus"]="rbxassetid://10709783959",["lucide-calendar-off"]="rbxassetid://10709788784",["lucide-calendar-plus"]="rbxassetid://10709788937",["lucide-calendar-range"]="rbxassetid://10709789053",["lucide-calendar-search"]="rbxassetid://10709789200",["lucide-calendar-x"]="rbxassetid://10709789407",["lucide-calendar-x-2"]="rbxassetid://10709789329",["lucide-camera"]="rbxassetid://10709789686",["lucide-camera-off"]="rbxassetid://10747822677",["lucide-car"]="rbxassetid://10709789810",["lucide-carrot"]="rbxassetid://10709789960",["lucide-cast"]="rbxassetid://10709790097",["lucide-charge"]="rbxassetid://10709790202",["lucide-check"]="rbxassetid://10709790644",["lucide-check-circle"]="rbxassetid://10709790387",["lucide-check-circle-2"]="rbxassetid://10709790298",["lucide-check-square"]="rbxassetid://10709790537",["lucide-chef-hat"]="rbxassetid://10709790757",["lucide-cherry"]="rbxassetid://10709790875",["lucide-chevron-down"]="rbxassetid://10709790948",["lucide-chevron-first"]="rbxassetid://10709791015",["lucide-chevron-last"]="rbxassetid://10709791130",["lucide-chevron-left"]="rbxassetid://10709791281",["lucide-chevron-right"]="rbxassetid://10709791437",["lucide-chevron-up"]="rbxassetid://10709791523",["lucide-chevrons-down"]="rbxassetid://10709796864",["lucide-chevrons-down-up"]="rbxassetid://10709791632",["lucide-chevrons-left"]="rbxassetid://10709797151",["lucide-chevrons-left-right"]="rbxassetid://10709797006",["lucide-chevrons-right"]="rbxassetid://10709797382",["lucide-chevrons-right-left"]="rbxassetid://10709797274",["lucide-chevrons-up"]="rbxassetid://10709797622",["lucide-chevrons-up-down"]="rbxassetid://10709797508",["lucide-chrome"]="rbxassetid://10709797725",["lucide-circle"]="rbxassetid://10709798174",["lucide-circle-dot"]="rbxassetid://10709797837",["lucide-circle-ellipsis"]="rbxassetid://10709797985",["lucide-circle-slashed"]="rbxassetid://10709798100",["lucide-citrus"]="rbxassetid://10709798276",["lucide-clapperboard"]="rbxassetid://10709798350",["lucide-clipboard"]="rbxassetid://10709799288",["lucide-clipboard-check"]="rbxassetid://10709798443",["lucide-clipboard-copy"]="rbxassetid://10709798574",["lucide-clipboard-edit"]="rbxassetid://10709798682",["lucide-clipboard-list"]="rbxassetid://10709798792",["lucide-clipboard-signature"]="rbxassetid://10709798890",["lucide-clipboard-type"]="rbxassetid://10709798999",["lucide-clipboard-x"]="rbxassetid://10709799124",["lucide-clock"]="rbxassetid://10709805144",["lucide-clock-1"]="rbxassetid://10709799535",["lucide-clock-10"]="rbxassetid://10709799718",["lucide-clock-11"]="rbxassetid://10709799818",["lucide-clock-12"]="rbxassetid://10709799962",["lucide-clock-2"]="rbxassetid://10709803876",["lucide-clock-3"]="rbxassetid://10709803989",["lucide-clock-4"]="rbxassetid://10709804164",["lucide-clock-5"]="rbxassetid://10709804291",["lucide-clock-6"]="rbxassetid://10709804435",["lucide-clock-7"]="rbxassetid://10709804599",["lucide-clock-8"]="rbxassetid://10709804784",["lucide-clock-9"]="rbxassetid://10709804996",["lucide-cloud"]="rbxassetid://10709806740",["lucide-cloud-cog"]="rbxassetid://10709805262",["lucide-cloud-drizzle"]="rbxassetid://10709805371",["lucide-cloud-fog"]="rbxassetid://10709805477",["lucide-cloud-hail"]="rbxassetid://10709805596",["lucide-cloud-lightning"]="rbxassetid://10709805727",["lucide-cloud-moon"]="rbxassetid://10709805942",["lucide-cloud-moon-rain"]="rbxassetid://10709805838",["lucide-cloud-off"]="rbxassetid://10709806060",["lucide-cloud-rain"]="rbxassetid://10709806277",["lucide-cloud-rain-wind"]="rbxassetid://10709806166",["lucide-cloud-snow"]="rbxassetid://10709806374",["lucide-cloud-sun"]="rbxassetid://10709806631",["lucide-cloud-sun-rain"]="rbxassetid://10709806475",["lucide-cloudy"]="rbxassetid://10709806859",["lucide-clover"]="rbxassetid://10709806995",["lucide-code"]="rbxassetid://10709810463",["lucide-code-2"]="rbxassetid://10709807111",["lucide-codepen"]="rbxassetid://10709810534",["lucide-codesandbox"]="rbxassetid://10709810676",["lucide-coffee"]="rbxassetid://10709810814",["lucide-cog"]="rbxassetid://10709810948",["lucide-coins"]="rbxassetid://10709811110",["lucide-columns"]="rbxassetid://10709811261",["lucide-command"]="rbxassetid://10709811365",["lucide-compass"]="rbxassetid://10709811445",["lucide-component"]="rbxassetid://10709811595",["lucide-concierge-bell"]="rbxassetid://10709811706",["lucide-connection"]="rbxassetid://10747361219",["lucide-contact"]="rbxassetid://10709811834",["lucide-contrast"]="rbxassetid://10709811939",["lucide-cookie"]="rbxassetid://10709812067",["lucide-copy"]="rbxassetid://10709812159",["lucide-copyleft"]="rbxassetid://10709812251",["lucide-copyright"]="rbxassetid://10709812311",["lucide-corner-down-left"]="rbxassetid://10709812396",["lucide-corner-down-right"]="rbxassetid://10709812485",["lucide-corner-left-down"]="rbxassetid://10709812632",["lucide-corner-left-up"]="rbxassetid://10709812784",["lucide-corner-right-down"]="rbxassetid://10709812939",["lucide-corner-right-up"]="rbxassetid://10709813094",["lucide-corner-up-left"]="rbxassetid://10709813185",["lucide-corner-up-right"]="rbxassetid://10709813281",["lucide-cpu"]="rbxassetid://10709813383",["lucide-croissant"]="rbxassetid://10709818125",["lucide-crop"]="rbxassetid://10709818245",["lucide-cross"]="rbxassetid://10709818399",["lucide-crosshair"]="rbxassetid://10709818534",["lucide-crown"]="rbxassetid://10709818626",["lucide-cup-soda"]="rbxassetid://10709818763",["lucide-curly-braces"]="rbxassetid://10709818847",["lucide-currency"]="rbxassetid://10709818931",["lucide-container"]="rbxassetid://17466205552",["lucide-database"]="rbxassetid://10709818996",["lucide-delete"]="rbxassetid://10709819059",["lucide-diamond"]="rbxassetid://10709819149",["lucide-dice-1"]="rbxassetid://10709819266",["lucide-dice-2"]="rbxassetid://10709819361",["lucide-dice-3"]="rbxassetid://10709819508",["lucide-dice-4"]="rbxassetid://10709819670",["lucide-dice-5"]="rbxassetid://10709819801",["lucide-dice-6"]="rbxassetid://10709819896",["lucide-dices"]="rbxassetid://10723343321",["lucide-diff"]="rbxassetid://10723343416",["lucide-disc"]="rbxassetid://10723343537",["lucide-divide"]="rbxassetid://10723343805",["lucide-divide-circle"]="rbxassetid://10723343636",["lucide-divide-square"]="rbxassetid://10723343737",["lucide-dollar-sign"]="rbxassetid://10723343958",["lucide-download"]="rbxassetid://10723344270",["lucide-download-cloud"]="rbxassetid://10723344088",["lucide-droplet"]="rbxassetid://10723344432",["lucide-droplets"]="rbxassetid://10734883356",["lucide-drumstick"]="rbxassetid://10723344737",["lucide-edit"]="rbxassetid://10734883598",["lucide-edit-2"]="rbxassetid://10723344885",["lucide-edit-3"]="rbxassetid://10723345088",["lucide-egg"]="rbxassetid://10723345518",["lucide-egg-fried"]="rbxassetid://10723345347",["lucide-electricity"]="rbxassetid://10723345749",["lucide-electricity-off"]="rbxassetid://10723345643",["lucide-equal"]="rbxassetid://10723345990",["lucide-equal-not"]="rbxassetid://10723345866",["lucide-eraser"]="rbxassetid://10723346158",["lucide-euro"]="rbxassetid://10723346372",["lucide-expand"]="rbxassetid://10723346553",["lucide-external-link"]="rbxassetid://10723346684",["lucide-eye"]="rbxassetid://10723346959",["lucide-eye-off"]="rbxassetid://10723346871",["lucide-factory"]="rbxassetid://10723347051",["lucide-fan"]="rbxassetid://10723354359",["lucide-fast-forward"]="rbxassetid://10723354521",["lucide-feather"]="rbxassetid://10723354671",["lucide-figma"]="rbxassetid://10723354801",["lucide-file"]="rbxassetid://10723374641",["lucide-file-archive"]="rbxassetid://10723354921",["lucide-file-audio"]="rbxassetid://10723355148",["lucide-file-audio-2"]="rbxassetid://10723355026",["lucide-file-axis-3d"]="rbxassetid://10723355272",["lucide-file-badge"]="rbxassetid://10723355622",["lucide-file-badge-2"]="rbxassetid://10723355451",["lucide-file-bar-chart"]="rbxassetid://10723355887",["lucide-file-bar-chart-2"]="rbxassetid://10723355746",["lucide-file-box"]="rbxassetid://10723355989",["lucide-file-check"]="rbxassetid://10723356210",["lucide-file-check-2"]="rbxassetid://10723356100",["lucide-file-clock"]="rbxassetid://10723356329",["lucide-file-code"]="rbxassetid://10723356507",["lucide-file-cog"]="rbxassetid://10723356830",["lucide-file-cog-2"]="rbxassetid://10723356676",["lucide-file-diff"]="rbxassetid://10723357039",["lucide-file-digit"]="rbxassetid://10723357151",["lucide-file-down"]="rbxassetid://10723357322",["lucide-file-edit"]="rbxassetid://10723357495",["lucide-file-heart"]="rbxassetid://10723357637",["lucide-file-image"]="rbxassetid://10723357790",["lucide-file-input"]="rbxassetid://10723357933",["lucide-file-json"]="rbxassetid://10723364435",["lucide-file-json-2"]="rbxassetid://10723364361",["lucide-file-key"]="rbxassetid://10723364605",["lucide-file-key-2"]="rbxassetid://10723364515",["lucide-file-line-chart"]="rbxassetid://10723364725",["lucide-file-lock"]="rbxassetid://10723364957",["lucide-file-lock-2"]="rbxassetid://10723364861",["lucide-file-minus"]="rbxassetid://10723365254",["lucide-file-minus-2"]="rbxassetid://10723365086",["lucide-file-output"]="rbxassetid://10723365457",["lucide-file-pie-chart"]="rbxassetid://10723365598",["lucide-file-plus"]="rbxassetid://10723365877",["lucide-file-plus-2"]="rbxassetid://10723365766",["lucide-file-question"]="rbxassetid://10723365987",["lucide-file-scan"]="rbxassetid://10723366167",["lucide-file-search"]="rbxassetid://10723366550",["lucide-file-search-2"]="rbxassetid://10723366340",["lucide-file-signature"]="rbxassetid://10723366741",["lucide-file-spreadsheet"]="rbxassetid://10723366962",["lucide-file-symlink"]="rbxassetid://10723367098",["lucide-file-terminal"]="rbxassetid://10723367244",["lucide-file-text"]="rbxassetid://10723367380",["lucide-file-type"]="rbxassetid://10723367606",["lucide-file-type-2"]="rbxassetid://10723367509",["lucide-file-up"]="rbxassetid://10723367734",["lucide-file-video"]="rbxassetid://10723373884",["lucide-file-video-2"]="rbxassetid://10723367834",["lucide-file-volume"]="rbxassetid://10723374172",["lucide-file-volume-2"]="rbxassetid://10723374030",["lucide-file-warning"]="rbxassetid://10723374276",["lucide-file-x"]="rbxassetid://10723374544",["lucide-file-x-2"]="rbxassetid://10723374378",["lucide-files"]="rbxassetid://10723374759",["lucide-film"]="rbxassetid://10723374981",["lucide-filter"]="rbxassetid://10723375128",["lucide-fingerprint"]="rbxassetid://10723375250",["lucide-flag"]="rbxassetid://10723375890",["lucide-flag-off"]="rbxassetid://10723375443",["lucide-flag-triangle-left"]="rbxassetid://10723375608",["lucide-flag-triangle-right"]="rbxassetid://10723375727",["lucide-flame"]="rbxassetid://10723376114",["lucide-flashlight"]="rbxassetid://10723376471",["lucide-flashlight-off"]="rbxassetid://10723376365",["lucide-flask-conical"]="rbxassetid://10734883986",["lucide-flask-round"]="rbxassetid://10723376614",["lucide-flip-horizontal"]="rbxassetid://10723376884",["lucide-flip-horizontal-2"]="rbxassetid://10723376745",["lucide-flip-vertical"]="rbxassetid://10723377138",["lucide-flip-vertical-2"]="rbxassetid://10723377026",["lucide-flower"]="rbxassetid://10747830374",["lucide-flower-2"]="rbxassetid://10723377305",["lucide-focus"]="rbxassetid://10723377537",["lucide-folder"]="rbxassetid://10723387563",["lucide-folder-archive"]="rbxassetid://10723384478",["lucide-folder-check"]="rbxassetid://10723384605",["lucide-folder-clock"]="rbxassetid://10723384731",["lucide-folder-closed"]="rbxassetid://10723384893",["lucide-folder-cog"]="rbxassetid://10723385213",["lucide-folder-cog-2"]="rbxassetid://10723385036",["lucide-folder-down"]="rbxassetid://10723385338",["lucide-folder-edit"]="rbxassetid://10723385445",["lucide-folder-heart"]="rbxassetid://10723385545",["lucide-folder-input"]="rbxassetid://10723385721",["lucide-folder-key"]="rbxassetid://10723385848",["lucide-folder-lock"]="rbxassetid://10723386005",["lucide-folder-minus"]="rbxassetid://10723386127",["lucide-folder-open"]="rbxassetid://10723386277",["lucide-folder-output"]="rbxassetid://10723386386",["lucide-folder-plus"]="rbxassetid://10723386531",["lucide-folder-search"]="rbxassetid://10723386787",["lucide-folder-search-2"]="rbxassetid://10723386674",["lucide-folder-symlink"]="rbxassetid://10723386930",["lucide-folder-tree"]="rbxassetid://10723387085",["lucide-folder-up"]="rbxassetid://10723387265",["lucide-folder-x"]="rbxassetid://10723387448",["lucide-folders"]="rbxassetid://10723387721",["lucide-form-input"]="rbxassetid://10723387841",["lucide-forward"]="rbxassetid://10723388016",["lucide-frame"]="rbxassetid://10723394389",["lucide-framer"]="rbxassetid://10723394565",["lucide-frown"]="rbxassetid://10723394681",["lucide-fuel"]="rbxassetid://10723394846",["lucide-function-square"]="rbxassetid://10723395041",["lucide-gamepad"]="rbxassetid://10723395457",["lucide-gamepad-2"]="rbxassetid://10723395215",["lucide-gauge"]="rbxassetid://10723395708",["lucide-gavel"]="rbxassetid://10723395896",["lucide-gem"]="rbxassetid://10723396000",["lucide-ghost"]="rbxassetid://10723396107",["lucide-gift"]="rbxassetid://10723396402",["lucide-gift-card"]="rbxassetid://10723396225",["lucide-git-branch"]="rbxassetid://10723396676",["lucide-git-branch-plus"]="rbxassetid://10723396542",["lucide-git-commit"]="rbxassetid://10723396812",["lucide-git-compare"]="rbxassetid://10723396954",["lucide-git-fork"]="rbxassetid://10723397049",["lucide-git-merge"]="rbxassetid://10723397165",["lucide-git-pull-request"]="rbxassetid://10723397431",["lucide-git-pull-request-closed"]="rbxassetid://10723397268",["lucide-git-pull-request-draft"]="rbxassetid://10734884302",["lucide-glass"]="rbxassetid://10723397788",["lucide-glass-2"]="rbxassetid://10723397529",["lucide-glass-water"]="rbxassetid://10723397678",["lucide-glasses"]="rbxassetid://10723397895",["lucide-globe"]="rbxassetid://10723404337",["lucide-globe-2"]="rbxassetid://10723398002",["lucide-grab"]="rbxassetid://10723404472",["lucide-graduation-cap"]="rbxassetid://10723404691",["lucide-grape"]="rbxassetid://10723404822",["lucide-grid"]="rbxassetid://10723404936",["lucide-grip-horizontal"]="rbxassetid://10723405089",["lucide-grip-vertical"]="rbxassetid://10723405236",["lucide-hammer"]="rbxassetid://10723405360",["lucide-hand"]="rbxassetid://10723405649",["lucide-hand-metal"]="rbxassetid://10723405508",["lucide-hard-drive"]="rbxassetid://10723405749",["lucide-hard-hat"]="rbxassetid://10723405859",["lucide-hash"]="rbxassetid://10723405975",["lucide-haze"]="rbxassetid://10723406078",["lucide-headphones"]="rbxassetid://10723406165",["lucide-heart"]="rbxassetid://10723406885",["lucide-heart-crack"]="rbxassetid://10723406299",["lucide-heart-handshake"]="rbxassetid://10723406480",["lucide-heart-off"]="rbxassetid://10723406662",["lucide-heart-pulse"]="rbxassetid://10723406795",["lucide-help-circle"]="rbxassetid://10723406988",["lucide-hexagon"]="rbxassetid://10723407092",["lucide-highlighter"]="rbxassetid://10723407192",["lucide-history"]="rbxassetid://10723407335",["lucide-home"]="rbxassetid://10723407389",["lucide-hourglass"]="rbxassetid://10723407498",["lucide-ice-cream"]="rbxassetid://10723414308",["lucide-image"]="rbxassetid://10723415040",["lucide-image-minus"]="rbxassetid://10723414487",["lucide-image-off"]="rbxassetid://10723414677",["lucide-image-plus"]="rbxassetid://10723414827",["lucide-import"]="rbxassetid://10723415205",["lucide-inbox"]="rbxassetid://10723415335",["lucide-indent"]="rbxassetid://10723415494",["lucide-indian-rupee"]="rbxassetid://10723415642",["lucide-infinity"]="rbxassetid://10723415766",["lucide-info"]="rbxassetid://10723415903",["lucide-inspect"]="rbxassetid://10723416057",["lucide-italic"]="rbxassetid://10723416195",["lucide-japanese-yen"]="rbxassetid://10723416363",["lucide-joystick"]="rbxassetid://10723416527",["lucide-key"]="rbxassetid://10723416652",["lucide-keyboard"]="rbxassetid://10723416765",["lucide-lamp"]="rbxassetid://10723417513",["lucide-lamp-ceiling"]="rbxassetid://10723416922",["lucide-lamp-desk"]="rbxassetid://10723417016",["lucide-lamp-floor"]="rbxassetid://10723417131",["lucide-lamp-wall-down"]="rbxassetid://10723417240",["lucide-lamp-wall-up"]="rbxassetid://10723417356",["lucide-landmark"]="rbxassetid://10723417608",["lucide-languages"]="rbxassetid://10723417703",["lucide-laptop"]="rbxassetid://10723423881",["lucide-laptop-2"]="rbxassetid://10723417797",["lucide-lasso"]="rbxassetid://10723424235",["lucide-lasso-select"]="rbxassetid://10723424058",["lucide-laugh"]="rbxassetid://10723424372",["lucide-layers"]="rbxassetid://10723424505",["lucide-layout"]="rbxassetid://10723425376",["lucide-layout-dashboard"]="rbxassetid://10723424646",["lucide-layout-grid"]="rbxassetid://10723424838",["lucide-layout-list"]="rbxassetid://10723424963",["lucide-layout-template"]="rbxassetid://10723425187",["lucide-leaf"]="rbxassetid://10723425539",["lucide-library"]="rbxassetid://10723425615",["lucide-life-buoy"]="rbxassetid://10723425685",["lucide-lightbulb"]="rbxassetid://10723425852",["lucide-lightbulb-off"]="rbxassetid://10723425762",["lucide-line-chart"]="rbxassetid://10723426393",["lucide-link"]="rbxassetid://10723426722",["lucide-link-2"]="rbxassetid://10723426595",["lucide-link-2-off"]="rbxassetid://10723426513",["lucide-list"]="rbxassetid://10723433811",["lucide-list-checks"]="rbxassetid://10734884548",["lucide-list-end"]="rbxassetid://10723426886",["lucide-list-minus"]="rbxassetid://10723426986",["lucide-list-music"]="rbxassetid://10723427081",["lucide-list-ordered"]="rbxassetid://10723427199",["lucide-list-plus"]="rbxassetid://10723427334",["lucide-list-start"]="rbxassetid://10723427494",["lucide-list-video"]="rbxassetid://10723427619",["lucide-list-todo"]="rbxassetid://17376008003",["lucide-list-x"]="rbxassetid://10723433655",["lucide-loader"]="rbxassetid://10723434070",["lucide-loader-2"]="rbxassetid://10723433935",["lucide-locate"]="rbxassetid://10723434557",["lucide-locate-fixed"]="rbxassetid://10723434236",["lucide-locate-off"]="rbxassetid://10723434379",["lucide-lock"]="rbxassetid://10723434711",["lucide-log-in"]="rbxassetid://10723434830",["lucide-log-out"]="rbxassetid://10723434906",["lucide-luggage"]="rbxassetid://10723434993",["lucide-magnet"]="rbxassetid://10723435069",["lucide-mail"]="rbxassetid://10734885430",["lucide-mail-check"]="rbxassetid://10723435182",["lucide-mail-minus"]="rbxassetid://10723435261",["lucide-mail-open"]="rbxassetid://10723435342",["lucide-mail-plus"]="rbxassetid://10723435443",["lucide-mail-question"]="rbxassetid://10723435515",["lucide-mail-search"]="rbxassetid://10734884739",["lucide-mail-warning"]="rbxassetid://10734885015",["lucide-mail-x"]="rbxassetid://10734885247",["lucide-mails"]="rbxassetid://10734885614",["lucide-map"]="rbxassetid://10734886202",["lucide-map-pin"]="rbxassetid://10734886004",["lucide-map-pin-off"]="rbxassetid://10734885803",["lucide-maximize"]="rbxassetid://10734886735",["lucide-maximize-2"]="rbxassetid://10734886496",["lucide-medal"]="rbxassetid://10734887072",["lucide-megaphone"]="rbxassetid://10734887454",["lucide-megaphone-off"]="rbxassetid://10734887311",["lucide-meh"]="rbxassetid://10734887603",["lucide-menu"]="rbxassetid://10734887784",["lucide-message-circle"]="rbxassetid://10734888000",["lucide-message-square"]="rbxassetid://10734888228",["lucide-mic"]="rbxassetid://10734888864",["lucide-mic-2"]="rbxassetid://10734888430",["lucide-mic-off"]="rbxassetid://10734888646",["lucide-microscope"]="rbxassetid://10734889106",["lucide-microwave"]="rbxassetid://10734895076",["lucide-milestone"]="rbxassetid://10734895310",["lucide-minimize"]="rbxassetid://10734895698",["lucide-minimize-2"]="rbxassetid://10734895530",["lucide-minus"]="rbxassetid://10734896206",["lucide-minus-circle"]="rbxassetid://10734895856",["lucide-minus-square"]="rbxassetid://10734896029",["lucide-monitor"]="rbxassetid://10734896881",["lucide-monitor-off"]="rbxassetid://10734896360",["lucide-monitor-speaker"]="rbxassetid://10734896512",["lucide-moon"]="rbxassetid://10734897102",["lucide-more-horizontal"]="rbxassetid://10734897250",["lucide-more-vertical"]="rbxassetid://10734897387",["lucide-mountain"]="rbxassetid://10734897956",["lucide-mountain-snow"]="rbxassetid://10734897665",["lucide-mouse"]="rbxassetid://10734898592",["lucide-mouse-pointer"]="rbxassetid://10734898476",["lucide-mouse-pointer-2"]="rbxassetid://10734898194",["lucide-mouse-pointer-click"]="rbxassetid://10734898355",["lucide-move"]="rbxassetid://10734900011",["lucide-move-3d"]="rbxassetid://10734898756",["lucide-move-diagonal"]="rbxassetid://10734899164",["lucide-move-diagonal-2"]="rbxassetid://10734898934",["lucide-move-horizontal"]="rbxassetid://10734899414",["lucide-move-vertical"]="rbxassetid://10734899821",["lucide-music"]="rbxassetid://10734905958",["lucide-music-2"]="rbxassetid://10734900215",["lucide-music-3"]="rbxassetid://10734905665",["lucide-music-4"]="rbxassetid://10734905823",["lucide-navigation"]="rbxassetid://10734906744",["lucide-navigation-2"]="rbxassetid://10734906332",["lucide-navigation-2-off"]="rbxassetid://10734906144",["lucide-navigation-off"]="rbxassetid://10734906580",["lucide-network"]="rbxassetid://10734906975",["lucide-newspaper"]="rbxassetid://10734907168",["lucide-octagon"]="rbxassetid://10734907361",["lucide-option"]="rbxassetid://10734907649",["lucide-outdent"]="rbxassetid://10734907933",["lucide-package"]="rbxassetid://10734909540",["lucide-package-2"]="rbxassetid://10734908151",["lucide-package-check"]="rbxassetid://10734908384",["lucide-package-minus"]="rbxassetid://10734908626",["lucide-package-open"]="rbxassetid://10734908793",["lucide-package-plus"]="rbxassetid://10734909016",["lucide-package-search"]="rbxassetid://10734909196",["lucide-package-x"]="rbxassetid://10734909375",["lucide-paint-bucket"]="rbxassetid://10734909847",["lucide-paintbrush"]="rbxassetid://10734910187",["lucide-paintbrush-2"]="rbxassetid://10734910030",["lucide-palette"]="rbxassetid://10734910430",["lucide-palmtree"]="rbxassetid://10734910680",["lucide-paperclip"]="rbxassetid://10734910927",["lucide-party-popper"]="rbxassetid://10734918735",["lucide-pause"]="rbxassetid://10734919336",["lucide-pause-circle"]="rbxassetid://10735024209",["lucide-pause-octagon"]="rbxassetid://10734919143",["lucide-pen-tool"]="rbxassetid://10734919503",["lucide-pencil"]="rbxassetid://10734919691",["lucide-percent"]="rbxassetid://10734919919",["lucide-person-standing"]="rbxassetid://10734920149",["lucide-phone"]="rbxassetid://10734921524",["lucide-phone-call"]="rbxassetid://10734920305",["lucide-phone-forwarded"]="rbxassetid://10734920508",["lucide-phone-incoming"]="rbxassetid://10734920694",["lucide-phone-missed"]="rbxassetid://10734920845",["lucide-phone-off"]="rbxassetid://10734921077",["lucide-phone-outgoing"]="rbxassetid://10734921288",["lucide-pie-chart"]="rbxassetid://10734921727",["lucide-piggy-bank"]="rbxassetid://10734921935",["lucide-pin"]="rbxassetid://10734922324",["lucide-pin-off"]="rbxassetid://10734922180",["lucide-pipette"]="rbxassetid://10734922497",["lucide-pizza"]="rbxassetid://10734922774",["lucide-plane"]="rbxassetid://10734922971",["lucide-plane-landing"]="rbxassetid://17376029914",["lucide-play"]="rbxassetid://10734923549",["lucide-play-circle"]="rbxassetid://10734923214",["lucide-plus"]="rbxassetid://10734924532",["lucide-plus-circle"]="rbxassetid://10734923868",["lucide-plus-square"]="rbxassetid://10734924219",["lucide-podcast"]="rbxassetid://10734929553",["lucide-pointer"]="rbxassetid://10734929723",["lucide-pound-sterling"]="rbxassetid://10734929981",["lucide-power"]="rbxassetid://10734930466",["lucide-power-off"]="rbxassetid://10734930257",["lucide-printer"]="rbxassetid://10734930632",["lucide-puzzle"]="rbxassetid://10734930886",["lucide-quote"]="rbxassetid://10734931234",["lucide-radio"]="rbxassetid://10734931596",["lucide-radio-receiver"]="rbxassetid://10734931402",["lucide-rectangle-horizontal"]="rbxassetid://10734931777",["lucide-rectangle-vertical"]="rbxassetid://10734932081",["lucide-recycle"]="rbxassetid://10734932295",["lucide-redo"]="rbxassetid://10734932822",["lucide-redo-2"]="rbxassetid://10734932586",["lucide-refresh-ccw"]="rbxassetid://10734933056",["lucide-refresh-cw"]="rbxassetid://10734933222",["lucide-refrigerator"]="rbxassetid://10734933465",["lucide-regex"]="rbxassetid://10734933655",["lucide-repeat"]="rbxassetid://10734933966",["lucide-repeat-1"]="rbxassetid://10734933826",["lucide-reply"]="rbxassetid://10734934252",["lucide-reply-all"]="rbxassetid://10734934132",["lucide-rewind"]="rbxassetid://10734934347",["lucide-rocket"]="rbxassetid://10734934585",["lucide-rocking-chair"]="rbxassetid://10734939942",["lucide-rotate-3d"]="rbxassetid://10734940107",["lucide-rotate-ccw"]="rbxassetid://10734940376",["lucide-rotate-cw"]="rbxassetid://10734940654",["lucide-rss"]="rbxassetid://10734940825",["lucide-ruler"]="rbxassetid://10734941018",["lucide-russian-ruble"]="rbxassetid://10734941199",["lucide-sailboat"]="rbxassetid://10734941354",["lucide-save"]="rbxassetid://10734941499",["lucide-scale"]="rbxassetid://10734941912",["lucide-scale-3d"]="rbxassetid://10734941739",["lucide-scaling"]="rbxassetid://10734942072",["lucide-scan"]="rbxassetid://10734942565",["lucide-scan-face"]="rbxassetid://10734942198",["lucide-scan-line"]="rbxassetid://10734942351",["lucide-scissors"]="rbxassetid://10734942778",["lucide-screen-share"]="rbxassetid://10734943193",["lucide-screen-share-off"]="rbxassetid://10734942967",["lucide-scroll"]="rbxassetid://10734943448",["lucide-search"]="rbxassetid://10734943674",["lucide-send"]="rbxassetid://10734943902",["lucide-separator-horizontal"]="rbxassetid://10734944115",["lucide-separator-vertical"]="rbxassetid://10734944326",["lucide-server"]="rbxassetid://10734949856",["lucide-server-cog"]="rbxassetid://10734944444",["lucide-server-crash"]="rbxassetid://10734944554",["lucide-server-off"]="rbxassetid://10734944668",["lucide-settings"]="rbxassetid://10734950309",["lucide-settings-2"]="rbxassetid://10734950020",["lucide-share"]="rbxassetid://10734950813",["lucide-share-2"]="rbxassetid://10734950553",["lucide-sheet"]="rbxassetid://10734951038",["lucide-shield"]="rbxassetid://10734951847",["lucide-shield-alert"]="rbxassetid://10734951173",["lucide-shield-check"]="rbxassetid://10734951367",["lucide-shield-close"]="rbxassetid://10734951535",["lucide-shield-off"]="rbxassetid://10734951684",["lucide-shirt"]="rbxassetid://10734952036",["lucide-shopping-bag"]="rbxassetid://10734952273",["lucide-shopping-cart"]="rbxassetid://10734952479",["lucide-shovel"]="rbxassetid://10734952773",["lucide-shower-head"]="rbxassetid://10734952942",["lucide-shrink"]="rbxassetid://10734953073",["lucide-shrub"]="rbxassetid://10734953241",["lucide-shuffle"]="rbxassetid://10734953451",["lucide-sidebar"]="rbxassetid://10734954301",["lucide-sidebar-close"]="rbxassetid://10734953715",["lucide-sidebar-open"]="rbxassetid://10734954000",["lucide-sigma"]="rbxassetid://10734954538",["lucide-signal"]="rbxassetid://10734961133",["lucide-signal-high"]="rbxassetid://10734954807",["lucide-signal-low"]="rbxassetid://10734955080",["lucide-signal-medium"]="rbxassetid://10734955336",["lucide-signal-zero"]="rbxassetid://10734960878",["lucide-siren"]="rbxassetid://10734961284",["lucide-skip-back"]="rbxassetid://10734961526",["lucide-skip-forward"]="rbxassetid://10734961809",["lucide-skull"]="rbxassetid://10734962068",["lucide-slack"]="rbxassetid://10734962339",["lucide-slash"]="rbxassetid://10734962600",["lucide-slice"]="rbxassetid://10734963024",["lucide-sliders"]="rbxassetid://10734963400",["lucide-sliders-horizontal"]="rbxassetid://10734963191",["lucide-smartphone"]="rbxassetid://10734963940",["lucide-smartphone-charging"]="rbxassetid://10734963671",["lucide-smile"]="rbxassetid://10734964441",["lucide-smile-plus"]="rbxassetid://10734964188",["lucide-snowflake"]="rbxassetid://10734964600",["lucide-sofa"]="rbxassetid://10734964852",["lucide-sort-asc"]="rbxassetid://10734965115",["lucide-sort-desc"]="rbxassetid://10734965287",["lucide-speaker"]="rbxassetid://10734965419",["lucide-sprout"]="rbxassetid://10734965572",["lucide-square"]="rbxassetid://10734965702",["lucide-star"]="rbxassetid://10734966248",["lucide-star-half"]="rbxassetid://10734965897",["lucide-star-off"]="rbxassetid://10734966097",["lucide-stethoscope"]="rbxassetid://10734966384",["lucide-sticker"]="rbxassetid://10734972234",["lucide-sticky-note"]="rbxassetid://10734972463",["lucide-stop-circle"]="rbxassetid://10734972621",["lucide-stretch-horizontal"]="rbxassetid://10734972862",["lucide-stretch-vertical"]="rbxassetid://10734973130",["lucide-strikethrough"]="rbxassetid://10734973290",["lucide-subscript"]="rbxassetid://10734973457",["lucide-sun"]="rbxassetid://10734974297",["lucide-sun-dim"]="rbxassetid://10734973645",["lucide-sun-medium"]="rbxassetid://10734973778",["lucide-sun-moon"]="rbxassetid://10734973999",["lucide-sun-snow"]="rbxassetid://10734974130",["lucide-sunrise"]="rbxassetid://10734974522",["lucide-sunset"]="rbxassetid://10734974689",["lucide-superscript"]="rbxassetid://10734974850",["lucide-swiss-franc"]="rbxassetid://10734975024",["lucide-switch-camera"]="rbxassetid://10734975214",["lucide-sword"]="rbxassetid://10734975486",["lucide-swords"]="rbxassetid://10734975692",["lucide-syringe"]="rbxassetid://10734975932",["lucide-table"]="rbxassetid://10734976230",["lucide-table-2"]="rbxassetid://10734976097",["lucide-tablet"]="rbxassetid://10734976394",["lucide-tag"]="rbxassetid://10734976528",["lucide-tags"]="rbxassetid://10734976739",["lucide-target"]="rbxassetid://10734977012",["lucide-tent"]="rbxassetid://10734981750",["lucide-terminal"]="rbxassetid://10734982144",["lucide-terminal-square"]="rbxassetid://10734981995",["lucide-text-cursor"]="rbxassetid://10734982395",["lucide-text-cursor-input"]="rbxassetid://10734982297",["lucide-thermometer"]="rbxassetid://10734983134",["lucide-thermometer-snowflake"]="rbxassetid://10734982571",["lucide-thermometer-sun"]="rbxassetid://10734982771",["lucide-thumbs-down"]="rbxassetid://10734983359",["lucide-thumbs-up"]="rbxassetid://10734983629",["lucide-ticket"]="rbxassetid://10734983868",["lucide-timer"]="rbxassetid://10734984606",["lucide-timer-off"]="rbxassetid://10734984138",["lucide-timer-reset"]="rbxassetid://10734984355",["lucide-toggle-left"]="rbxassetid://10734984834",["lucide-toggle-right"]="rbxassetid://10734985040",["lucide-tornado"]="rbxassetid://10734985247",["lucide-toy-brick"]="rbxassetid://10747361919",["lucide-train"]="rbxassetid://10747362105",["lucide-trash"]="rbxassetid://10747362393",["lucide-trash-2"]="rbxassetid://10747362241",["lucide-tree-deciduous"]="rbxassetid://10747362534",["lucide-tree-pine"]="rbxassetid://10747362748",["lucide-trees"]="rbxassetid://10747363016",["lucide-trending-down"]="rbxassetid://10747363205",["lucide-trending-up"]="rbxassetid://10747363465",["lucide-triangle"]="rbxassetid://10747363621",["lucide-trophy"]="rbxassetid://10747363809",["lucide-truck"]="rbxassetid://10747364031",["lucide-tv"]="rbxassetid://10747364593",["lucide-tv-2"]="rbxassetid://10747364302",["lucide-type"]="rbxassetid://10747364761",["lucide-umbrella"]="rbxassetid://10747364971",["lucide-underline"]="rbxassetid://10747365191",["lucide-undo"]="rbxassetid://10747365484",["lucide-undo-2"]="rbxassetid://10747365359",["lucide-unlink"]="rbxassetid://10747365771",["lucide-unlink-2"]="rbxassetid://10747397871",["lucide-unlock"]="rbxassetid://10747366027",["lucide-upload"]="rbxassetid://10747366434",["lucide-upload-cloud"]="rbxassetid://10747366266",["lucide-usb"]="rbxassetid://10747366606",["lucide-user"]="rbxassetid://10747373176",["lucide-user-check"]="rbxassetid://10747371901",["lucide-user-cog"]="rbxassetid://10747372167",["lucide-user-minus"]="rbxassetid://10747372346",["lucide-user-plus"]="rbxassetid://10747372702",["lucide-user-x"]="rbxassetid://10747372992",["lucide-users"]="rbxassetid://10747373426",["lucide-utensils"]="rbxassetid://10747373821",["lucide-utensils-crossed"]="rbxassetid://10747373629",["lucide-venetian-mask"]="rbxassetid://10747374003",["lucide-verified"]="rbxassetid://10747374131",["lucide-vibrate"]="rbxassetid://10747374489",["lucide-vibrate-off"]="rbxassetid://10747374269",["lucide-video"]="rbxassetid://10747374938",["lucide-video-off"]="rbxassetid://10747374721",["lucide-view"]="rbxassetid://10747375132",["lucide-voicemail"]="rbxassetid://10747375281",["lucide-volume"]="rbxassetid://10747376008",["lucide-volume-1"]="rbxassetid://10747375450",["lucide-volume-2"]="rbxassetid://10747375679",["lucide-volume-x"]="rbxassetid://10747375880",["lucide-wallet"]="rbxassetid://10747376205",["lucide-wand"]="rbxassetid://10747376565",["lucide-wand-2"]="rbxassetid://10747376349",["lucide-watch"]="rbxassetid://10747376722",["lucide-waves"]="rbxassetid://10747376931",["lucide-webcam"]="rbxassetid://10747381992",["lucide-wifi"]="rbxassetid://10747382504",["lucide-wifi-off"]="rbxassetid://10747382268",["lucide-wind"]="rbxassetid://10747382750",["lucide-wrap-text"]="rbxassetid://10747383065",["lucide-wrench"]="rbxassetid://10747383470",["lucide-x"]="rbxassetid://10747384394",["lucide-x-circle"]="rbxassetid://10747383819",["lucide-x-octagon"]="rbxassetid://10747384037",["lucide-x-square"]="rbxassetid://10747384217",["lucide-zoom-in"]="rbxassetid://10747384552",["lucide-zoom-out"]="rbxassetid://10747384679",["lucide-cat"]="rbxassetid://16935650691",["lucide-message-circle-question"]="rbxassetid://16970049192",["lucide-webhook"]="rbxassetid://17320556264",["lucide-dumbbell"]="rbxassetid://18273453053",["lucide-home-Sakura"]="rbxassetid://81460299233144",["lucide-kawai-Sakura"]="rbxassetid://86465146158904"}function l:GetIcon(aw)if aw~=nil and eG["lucide-"..aw]then return eG["lucide-"..aw]end;return nil end;local bN={}bN.__index=bN;bN.__namecall=function(dk,cO,...)return bN[cO](...)end;for v,eH in pairs(cS)do bN["Add"..eH.__type]=function(self,aq,c8)eH.Container=self.Container;eH.Type=self.Type;eH.ScrollFrame=self.ScrollFrame;eH.Library=l;return eH:New(aq,c8)end end;l.Elements=bN;if b:IsStudio()then makefolder=function(...)return...end;makefile=function(...)return...end;isfile=function(...)return...end;isfolder=function(...)return...end;readfile=function(...)return...end;writefile=function(...)return...end;listfiles=function(...)return{...}end end;local eI={}do eI.Folder="FluentSettings"eI.Ignore={}eI.Parser={Toggle={Save=function(eJ,bw)return{type="Toggle",idx=eJ,value=bw.Value}end,Load=function(eJ,eK)if eI.Options[eJ]then eI.Options[eJ]:SetValue(eK.value)end end},Slider={Save=function(eJ,bw)return{type="Slider",idx=eJ,value=tostring(bw.Value)}end,Load=function(eJ,eK)if eI.Options[eJ]then eI.Options[eJ]:SetValue(eK.value)end end},Dropdown={Save=function(eJ,bw)return{type="Dropdown",idx=eJ,value=bw.Value,mutli=bw.Multi}end,Load=function(eJ,eK)if eI.Options[eJ]then eI.Options[eJ]:SetValue(eK.value)end end},Colorpicker={Save=function(eJ,bw)return{type="Colorpicker",idx=eJ,value=bw.Value:ToHex(),transparency=bw.Transparency}end,Load=function(eJ,eK)if eI.Options[eJ]then eI.Options[eJ]:SetValueRGB(Color3.fromHex(eK.value),eK.transparency)end end},Keybind={Save=function(eJ,bw)return{type="Keybind",idx=eJ,mode=bw.Mode,key=bw.Value}end,Load=function(eJ,eK)if eI.Options[eJ]then eI.Options[eJ]:SetValue(eK.key,eK.mode)end end},Input={Save=function(eJ,bw)return{type="Input",idx=eJ,text=bw.Value}end,Load=function(eJ,eK)if eI.Options[eJ]and type(eK.text)=="string"then eI.Options[eJ]:SetValue(eK.text)end end}}function eI:SetIgnoreIndexes(eL)for v,ae in next,eL do self.Ignore[ae]=true end end;function eI:SetFolder(eM)self.Folder=eM;self:BuildFolderTree()end;function eI:Save(eN)if not eN then return false,"No config file is selected"end;local eO=self.Folder.."/"..eN..".json"local eK={objects={}}for eJ,eP in pairs(eI.Options)do if self.Parser[eP.Type]and not self.Ignore[eJ]then table.insert(eK.objects,self.Parser[eP.Type].Save(eJ,eP))end end;local eQ,eR=pcall(function()return h:JSONEncode(eK)end)if not eQ then return false,"Failed to encode data"end;writefile(eO,eR)return true end;function eI:Load(eN)if not eN then return false,"no config file is selected"end;local eS=self.Folder.."/"..eN..".json"if not isfile(eS)then return false,"Create Config Save File"end;local eQ,eT=pcall(h.JSONDecode,h,readfile(eS))if not eQ then return false,"decode error"end;for v,eP in next,eT.objects do if self.Parser[eP.type]and not self.Ignore[eP.idx]then task.spawn(function()self.Parser[eP.type].Load(eP.idx,eP)end)end end;return true end;function eI:IgnoreThemeSettings()self:SetIgnoreIndexes({"InterfaceTheme","AcrylicToggle","TransparentToggle","MenuKeybind"})end;function eI:BuildFolderTree()local eU={self.Folder,self.Folder.."/"}for aK=1,#eU do local eV=eU[aK]if not isfolder(eV)then makefolder(eV)end end end;function eI:RefreshConfigList()local eL=listfiles(self.Folder.."/")local eW={}for aK=1,#eL do local eS=eL[aK]if eS:sub(-5)==".json"then local eX=eS:find(".json",1,true)local eY=eX;local eZ=eS:sub(eX,eX)while eZ~="/"and eZ~="\\"and eZ~=""do eX=eX-1;eZ=eS:sub(eX,eX)end;if eZ=="/"or eZ=="\\"then local eN=eS:sub(eX+1,eY-1)if eN~="options"then table.insert(eW,eN)end end end end;return eW end;function eI:SetLibrary(e_)self.Library=e_;self.Options=e_.Options end;function eI:LoadAutoloadConfig()if isfile(self.Folder.."/autoload.txt")then local eN=readfile(self.Folder.."/autoload.txt")local eQ,f0=self:Load(eN)if not eQ then return self.Library:Notify({Title="Interface",Content="Config loader",SubContent="Failed to load autoload config: "..f0,Duration=7})end;self.Library:Notify({Title="Interface",Content="Config loader",SubContent=string.format("Auto loaded config %q",eN),Duration=7})end end;function eI:BuildConfigSection(f1)assert(self.Library,"Must set SaveManager.Library")local f2=f1:AddSection("Configuration")f2:AddInput("SaveManager_ConfigName",{Title="Config name"})f2:AddDropdown("SaveManager_ConfigList",{Title="Config list",Values=self:RefreshConfigList(),AllowNull=true})f2:AddButton({Title="Create config",Callback=function()local eN=eI.Options.SaveManager_ConfigName.Value;if eN:gsub(" ","")==""then return self.Library:Notify({Title="Interface",Content="Config loader",SubContent="Invalid config name (empty)",Duration=7})end;local eQ,f0=self:Save(eN)if not eQ then return self.Library:Notify({Title="Interface",Content="Config loader",SubContent="Failed to save config: "..f0,Duration=7})end;self.Library:Notify({Title="Interface",Content="Config loader",SubContent=string.format("Created config %q",eN),Duration=7})eI.Options.SaveManager_ConfigList:SetValues(self:RefreshConfigList())eI.Options.SaveManager_ConfigList:SetValue(nil)end})f2:AddButton({Title="Load config",Callback=function()local eN=eI.Options.SaveManager_ConfigList.Value;local eQ,f0=self:Load(eN)if not eQ then return self.Library:Notify({Title="Interface",Content="Config loader",SubContent="Failed to load config: "..f0,Duration=7})end;self.Library:Notify({Title="Interface",Content="Config loader",SubContent=string.format("Loaded config %q",eN),Duration=7})end})f2:AddButton({Title="Save config",Callback=function()local eN=eI.Options.SaveManager_ConfigList.Value;local eQ,f0=self:Save(eN)if not eQ then return self.Library:Notify({Title="Interface",Content="Config loader",SubContent="Failed to overwrite config: "..f0,Duration=7})end;self.Library:Notify({Title="Interface",Content="Config loader",SubContent=string.format("Overwrote config %q",eN),Duration=7})end})f2:AddButton({Title="Refresh list",Callback=function()eI.Options.SaveManager_ConfigList:SetValues(self:RefreshConfigList())eI.Options.SaveManager_ConfigList:SetValue(nil)end})local f3;f3=f2:AddButton({Title="Set as autoload",Description="Current autoload config: none",Callback=function()local eN=eI.Options.SaveManager_ConfigList.Value;writefile(self.Folder.."/autoload.txt",eN)f3:SetDesc("Current autoload config: "..eN)self.Library:Notify({Title="Interface",Content="Config loader",SubContent=string.format("Set %q to auto load",eN),Duration=7})end})if isfile(self.Folder.."/autoload.txt")then local eN=readfile(self.Folder.."/autoload.txt")f3:SetDesc("Current autoload config: "..eN)end;eI:SetIgnoreIndexes({"SaveManager_ConfigList","SaveManager_ConfigName"})end end;local f4={}do f4.Folder="FluentSettings"f4.Settings={Acrylic=true,Transparency=true,MenuKeybind="M"}function f4:SetTheme(eN)f4.Settings.Theme=eN end;function f4:SetFolder(eM)self.Folder=eM;self:BuildFolderTree()end;function f4:SetLibrary(e_)self.Library=e_ end;function f4:BuildFolderTree()local eU={}local f5=self.Folder:split("/")for eJ=1,#f5 do eU[#eU+1]=table.concat(f5,"/",1,eJ)end;table.insert(eU,self.Folder)table.insert(eU,self.Folder.."/")for aK=1,#eU do local eV=eU[aK]if not isfolder(eV)then makefolder(eV)end end end;function f4:SaveSettings()writefile(self.Folder.."/options.json",h:JSONEncode(f4.Settings))end;function f4:LoadSettings()local f6=self.Folder.."/options.json"if isfile(f6)then local eK=readfile(f6)local eQ,eT=pcall(h.JSONDecode,h,eK)if eQ then for aK,f7 in next,eT do f4.Settings[aK]=f7 end end end end;function f4:BuildInterfaceSection(f1)assert(self.Library,"Must set InterfaceManager.Library")local l=self.Library;local f8=f4.Settings;f4:LoadSettings()local f2=f1:AddSection("Interface")local f9=f2:AddDropdown("InterfaceTheme",{Title="Theme",Description="Changes the interface theme.",Values=l.Themes,Default=self.Library.Theme,Callback=function(ay)l:SetTheme(ay)f8.Theme=ay;f4:SaveSettings()end})f9:SetValue(f8.Theme)if l.UseAcrylic then f2:AddToggle("AcrylicToggle",{Title="Acrylic",Description="The blurred background requires graphic quality 8+",Default=f8.Acrylic,Callback=function(ay)l:ToggleAcrylic(ay)f8.Acrylic=ay;f4:SaveSettings()end})end;f2:AddToggle("TransparentToggle",{Title="Transparency",Description="Makes the interface transparent.",Default=f8.Transparency,Callback=function(ay)l:ToggleTransparency(ay)f8.Transparency=ay;f4:SaveSettings()end})local fa=f2:AddKeybind("MenuKeybind",{Title="Minimize Bind",Default=l.MinimizeKey.Name or f8.MenuKeybind})fa:OnChanged(function()f8.MenuKeybind=fa.Value;f4:SaveSettings()end)l.MinimizeKeybind=fa end end;function l:CreateWindow(c8)assert(c8.Title,"Window - Missing Title")if l.Window then print("You cannot create more than one window.")return end;l.MinimizeKey=c8.MinimizeKey or Enum.KeyCode.LeftControl;l.UseAcrylic=c8.Acrylic or false;l.Acrylic=c8.Acrylic or false;l.Theme=c8.Theme or"Dark"if c8.Acrylic then bq.init()end;local bJ=by.Window({Parent=aH,Size=c8.Size,Title=c8.Title,SubTitle=c8.SubTitle,TabWidth=c8.TabWidth})l.Window=bJ;f4:SetTheme(c8.Theme)l:SetTheme(c8.Theme)return bJ end;function l:SetTheme(ay)if l.Window and table.find(l.Themes,ay)then l.Theme=ay;ak.UpdateTheme()end end;function l:Destroy()if l.Window then l.Unloaded=true;if l.UseAcrylic then l.Window.AcrylicPaint.Model:Destroy()end;ak.Disconnect()l.GUI:Destroy()end end;function l:ToggleAcrylic(ay)if l.Window then if l.UseAcrylic then l.Acrylic=ay;l.Window.AcrylicPaint.Model.Transparency=ay and 0.98 or 1;if ay then bq.Enable()else bq.Disable()end end end end;function l:ToggleTransparency(ay)if l.Window then l.Window.AcrylicPaint.Frame.Background.BackgroundTransparency=ay and 0.35 or 0 end end;function l:Notify(c8)return eF:New(c8)end;if getgenv then getgenv().Fluent=l else Fluent=l end;local co,cp,cq,cr=false;local fb=Instance.new("ScreenGui")local fc=Instance.new("ImageButton")local fd=Instance.new("UICorner")local fe=Instance.new("UIStroke")fb.Name="ImageButton"fb.Parent=game.CoreGui;fb.ZIndexBehavior=Enum.ZIndexBehavior.Sibling;fc.Parent=fb;fc.BackgroundColor3=Color3.fromRGB(0,0,0)fc.BorderSizePixel=0;fc.Position=UDim2.new(0.120833337,0,0.0952890813,0)fc.Size=UDim2.new(0,50,0,50)fc.Draggable=true;fc.Image="http://www.roblox.com/asset/?id=86465146158904"fc.MouseButton1Down:connect(function()l.Window:Minimize()end)fd.Parent=fc;fe.Color=Color3.fromRGB(252,3,161)fe.Thickness=1.5;fe.Parent=fc;return l,eI,f4
+local Lighting = game:GetService("Lighting")
+local RunService = game:GetService("RunService")
+local LocalPlayer = game:GetService("Players").LocalPlayer
+local UserInputService = game:GetService("UserInputService")
+local TweenService = game:GetService("TweenService")
+local Camera = game:GetService("Workspace").CurrentCamera
+local Mouse = LocalPlayer:GetMouse()
+local httpService = game:GetService("HttpService")
+
+local RenderStepped = RunService.RenderStepped
+
+local ProtectGui = protectgui or (syn and syn.protect_gui) or function() end
+
+local Themes = {
+	Names = {
+		"Dark",
+		"Darker",
+		"Light",
+		"Aqua",
+		"Amethyst",
+		"Rose",
+		"Sakura",
+        "SakuraTeam"
+	},
+    SakuraTeam = {
+        Name = "SakuraTeam",
+        Accent = Color3.fromRGB(0, 255, 0),
+    
+        AcrylicMain = Color3.fromRGB(0, 0, 0),
+        AcrylicBorder = Color3.fromRGB(50, 0, 100),
+        AcrylicGradient = ColorSequence.new(Color3.fromRGB(20, 20, 20), Color3.fromRGB(0, 0, 0)),
+    
+        TitleBarLine = Color3.fromRGB(255, 0, 255),
+        Tab = Color3.fromRGB(100, 0, 255),
+    
+        Element = Color3.fromRGB(60, 60, 60),
+        ElementBorder = Color3.fromRGB(80, 80, 80),
+        InElementBorder = Color3.fromRGB(100, 100, 100),
+        ElementTransparency = 0.85,
+    
+        ToggleSlider = Color3.fromRGB(0, 255, 0),
+		ToggleCorner = Color3.fromRGB(96, 96, 99),
+        ToggleToggled = Color3.fromRGB(0, 0, 0),
+    
+        SliderRail = Color3.fromRGB(80, 0, 160),
+    
+        DropdownFrame = Color3.fromRGB(50, 50, 50),
+        DropdownHolder = Color3.fromRGB(30, 30, 30),
+        DropdownBorder = Color3.fromRGB(60, 60, 60),
+        DropdownOption = Color3.fromRGB(0, 255, 0),
+    
+        Keybind = Color3.fromRGB(0, 255, 0),
+    
+        Input = Color3.fromRGB(40, 40, 40),
+        InputFocused = Color3.fromRGB(0, 0, 0),
+        InputIndicator = Color3.fromRGB(80, 80, 80),
+    
+        Dialog = Color3.fromRGB(0, 0, 0),
+        DialogHolder = Color3.fromRGB(20, 20, 20),
+        DialogHolderLine = Color3.fromRGB(40, 40, 40),
+        DialogButton = Color3.fromRGB(30, 30, 30),
+        DialogButtonBorder = Color3.fromRGB(0, 255, 0),
+        DialogBorder = Color3.fromRGB(0, 255, 0),
+        DialogInput = Color3.fromRGB(40, 40, 40),
+        DialogInputLine = Color3.fromRGB(0, 255, 0),
+    
+        Text = Color3.fromRGB(255, 255, 255),
+        SubText = Color3.fromRGB(200, 200, 200),
+        Hover = Color3.fromRGB(100, 0, 255),
+        HoverChange = 0.1,
+    },
+	Dark = {
+		Name = "Dark",
+		Accent = Color3.fromRGB(96, 205, 255),
+
+		AcrylicMain = Color3.fromRGB(60, 60, 60),
+		AcrylicBorder = Color3.fromRGB(90, 90, 90),
+		AcrylicGradient = ColorSequence.new(Color3.fromRGB(40, 40, 40), Color3.fromRGB(40, 40, 40)),
+		AcrylicNoise = 0.9,
+
+		TitleBarLine = Color3.fromRGB(75, 75, 75),
+		Tab = Color3.fromRGB(120, 120, 120),
+
+		Element = Color3.fromRGB(120, 120, 120),
+		ElementBorder = Color3.fromRGB(35, 35, 35),
+		InElementBorder = Color3.fromRGB(90, 90, 90),
+		ElementTransparency = 0.87,
+
+		ToggleSlider = Color3.fromRGB(120, 120, 120),
+		ToggleToggled = Color3.fromRGB(0, 0, 0),
+
+		SliderRail = Color3.fromRGB(120, 120, 120),
+
+		DropdownFrame = Color3.fromRGB(160, 160, 160),
+		DropdownHolder = Color3.fromRGB(45, 45, 45),
+		DropdownBorder = Color3.fromRGB(35, 35, 35),
+		DropdownOption = Color3.fromRGB(120, 120, 120),
+
+		Keybind = Color3.fromRGB(120, 120, 120),
+
+		Input = Color3.fromRGB(160, 160, 160),
+		InputFocused = Color3.fromRGB(10, 10, 10),
+		InputIndicator = Color3.fromRGB(150, 150, 150),
+
+		Dialog = Color3.fromRGB(45, 45, 45),
+		DialogHolder = Color3.fromRGB(35, 35, 35),
+		DialogHolderLine = Color3.fromRGB(30, 30, 30),
+		DialogButton = Color3.fromRGB(45, 45, 45),
+		DialogButtonBorder = Color3.fromRGB(80, 80, 80),
+		DialogBorder = Color3.fromRGB(70, 70, 70),
+		DialogInput = Color3.fromRGB(55, 55, 55),
+		DialogInputLine = Color3.fromRGB(160, 160, 160),
+
+		Text = Color3.fromRGB(240, 240, 240),
+		SubText = Color3.fromRGB(170, 170, 170),
+		Hover = Color3.fromRGB(120, 120, 120),
+		HoverChange = 0.07,
+	},
+	Darker = {
+		Name = "Darker",
+		Accent = Color3.fromRGB(72, 138, 182),
+
+		AcrylicMain = Color3.fromRGB(30, 30, 30),
+		AcrylicBorder = Color3.fromRGB(60, 60, 60),
+		AcrylicGradient = ColorSequence.new(Color3.fromRGB(25, 25, 25), Color3.fromRGB(15, 15, 15)),
+		AcrylicNoise = 0.94,
+
+		TitleBarLine = Color3.fromRGB(65, 65, 65),
+		Tab = Color3.fromRGB(100, 100, 100),
+
+		Element = Color3.fromRGB(70, 70, 70),
+		ElementBorder = Color3.fromRGB(25, 25, 25),
+		InElementBorder = Color3.fromRGB(55, 55, 55),
+		ElementTransparency = 0.82,
+
+		DropdownFrame = Color3.fromRGB(120, 120, 120),
+		DropdownHolder = Color3.fromRGB(35, 35, 35),
+		DropdownBorder = Color3.fromRGB(25, 25, 25),
+
+		Dialog = Color3.fromRGB(35, 35, 35),
+		DialogHolder = Color3.fromRGB(25, 25, 25),
+		DialogHolderLine = Color3.fromRGB(20, 20, 20),
+		DialogButton = Color3.fromRGB(35, 35, 35),
+		DialogButtonBorder = Color3.fromRGB(55, 55, 55),
+		DialogBorder = Color3.fromRGB(50, 50, 50),
+		DialogInput = Color3.fromRGB(45, 45, 45),
+		DialogInputLine = Color3.fromRGB(120, 120, 120),
+	},
+	Light = {
+		Name = "Light",
+		Accent = Color3.fromRGB(0, 103, 192),
+
+		AcrylicMain = Color3.fromRGB(200, 200, 200),
+		AcrylicBorder = Color3.fromRGB(120, 120, 120),
+		AcrylicGradient = ColorSequence.new(Color3.fromRGB(255, 255, 255), Color3.fromRGB(255, 255, 255)),
+		AcrylicNoise = 0.96,
+
+		TitleBarLine = Color3.fromRGB(160, 160, 160),
+		Tab = Color3.fromRGB(90, 90, 90),
+
+		Element = Color3.fromRGB(255, 255, 255),
+		ElementBorder = Color3.fromRGB(180, 180, 180),
+		InElementBorder = Color3.fromRGB(150, 150, 150),
+		ElementTransparency = 0.65,
+
+		ToggleSlider = Color3.fromRGB(40, 40, 40),
+		ToggleToggled = Color3.fromRGB(255, 255, 255),
+
+		SliderRail = Color3.fromRGB(40, 40, 40),
+
+		DropdownFrame = Color3.fromRGB(200, 200, 200),
+		DropdownHolder = Color3.fromRGB(240, 240, 240),
+		DropdownBorder = Color3.fromRGB(200, 200, 200),
+		DropdownOption = Color3.fromRGB(150, 150, 150),
+
+		Keybind = Color3.fromRGB(120, 120, 120),
+
+		Input = Color3.fromRGB(200, 200, 200),
+		InputFocused = Color3.fromRGB(100, 100, 100),
+		InputIndicator = Color3.fromRGB(80, 80, 80),
+		InputIndicatorFocus = Color3.fromRGB(0, 103, 192),
+
+		Dialog = Color3.fromRGB(255, 255, 255),
+		DialogHolder = Color3.fromRGB(240, 240, 240),
+		DialogHolderLine = Color3.fromRGB(228, 228, 228),
+		DialogButton = Color3.fromRGB(255, 255, 255),
+		DialogButtonBorder = Color3.fromRGB(190, 190, 190),
+		DialogBorder = Color3.fromRGB(140, 140, 140),
+		DialogInput = Color3.fromRGB(250, 250, 250),
+		DialogInputLine = Color3.fromRGB(160, 160, 160),
+
+		Text = Color3.fromRGB(0, 0, 0),
+		SubText = Color3.fromRGB(40, 40, 40),
+		Hover = Color3.fromRGB(50, 50, 50),
+		HoverChange = 0.16,
+	},
+	Aqua = {
+		Name = "Aqua",
+		Accent = Color3.fromRGB(60, 165, 165),
+
+		AcrylicMain = Color3.fromRGB(20, 20, 20),
+		AcrylicBorder = Color3.fromRGB(50, 100, 100),
+		AcrylicGradient = ColorSequence.new(Color3.fromRGB(60, 140, 140), Color3.fromRGB(40, 80, 80)),
+		AcrylicNoise = 0.92,
+
+		TitleBarLine = Color3.fromRGB(60, 120, 120),
+		Tab = Color3.fromRGB(140, 180, 180),
+
+		Element = Color3.fromRGB(110, 160, 160),
+		ElementBorder = Color3.fromRGB(40, 70, 70),
+		InElementBorder = Color3.fromRGB(80, 110, 110),
+		ElementTransparency = 0.84,
+
+		ToggleSlider = Color3.fromRGB(110, 160, 160),
+		ToggleToggled = Color3.fromRGB(0, 0, 0),
+
+		SliderRail = Color3.fromRGB(110, 160, 160),
+
+		DropdownFrame = Color3.fromRGB(160, 200, 200),
+		DropdownHolder = Color3.fromRGB(40, 80, 80),
+		DropdownBorder = Color3.fromRGB(40, 65, 65),
+		DropdownOption = Color3.fromRGB(110, 160, 160),
+
+		Keybind = Color3.fromRGB(110, 160, 160),
+
+		Input = Color3.fromRGB(110, 160, 160),
+		InputFocused = Color3.fromRGB(20, 10, 30),
+		InputIndicator = Color3.fromRGB(130, 170, 170),
+		InputIndicatorFocus = Color3.fromRGB(60, 165, 165),
+
+		Dialog = Color3.fromRGB(40, 80, 80),
+		DialogHolder = Color3.fromRGB(30, 60, 60),
+		DialogHolderLine = Color3.fromRGB(25, 50, 50),
+		DialogButton = Color3.fromRGB(40, 80, 80),
+		DialogButtonBorder = Color3.fromRGB(80, 110, 110),
+		DialogBorder = Color3.fromRGB(50, 100, 100),
+		DialogInput = Color3.fromRGB(45, 90, 90),
+		DialogInputLine = Color3.fromRGB(130, 170, 170),
+
+		Text = Color3.fromRGB(240, 240, 240),
+		SubText = Color3.fromRGB(170, 170, 170),
+		Hover = Color3.fromRGB(110, 160, 160),
+		HoverChange = 0.04,
+	},
+	Amethyst = {
+		Name = "Amethyst",
+		Accent = Color3.fromRGB(97, 62, 167),
+
+		AcrylicMain = Color3.fromRGB(20, 20, 20),
+		AcrylicBorder = Color3.fromRGB(110, 90, 130),
+		AcrylicGradient = ColorSequence.new(Color3.fromRGB(85, 57, 139), Color3.fromRGB(40, 25, 65)),
+		AcrylicNoise = 0.92,
+
+		TitleBarLine = Color3.fromRGB(95, 75, 110),
+		Tab = Color3.fromRGB(160, 140, 180),
+
+		Element = Color3.fromRGB(140, 120, 160),
+		ElementBorder = Color3.fromRGB(60, 50, 70),
+		InElementBorder = Color3.fromRGB(100, 90, 110),
+		ElementTransparency = 0.87,
+
+		ToggleSlider = Color3.fromRGB(140, 120, 160),
+		ToggleToggled = Color3.fromRGB(0, 0, 0),
+
+		SliderRail = Color3.fromRGB(140, 120, 160),
+
+		DropdownFrame = Color3.fromRGB(170, 160, 200),
+		DropdownHolder = Color3.fromRGB(60, 45, 80),
+		DropdownBorder = Color3.fromRGB(50, 40, 65),
+		DropdownOption = Color3.fromRGB(140, 120, 160),
+
+		Keybind = Color3.fromRGB(140, 120, 160),
+
+		Input = Color3.fromRGB(140, 120, 160),
+		InputFocused = Color3.fromRGB(20, 10, 30),
+		InputIndicator = Color3.fromRGB(170, 150, 190),
+		InputIndicatorFocus = Color3.fromRGB(97, 62, 167),
+
+		Dialog = Color3.fromRGB(60, 45, 80),
+		DialogHolder = Color3.fromRGB(45, 30, 65),
+		DialogHolderLine = Color3.fromRGB(40, 25, 60),
+		DialogButton = Color3.fromRGB(60, 45, 80),
+		DialogButtonBorder = Color3.fromRGB(95, 80, 110),
+		DialogBorder = Color3.fromRGB(85, 70, 100),
+		DialogInput = Color3.fromRGB(70, 55, 85),
+		DialogInputLine = Color3.fromRGB(175, 160, 190),
+
+		Text = Color3.fromRGB(240, 240, 240),
+		SubText = Color3.fromRGB(170, 170, 170),
+		Hover = Color3.fromRGB(140, 120, 160),
+		HoverChange = 0.04,
+	},
+	Rose = {
+		Name = "Rose",
+		Accent = Color3.fromRGB(180, 55, 90),
+
+		AcrylicMain = Color3.fromRGB(40, 40, 40),
+		AcrylicBorder = Color3.fromRGB(130, 90, 110),
+		AcrylicGradient = ColorSequence.new(Color3.fromRGB(190, 60, 135), Color3.fromRGB(165, 50, 70)),
+		AcrylicNoise = 0.92,
+
+		TitleBarLine = Color3.fromRGB(140, 85, 105),
+		Tab = Color3.fromRGB(180, 140, 160),
+
+		Element = Color3.fromRGB(200, 120, 170),
+		ElementBorder = Color3.fromRGB(110, 70, 85),
+		InElementBorder = Color3.fromRGB(120, 90, 90),
+		ElementTransparency = 0.86,
+
+		ToggleSlider = Color3.fromRGB(200, 120, 170),
+		ToggleToggled = Color3.fromRGB(0, 0, 0),
+
+		SliderRail = Color3.fromRGB(200, 120, 170),
+
+		DropdownFrame = Color3.fromRGB(200, 160, 180),
+		DropdownHolder = Color3.fromRGB(120, 50, 75),
+		DropdownBorder = Color3.fromRGB(90, 40, 55),
+		DropdownOption = Color3.fromRGB(200, 120, 170),
+
+		Keybind = Color3.fromRGB(200, 120, 170),
+
+		Input = Color3.fromRGB(200, 120, 170),
+		InputFocused = Color3.fromRGB(20, 10, 30),
+		InputIndicator = Color3.fromRGB(170, 150, 190),
+		InputIndicatorFocus = Color3.fromRGB(180, 55, 90),
+
+		Dialog = Color3.fromRGB(120, 50, 75),
+		DialogHolder = Color3.fromRGB(95, 40, 60),
+		DialogHolderLine = Color3.fromRGB(90, 35, 55),
+		DialogButton = Color3.fromRGB(120, 50, 75),
+		DialogButtonBorder = Color3.fromRGB(155, 90, 115),
+		DialogBorder = Color3.fromRGB(100, 70, 90),
+		DialogInput = Color3.fromRGB(135, 55, 80),
+		DialogInputLine = Color3.fromRGB(190, 160, 180),
+
+		Text = Color3.fromRGB(240, 240, 240),
+		SubText = Color3.fromRGB(170, 170, 170),
+		Hover = Color3.fromRGB(200, 120, 170),
+		HoverChange = 0.04,
+	},
+	Sakura = {
+		Name = "Sakura",
+		Accent = Color3.fromRGB(252, 209, 215),
+
+		AcrylicMain = Color3.fromRGB(40, 40, 40),
+		AcrylicBorder = Color3.fromRGB(130, 90, 110),
+		AcrylicGradient = ColorSequence.new{
+			ColorSequenceKeypoint.new(0, Color3.fromRGB(252, 209, 215)),
+			ColorSequenceKeypoint.new(0.25, Color3.fromRGB(255, 231, 222)),
+			ColorSequenceKeypoint.new(0.50, Color3.fromRGB(233, 177, 205)),
+			ColorSequenceKeypoint.new(0.75, Color3.fromRGB(195, 130, 158)),
+			ColorSequenceKeypoint.new(1, Color3.fromRGB(86, 33, 53)),
+		},
+		AcrylicNoise = 0.92,
+
+		TitleBarLine = Color3.fromRGB(140, 85, 105),
+		Tab = Color3.fromRGB(132, 89, 95),
+
+		Element = Color3.fromRGB(220, 140, 190),
+		ElementBorder = Color3.fromRGB(110, 70, 85),
+		InElementBorder = Color3.fromRGB(120, 90, 90),
+		ElementTransparency = 0.86,
+
+		ToggleSlider = Color3.fromRGB(252, 209, 215),
+		ToggleToggled = Color3.fromRGB(252, 209, 215),
+		TransparenToggle = 0.5,
+
+		SliderRail = Color3.fromRGB(252, 209, 215),
+
+		DropdownFrame = Color3.fromRGB(252, 209, 215),
+		DropdownHolder = Color3.fromRGB(156, 103, 123),
+		DropdownBorder = Color3.fromRGB(90, 40, 55),
+		DropdownOption = Color3.fromRGB(252, 209, 215),
+
+		Keybind = Color3.fromRGB(200, 120, 170),
+
+		Input = Color3.fromRGB(200, 120, 170),
+		InputFocused = Color3.fromRGB(200, 200, 200),
+		InputIndicator = Color3.fromRGB(170, 150, 190),
+		InputIndicatorFocus = Color3.fromRGB(252,209,215),
+
+		Dialog = Color3.fromRGB(120, 50, 75),
+		DialogHolder = Color3.fromRGB(95, 40, 60),
+		DialogHolderLine = Color3.fromRGB(90, 35, 55),
+		DialogButton = Color3.fromRGB(120, 50, 75),
+		DialogButtonBorder = Color3.fromRGB(155, 90, 115),
+		DialogBorder = Color3.fromRGB(100, 70, 90),
+		DialogInput = Color3.fromRGB(135, 55, 80),
+		DialogInputLine = Color3.fromRGB(190, 160, 180),
+
+		Text = Color3.fromRGB(240, 240, 240),
+		SubText = Color3.fromRGB(220, 220, 220),
+		Hover = Color3.fromRGB(200, 120, 170),
+		HoverChange = 0.04,
+	}
+}
+
+local Library = {
+	Version = "1.1.0",
+
+	OpenFrames = {},
+	Options = {},
+	Themes = Themes.Names,
+
+	Window = nil,
+	WindowFrame = nil,
+	Unloaded = false,
+
+	Creator = nil,
+
+	DialogOpen = false,
+	UseAcrylic = false,
+	Acrylic = false,
+	Transparency = true,
+	MinimizeKeybind = nil,
+	MinimizeKey = Enum.KeyCode.LeftControl,
+}
+
+local function isMotor(value)
+	local motorType = tostring(value):match("^Motor%((.+)%)$")
+
+	if motorType then
+		return true, motorType
+	else
+		return false
+	end
+end
+
+local Connection = {}
+
+Connection.__index = Connection
+
+function Connection.new(signal, handler)
+	return setmetatable({
+		signal = signal,
+		connected = true,
+		_handler = handler,
+	}, Connection)
+end
+
+function Connection:disconnect()
+	if self.connected then
+		self.connected = false
+
+		for index, connection in pairs(self.signal._connections) do
+			if connection == self then
+				table.remove(self.signal._connections, index)
+				return
+			end
+		end
+	end
+end
+
+local Signal = {}
+Signal.__index = Signal
+
+function Signal.new()
+	return setmetatable({
+		_connections = {},
+		_threads = {},
+	}, Signal)
+end
+
+function Signal:fire(...)
+	for _, connection in pairs(self._connections) do
+		connection._handler(...)
+	end
+
+	for _, thread in pairs(self._threads) do
+		coroutine.resume(thread, ...)
+	end
+
+	self._threads = {}
+end
+
+function Signal:connect(handler)
+	local connection = Connection.new(self, handler)
+	table.insert(self._connections, connection)
+	return connection
+end
+
+function Signal:wait()
+	table.insert(self._threads, coroutine.running())
+	return coroutine.yield()
+end
+
+local Linear = {}
+Linear.__index = Linear
+
+function Linear.new(targetValue, options)
+	assert(targetValue, "Missing argument #1: targetValue")
+
+	options = options or {}
+
+	return setmetatable({
+		_targetValue = targetValue,
+		_velocity = options.velocity or 1,
+	}, Linear)
+end
+
+function Linear:step(state, dt)
+	local position = state.value
+	local velocity = self._velocity
+	local goal = self._targetValue
+
+	local dPos = dt * velocity
+
+	local complete = dPos >= math.abs(goal - position)
+	position = position + dPos * (goal > position and 1 or -1)
+	if complete then
+		position = self._targetValue
+		velocity = 0
+	end
+
+	return {
+		complete = complete,
+		value = position,
+		velocity = velocity,
+	}
+end
+
+local Instant = {}
+Instant.__index = Instant
+
+function Instant.new(targetValue)
+	return setmetatable({
+		_targetValue = targetValue,
+	}, Instant)
+end
+
+function Instant:step()
+	return {
+		complete = true,
+		value = self._targetValue,
+	}
+end
+
+local VELOCITY_THRESHOLD = 0.001
+local POSITION_THRESHOLD = 0.001
+
+local EPS = 0.0001
+
+local Spring = {}
+Spring.__index = Spring
+
+function Spring.new(targetValue, options)
+	assert(targetValue, "Missing argument #1: targetValue")
+	options = options or {}
+
+	return setmetatable({
+		_targetValue = targetValue,
+		_frequency = options.frequency or 4,
+		_dampingRatio = options.dampingRatio or 1,
+	}, Spring)
+end
+
+function Spring:step(state, dt)
+	local dampingRatio = self._dampingRatio
+	local angularFrequency = self._frequency * 2 * math.pi
+	local targetValue = self._targetValue
+	local currentValue = state.value
+	local velocity = state.velocity or 0
+
+	local offset = currentValue - targetValue
+	local decay = math.exp(-dampingRatio * angularFrequency * dt)
+
+	local newValue, newVelocity
+
+	if dampingRatio == 1 then
+		newValue = (offset * (1 + angularFrequency * dt) + velocity * dt) * decay + targetValue
+		newVelocity = (velocity * (1 - angularFrequency * dt) - offset * (angularFrequency ^ 2 * dt)) * decay
+	elseif dampingRatio < 1 then
+		local c = math.sqrt(1 - dampingRatio ^ 2)
+		local cosTerm = math.cos(angularFrequency * c * dt)
+		local sinTerm = math.sin(angularFrequency * c * dt)
+		local zTerm = (c > EPS) and (sinTerm / c) or (angularFrequency * dt)
+		local yTerm = (angularFrequency * c > EPS) and (sinTerm / (angularFrequency * c)) or dt
+		newValue = (offset * (cosTerm + dampingRatio * zTerm) + velocity * yTerm) * decay + targetValue
+		newVelocity = (velocity * (cosTerm - zTerm * dampingRatio) - offset * (angularFrequency * zTerm)) * decay
+	else
+		local c = math.sqrt(dampingRatio ^ 2 - 1)
+		local r1 = -angularFrequency * (dampingRatio - c)
+		local r2 = -angularFrequency * (dampingRatio + c)
+		local expCoefficient1 = (velocity - offset * r1) / (2 * angularFrequency * c)
+		local expCoefficient2 = offset - expCoefficient1
+		local expTerm1 = expCoefficient2 * math.exp(r1 * dt)
+		local expTerm2 = expCoefficient1 * math.exp(r2 * dt)
+		newValue = expTerm1 + expTerm2 + targetValue
+		newVelocity = expTerm1 * r1 + expTerm2 * r2
+	end
+
+	local complete = math.abs(newVelocity) < VELOCITY_THRESHOLD and math.abs(newValue - targetValue) < POSITION_THRESHOLD
+
+	return {
+		complete = complete,
+		value = complete and targetValue or newValue,
+		velocity = newVelocity,
+	}
+end
+
+local noop = function() end
+
+local BaseMotor = {}
+BaseMotor.__index = BaseMotor
+function BaseMotor.new()
+	return setmetatable({
+		_onStep = Signal.new(),
+		_onStart = Signal.new(),
+		_onComplete = Signal.new(),
+	}, BaseMotor)
+end
+
+function BaseMotor:onStep(handler)
+	return self._onStep:connect(handler)
+end
+
+function BaseMotor:onStart(handler)
+	return self._onStart:connect(handler)
+end
+
+function BaseMotor:onComplete(handler)
+	return self._onComplete:connect(handler)
+end
+
+function BaseMotor:start()
+	if not self._connection then
+		self._connection = RunService.RenderStepped:Connect(function(deltaTime)
+			self:step(deltaTime)
+		end)
+	end
+end
+
+function BaseMotor:stop()
+	if self._connection then
+		self._connection:Disconnect()
+		self._connection = nil
+	end
+end
+
+BaseMotor.destroy = BaseMotor.stop
+
+BaseMotor.step = noop
+BaseMotor.getValue = noop
+BaseMotor.setGoal = noop
+
+function BaseMotor:__tostring()
+	return "Motor"
+end
+
+local SingleMotor = setmetatable({}, BaseMotor)
+SingleMotor.__index = SingleMotor
+
+function SingleMotor.new(initialValue, useImplicitConnections)
+	assert(initialValue, "Missing argument #1: initialValue")
+	assert(typeof(initialValue) == "number", "initialValue must be a number!")
+
+	local self = setmetatable(BaseMotor.new(), SingleMotor)
+
+	if useImplicitConnections ~= nil then
+		self._useImplicitConnections = useImplicitConnections
+	else
+		self._useImplicitConnections = true
+	end
+
+	self._goal = nil
+	self._state = {
+		complete = true,
+		value = initialValue,
+	}
+
+	return self
+end
+
+function SingleMotor:step(deltaTime)
+	if self._state.complete then
+		return true
+	end
+
+	local newState = self._goal:step(self._state, deltaTime)
+
+	self._state = newState
+	self._onStep:fire(newState.value)
+
+	if newState.complete then
+		if self._useImplicitConnections then
+			self:stop()
+		end
+
+		self._onComplete:fire()
+	end
+
+	return newState.complete
+end
+
+function SingleMotor:getValue()
+	return self._state.value
+end
+
+function SingleMotor:setGoal(goal)
+	self._state.complete = false
+	self._goal = goal
+
+	self._onStart:fire()
+
+	if self._useImplicitConnections then
+		self:start()
+	end
+end
+
+function SingleMotor:__tostring()
+	return "Motor(Single)"
+end
+
+local GroupMotor = setmetatable({}, BaseMotor)
+GroupMotor.__index = GroupMotor
+
+local function toMotor(value)
+	if isMotor(value) then
+		return value
+	end
+
+	local valueType = typeof(value)
+
+	if valueType == "number" then
+		return SingleMotor.new(value, false)
+	elseif valueType == "table" then
+		return GroupMotor.new(value, false)
+	end
+
+	error(("Unable to convert %q to motor; type %s is unsupported"):format(value, valueType), 2)
+end
+
+function GroupMotor.new(initialValues, useImplicitConnections)
+	assert(initialValues, "Missing argument #1: initialValues")
+	assert(typeof(initialValues) == "table", "initialValues must be a table!")
+	assert(
+		not initialValues.step,
+		'initialValues contains disallowed property "step". Did you mean to put a table of values here?'
+	)
+
+	local self = setmetatable(BaseMotor.new(), GroupMotor)
+
+	if useImplicitConnections ~= nil then
+		self._useImplicitConnections = useImplicitConnections
+	else
+		self._useImplicitConnections = true
+	end
+
+	self._complete = true
+	self._motors = {}
+
+	for key, value in pairs(initialValues) do
+		self._motors[key] = toMotor(value)
+	end
+
+	return self
+end
+
+function GroupMotor:step(deltaTime)
+	if self._complete then
+		return true
+	end
+
+	local allMotorsComplete = true
+
+	for _, motor in pairs(self._motors) do
+		local complete = motor:step(deltaTime)
+		if not complete then
+			allMotorsComplete = false
+		end
+	end
+
+	self._onStep:fire(self:getValue())
+
+	if allMotorsComplete then
+		if self._useImplicitConnections then
+			self:stop()
+		end
+
+		self._complete = true
+		self._onComplete:fire()
+	end
+
+	return allMotorsComplete
+end
+
+function GroupMotor:setGoal(goals)
+	assert(not goals.step, 'goals contains disallowed property "step". Did you mean to put a table of goals here?')
+
+	self._complete = false
+	self._onStart:fire()
+
+	for key, goal in pairs(goals) do
+		local motor = assert(self._motors[key], ("Unknown motor for key %s"):format(key))
+		motor:setGoal(goal)
+	end
+
+	if self._useImplicitConnections then
+		self:start()
+	end
+end
+
+function GroupMotor:getValue()
+	local values = {}
+
+	for key, motor in pairs(self._motors) do
+		values[key] = motor:getValue()
+	end
+
+	return values
+end
+
+function GroupMotor:__tostring()
+	return "Motor(Group)"
+end
+
+local Flipper = {
+	SingleMotor = SingleMotor,
+	GroupMotor = GroupMotor,
+
+	Instant = Instant,
+	Linear = Linear,
+	Spring = Spring,
+
+	isMotor = isMotor,
+}
+
+local Creator = {
+	Registry = {},
+	Signals = {},
+	TransparencyMotors = {},
+	DefaultProperties = {
+		ScreenGui = {
+			ResetOnSpawn = false,
+			ZIndexBehavior = Enum.ZIndexBehavior.Sibling,
+		},
+		Frame = {
+			BackgroundColor3 = Color3.new(1, 1, 1),
+			BorderColor3 = Color3.new(0, 0, 0),
+			BorderSizePixel = 0,
+		},
+		ScrollingFrame = {
+			BackgroundColor3 = Color3.new(1, 1, 1),
+			BorderColor3 = Color3.new(0, 0, 0),
+			ScrollBarImageColor3 = Color3.new(0, 0, 0),
+		},
+		TextLabel = {
+			BackgroundColor3 = Color3.new(1, 1, 1),
+			BorderColor3 = Color3.new(0, 0, 0),
+			Font = Enum.Font.SourceSans,
+			Text = "",
+			TextColor3 = Color3.new(0, 0, 0),
+			BackgroundTransparency = 1,
+			TextSize = 14,
+		},
+		TextButton = {
+			BackgroundColor3 = Color3.new(1, 1, 1),
+			BorderColor3 = Color3.new(0, 0, 0),
+			AutoButtonColor = false,
+			Font = Enum.Font.SourceSans,
+			Text = "",
+			TextColor3 = Color3.new(0, 0, 0),
+			TextSize = 14,
+		},
+		TextBox = {
+			BackgroundColor3 = Color3.new(1, 1, 1),
+			BorderColor3 = Color3.new(0, 0, 0),
+			ClearTextOnFocus = false,
+			Font = Enum.Font.SourceSans,
+			Text = "",
+			TextColor3 = Color3.new(0, 0, 0),
+			TextSize = 14,
+		},
+		ImageLabel = {
+			BackgroundTransparency = 1,
+			BackgroundColor3 = Color3.new(1, 1, 1),
+			BorderColor3 = Color3.new(0, 0, 0),
+			BorderSizePixel = 0,
+		},
+		ImageButton = {
+			BackgroundColor3 = Color3.new(1, 1, 1),
+			BorderColor3 = Color3.new(0, 0, 0),
+			AutoButtonColor = false,
+		},
+		CanvasGroup = {
+			BackgroundColor3 = Color3.new(1, 1, 1),
+			BorderColor3 = Color3.new(0, 0, 0),
+			BorderSizePixel = 0,
+		},
+	},
+}
+
+local function ApplyCustomProps(Object, Props)
+	if Props.ThemeTag then
+		Creator.AddThemeObject(Object, Props.ThemeTag)
+	end
+end
+
+function Creator.AddSignal(Signal, Function)
+	local Connected = Signal:Connect(Function)
+	table.insert(Creator.Signals, Connected)
+	return Connected
+end
+
+function Creator.Disconnect()
+	for Idx = #Creator.Signals, 1, -1 do
+		local Connection = table.remove(Creator.Signals, Idx)
+		if Connection.Disconnect then
+			Connection:Disconnect()
+		end
+	end
+end
+
+function Creator.UpdateTheme()
+	for Instance, Object in next, Creator.Registry do
+		for Property, ColorIdx in next, Object.Properties do
+			Instance[Property] = Creator.GetThemeProperty(ColorIdx)
+		end
+	end
+
+	for _, Motor in next, Creator.TransparencyMotors do
+		Motor:setGoal(Flipper.Instant.new(Creator.GetThemeProperty("ElementTransparency")))
+	end
+end
+
+function Creator.AddThemeObject(Object, Properties)
+	local Idx = #Creator.Registry + 1
+	local Data = {
+		Object = Object,
+		Properties = Properties,
+		Idx = Idx,
+	}
+
+	Creator.Registry[Object] = Data
+	Creator.UpdateTheme()
+	return Object
+end
+
+function Creator.OverrideTag(Object, Properties)
+	Creator.Registry[Object].Properties = Properties
+	Creator.UpdateTheme()
+end
+
+function Creator.GetThemeProperty(Property)
+	if Themes[Library.Theme][Property] then
+		return Themes[Library.Theme][Property]
+	end
+	return Themes["Dark"][Property]
+end
+
+function Creator.New(Name, Properties, Children)
+	local Object = Instance.new(Name)
+
+	for Name, Value in next, Creator.DefaultProperties[Name] or {} do
+		Object[Name] = Value
+	end
+	for Name, Value in next, Properties or {} do
+		if Name ~= "ThemeTag" then
+			Object[Name] = Value
+		end
+	end
+
+	for _, Child in next, Children or {} do
+		Child.Parent = Object
+	end
+
+	ApplyCustomProps(Object, Properties)
+	return Object
+end
+
+function Creator.SpringMotor(Initial, Instance, Prop, IgnoreDialogCheck, ResetOnThemeChange)
+	IgnoreDialogCheck = IgnoreDialogCheck or false
+	ResetOnThemeChange = ResetOnThemeChange or false
+	local Motor = Flipper.SingleMotor.new(Initial)
+	Motor:onStep(function(value)
+		Instance[Prop] = value
+	end)
+
+	if ResetOnThemeChange then
+		table.insert(Creator.TransparencyMotors, Motor)
+	end
+
+	local function SetValue(Value, Ignore)
+		Ignore = Ignore or false
+		if not IgnoreDialogCheck then
+			if not Ignore then
+				if Prop == "BackgroundTransparency" and Library.DialogOpen then
+					return
+				end
+			end
+		end
+		Motor:setGoal(Flipper.Spring.new(Value, { frequency = 8 }))
+	end
+
+	return Motor, SetValue
+end
+
+Library.Creator = Creator
+
+local New = Creator.New
+
+local GUI = New("ScreenGui", {
+	Parent = RunService:IsStudio() and LocalPlayer.PlayerGui or game:GetService("CoreGui"),
+})
+Library.GUI = GUI
+ProtectGui(GUI)
+
+function Library:SafeCallback(Function, ...)
+	if not Function then
+		return
+	end
+
+	local Success, Event = pcall(Function, ...)
+	if not Success then
+		local _, i = Event:find(":%d+: ")
+
+		if not i then
+			return Library:Notify({
+				Title = "Interface",
+				Content = "Callback error",
+				SubContent = Event,
+				Duration = 5,
+			})
+		end
+
+		return Library:Notify({
+			Title = "Interface",
+			Content = "Callback error",
+			SubContent = Event:sub(i + 1),
+			Duration = 5,
+		})
+	end
+end
+
+function Library:Round(Number, Factor)
+	if Factor == 0 then
+		return math.floor(Number)
+	end
+	Number = tostring(Number)
+	return Number:find("%.") and tonumber(Number:sub(1, Number:find("%.") + Factor)) or Number
+end
+
+local function map(value, inMin, inMax, outMin, outMax)
+	return (value - inMin) * (outMax - outMin) / (inMax - inMin) + outMin
+end
+
+local function viewportPointToWorld(location, distance)
+	local unitRay = game:GetService("Workspace").CurrentCamera:ScreenPointToRay(location.X, location.Y)
+	return unitRay.Origin + unitRay.Direction * distance
+end
+
+local function getOffset()
+	local viewportSizeY = game:GetService("Workspace").CurrentCamera.ViewportSize.Y
+	return map(viewportSizeY, 0, 2560, 8, 56)
+end
+
+local viewportPointToWorld, getOffset = unpack({ viewportPointToWorld, getOffset })
+
+local BlurFolder = Instance.new("Folder", game:GetService("Workspace").CurrentCamera)
+
+local function createAcrylic()
+	local Part = Creator.New("Part", {
+		Name = "Body",
+		Color = Color3.new(0, 0, 0),
+		Material = Enum.Material.Glass,
+		Size = Vector3.new(1, 1, 0),
+		Anchored = true,
+		CanCollide = false,
+		Locked = true,
+		CastShadow = false,
+		Transparency = 0.98,
+	}, {
+		Creator.New("SpecialMesh", {
+			MeshType = Enum.MeshType.Brick,
+			Offset = Vector3.new(0, 0, -0.000001),
+		}),
+	})
+
+	return Part
+end
+
+function AcrylicBlur()
+	local function createAcrylicBlur(distance)
+		local cleanups = {}
+
+		distance = distance or 0.001
+		local positions = {
+			topLeft = Vector2.new(),
+			topRight = Vector2.new(),
+			bottomRight = Vector2.new(),
+		}
+		local model = createAcrylic()
+		model.Parent = BlurFolder
+
+		local function updatePositions(size, position)
+			positions.topLeft = position
+			positions.topRight = position + Vector2.new(size.X, 0)
+			positions.bottomRight = position + size
+		end
+
+		local function render()
+			local res = game:GetService("Workspace").CurrentCamera
+			if res then
+				res = res.CFrame
+			end
+			local cond = res
+			if not cond then
+				cond = CFrame.new()
+			end
+
+			local camera = cond
+			local topLeft = positions.topLeft
+			local topRight = positions.topRight
+			local bottomRight = positions.bottomRight
+
+			local topLeft3D = viewportPointToWorld(topLeft, distance)
+			local topRight3D = viewportPointToWorld(topRight, distance)
+			local bottomRight3D = viewportPointToWorld(bottomRight, distance)
+
+			local width = (topRight3D - topLeft3D).Magnitude
+			local height = (topRight3D - bottomRight3D).Magnitude
+
+			model.CFrame =
+				CFrame.fromMatrix((topLeft3D + bottomRight3D) / 2, camera.XVector, camera.YVector, camera.ZVector)
+			model.Mesh.Scale = Vector3.new(width, height, 0)
+		end
+
+		local function onChange(rbx)
+			local offset = getOffset()
+			local size = rbx.AbsoluteSize - Vector2.new(offset, offset)
+			local position = rbx.AbsolutePosition + Vector2.new(offset / 2, offset / 2)
+
+			updatePositions(size, position)
+			task.spawn(render)
+		end
+
+		local function renderOnChange()
+			local camera = game:GetService("Workspace").CurrentCamera
+			if not camera then
+				return
+			end
+
+			table.insert(cleanups, camera:GetPropertyChangedSignal("CFrame"):Connect(render))
+			table.insert(cleanups, camera:GetPropertyChangedSignal("ViewportSize"):Connect(render))
+			table.insert(cleanups, camera:GetPropertyChangedSignal("FieldOfView"):Connect(render))
+			task.spawn(render)
+		end
+
+		model.Destroying:Connect(function()
+			for _, item in cleanups do
+				pcall(function()
+					item:Disconnect()
+				end)
+			end
+		end)
+
+		renderOnChange()
+
+		return onChange, model
+	end
+
+	return function(distance)
+		local Blur = {}
+		local onChange, model = createAcrylicBlur(distance)
+
+		local comp = Creator.New("Frame", {
+			BackgroundTransparency = 1,
+			Size = UDim2.fromScale(1, 1),
+		})
+
+		Creator.AddSignal(comp:GetPropertyChangedSignal("AbsolutePosition"), function()
+			onChange(comp)
+		end)
+
+		Creator.AddSignal(comp:GetPropertyChangedSignal("AbsoluteSize"), function()
+			onChange(comp)
+		end)
+
+		Blur.AddParent = function(Parent)
+			Creator.AddSignal(Parent:GetPropertyChangedSignal("Visible"), function()
+				Blur.SetVisibility(Parent.Visible)
+			end)
+		end
+
+		Blur.SetVisibility = function(Value)
+			model.Transparency = Value and 0.98 or 1
+		end
+
+		Blur.Frame = comp
+		Blur.Model = model
+
+		return Blur
+	end
+end
+
+function AcrylicPaint()
+	local New = Creator.New
+	local AcrylicBlur = AcrylicBlur()
+
+	return function(props)
+		local AcrylicPaint = {}
+
+		AcrylicPaint.Frame = New("Frame", {
+			Size = UDim2.fromScale(1, 1),
+			BackgroundTransparency = 0.9,
+			BackgroundColor3 = Color3.fromRGB(255, 255, 255),
+			BorderSizePixel = 0,
+		}, {
+			New("ImageLabel", {
+				Image = "rbxassetid://8992230677",
+				ScaleType = "Slice",
+				SliceCenter = Rect.new(Vector2.new(99, 99), Vector2.new(99, 99)),
+				AnchorPoint = Vector2.new(0.5, 0.5),
+				Size = UDim2.new(1, 120, 1, 116),
+				Position = UDim2.new(0.5, 0, 0.5, 0),
+				BackgroundTransparency = 1,
+				ImageColor3 = Color3.fromRGB(0, 0, 0),
+				ImageTransparency = 0.7,
+			}),
+
+			New("UICorner", {
+				CornerRadius = UDim.new(0, 8),
+			}),
+
+			New("Frame", {
+				BackgroundTransparency = 0.45,
+				Size = UDim2.fromScale(1, 1),
+				Name = "Background",
+				ThemeTag = {
+					BackgroundColor3 = "AcrylicMain",
+				},
+			}, {
+				New("UICorner", {
+					CornerRadius = UDim.new(0, 8),
+				}),
+			}),
+
+			New("Frame", {
+				BackgroundColor3 = Color3.fromRGB(255, 255, 255),
+				BackgroundTransparency = 0.4,
+				Size = UDim2.fromScale(1, 1),
+			}, {
+				New("UICorner", {
+					CornerRadius = UDim.new(0, 8),
+				}),
+
+				New("UIGradient", {
+					Rotation = 90,
+					ThemeTag = {
+						Color = "AcrylicGradient",
+					},
+				}),
+			}),
+
+			New("ImageLabel", {
+				Image = "rbxassetid://9968344105",
+				ImageTransparency = 0.98,
+				ScaleType = Enum.ScaleType.Tile,
+				TileSize = UDim2.new(0, 128, 0, 128),
+				Size = UDim2.fromScale(1, 1),
+				BackgroundTransparency = 1,
+			}, {
+				New("UICorner", {
+					CornerRadius = UDim.new(0, 8),
+				}),
+			}),
+
+			New("ImageLabel", {
+				Image = "rbxassetid://9968344227",
+				ImageTransparency = 0.9,
+				ScaleType = Enum.ScaleType.Tile,
+				TileSize = UDim2.new(0, 128, 0, 128),
+				Size = UDim2.fromScale(1, 1),
+				BackgroundTransparency = 1,
+				ThemeTag = {
+					ImageTransparency = "AcrylicNoise",
+				},
+			}, {
+				New("UICorner", {
+					CornerRadius = UDim.new(0, 8),
+				}),
+			}),
+
+			New("Frame", {
+				BackgroundTransparency = 1,
+				Size = UDim2.fromScale(1, 1),
+				ZIndex = 2,
+			}, {
+				New("UICorner", {
+					CornerRadius = UDim.new(0, 8),
+				}),
+				New("UIStroke", {
+					Transparency = 0.5,
+					Thickness = 1,
+					ThemeTag = {
+						Color = "AcrylicBorder",
+					},
+				}),
+			}),
+		})
+
+		local Blur
+
+		if Library.UseAcrylic then
+			Blur = AcrylicBlur()
+			Blur.Frame.Parent = AcrylicPaint.Frame
+			AcrylicPaint.Model = Blur.Model
+			AcrylicPaint.AddParent = Blur.AddParent
+			AcrylicPaint.SetVisibility = Blur.SetVisibility
+		end
+
+		return AcrylicPaint
+	end
+end
+
+local Acrylic = {
+	AcrylicBlur = AcrylicBlur(),
+	CreateAcrylic = createAcrylic,
+	AcrylicPaint = AcrylicPaint(),
+}
+
+function Acrylic.init()
+	local baseEffect = Instance.new("DepthOfFieldEffect")
+	baseEffect.FarIntensity = 0
+	baseEffect.InFocusRadius = 0.1
+	baseEffect.NearIntensity = 1
+
+	local depthOfFieldDefaults = {}
+
+	function Acrylic.Enable()
+		for _, effect in pairs(depthOfFieldDefaults) do
+			effect.Enabled = false
+		end
+		baseEffect.Parent = game:GetService("Lighting")
+	end
+
+	function Acrylic.Disable()
+		for _, effect in pairs(depthOfFieldDefaults) do
+			effect.Enabled = effect.enabled
+		end
+		baseEffect.Parent = nil
+	end
+
+	local function registerDefaults()
+		local function register(object)
+			if object:IsA("DepthOfFieldEffect") then
+				depthOfFieldDefaults[object] = { enabled = object.Enabled }
+			end
+		end
+
+		for _, child in pairs(game:GetService("Lighting"):GetChildren()) do
+			register(child)
+		end
+
+		if game:GetService("Workspace").CurrentCamera then
+			for _, child in pairs(game:GetService("Workspace").CurrentCamera:GetChildren()) do
+				register(child)
+			end
+		end
+	end
+
+	registerDefaults()
+	Acrylic.Enable()
+end
+
+local Components = {
+	Assets = {
+		Close = "rbxassetid://9886659671",
+		Min = "rbxassetid://9886659276",
+		Max = "rbxassetid://9886659406",
+		Restore = "rbxassetid://9886659001",
+	},
+}
+
+Components.Element = (function()
+	local New = Creator.New
+
+	local Spring = Flipper.Spring.new
+
+	return function(Title, Desc, Parent, Hover, Options)
+		local Element = {}
+		local Options = Options or {}
+
+		Element.TitleLabel = New("TextLabel", {
+			FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json", Enum.FontWeight.Medium, Enum.FontStyle.Normal),
+			Text = Title,
+			TextColor3 = Color3.fromRGB(240, 240, 240),
+			TextSize = 13,
+			TextXAlignment = Enum.TextXAlignment.Left,
+			Size = UDim2.new(1, 0, 0, 14),
+			BackgroundColor3 = Color3.fromRGB(255, 255, 255),
+			BackgroundTransparency = 1,
+			ThemeTag = {
+				TextColor3 = "Text",
+			},
+		})
+
+		Element.DescLabel = New("TextLabel", {
+			FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json"),
+			Text = Desc,
+			TextColor3 = Color3.fromRGB(200, 200, 200),
+			TextSize = 12,
+			TextWrapped = true,
+			TextXAlignment = Enum.TextXAlignment.Left,
+			BackgroundColor3 = Color3.fromRGB(255, 255, 255),
+			AutomaticSize = Enum.AutomaticSize.Y,
+			BackgroundTransparency = 1,
+			Size = UDim2.new(1, 0, 0, 14),
+			ThemeTag = {
+				TextColor3 = "SubText",
+			},
+		})
+
+		Element.LabelHolder = New("Frame", {
+			AutomaticSize = Enum.AutomaticSize.Y,
+			BackgroundColor3 = Color3.fromRGB(255, 255, 255),
+			BackgroundTransparency = 1,
+			Position = UDim2.fromOffset(10, 0),
+			Size = UDim2.new(1, -28, 0, 0),
+		}, {
+			New("UIListLayout", {
+				SortOrder = Enum.SortOrder.LayoutOrder,
+				VerticalAlignment = Enum.VerticalAlignment.Center,
+			}),
+			New("UIPadding", {
+				PaddingBottom = UDim.new(0, 13),
+				PaddingTop = UDim.new(0, 13),
+			}),
+			Element.TitleLabel,
+			Element.DescLabel,
+		})
+
+		Element.Border = New("UIStroke", {
+			Transparency = 0.5,
+			ApplyStrokeMode = Enum.ApplyStrokeMode.Border,
+			Color = Color3.fromRGB(0, 0, 0),
+			ThemeTag = {
+				Color = "ElementBorder",
+			},
+		})
+
+		Element.Frame = New("TextButton", {
+			Visible = Options.Visible and Options.Visible or true,
+			Size = UDim2.new(1, 0, 0, 0),
+			BackgroundTransparency = 0.89,
+			BackgroundColor3 = Color3.fromRGB(130, 130, 130),
+			Parent = Parent,
+			AutomaticSize = Enum.AutomaticSize.Y,
+			Text = "",
+			LayoutOrder = 7,
+			ThemeTag = {
+				BackgroundColor3 = "Element",
+				BackgroundTransparency = "ElementTransparency",
+			},
+		}, {
+			New("UICorner", {
+				CornerRadius = UDim.new(0, 9),
+			}),
+			Element.Border,
+			Element.LabelHolder,
+		})
+
+		function Element:SetTitle(Set)
+			Element.TitleLabel.Text = Set
+		end
+
+		function Element:Visible(Bool)
+			Element.Frame.Visible = Bool
+		end
+
+		function Element:SetDesc(Set)
+			if Set == nil then
+				Set = ""
+			end
+			if Set == "" then
+				Element.DescLabel.Visible = false
+			else
+				Element.DescLabel.Visible = true
+			end
+			Element.DescLabel.Text = Set
+		end
+
+		function Element:GetTitle()
+			return Element.TitleLabel.Text
+		end
+
+		function Element:GetDesc()
+			return Element.DescLabel.Text
+		end
+
+		function Element:Destroy()
+			Element.Frame:Destroy()
+		end
+
+		Element:SetTitle(Title)
+		Element:SetDesc(Desc)
+
+		if Hover then
+			local Themes = Library.Themes
+			local Motor, SetTransparency = Creator.SpringMotor(
+				Creator.GetThemeProperty("ElementTransparency"),
+				Element.Frame,
+				"BackgroundTransparency",
+				false,
+				true
+			)
+
+			Creator.AddSignal(Element.Frame.MouseEnter, function()
+				SetTransparency(Creator.GetThemeProperty("ElementTransparency") - Creator.GetThemeProperty("HoverChange"))
+			end)
+			Creator.AddSignal(Element.Frame.MouseLeave, function()
+				SetTransparency(Creator.GetThemeProperty("ElementTransparency"))
+			end)
+			Creator.AddSignal(Element.Frame.MouseButton1Down, function()
+				SetTransparency(Creator.GetThemeProperty("ElementTransparency") + Creator.GetThemeProperty("HoverChange"))
+			end)
+			Creator.AddSignal(Element.Frame.MouseButton1Up, function()
+				SetTransparency(Creator.GetThemeProperty("ElementTransparency") - Creator.GetThemeProperty("HoverChange"))
+			end)
+		end
+
+		return Element
+	end
+end)()
+Components.Section = (function()
+	local New = Creator.New
+
+	return function(Title, Parent)
+		local Section = {}
+
+		Section.Layout = New("UIListLayout", {
+			Padding = UDim.new(0, 5),
+		})
+
+		Section.Container = New("Frame", {
+			Size = UDim2.new(1, 0, 0, 26),
+			Position = UDim2.fromOffset(0, 24),
+			BackgroundTransparency = 1,
+		}, {
+			Section.Layout,
+		})
+
+		Section.Root = New("Frame", {
+			BackgroundTransparency = 1,
+			Size = UDim2.new(1, 0, 0, 26),
+			LayoutOrder = 7,
+			Parent = Parent,
+		}, {
+			New("TextLabel", {
+				RichText = true,
+				Text = Title,
+				TextTransparency = 0,
+				FontFace = Font.new("rbxassetid://12187365364", Enum.FontWeight.SemiBold, Enum.FontStyle.Normal),
+				TextSize = 18,
+				TextXAlignment = "Center",
+				TextYAlignment = "Center",
+				Size = UDim2.new(1, -16, 0, 18),
+				Position = UDim2.fromOffset(0, 2),
+				ThemeTag = {
+					TextColor3 = "Text",
+				},
+			}),
+			Section.Container,
+		})
+
+		Creator.AddSignal(Section.Layout:GetPropertyChangedSignal("AbsoluteContentSize"), function()
+			Section.Container.Size = UDim2.new(1, 0, 0, Section.Layout.AbsoluteContentSize.Y)
+			Section.Root.Size = UDim2.new(1, 0, 0, Section.Layout.AbsoluteContentSize.Y + 25)
+		end)
+		return Section
+	end
+end)()
+Components.Tab = (function()
+	local New = Creator.New
+	local Spring = Flipper.Spring.new
+	local Instant = Flipper.Instant.new
+	local Components = Components
+
+	local TabModule = {
+		Window = nil,
+		Tabs = {},
+		Containers = {},
+		SelectedTab = 0,
+		TabCount = 0,
+	}
+
+	function TabModule:Init(Window)
+		TabModule.Window = Window
+		return TabModule
+	end
+
+	function TabModule:GetCurrentTabPos()
+		local TabHolderPos = TabModule.Window.TabHolder.AbsolutePosition.Y
+		local TabPos = TabModule.Tabs[TabModule.SelectedTab].Frame.AbsolutePosition.Y
+
+		return TabPos - TabHolderPos
+	end
+
+	function TabModule:New(Title, Icon, Parent)
+		local Window = TabModule.Window
+		local Elements = Library.Elements
+
+		TabModule.TabCount = TabModule.TabCount + 1
+		local TabIndex = TabModule.TabCount
+
+		local Tab = {
+			Selected = false,
+			Name = Title,
+			Type = "Tab",
+		}
+
+		if Library:GetIcon(Icon) then
+			Icon = Library:GetIcon(Icon)
+		end
+
+		if Icon == "" or nil then
+			Icon = nil
+		end
+
+		Tab.Frame = New("TextButton", {
+			Size = UDim2.new(1, 0, 0, 34),
+			BackgroundTransparency = 1,
+			Parent = Parent,
+			ThemeTag = {
+				BackgroundColor3 = "Tab",
+			},
+		}, {
+			New("UICorner", {
+				CornerRadius = UDim.new(0, 6),
+			}),
+			New("TextLabel", {
+				AnchorPoint = Vector2.new(0, 0.5),
+				Position = Icon and UDim2.new(0, 30, 0.5, 0) or UDim2.new(0, 12, 0.5, 0),
+				Text = Title,
+				RichText = true,
+				TextColor3 = Color3.fromRGB(255, 255, 255),
+				TextTransparency = 0,
+				FontFace = Font.new(
+					"rbxasset://fonts/families/GothamSSm.json",
+					Enum.FontWeight.Regular,
+					Enum.FontStyle.Normal
+				),
+				TextSize = 12,
+				TextXAlignment = "Left",
+				TextYAlignment = "Center",
+				Size = UDim2.new(1, -12, 1, 0),
+				BackgroundTransparency = 1,
+				ThemeTag = {
+					TextColor3 = "Text",
+				},
+			}),
+			New("ImageLabel", {
+				AnchorPoint = Vector2.new(0, 0.5),
+				Size = UDim2.fromOffset(16, 16),
+				Position = UDim2.new(0, 8, 0.5, 0),
+				BackgroundTransparency = 1,
+				Image = Icon and Icon or nil,
+				ThemeTag = {
+					ImageColor3 = "Text",
+				},
+			}),
+		})
+
+		local ContainerLayout = New("UIListLayout", {
+			Padding = UDim.new(0, 5),
+			SortOrder = Enum.SortOrder.LayoutOrder,
+		})
+
+		Tab.ContainerFrame = New("ScrollingFrame", {
+			Size = UDim2.fromScale(1, 1),
+			BackgroundTransparency = 1,
+			Parent = Window.ContainerHolder,
+			Visible = false,
+			BottomImage = "rbxassetid://6889812791",
+			MidImage = "rbxassetid://6889812721",
+			TopImage = "rbxassetid://6276641225",
+			ScrollBarImageColor3 = Color3.fromRGB(255, 255, 255),
+			ScrollBarImageTransparency = 0.95,
+			ScrollBarThickness = 3,
+			BorderSizePixel = 0,
+			CanvasSize = UDim2.fromScale(0, 0),
+			ScrollingDirection = Enum.ScrollingDirection.Y,
+		}, {
+			ContainerLayout,
+			New("UIPadding", {
+				PaddingRight = UDim.new(0, 10),
+				PaddingLeft = UDim.new(0, 1),
+				PaddingTop = UDim.new(0, 1),
+				PaddingBottom = UDim.new(0, 1),
+			}),
+		})
+
+		Creator.AddSignal(ContainerLayout:GetPropertyChangedSignal("AbsoluteContentSize"), function()
+			Tab.ContainerFrame.CanvasSize = UDim2.new(0, 0, 0, ContainerLayout.AbsoluteContentSize.Y + 2)
+		end)
+
+		Tab.Motor, Tab.SetTransparency = Creator.SpringMotor(1, Tab.Frame, "BackgroundTransparency")
+
+		Creator.AddSignal(Tab.Frame.MouseEnter, function()
+			Tab.SetTransparency(Tab.Selected and 0.85 or 0.89)
+		end)
+		Creator.AddSignal(Tab.Frame.MouseLeave, function()
+			Tab.SetTransparency(Tab.Selected and 0.89 or 1)
+		end)
+		Creator.AddSignal(Tab.Frame.MouseButton1Down, function()
+			Tab.SetTransparency(0.92)
+		end)
+		Creator.AddSignal(Tab.Frame.MouseButton1Up, function()
+			Tab.SetTransparency(Tab.Selected and 0.85 or 0.89)
+		end)
+		Creator.AddSignal(Tab.Frame.MouseButton1Click, function()
+			TabModule:SelectTab(TabIndex)
+		end)
+
+		TabModule.Containers[TabIndex] = Tab.ContainerFrame
+		TabModule.Tabs[TabIndex] = Tab
+
+		Tab.Container = Tab.ContainerFrame
+		Tab.ScrollFrame = Tab.Container
+
+		function Tab:AddSection(SectionTitle)
+			local Section = { Type = "Section" }
+
+			local SectionFrame = Components.Section(SectionTitle, Tab.Container)
+			Section.Container = SectionFrame.Container
+			Section.ScrollFrame = Tab.Container
+
+			setmetatable(Section, Elements)
+			return Section
+		end
+
+		setmetatable(Tab, Elements)
+		return Tab
+	end
+
+	function TabModule:SelectTab(Tab)
+		local Window = TabModule.Window
+
+		TabModule.SelectedTab = Tab
+
+		for _, TabObject in next, TabModule.Tabs do
+			TabObject.SetTransparency(1)
+			TabObject.Selected = false
+		end
+		TabModule.Tabs[Tab].SetTransparency(0.89)
+		TabModule.Tabs[Tab].Selected = true
+
+		Window.TabDisplay.Text = TabModule.Tabs[Tab].Name
+		Window.SelectorPosMotor:setGoal(Spring(TabModule:GetCurrentTabPos(), { frequency = 6 }))
+
+		task.spawn(function()
+			Window.ContainerHolder.Parent = Window.ContainerAnim
+
+			Window.ContainerPosMotor:setGoal(Spring(15, { frequency = 10 }))
+			Window.ContainerBackMotor:setGoal(Spring(1, { frequency = 10 }))
+			task.wait(0.12)
+			for _, Container in next, TabModule.Containers do
+				Container.Visible = false
+			end
+			TabModule.Containers[Tab].Visible = true
+			Window.ContainerPosMotor:setGoal(Spring(0, { frequency = 5 }))
+			Window.ContainerBackMotor:setGoal(Spring(0, { frequency = 8 }))
+			task.wait(0.12)
+			Window.ContainerHolder.Parent = Window.ContainerCanvas
+		end)
+	end
+
+	return TabModule
+end)()
+Components.Button = (function()
+	local New = Creator.New
+
+	local Spring = Flipper.Spring.new
+
+	return function(Theme, Parent, DialogCheck)
+		DialogCheck = DialogCheck or false
+		local Button = {}
+
+		Button.Title = New("TextLabel", {
+			FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json"),
+			TextColor3 = Color3.fromRGB(200, 200, 200),
+			TextSize = 14,
+			TextWrapped = true,
+			TextXAlignment = Enum.TextXAlignment.Center,
+			TextYAlignment = Enum.TextYAlignment.Center,
+			BackgroundColor3 = Color3.fromRGB(255, 255, 255),
+			AutomaticSize = Enum.AutomaticSize.Y,
+			BackgroundTransparency = 1,
+			Size = UDim2.fromScale(1, 1),
+			ThemeTag = {
+				TextColor3 = "Text",
+			},
+		})
+
+		Button.HoverFrame = New("Frame", {
+			Size = UDim2.fromScale(1, 1),
+			BackgroundTransparency = 1,
+			ThemeTag = {
+				BackgroundColor3 = "Hover",
+			},
+		}, {
+			New("UICorner", {
+				CornerRadius = UDim.new(0, 4),
+			}),
+		})
+
+		Button.Frame = New("TextButton", {
+			Size = UDim2.new(0, 0, 0, 32),
+			Parent = Parent,
+			ThemeTag = {
+				BackgroundColor3 = "DialogButton",
+			},
+		}, {
+			New("UICorner", {
+				CornerRadius = UDim.new(0, 4),
+			}),
+			New("UIStroke", {
+				ApplyStrokeMode = Enum.ApplyStrokeMode.Border,
+				Transparency = 0.65,
+				ThemeTag = {
+					Color = "DialogButtonBorder",
+				},
+			}),
+			Button.HoverFrame,
+			Button.Title,
+		})
+
+		local Motor, SetTransparency = Creator.SpringMotor(1, Button.HoverFrame, "BackgroundTransparency", DialogCheck)
+		Creator.AddSignal(Button.Frame.MouseEnter, function()
+			SetTransparency(0.97)
+		end)
+		Creator.AddSignal(Button.Frame.MouseLeave, function()
+			SetTransparency(1)
+		end)
+		Creator.AddSignal(Button.Frame.MouseButton1Down, function()
+			SetTransparency(1)
+		end)
+		Creator.AddSignal(Button.Frame.MouseButton1Up, function()
+			SetTransparency(0.97)
+		end)
+
+		return Button
+	end
+end)()
+Components.Dialog = (function()
+	local Spring = Flipper.Spring.new
+	local Instant = Flipper.Instant.new
+	local New = Creator.New
+
+	local Dialog = {
+		Window = nil,
+	}
+
+	function Dialog:Init(Window)
+		Dialog.Window = Window
+		return Dialog
+	end
+
+	function Dialog:Create()
+		local NewDialog = {
+			Buttons = 0,
+		}
+
+		NewDialog.TintFrame = New("TextButton", {
+			Text = "",
+			Size = UDim2.fromScale(1, 1),
+			BackgroundColor3 = Color3.fromRGB(0, 0, 0),
+			BackgroundTransparency = 1,
+			Parent = Dialog.Window.Root,
+		}, {
+			New("UICorner", {
+				CornerRadius = UDim.new(0, 8),
+			}),
+		})
+
+		local TintMotor, TintTransparency = Creator.SpringMotor(1, NewDialog.TintFrame, "BackgroundTransparency", true)
+
+		NewDialog.ButtonHolder = New("Frame", {
+			Size = UDim2.new(1, -40, 1, -40),
+			AnchorPoint = Vector2.new(0.5, 0.5),
+			Position = UDim2.fromScale(0.5, 0.5),
+			BackgroundTransparency = 1,
+		}, {
+			New("UIListLayout", {
+				Padding = UDim.new(0, 10),
+				FillDirection = Enum.FillDirection.Horizontal,
+				HorizontalAlignment = Enum.HorizontalAlignment.Center,
+				SortOrder = Enum.SortOrder.LayoutOrder,
+			}),
+		})
+
+		NewDialog.ButtonHolderFrame = New("Frame", {
+			Size = UDim2.new(1, 0, 0, 70),
+			Position = UDim2.new(0, 0, 1, -70),
+			ThemeTag = {
+				BackgroundColor3 = "DialogHolder",
+			},
+		}, {
+			New("Frame", {
+				Size = UDim2.new(1, 0, 0, 1),
+				ThemeTag = {
+					BackgroundColor3 = "DialogHolderLine",
+				},
+			}),
+			NewDialog.ButtonHolder,
+		})
+
+		NewDialog.Title = New("TextLabel", {
+			FontFace = Font.new(
+				"rbxasset://fonts/families/GothamSSm.json",
+				Enum.FontWeight.SemiBold,
+				Enum.FontStyle.Normal
+			),
+			Text = "Dialog",
+			TextColor3 = Color3.fromRGB(240, 240, 240),
+			TextSize = 22,
+			TextXAlignment = Enum.TextXAlignment.Left,
+			Size = UDim2.new(1, 0, 0, 22),
+			Position = UDim2.fromOffset(20, 25),
+			BackgroundColor3 = Color3.fromRGB(255, 255, 255),
+			BackgroundTransparency = 1,
+			ThemeTag = {
+				TextColor3 = "Text",
+			},
+		})
+
+		NewDialog.Scale = New("UIScale", {
+			Scale = 1,
+		})
+
+		local ScaleMotor, Scale = Creator.SpringMotor(1.1, NewDialog.Scale, "Scale")
+
+		NewDialog.Root = New("CanvasGroup", {
+			Size = UDim2.fromOffset(300, 165),
+			AnchorPoint = Vector2.new(0.5, 0.5),
+			Position = UDim2.fromScale(0.5, 0.5),
+			GroupTransparency = 1,
+			Parent = NewDialog.TintFrame,
+			ThemeTag = {
+				BackgroundColor3 = "Dialog",
+			},
+		}, {
+			New("UICorner", {
+				CornerRadius = UDim.new(0, 8),
+			}),
+			New("UIStroke", {
+				Transparency = 0.5,
+				ThemeTag = {
+					Color = "DialogBorder",
+				},
+			}),
+			NewDialog.Scale,
+			NewDialog.Title,
+			NewDialog.ButtonHolderFrame,
+		})
+
+		local RootMotor, RootTransparency = Creator.SpringMotor(1, NewDialog.Root, "GroupTransparency")
+
+		function NewDialog:Open()
+			Library.DialogOpen = true
+			NewDialog.Scale.Scale = 1.1
+			TintTransparency(0.75)
+			RootTransparency(0)
+			Scale(1)
+		end
+
+		function NewDialog:Close()
+			Library.DialogOpen = false
+			TintTransparency(1)
+			RootTransparency(1)
+			Scale(1.1)
+			NewDialog.Root.UIStroke:Destroy()
+			task.wait(0.15)
+			NewDialog.TintFrame:Destroy()
+		end
+
+		function NewDialog:Button(Title, Callback)
+			NewDialog.Buttons = NewDialog.Buttons + 1
+			Title = Title or "Button"
+			Callback = Callback or function() end
+
+			local Button = Components.Button("", NewDialog.ButtonHolder, true)
+			Button.Title.Text = Title
+
+			for _, Btn in next, NewDialog.ButtonHolder:GetChildren() do
+				if Btn:IsA("TextButton") then
+					Btn.Size =
+						UDim2.new(1 / NewDialog.Buttons, -(((NewDialog.Buttons - 1) * 10) / NewDialog.Buttons), 0, 32)
+				end
+			end
+
+			Creator.AddSignal(Button.Frame.MouseButton1Click, function()
+				Library:SafeCallback(Callback)
+				pcall(function()
+					NewDialog:Close()
+				end)
+			end)
+
+			return Button
+		end
+
+		return NewDialog
+	end
+
+	return Dialog
+end)()
+Components.Notification = (function()
+	local Spring = Flipper.Spring.new
+	local Instant = Flipper.Instant.new
+	local New = Creator.New
+
+	local Notification = {}
+
+	function Notification:Init(GUI)
+		Notification.Holder = New("Frame", {
+			Position = UDim2.new(1, -30, 1, -30),
+			Size = UDim2.new(0, 310, 1, -30),
+			AnchorPoint = Vector2.new(1, 1),
+			BackgroundTransparency = 1,
+			Parent = GUI,
+		}, {
+			New("UIListLayout", {
+				HorizontalAlignment = Enum.HorizontalAlignment.Center,
+				SortOrder = Enum.SortOrder.LayoutOrder,
+				VerticalAlignment = Enum.VerticalAlignment.Bottom,
+				Padding = UDim.new(0, 20),
+			}),
+		})
+	end
+
+	function Notification:New(Config)
+		Config.Title = Config.Title or "Title"
+		Config.Content = Config.Content or "Content"
+		Config.SubContent = Config.SubContent or ""
+		Config.Duration = Config.Duration or nil
+		Config.Buttons = Config.Buttons or {}
+		local NewNotification = {
+			Closed = false,
+		}
+
+		NewNotification.AcrylicPaint = Acrylic.AcrylicPaint()
+
+		NewNotification.Title = New("TextLabel", {
+			Position = UDim2.new(0, 14, 0, 17),
+			Text = Config.Title,
+			RichText = true,
+			TextColor3 = Color3.fromRGB(255, 255, 255),
+			TextTransparency = 0,
+			FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json"),
+			TextSize = 13,
+			TextXAlignment = "Left",
+			TextYAlignment = "Center",
+			Size = UDim2.new(1, -12, 0, 12),
+			TextWrapped = true,
+			BackgroundTransparency = 1,
+			ThemeTag = {
+				TextColor3 = "Text",
+			},
+		})
+
+		NewNotification.ContentLabel = New("TextLabel", {
+			FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json"),
+			Text = Config.Content,
+			TextColor3 = Color3.fromRGB(240, 240, 240),
+			TextSize = 14,
+			TextXAlignment = Enum.TextXAlignment.Left,
+			AutomaticSize = Enum.AutomaticSize.Y,
+			Size = UDim2.new(1, 0, 0, 14),
+			BackgroundColor3 = Color3.fromRGB(255, 255, 255),
+			BackgroundTransparency = 1,
+			TextWrapped = true,
+			ThemeTag = {
+				TextColor3 = "Text",
+			},
+		})
+
+		NewNotification.SubContentLabel = New("TextLabel", {
+			FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json"),
+			Text = Config.SubContent,
+			TextColor3 = Color3.fromRGB(240, 240, 240),
+			TextSize = 14,
+			TextXAlignment = Enum.TextXAlignment.Left,
+			AutomaticSize = Enum.AutomaticSize.Y,
+			Size = UDim2.new(1, 0, 0, 14),
+			BackgroundColor3 = Color3.fromRGB(255, 255, 255),
+			BackgroundTransparency = 1,
+			TextWrapped = true,
+			ThemeTag = {
+				TextColor3 = "SubText",
+			},
+		})
+
+		NewNotification.LabelHolder = New("Frame", {
+			AutomaticSize = Enum.AutomaticSize.Y,
+			BackgroundColor3 = Color3.fromRGB(255, 255, 255),
+			BackgroundTransparency = 1,
+			Position = UDim2.fromOffset(14, 40),
+			Size = UDim2.new(1, -28, 0, 0),
+		}, {
+			New("UIListLayout", {
+				SortOrder = Enum.SortOrder.LayoutOrder,
+				VerticalAlignment = Enum.VerticalAlignment.Center,
+				Padding = UDim.new(0, 3),
+			}),
+			NewNotification.ContentLabel,
+			NewNotification.SubContentLabel,
+		})
+
+		NewNotification.CloseButton = New("TextButton", {
+			Text = "",
+			Position = UDim2.new(1, -14, 0, 13),
+			Size = UDim2.fromOffset(20, 20),
+			AnchorPoint = Vector2.new(1, 0),
+			BackgroundTransparency = 1,
+		}, {
+			New("ImageLabel", {
+				Image = Components.Close,
+				Size = UDim2.fromOffset(16, 16),
+				Position = UDim2.fromScale(0.5, 0.5),
+				AnchorPoint = Vector2.new(0.5, 0.5),
+				BackgroundTransparency = 1,
+				ThemeTag = {
+					ImageColor3 = "Text",
+				},
+			}),
+		})
+
+		NewNotification.Root = New("Frame", {
+			BackgroundTransparency = 1,
+			Size = UDim2.new(1, 0, 1, 0),
+			Position = UDim2.fromScale(1, 0),
+		}, {
+			NewNotification.AcrylicPaint.Frame,
+			NewNotification.Title,
+			NewNotification.CloseButton,
+			NewNotification.LabelHolder,
+		})
+
+		if Config.Content == "" then
+			NewNotification.ContentLabel.Visible = false
+		end
+
+		if Config.SubContent == "" then
+			NewNotification.SubContentLabel.Visible = false
+		end
+
+		NewNotification.Holder = New("Frame", {
+			BackgroundTransparency = 1,
+			Size = UDim2.new(1, 0, 0, 200),
+			Parent = Notification.Holder,
+		}, {
+			NewNotification.Root,
+		})
+
+		local RootMotor = Flipper.GroupMotor.new({
+			Scale = 1,
+			Offset = 60,
+		})
+
+		RootMotor:onStep(function(Values)
+			NewNotification.Root.Position = UDim2.new(Values.Scale, Values.Offset, 0, 0)
+		end)
+
+		Creator.AddSignal(NewNotification.CloseButton.MouseButton1Click, function()
+			NewNotification:Close()
+		end)
+
+		function NewNotification:Open()
+			local ContentSize = NewNotification.LabelHolder.AbsoluteSize.Y
+			NewNotification.Holder.Size = UDim2.new(1, 0, 0, 58 + ContentSize)
+
+			RootMotor:setGoal({
+				Scale = Spring(0, { frequency = 5 }),
+				Offset = Spring(0, { frequency = 5 }),
+			})
+		end
+
+		function NewNotification:Close()
+			if not NewNotification.Closed then
+				NewNotification.Closed = true
+				task.spawn(function()
+					RootMotor:setGoal({
+						Scale = Spring(1, { frequency = 5 }),
+						Offset = Spring(60, { frequency = 5 }),
+					})
+					task.wait(0.4)
+					if Library.UseAcrylic then
+						NewNotification.AcrylicPaint.Model:Destroy()
+					end
+					NewNotification.Holder:Destroy()
+				end)
+			end
+		end
+
+		NewNotification:Open()
+		if Config.Duration then
+			task.delay(Config.Duration, function()
+				NewNotification:Close()
+			end)
+		end
+		return NewNotification
+	end
+
+	return Notification
+end)()
+Components.Textbox = (function()
+	local New = Creator.New
+
+	return function(Parent, Acrylic)
+		Acrylic = Acrylic or false
+		local Textbox = {}
+
+		Textbox.Input = New("TextBox", {
+			FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json"),
+			TextColor3 = Color3.fromRGB(200, 200, 200),
+			TextSize = 14,
+			TextXAlignment = Enum.TextXAlignment.Left,
+			TextYAlignment = Enum.TextYAlignment.Center,
+			BackgroundColor3 = Color3.fromRGB(255, 255, 255),
+			AutomaticSize = Enum.AutomaticSize.Y,
+			BackgroundTransparency = 1,
+			Size = UDim2.fromScale(1, 1),
+			Position = UDim2.fromOffset(10, 0),
+			ThemeTag = {
+				TextColor3 = "Text",
+				PlaceholderColor3 = "SubText",
+			},
+		})
+
+		Textbox.Container = New("Frame", {
+			BackgroundTransparency = 1,
+			ClipsDescendants = true,
+			Position = UDim2.new(0, 6, 0, 0),
+			Size = UDim2.new(1, -12, 1, 0),
+		}, {
+			Textbox.Input,
+		})
+
+		Textbox.Indicator = New("Frame", {
+			Size = UDim2.new(1, -4, 0, 1),
+			Position = UDim2.new(0, 2, 1, 0),
+			AnchorPoint = Vector2.new(0, 1),
+			BackgroundTransparency = Acrylic and 0.5 or 0,
+			ThemeTag = {
+				BackgroundColor3 = Acrylic and "InputIndicator" or "DialogInputLine",
+			},
+		})
+
+		Textbox.Frame = New("Frame", {
+			Size = UDim2.new(0, 0, 0, 30),
+			BackgroundTransparency = Acrylic and 0.9 or 0,
+			Parent = Parent,
+			ThemeTag = {
+				BackgroundColor3 = Acrylic and "Input" or "DialogInput",
+			},
+		}, {
+			New("UICorner", {
+				CornerRadius = UDim.new(0, 9),
+			}),
+			New("UIStroke", {
+				ApplyStrokeMode = Enum.ApplyStrokeMode.Border,
+				Transparency = Acrylic and 0.5 or 0.65,
+				ThemeTag = {
+					Color = Acrylic and "InElementBorder" or "DialogButtonBorder",
+				},
+			}),
+			Textbox.Indicator,
+			Textbox.Container,
+		})
+
+		local function Update()
+			local PADDING = 2
+			local Reveal = Textbox.Container.AbsoluteSize.X
+
+			if not Textbox.Input:IsFocused() or Textbox.Input.TextBounds.X <= Reveal - 2 * PADDING then
+				Textbox.Input.Position = UDim2.new(0, PADDING, 0, 0)
+			else
+				local Cursor = Textbox.Input.CursorPosition
+				if Cursor ~= -1 then
+					local subtext = string.sub(Textbox.Input.Text, 1, Cursor - 1)
+					local width = TextService:GetTextSize(
+						subtext,
+						Textbox.Input.TextSize,
+						Textbox.Input.Font,
+						Vector2.new(math.huge, math.huge)
+					).X
+
+					local CurrentCursorPos = Textbox.Input.Position.X.Offset + width
+					if CurrentCursorPos < PADDING then
+						Textbox.Input.Position = UDim2.fromOffset(PADDING - width, 0)
+					elseif CurrentCursorPos > Reveal - PADDING - 1 then
+						Textbox.Input.Position = UDim2.fromOffset(Reveal - width - PADDING - 1, 0)
+					end
+				end
+			end
+		end
+
+		task.spawn(Update)
+
+		Creator.AddSignal(Textbox.Input:GetPropertyChangedSignal("Text"), Update)
+		Creator.AddSignal(Textbox.Input:GetPropertyChangedSignal("CursorPosition"), Update)
+
+		Creator.AddSignal(Textbox.Input.Focused, function()
+			Update()
+			Textbox.Indicator.Size = UDim2.new(1, -2, 0, 2)
+			Textbox.Indicator.Position = UDim2.new(0, 1, 1, 0)
+			Textbox.Indicator.BackgroundTransparency = 0
+			Creator.OverrideTag(Textbox.Frame, { BackgroundColor3 = Acrylic and "InputFocused" or "DialogHolder" })
+			Creator.OverrideTag(Textbox.Indicator, { BackgroundColor3 = "InputIndicatorFocus" })
+		end)
+
+		Creator.AddSignal(Textbox.Input.FocusLost, function()
+			Update()
+			Textbox.Indicator.Size = UDim2.new(1, -4, 0, 1)
+			Textbox.Indicator.Position = UDim2.new(0, 2, 1, 0)
+			Textbox.Indicator.BackgroundTransparency = 0.5
+			Creator.OverrideTag(Textbox.Frame, { BackgroundColor3 = Acrylic and "Input" or "DialogInput" })
+			Creator.OverrideTag(Textbox.Indicator, { BackgroundColor3 = Acrylic and "InputIndicator" or "DialogInputLine" })
+		end)
+
+		return Textbox
+	end
+end)()
+Components.TitleBar = (function()
+	local New = Creator.New
+	local AddSignal = Creator.AddSignal
+
+	return function(Config)
+		local TitleBar = {}
+
+		local function BarButton(Icon, Pos, Parent, Callback)
+			local Button = {
+				Callback = Callback or function() end,
+			}
+
+			Button.Frame = New("TextButton", {
+				Size = UDim2.new(0, 34, 1, -8),
+				AnchorPoint = Vector2.new(1, 0),
+				BackgroundTransparency = 1,
+				Parent = Parent,
+				Position = Pos,
+				Text = "",
+				ThemeTag = {
+					BackgroundColor3 = "Text",
+				},
+			}, {
+				New("UICorner", {
+					CornerRadius = UDim.new(0, 7),
+				}),
+				New("ImageLabel", {
+					Image = Icon,
+					Size = UDim2.fromOffset(16, 16),
+					Position = UDim2.fromScale(0.5, 0.5),
+					AnchorPoint = Vector2.new(0.5, 0.5),
+					BackgroundTransparency = 1,
+					Name = "Icon",
+					ThemeTag = {
+						ImageColor3 = "Text",
+					},
+				}),
+			})
+
+			local Motor, SetTransparency = Creator.SpringMotor(1, Button.Frame, "BackgroundTransparency")
+
+			AddSignal(Button.Frame.MouseEnter, function()
+				SetTransparency(0.94)
+			end)
+			AddSignal(Button.Frame.MouseLeave, function()
+				SetTransparency(1, true)
+			end)
+			AddSignal(Button.Frame.MouseButton1Down, function()
+				SetTransparency(0.96)
+			end)
+			AddSignal(Button.Frame.MouseButton1Up, function()
+				SetTransparency(0.94)
+			end)
+			AddSignal(Button.Frame.MouseButton1Click, Button.Callback)
+
+			Button.SetCallback = function(Func)
+				Button.Callback = Func
+			end
+
+			return Button
+		end
+
+		TitleBar.Frame = New("Frame", {
+			Size = UDim2.new(1, 0, 0, 42),
+			BackgroundTransparency = 1,
+			Parent = Config.Parent,
+		}, {
+			New("Frame", {
+				Size = UDim2.new(1, -16, 1, 0),
+				Position = UDim2.new(0, 16, 0, 0),
+				BackgroundTransparency = 1,
+			}, {
+				New("UIListLayout", {
+					Padding = UDim.new(0, 5),
+					FillDirection = Enum.FillDirection.Horizontal,
+					SortOrder = Enum.SortOrder.LayoutOrder,
+				}),
+				New("TextLabel", {
+					RichText = true,
+					Text = Config.Title,
+					FontFace = Font.new(
+						"rbxasset://fonts/families/GothamSSm.json",
+						Enum.FontWeight.Regular,
+						Enum.FontStyle.Normal
+					),
+					TextSize = 12,
+					TextXAlignment = "Left",
+					TextYAlignment = "Center",
+					Size = UDim2.fromScale(0, 1),
+					AutomaticSize = Enum.AutomaticSize.X,
+					BackgroundTransparency = 1,
+					ThemeTag = {
+						TextColor3 = "Text",
+					},
+				}),
+				New("TextLabel", {
+					RichText = true,
+					Text = Config.SubTitle,
+					TextTransparency = 0.4,
+					FontFace = Font.new(
+						"rbxasset://fonts/families/GothamSSm.json",
+						Enum.FontWeight.Regular,
+						Enum.FontStyle.Normal
+					),
+					TextSize = 12,
+					TextXAlignment = "Left",
+					TextYAlignment = "Center",
+					Size = UDim2.fromScale(0, 1),
+					AutomaticSize = Enum.AutomaticSize.X,
+					BackgroundTransparency = 1,
+					ThemeTag = {
+						TextColor3 = "Text",
+					},
+				}),
+			}),
+			New("Frame", {
+				BackgroundTransparency = 0.5,
+				Size = UDim2.new(1, 0, 0, 1),
+				Position = UDim2.new(0, 0, 1, 0),
+				ThemeTag = {
+					BackgroundColor3 = "TitleBarLine",
+				},
+			}),
+		})
+
+		TitleBar.CloseButton = BarButton(Components.Assets.Close, UDim2.new(1, -4, 0, 4), TitleBar.Frame, function()
+			Library.Window:Dialog({
+				Title = "Close  Hub",
+				Content = "Are you sure you want to exit SakuraTeam Hub?",
+				Buttons = {
+					{
+						Title = "Yes",
+						Callback = function()
+							Library:Destroy()
+						end,
+					},
+					{
+						Title = "No",
+					},
+				},
+			})
+		end)
+		TitleBar.MinButton = BarButton(Components.Assets.Min, UDim2.new(1, -40, 0, 4), TitleBar.Frame, function()
+			Library.Window:Minimize()
+		end)
+
+
+		return TitleBar
+	end
+end)()
+Components.Window = (function()
+	local Spring = Flipper.Spring.new
+	local Instant = Flipper.Instant.new
+	local New = Creator.New
+
+	return function(Config)
+		local Window = {
+			Minimized = false,
+			Maximized = false,
+			Size = Config.Size,
+			CurrentPos = 0,
+			TabWidth = 0,
+			Position = UDim2.fromOffset(
+				Camera.ViewportSize.X / 2 - Config.Size.X.Offset / 2,
+				Camera.ViewportSize.Y / 2 - Config.Size.Y.Offset / 2
+			),
+		}
+
+		local Dragging, DragInput, MousePos, StartPos = false
+		local Resizing, ResizePos = false
+		local MinimizeNotif = false
+
+		Window.AcrylicPaint = Acrylic.AcrylicPaint()
+		Window.TabWidth = Config.TabWidth
+
+		local Selector = New("Frame", {
+			Size = UDim2.fromOffset(4, 0),
+			BackgroundColor3 = Color3.fromRGB(76, 194, 255),
+			Position = UDim2.fromOffset(0, 17),
+			AnchorPoint = Vector2.new(0, 0.5),
+			ThemeTag = {
+				BackgroundColor3 = "Accent",
+			},
+		}, {
+			New("UICorner", {
+				CornerRadius = UDim.new(1, 9),
+			}),
+		})
+
+		local ResizeStartFrame = New("Frame", {
+			Size = UDim2.fromOffset(20, 20),
+			BackgroundTransparency = 1,
+			Position = UDim2.new(1, -20, 1, -20),
+		})
+
+		Window.TabHolder = New("ScrollingFrame", {
+			Size = UDim2.fromScale(1, 1),
+			BackgroundTransparency = 1,
+			ScrollBarImageTransparency = 1,
+			ScrollBarThickness = 0,
+			BorderSizePixel = 0,
+			CanvasSize = UDim2.fromScale(0, 0),
+			ScrollingDirection = Enum.ScrollingDirection.Y,
+		}, {
+			New("UIListLayout", {
+				Padding = UDim.new(0, 4),
+			}),
+		})
+
+		local TabFrame = New("Frame", {
+			Size = UDim2.new(0, Window.TabWidth, 1, -66),
+			Position = UDim2.new(0, 12, 0, 54),
+			BackgroundTransparency = 1,
+			ClipsDescendants = true,
+		}, {
+			Window.TabHolder,
+			Selector,
+		})
+
+		Window.TabDisplay = New("TextLabel", {
+			RichText = true,
+			Text = "Tab",
+			TextTransparency = 0,
+			FontFace = Font.new("rbxassetid://12187365364", Enum.FontWeight.SemiBold, Enum.FontStyle.Normal),
+			TextSize = 28,
+			TextXAlignment = "Left",
+			TextYAlignment = "Center",
+			Size = UDim2.new(1, -16, 0, 28),
+			Position = UDim2.fromOffset(Window.TabWidth + 26, 56),
+			BackgroundTransparency = 1,
+			ThemeTag = {
+				TextColor3 = "Text",
+			},
+		})
+
+		Window.ContainerHolder = New("Frame", {
+			Size = UDim2.fromScale(1, 1),
+			BackgroundTransparency = 1,
+		})
+
+		Window.ContainerAnim = New("CanvasGroup", {
+			Size = UDim2.fromScale(1, 1),
+			BackgroundTransparency = 1,
+		})
+
+		Window.ContainerCanvas = New("Frame", {
+			Size = UDim2.new(1, -Window.TabWidth - 32, 1, -102),
+			Position = UDim2.fromOffset(Window.TabWidth + 26, 90),
+			BackgroundTransparency = 1,
+		}, {
+			Window.ContainerAnim,
+			Window.ContainerHolder
+		})
+
+		Window.Root = New("Frame", {
+			BackgroundTransparency = 0.7,
+			Size = Window.Size,
+			Position = Window.Position,
+			Parent = Config.Parent,
+		}, {
+			New("UICorner", {
+				CornerRadius = UDim.new(0, 10),
+			}),
+			New("ImageLabel", {
+				Size = UDim2.fromScale(1, 1),
+				Position = UDim2.fromScale(0, 0),
+				BackgroundTransparency = 0.7,
+				Image = "rbxassetid://73588662119305",
+				ZIndex = 0,
+			}, {
+				New("UICorner", {
+					CornerRadius = UDim.new(0, 10),
+				}),
+			}),
+			Window.AcrylicPaint.Frame,
+			Window.TabDisplay,
+			Window.ContainerCanvas,
+			TabFrame,
+			ResizeStartFrame,
+		})
+
+		Window.TitleBar = Components.TitleBar({
+			Title = Config.Title,
+			SubTitle = Config.SubTitle,
+			Parent = Window.Root,
+			Window = Window,
+		}, {
+			New("ImageLabel", {
+				Size = UDim2.fromOffset(24, 24),
+				Position = UDim2.new(0, 8, 0.5, -12),
+				AnchorPoint = Vector2.new(0, 0.5),
+				Image = "rbxassetid://12143948578",
+				BackgroundTransparency = 1,
+			}),
+			Window.TitleBar
+		})
+
+		if Library.UseAcrylic then
+			Window.AcrylicPaint.AddParent(Window.Root)
+		end
+
+		local SizeMotor = Flipper.GroupMotor.new({
+			X = Window.Size.X.Offset,
+			Y = Window.Size.Y.Offset,
+		})
+
+		local PosMotor = Flipper.GroupMotor.new({
+			X = Window.Position.X.Offset,
+			Y = Window.Position.Y.Offset,
+		})
+
+		Window.SelectorPosMotor = Flipper.SingleMotor.new(17)
+		Window.SelectorSizeMotor = Flipper.SingleMotor.new(0)
+		Window.ContainerBackMotor = Flipper.SingleMotor.new(0)
+		Window.ContainerPosMotor = Flipper.SingleMotor.new(94)
+
+		SizeMotor:onStep(function(values)
+			Window.Root.Size = UDim2.new(0, values.X, 0, values.Y)
+		end)
+
+		PosMotor:onStep(function(values)
+			Window.Root.Position = UDim2.new(0, values.X, 0, values.Y)
+		end)
+
+		local LastValue = 0
+		local LastTime = 0
+		Window.SelectorPosMotor:onStep(function(Value)
+			Selector.Position = UDim2.new(0, 0, 0, Value + 17)
+			local Now = tick()
+			local DeltaTime = Now - LastTime
+
+			if LastValue ~= nil then
+				Window.SelectorSizeMotor:setGoal(Spring((math.abs(Value - LastValue) / (DeltaTime * 60)) + 16))
+				LastValue = Value
+			end
+			LastTime = Now
+		end)
+
+		Window.SelectorSizeMotor:onStep(function(Value)
+			Selector.Size = UDim2.new(0, 4, 0, Value)
+		end)
+
+		Window.ContainerBackMotor:onStep(function(Value)
+			Window.ContainerAnim.GroupTransparency = Value
+		end)
+
+		Window.ContainerPosMotor:onStep(function(Value)
+			Window.ContainerAnim.Position = UDim2.fromOffset(0, Value)
+		end)
+
+		local OldSizeX
+		local OldSizeY
+		Window.Maximize = function(Value, NoPos, Instant)
+			Window.Maximized = Value
+			Window.TitleBar.MaxButton.Frame.Icon.Image = Value and Components.Assets.Restore or Components.Assets.Max
+
+			if Value then
+				OldSizeX = Window.Size.X.Offset
+				OldSizeY = Window.Size.Y.Offset
+			end
+			local SizeX = Value and Camera.ViewportSize.X or OldSizeX
+			local SizeY = Value and Camera.ViewportSize.Y or OldSizeY
+			SizeMotor:setGoal({
+				X = Flipper[Instant and "Instant" or "Spring"].new(SizeX, { frequency = 6 }),
+				Y = Flipper[Instant and "Instant" or "Spring"].new(SizeY, { frequency = 6 }),
+			})
+			Window.Size = UDim2.fromOffset(SizeX, SizeY)
+
+			if not NoPos then
+				PosMotor:setGoal({
+					X = Spring(Value and 0 or Window.Position.X.Offset, { frequency = 6 }),
+					Y = Spring(Value and 0 or Window.Position.Y.Offset, { frequency = 6 }),
+				})
+			end
+		end
+
+		Creator.AddSignal(Window.TitleBar.Frame.InputBegan, function(Input)
+			if
+				Input.UserInputType == Enum.UserInputType.MouseButton1
+				or Input.UserInputType == Enum.UserInputType.Touch
+			then
+				Dragging = true
+				MousePos = Input.Position
+				StartPos = Window.Root.Position
+
+				if Window.Maximized then
+					StartPos = UDim2.fromOffset(
+						Mouse.X - (Mouse.X * ((OldSizeX - 100) / Window.Root.AbsoluteSize.X)),
+						Mouse.Y - (Mouse.Y * (OldSizeY / Window.Root.AbsoluteSize.Y))
+					)
+				end
+
+				Input.Changed:Connect(function()
+					if Input.UserInputState == Enum.UserInputState.End then
+						Dragging = false
+					end
+				end)
+			end
+		end)
+
+		Creator.AddSignal(Window.TitleBar.Frame.InputChanged, function(Input)
+			if
+				Input.UserInputType == Enum.UserInputType.MouseMovement
+				or Input.UserInputType == Enum.UserInputType.Touch
+			then
+				DragInput = Input
+			end
+		end)
+
+		Creator.AddSignal(ResizeStartFrame.InputBegan, function(Input)
+			if
+				Input.UserInputType == Enum.UserInputType.MouseButton1
+				or Input.UserInputType == Enum.UserInputType.Touch
+			then
+				Resizing = true
+				ResizePos = Input.Position
+			end
+		end)
+
+		Creator.AddSignal(UserInputService.InputChanged, function(Input)
+			if Input == DragInput and Dragging then
+				local Delta = Input.Position - MousePos
+				Window.Position = UDim2.fromOffset(StartPos.X.Offset + Delta.X, StartPos.Y.Offset + Delta.Y)
+				PosMotor:setGoal({
+					X = Instant(Window.Position.X.Offset),
+					Y = Instant(Window.Position.Y.Offset),
+				})
+
+				if Window.Maximized then
+					Window.Maximize(false, true, true)
+				end
+			end
+
+			if
+				(Input.UserInputType == Enum.UserInputType.MouseMovement or Input.UserInputType == Enum.UserInputType.Touch)
+				and Resizing
+			then
+				local Delta = Input.Position - ResizePos
+				local StartSize = Window.Size
+
+				local TargetSize = Vector3.new(StartSize.X.Offset, StartSize.Y.Offset, 0) + Vector3.new(1, 1, 0) * Delta
+				local TargetSizeClamped =
+					Vector2.new(math.clamp(TargetSize.X, 470, 2048), math.clamp(TargetSize.Y, 380, 2048))
+
+				SizeMotor:setGoal({
+					X = Flipper.Instant.new(TargetSizeClamped.X),
+					Y = Flipper.Instant.new(TargetSizeClamped.Y),
+				})
+			end
+		end)
+
+		Creator.AddSignal(UserInputService.InputEnded, function(Input)
+			if Resizing == true or Input.UserInputType == Enum.UserInputType.Touch then
+				Resizing = false
+				Window.Size = UDim2.fromOffset(SizeMotor:getValue().X, SizeMotor:getValue().Y)
+			end
+		end)
+
+		Creator.AddSignal(Window.TabHolder.UIListLayout:GetPropertyChangedSignal("AbsoluteContentSize"), function()
+			Window.TabHolder.CanvasSize = UDim2.new(0, 0, 0, Window.TabHolder.UIListLayout.AbsoluteContentSize.Y)
+		end)
+
+		Creator.AddSignal(UserInputService.InputBegan, function(Input)
+			if
+				type(Library.MinimizeKeybind) == "table"
+				and Library.MinimizeKeybind.Type == "Keybind"
+				and not UserInputService:GetFocusedTextBox()
+			then
+				if Input.KeyCode.Name == Library.MinimizeKeybind.Value then
+					Window:Minimize()
+				end
+			elseif Input.KeyCode == Library.MinimizeKey and not UserInputService:GetFocusedTextBox() then
+				Window:Minimize()
+			end
+		end)
+
+		function Window:Minimize()
+			Window.Minimized = not Window.Minimized
+			Window.Root.Visible = not Window.Minimized
+			if not MinimizeNotif then
+				MinimizeNotif = true
+				local Key = Library.MinimizeKeybind and Library.MinimizeKeybind.Value or Library.MinimizeKey.Name
+				Library:Notify({
+					Title = "Interface",
+					Content = "Press " .. Key .. " to toggle the interface.",
+					Duration = 6
+				})
+			end
+			pcall(SwapIco)
+		end
+
+		function Window:Destroy()
+			if Library.UseAcrylic then
+				Window.AcrylicPaint.Model:Destroy()
+			end
+			Window.Root:Destroy()
+		end
+
+		local DialogModule = Components.Dialog:Init(Window)
+		function Window:Dialog(Config)
+			local Dialog = DialogModule:Create()
+			Dialog.Title.Text = Config.Title
+
+			local Content = New("TextLabel", {
+				FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json"),
+				Text = Config.Content,
+				TextColor3 = Color3.fromRGB(240, 240, 240),
+				TextSize = 14,
+				TextXAlignment = Enum.TextXAlignment.Left,
+				TextYAlignment = Enum.TextYAlignment.Top,
+				Size = UDim2.new(1, -40, 1, 0),
+				Position = UDim2.fromOffset(20, 60),
+				BackgroundTransparency = 1,
+				Parent = Dialog.Root,
+				ClipsDescendants = false,
+				ThemeTag = {
+					TextColor3 = "Text",
+				},
+			})
+
+			New("UISizeConstraint", {
+				MinSize = Vector2.new(300, 165),
+				MaxSize = Vector2.new(620, math.huge),
+				Parent = Dialog.Root,
+			})
+
+			Dialog.Root.Size = UDim2.fromOffset(Content.TextBounds.X + 40, 165)
+			if Content.TextBounds.X + 40 > Window.Size.X.Offset - 120 then
+				Dialog.Root.Size = UDim2.fromOffset(Window.Size.X.Offset - 120, 165)
+				Content.TextWrapped = true
+				Dialog.Root.Size = UDim2.fromOffset(Window.Size.X.Offset - 120, Content.TextBounds.Y + 150)
+			end
+
+			for _, Button in next, Config.Buttons do
+				Dialog:Button(Button.Title, Button.Callback)
+			end
+
+			Dialog:Open()
+		end
+
+		local TabModule = Components.Tab:Init(Window)
+		function Window:AddTab(TabConfig)
+			return TabModule:New(TabConfig.Title, TabConfig.Icon, Window.TabHolder)
+		end
+
+		function Window:SelectTab(Tab)
+			TabModule:SelectTab(Tab)
+		end
+
+		Creator.AddSignal(Window.TabHolder:GetPropertyChangedSignal("CanvasPosition"), function()
+			LastValue = TabModule:GetCurrentTabPos() + 16
+			LastTime = 0
+			Window.SelectorPosMotor:setGoal(Instant(TabModule:GetCurrentTabPos()))
+		end)
+
+		return Window
+	end
+end)()
+
+local ElementsTable = {}
+local AddSignal = Creator.AddSignal
+
+ElementsTable.Button = (function()
+	local Element = {}
+	Element.__index = Element
+	Element.__type = "Button"
+
+	function Element:New(Config)
+		assert(Config.Title, "Button - Missing Title")
+		Config.Callback = Config.Callback or function() end
+
+		local ButtonFrame = Components.Element(Config.Title, Config.Description, self.Container, true, Config)
+
+		local ButtonIco = New("ImageLabel", {
+			Image = "rbxassetid://17293879614",
+			Size = UDim2.fromOffset(20, 20),
+			AnchorPoint = Vector2.new(1, 0.5),
+			Position = UDim2.new(1, -10, 0.5, 0),
+			BackgroundTransparency = 1,
+			Parent = ButtonFrame.Frame,
+			ThemeTag = {
+				ImageColor3 = "Text",
+			},
+		})
+
+		Creator.AddSignal(ButtonFrame.Frame.MouseButton1Click, function()
+			Library:SafeCallback(Config.Callback)
+		end)
+
+		return ButtonFrame
+	end
+
+	return Element
+end)()
+ElementsTable.Toggle = (function()
+	local Element = {}
+	Element.__index = Element
+	Element.__type = "Toggle"
+
+	function Element:New(Idx, Config)
+		assert(Config.Title, "Toggle - Missing Title")
+
+		local Toggle = {
+			Value = Config.Default or false,
+			Callback = Config.Callback or function(Value) end,
+			Type = "Toggle",
+		}
+
+		local ToggleFrame = Components.Element(Config.Title, Config.Description, self.Container, true, Config)
+		ToggleFrame.DescLabel.Size = UDim2.new(1, -54, 0, 14)
+
+		Toggle.SetTitle = ToggleFrame.SetTitle
+		Toggle.SetDesc = ToggleFrame.SetDesc
+		Toggle.Visible = ToggleFrame.Visible
+		Toggle.Elements = ToggleFrame
+
+		local ToggleCircle = New("ImageLabel", {
+			AnchorPoint = Vector2.new(0, 0.5),
+			Size = UDim2.fromOffset(14, 14),
+			Position = UDim2.new(0, 2, 0.5, 0),
+			Image = "http://www.roblox.com/asset/?id=12288739321",
+			ImageTransparency = 0,
+			ThemeTag = {
+				ImageColor3 = "ToggleCorner",
+			},
+		})
+
+		local ToggleBorder = New("UIStroke", {
+			Transparency = 0.5,
+			ThemeTag = {
+				Color = "ToggleCorner",
+			},
+		})
+
+		local ToggleSlider = New("Frame", {
+			Size = UDim2.fromOffset(36, 18),
+			AnchorPoint = Vector2.new(1, 0.5),
+			Position = UDim2.new(1, -10, 0.5, 0),
+			Parent = ToggleFrame.Frame,
+			BackgroundTransparency = 1,
+			ThemeTag = {
+				BackgroundColor3 = "Accent",
+			},
+		}, {
+			New("UICorner", {
+				CornerRadius = UDim.new(0, 10),
+			}),
+			ToggleBorder,
+			ToggleCircle,
+		})
+
+		function Toggle:OnChanged(Func)
+			Toggle.Changed = Func
+			Func(Toggle.Value)
+		end
+
+		function Toggle:SetValue(Value)
+			Value = not not Value
+			Toggle.Value = Value
+
+			Creator.OverrideTag(ToggleBorder, { Color = Toggle.Value and "Accent" or "ToggleCorner" })
+			Creator.OverrideTag(ToggleCircle, { ImageColor3 = Toggle.Value and "ToggleToggled" or "ToggleCorner" })
+			TweenService:Create(
+				ToggleCircle,
+				TweenInfo.new(0.25, Enum.EasingStyle.Quint, Enum.EasingDirection.Out),
+				{ Position = UDim2.new(0, Toggle.Value and 19 or 2, 0.5, 0) }
+			):Play()
+			TweenService:Create(
+				ToggleSlider,
+				TweenInfo.new(0.25, Enum.EasingStyle.Quint, Enum.EasingDirection.Out),
+				{ BackgroundTransparency = Toggle.Value and 0.45 or 1 }
+			):Play()
+			ToggleCircle.ImageTransparency = Toggle.Value and 0 or 0.5
+
+			Library:SafeCallback(Toggle.Callback, Toggle.Value)
+			Library:SafeCallback(Toggle.Changed, Toggle.Value)
+		end
+
+		function Toggle:Destroy()
+			ToggleFrame:Destroy()
+			Library.Options[Idx] = nil
+		end
+
+		Creator.AddSignal(ToggleFrame.Frame.MouseButton1Click, function()
+			Toggle:SetValue(not Toggle.Value)
+		end)
+
+		Toggle:SetValue(Toggle.Value)
+
+		Library.Options[Idx] = Toggle
+		return Toggle
+	end
+
+	return Element
+end)()
+ElementsTable.Dropdown = (function()
+	local Element = {}
+	Element.__index = Element
+	Element.__type = "Dropdown"
+
+	function Element:New(Idx, Config)
+
+		local Dropdown = {
+			Values = Config.Values,
+			Value = Config.Default,
+			Multi = Config.Multi,
+			Buttons = {},
+			Opened = false,
+			Type = "Dropdown",
+			Callback = Config.Callback or function() end,
+		}
+
+		if Dropdown.Multi and Config.AllowNull then
+			Dropdown.Value = {}
+		end
+
+		local DropdownFrame = Components.Element(Config.Title, Config.Description, self.Container, false, Config)
+		DropdownFrame.DescLabel.Size = UDim2.new(1, -170, 0, 14)
+
+		Dropdown.SetTitle = DropdownFrame.SetTitle
+		Dropdown.SetDesc = DropdownFrame.SetDesc
+		Dropdown.Visible = DropdownFrame.Visible
+		Dropdown.Elements = DropdownFrame
+
+		local DropdownDisplay = New("TextLabel", {
+			FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json", Enum.FontWeight.Regular, Enum.FontStyle.Normal),
+			Text = "Value",
+			TextColor3 = Color3.fromRGB(240, 240, 240),
+			TextSize = 13,
+			TextXAlignment = Enum.TextXAlignment.Left,
+			Size = UDim2.new(1, -30, 0, 14),
+			Position = UDim2.new(0, 8, 0.5, 0),
+			AnchorPoint = Vector2.new(0, 0.5),
+			BackgroundColor3 = Color3.fromRGB(255, 255, 255),
+			BackgroundTransparency = 1,
+			TextTruncate = Enum.TextTruncate.AtEnd,
+			ThemeTag = {
+				TextColor3 = "Text",
+			},
+		})
+
+		local DropdownIco = New("ImageLabel", {
+			Image = "rbxassetid://16848361091",
+			Size = UDim2.fromOffset(16, 16),
+			AnchorPoint = Vector2.new(1, 0.5),
+			Position = UDim2.new(1, -8, 0.5, 0),
+			BackgroundTransparency = 1,
+			ThemeTag = {
+				ImageColor3 = "SubText",
+			},
+		})
+
+		local DropdownInner = New("TextButton", {
+			Size = UDim2.fromOffset(160, 30),
+			Position = UDim2.new(1, -10, 0.5, 0),
+			AnchorPoint = Vector2.new(1, 0.5),
+			BackgroundTransparency = 0.9,
+			Parent = DropdownFrame.Frame,
+			ThemeTag = {
+				BackgroundColor3 = "DropdownFrame",
+			},
+		}, {
+			New("UICorner", {
+				CornerRadius = UDim.new(0, 9),
+			}),
+			New("UIStroke", {
+				Transparency = 0.5,
+				ApplyStrokeMode = Enum.ApplyStrokeMode.Border,
+				ThemeTag = {
+					Color = "InElementBorder",
+				},
+			}),
+			DropdownIco,
+			DropdownDisplay,
+		})
+
+		local DropdownListLayout = New("UIListLayout", {
+			Padding = UDim.new(0, 3),
+		})
+
+		local DropdownScrollFrame = New("ScrollingFrame", {
+			Size = UDim2.new(1, -5, 1, -10),
+			Position = UDim2.fromOffset(5, 5),
+			BackgroundTransparency = 1,
+			BottomImage = "rbxassetid://6889812791",
+			MidImage = "rbxassetid://6889812721",
+			TopImage = "rbxassetid://6276641225",
+			ScrollBarImageColor3 = Color3.fromRGB(255, 255, 255),
+			ScrollBarImageTransparency = 0.75,
+			ScrollBarThickness = 5,
+			BorderSizePixel = 0,
+			CanvasSize = UDim2.fromScale(0, 0),
+			ScrollingDirection = Enum.ScrollingDirection.Y,
+		}, {
+			DropdownListLayout,
+		})
+
+		local DropdownHolderFrame = New("Frame", {
+			Size = UDim2.fromScale(1, 0.6),
+			ThemeTag = {
+				BackgroundColor3 = "DropdownHolder",
+			},
+		}, {
+			DropdownScrollFrame,
+			New("UICorner", {
+				CornerRadius = UDim.new(0, 9),
+			}),
+			New("UIStroke", {
+				ApplyStrokeMode = Enum.ApplyStrokeMode.Border,
+				ThemeTag = {
+					Color = "DropdownBorder",
+				},
+			}),
+			New("ImageLabel", {
+				BackgroundTransparency = 1,
+				Image = "http://www.roblox.com/asset/?id=5554236805",
+				ScaleType = Enum.ScaleType.Slice,
+				SliceCenter = Rect.new(23, 23, 277, 277),
+				Size = UDim2.fromScale(1, 1) + UDim2.fromOffset(30, 30),
+				Position = UDim2.fromOffset(-15, -15),
+				ImageColor3 = Color3.fromRGB(0, 0, 0),
+				ImageTransparency = 0.1,
+			}),
+		})
+
+		local DropdownHolderCanvas = New("Frame", {
+			BackgroundTransparency = 1,
+			Size = UDim2.fromOffset(170, 300),
+			Parent = Library.GUI,
+			Visible = false,
+		}, {
+			DropdownHolderFrame,
+			New("UISizeConstraint", {
+				MinSize = Vector2.new(170, 0),
+			}),
+		})
+		table.insert(Library.OpenFrames, DropdownHolderCanvas)
+
+		local function RecalculateListPosition()
+			local Add = 0
+			if Camera.ViewportSize.Y - DropdownInner.AbsolutePosition.Y < DropdownHolderCanvas.AbsoluteSize.Y - 5 then
+				Add = DropdownHolderCanvas.AbsoluteSize.Y
+				- 5
+				- (Camera.ViewportSize.Y - DropdownInner.AbsolutePosition.Y)
+					+ 40
+			end
+			DropdownHolderCanvas.Position =
+				UDim2.fromOffset(DropdownInner.AbsolutePosition.X - 1, DropdownInner.AbsolutePosition.Y - 5 - Add)
+		end
+
+		local ListSizeX = 0
+		local function RecalculateListSize()
+			if #Dropdown.Values > 10 then
+				DropdownHolderCanvas.Size = UDim2.fromOffset(ListSizeX, 392)
+			else
+				DropdownHolderCanvas.Size = UDim2.fromOffset(ListSizeX, DropdownListLayout.AbsoluteContentSize.Y + 10)
+			end
+		end
+
+		local function RecalculateCanvasSize()
+			DropdownScrollFrame.CanvasSize = UDim2.fromOffset(0, DropdownListLayout.AbsoluteContentSize.Y)
+		end
+
+		RecalculateListPosition()
+		RecalculateListSize()
+
+		Creator.AddSignal(DropdownInner:GetPropertyChangedSignal("AbsolutePosition"), RecalculateListPosition)
+
+		Creator.AddSignal(DropdownInner.MouseButton1Click, function()
+			Dropdown:Open()
+		end)
+
+		Creator.AddSignal(UserInputService.InputBegan, function(Input)
+			if
+				Input.UserInputType == Enum.UserInputType.MouseButton1
+				or Input.UserInputType == Enum.UserInputType.Touch
+			then
+				local AbsPos, AbsSize = DropdownHolderFrame.AbsolutePosition, DropdownHolderFrame.AbsoluteSize
+				if
+					Mouse.X < AbsPos.X
+					or Mouse.X > AbsPos.X + AbsSize.X
+					or Mouse.Y < (AbsPos.Y - 20 - 1)
+					or Mouse.Y > AbsPos.Y + AbsSize.Y
+				then
+					Dropdown:Close()
+				end
+			end
+		end)
+
+		local ScrollFrame = self.ScrollFrame
+		function Dropdown:Open()
+			Dropdown.Opened = true
+			ScrollFrame.ScrollingEnabled = false
+			DropdownHolderCanvas.Visible = true
+			TweenService:Create(
+				DropdownHolderFrame,
+				TweenInfo.new(0.3, Enum.EasingStyle.Quart, Enum.EasingDirection.Out),
+				{ Size = UDim2.fromScale(1, 1) }
+			):Play()
+		end
+
+		function Dropdown:Close()
+			Dropdown.Opened = false
+			ScrollFrame.ScrollingEnabled = true
+			DropdownHolderFrame.Size = UDim2.fromScale(1, 0.6)
+			DropdownHolderCanvas.Visible = false
+		end
+
+		function Dropdown:Display()
+			local Values = Dropdown.Values
+			local Str = ""
+
+			if Config.Multi then
+				for Idx, Value in next, Values do
+					if Dropdown.Value[Value] then
+						Str = Str .. Value .. ", "
+					end
+				end
+				Str = Str:sub(1, #Str - 2)
+			else
+				Str = Dropdown.Value or ""
+			end
+			DropdownDisplay.Text = (Str == "" and "--" or Str)
+		end
+
+		function Dropdown:GetActiveValues()
+			if Config.Multi then
+				local T = {}
+
+				for Value, Bool in next, Dropdown.Value do
+					table.insert(T, Value)
+				end
+
+				return T
+			else
+				return Dropdown.Value and 1 or 0
+			end
+		end
+
+		function Dropdown:BuildDropdownList()
+			local Values = Dropdown.Values
+			local Buttons = {}
+
+			for _, Element in next, DropdownScrollFrame:GetChildren() do
+				if not Element:IsA("UIListLayout") then
+					Element:Destroy()
+				end
+			end
+
+			local Count = 0
+
+			for Idx, Value in next, Values do
+				local Table = {}
+
+				Count = Count + 1
+
+				local ButtonSelector = New("Frame", {
+					Size = UDim2.fromOffset(4, 14),
+					BackgroundColor3 = Color3.fromRGB(76, 194, 255),
+					Position = UDim2.fromOffset(-1, 16),
+					AnchorPoint = Vector2.new(0, 0.5),
+					ThemeTag = {
+						BackgroundColor3 = "Accent",
+					},
+				}, {
+					New("UICorner", {
+						CornerRadius = UDim.new(0, 9),
+					}),
+				})
+
+				local ButtonLabel = New("TextLabel", {
+					FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json"),
+					Text = Value,
+					TextColor3 = Color3.fromRGB(200, 200, 200),
+					TextSize = 13,
+					TextXAlignment = Enum.TextXAlignment.Left,
+					BackgroundColor3 = Color3.fromRGB(255, 255, 255),
+					AutomaticSize = Enum.AutomaticSize.Y,
+					BackgroundTransparency = 1,
+					Size = UDim2.fromScale(1, 1),
+					Position = UDim2.fromOffset(10, 0),
+					Name = "ButtonLabel",
+					ThemeTag = {
+						TextColor3 = "Text",
+					},
+				})
+
+				local Button = New("TextButton", {
+					Size = UDim2.new(1, -5, 0, 32),
+					BackgroundTransparency = 1,
+					ZIndex = 23,
+					Text = "",
+					Parent = DropdownScrollFrame,
+					ThemeTag = {
+						BackgroundColor3 = "DropdownOption",
+					},
+				}, {
+					ButtonSelector,
+					ButtonLabel,
+					New("UICorner", {
+						CornerRadius = UDim.new(0, 9),
+					}),
+				})
+
+				local Selected
+
+				if Config.Multi then
+					Selected = Dropdown.Value[Value]
+				else
+					Selected = Dropdown.Value == Value
+				end
+
+				local BackMotor, SetBackTransparency = Creator.SpringMotor(1, Button, "BackgroundTransparency")
+				local SelMotor, SetSelTransparency = Creator.SpringMotor(1, ButtonSelector, "BackgroundTransparency")
+				local SelectorSizeMotor = Flipper.SingleMotor.new(6)
+
+				SelectorSizeMotor:onStep(function(value)
+					ButtonSelector.Size = UDim2.new(0, 4, 0, value)
+				end)
+
+				Creator.AddSignal(Button.MouseEnter, function()
+					SetBackTransparency(Selected and 0.85 or 0.89)
+				end)
+				Creator.AddSignal(Button.MouseLeave, function()
+					SetBackTransparency(Selected and 0.89 or 1)
+				end)
+				Creator.AddSignal(Button.MouseButton1Down, function()
+					SetBackTransparency(0.92)
+				end)
+				Creator.AddSignal(Button.MouseButton1Up, function()
+					SetBackTransparency(Selected and 0.85 or 0.89)
+				end)
+
+				function Table:UpdateButton()
+					if Config.Multi then
+						Selected = Dropdown.Value[Value]
+						if Selected then
+							SetBackTransparency(0.89)
+						end
+					else
+						Selected = Dropdown.Value == Value
+						SetBackTransparency(Selected and 0.89 or 1)
+					end
+
+					SelectorSizeMotor:setGoal(Flipper.Spring.new(Selected and 14 or 6, { frequency = 6 }))
+					SetSelTransparency(Selected and 0 or 1)
+				end
+
+				ButtonLabel.InputBegan:Connect(function(Input)
+					if
+						Input.UserInputType == Enum.UserInputType.MouseButton1
+						or Input.UserInputType == Enum.UserInputType.Touch
+					then
+						local Try = not Selected
+
+						if Dropdown:GetActiveValues() == 1 and not Try and not Config.AllowNull then
+						else
+							if Config.Multi then
+								Selected = Try
+								Dropdown.Value[Value] = Selected and true or nil
+							else
+								Selected = Try
+								Dropdown.Value = Selected and Value or nil
+
+								for _, OtherButton in next, Buttons do
+									OtherButton:UpdateButton()
+								end
+							end
+
+							Table:UpdateButton()
+							Dropdown:Display()
+
+							Library:SafeCallback(Dropdown.Callback, Dropdown.Value)
+							Library:SafeCallback(Dropdown.Changed, Dropdown.Value)
+						end
+					end
+				end)
+
+				Table:UpdateButton()
+				Dropdown:Display()
+
+				Buttons[Button] = Table
+			end
+
+			ListSizeX = 0
+			for Button, Table in next, Buttons do
+				if Button.ButtonLabel then
+					if Button.ButtonLabel.TextBounds.X > ListSizeX then
+						ListSizeX = Button.ButtonLabel.TextBounds.X
+					end
+				end
+			end
+			ListSizeX = ListSizeX + 30
+
+			RecalculateCanvasSize()
+			RecalculateListSize()
+		end
+
+		function Dropdown:SetValues(NewValues)
+			if NewValues then
+				Dropdown.Values = NewValues
+			end
+
+			Dropdown:BuildDropdownList()
+		end
+
+		function Dropdown:OnChanged(Func)
+			Dropdown.Changed = Func
+			Func(Dropdown.Value)
+		end
+
+		function Dropdown:SetValue(Val)
+			if Dropdown.Multi then
+				local nTable = {}
+
+				for Value, Bool in next, Val do
+					if table.find(Dropdown.Values, Value) then
+						nTable[Value] = true
+					end
+				end
+
+				Dropdown.Value = nTable
+			else
+				if not Val then
+					Dropdown.Value = nil
+				elseif table.find(Dropdown.Values, Val) then
+					Dropdown.Value = Val
+				end
+			end
+
+			Dropdown:BuildDropdownList()
+
+			Library:SafeCallback(Dropdown.Callback, Dropdown.Value)
+			Library:SafeCallback(Dropdown.Changed, Dropdown.Value)
+		end
+
+		function Dropdown:Destroy()
+			DropdownFrame:Destroy()
+			Library.Options[Idx] = nil
+		end
+
+		Dropdown:BuildDropdownList()
+		Dropdown:Display()
+
+		local Defaults = {}
+
+		if type(Config.Default) == "string" then
+			local Idx = table.find(Dropdown.Values, Config.Default)
+			if Idx then
+				table.insert(Defaults, Idx)
+			end
+		elseif type(Config.Default) == "table" then
+			for _, Value in next, Config.Default do
+				local Idx = table.find(Dropdown.Values, Value)
+				if Idx then
+					table.insert(Defaults, Idx)
+				end
+			end
+		elseif type(Config.Default) == "number" and Dropdown.Values[Config.Default] ~= nil then
+			table.insert(Defaults, Config.Default)
+		end
+
+		if next(Defaults) then
+			for i = 1, #Defaults do
+				local Index = Defaults[i]
+				if Config.Multi then
+					Dropdown.Value[Dropdown.Values[Index]] = true
+				else
+					Dropdown.Value = Dropdown.Values[Index]
+				end
+
+				if not Config.Multi then
+					break
+				end
+			end
+
+			Dropdown:BuildDropdownList()
+			Dropdown:Display()
+		end
+
+		Library.Options[Idx] = Dropdown
+		return Dropdown
+	end
+
+	return Element
+end)()
+ElementsTable.Paragraph = (function()
+	local Paragraph = {}
+	Paragraph.__index = Paragraph
+	Paragraph.__type = "Paragraph"
+
+	function Paragraph:New(Config)
+		assert(Config.Title, "Paragraph - Missing Title")
+		Config.Content = Config.Content or ""
+
+		local Paragraph = Components.Element(Config.Title, Config.Content, Paragraph.Container, false, Config)
+		Paragraph.Frame.BackgroundTransparency = 0.92
+		Paragraph.Border.Transparency = 0.6
+
+		Paragraph.SetTitle = Paragraph.SetTitle
+		Paragraph.SetDesc = Paragraph.SetDesc
+		Paragraph.Visible = Paragraph.Visible
+		Paragraph.Elements = Paragraph
+
+		return Paragraph
+	end
+
+	return Paragraph
+end)()
+ElementsTable.Slider = (function()
+	local Element = {}
+	Element.__index = Element
+	Element.__type = "Slider"
+
+	function Element:New(Idx, Config)
+		assert(Config.Title, "Slider - Missing Title.")
+		assert(Config.Default, "Slider - Missing default value.")
+		assert(Config.Min, "Slider - Missing minimum value.")
+		assert(Config.Max, "Slider - Missing maximum value.")
+		assert(Config.Rounding, "Slider - Missing rounding value.")
+
+		local Slider = {
+			Value = nil,
+			Min = Config.Min,
+			Max = Config.Max,
+			Rounding = Config.Rounding,
+			Callback = Config.Callback or function(Value) end,
+			Type = "Slider",
+		}
+
+		local Dragging = false
+
+		local SliderFrame = Components.Element(Config.Title, Config.Description, self.Container, false, Config)
+		SliderFrame.DescLabel.Size = UDim2.new(1, -170, 0, 14)
+
+		Slider.Elements = SliderFrame
+		Slider.SetTitle = SliderFrame.SetTitle
+		Slider.SetDesc = SliderFrame.SetDesc
+		Slider.Visible = SliderFrame.Visible
+
+		local SliderDot = New("ImageLabel", {
+			AnchorPoint = Vector2.new(0, 0.5),
+			Position = UDim2.new(0, -7, 0.5, 0),
+			Size = UDim2.fromOffset(20, 20),
+			Image = "http://www.roblox.com/asset/?id=15969672655",
+			ThemeTag = {
+				ImageColor3 = "Accent",
+			},
+		})
+
+		local SliderRail = New("Frame", {
+			BackgroundTransparency = 1,
+			Position = UDim2.fromOffset(7, 0),
+			Size = UDim2.new(1, -10, 1, 0),
+		}, {
+			SliderDot,
+		})
+
+		local SliderFill = New("Frame", {
+			Size = UDim2.new(1, 0, 1, 0),
+			ThemeTag = {
+				BackgroundColor3 = "Accent",
+			},
+		}, {
+			New("UICorner", {
+				CornerRadius = UDim.new(1, 0),
+			}),
+		})
+
+		local SliderDisplay = New("TextLabel", {
+			FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json"),
+			Text = "Value",
+			TextSize = 12,
+			TextWrapped = true,
+			TextXAlignment = Enum.TextXAlignment.Right,
+			BackgroundColor3 = Color3.fromRGB(255, 255, 255),
+			BackgroundTransparency = 1,
+			Size = UDim2.new(0, 100, 0, 14),
+			Position = UDim2.new(0, -4, 0.5, 0),
+			AnchorPoint = Vector2.new(1, 0.5),
+			ThemeTag = {
+				TextColor3 = "SubText",
+			},
+		})
+
+		local SliderInner = New("Frame", {
+			Size = UDim2.new(1, 0, 0, 4),
+			AnchorPoint = Vector2.new(1, 0.5),
+			Position = UDim2.new(1, -10, 0.5, 0),
+			BackgroundTransparency = 0.4,
+			Parent = SliderFrame.Frame,
+			ThemeTag = {
+				BackgroundColor3 = "SliderRail",
+			},
+		}, {
+			New("UICorner", {
+				CornerRadius = UDim.new(1, 0),
+			}),
+			New("UISizeConstraint", {
+				MaxSize = Vector2.new(150, math.huge),
+			}),
+			SliderDisplay,
+			SliderFill,
+			SliderRail,
+		})
+
+		Creator.AddSignal(SliderDot.InputBegan, function(Input)
+			if
+				Input.UserInputType == Enum.UserInputType.MouseButton1
+				or Input.UserInputType == Enum.UserInputType.Touch
+			then
+				Dragging = true
+			end
+		end)
+
+		Creator.AddSignal(SliderDot.InputEnded, function(Input)
+			if
+				Input.UserInputType == Enum.UserInputType.MouseButton1
+				or Input.UserInputType == Enum.UserInputType.Touch
+			then
+				Dragging = false
+			end
+		end)
+
+		Creator.AddSignal(UserInputService.InputChanged, function(Input)
+			if
+				Dragging
+				and (
+					Input.UserInputType == Enum.UserInputType.MouseMovement
+						or Input.UserInputType == Enum.UserInputType.Touch
+				)
+			then
+				local SizeScale =
+					math.clamp((Input.Position.X - SliderRail.AbsolutePosition.X) / SliderRail.AbsoluteSize.X, 0, 1)
+				Slider:SetValue(Slider.Min + ((Slider.Max - Slider.Min) * SizeScale))
+			end
+		end)
+
+		function Slider:OnChanged(Func)
+			Slider.Changed = Func
+			Func(Slider.Value)
+		end
+
+		function Slider:SetValue(Value)
+			self.Value = Library:Round(math.clamp(Value, Slider.Min, Slider.Max), Slider.Rounding)
+			SliderDot.Position = UDim2.new((self.Value - Slider.Min) / (Slider.Max - Slider.Min), -7, 0.5, 0)
+			SliderFill.Size = UDim2.fromScale((self.Value - Slider.Min) / (Slider.Max - Slider.Min), 1)
+			SliderDisplay.Text = tostring(self.Value)
+
+			Library:SafeCallback(Slider.Callback, self.Value)
+			Library:SafeCallback(Slider.Changed, self.Value)
+		end
+
+		function Slider:Destroy()
+			SliderFrame:Destroy()
+			Library.Options[Idx] = nil
+		end
+
+		Slider:SetValue(Config.Default)
+
+		Library.Options[Idx] = Slider
+		return Slider
+	end
+
+	return Element
+end)()
+ElementsTable.Keybind = (function()
+	local Element = {}
+	Element.__index = Element
+	Element.__type = "Keybind"
+
+	function Element:New(Idx, Config)
+		assert(Config.Title, "KeyBind - Missing Title")
+		assert(Config.Default, "KeyBind - Missing default value.")
+
+		local Keybind = {
+			Value = Config.Default,
+			Toggled = false,
+			Mode = Config.Mode or "Toggle",
+			Type = "Keybind",
+			Callback = Config.Callback or function(Value) end,
+			ChangedCallback = Config.ChangedCallback or function(New) end,
+		}
+
+		local Picking = false
+
+		local KeybindFrame = Components.Element(Config.Title, Config.Description, self.Container, true)
+
+		Keybind.SetTitle = KeybindFrame.SetTitle
+		Keybind.SetDesc = KeybindFrame.SetDesc
+		Keybind.Visible = KeybindFrame.Visible
+		Keybind.Elements = KeybindFrame
+
+		local KeybindDisplayLabel = New("TextLabel", {
+			FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json", Enum.FontWeight.Regular, Enum.FontStyle.Normal),
+			Text = Config.Default,
+			TextColor3 = Color3.fromRGB(240, 240, 240),
+			TextSize = 13,
+			TextXAlignment = Enum.TextXAlignment.Center,
+			Size = UDim2.new(0, 0, 0, 14),
+			Position = UDim2.new(0, 0, 0.5, 0),
+			AnchorPoint = Vector2.new(0, 0.5),
+			BackgroundColor3 = Color3.fromRGB(255, 255, 255),
+			AutomaticSize = Enum.AutomaticSize.X,
+			BackgroundTransparency = 1,
+			ThemeTag = {
+				TextColor3 = "Text",
+			},
+		})
+
+		local KeybindDisplayFrame = New("TextButton", {
+			Size = UDim2.fromOffset(0, 30),
+			Position = UDim2.new(1, -10, 0.5, 0),
+			AnchorPoint = Vector2.new(1, 0.5),
+			BackgroundTransparency = 0.9,
+			Parent = KeybindFrame.Frame,
+			AutomaticSize = Enum.AutomaticSize.X,
+			ThemeTag = {
+				BackgroundColor3 = "Keybind",
+			},
+		}, {
+			New("UICorner", {
+				CornerRadius = UDim.new(0, 9),
+			}),
+			New("UIPadding", {
+				PaddingLeft = UDim.new(0, 8),
+				PaddingRight = UDim.new(0, 8),
+			}),
+			New("UIStroke", {
+				Transparency = 0.5,
+				ApplyStrokeMode = Enum.ApplyStrokeMode.Border,
+				ThemeTag = {
+					Color = "InElementBorder",
+				},
+			}),
+			KeybindDisplayLabel,
+		})
+
+		function Keybind:GetState()
+			if UserInputService:GetFocusedTextBox() and Keybind.Mode ~= "Always" then
+				return false
+			end
+
+			if Keybind.Mode == "Always" then
+				return true
+			elseif Keybind.Mode == "Hold" then
+				if Keybind.Value == "None" then
+					return false
+				end
+
+				local Key = Keybind.Value
+
+				if Key == "MouseLeft" or Key == "MouseRight" then
+					return Key == "MouseLeft" and UserInputService:IsMouseButtonPressed(Enum.UserInputType.MouseButton1)
+						or Key == "MouseRight"
+						and UserInputService:IsMouseButtonPressed(Enum.UserInputType.MouseButton2)
+				else
+					return UserInputService:IsKeyDown(Enum.KeyCode[Keybind.Value])
+				end
+			else
+				return Keybind.Toggled
+			end
+		end
+
+		function Keybind:SetValue(Key, Mode)
+			Key = Key or Keybind.Key
+			Mode = Mode or Keybind.Mode
+
+			KeybindDisplayLabel.Text = Key
+			Keybind.Value = Key
+			Keybind.Mode = Mode
+		end
+
+		function Keybind:OnClick(Callback)
+			Keybind.Clicked = Callback
+		end
+
+		function Keybind:OnChanged(Callback)
+			Keybind.Changed = Callback
+			Callback(Keybind.Value)
+		end
+
+		function Keybind:DoClick()
+			Library:SafeCallback(Keybind.Callback, Keybind.Toggled)
+			Library:SafeCallback(Keybind.Clicked, Keybind.Toggled)
+		end
+
+		function Keybind:Destroy()
+			KeybindFrame:Destroy()
+			Library.Options[Idx] = nil
+		end
+
+		Creator.AddSignal(KeybindDisplayFrame.InputBegan, function(Input)
+			if
+				Input.UserInputType == Enum.UserInputType.MouseButton1
+				or Input.UserInputType == Enum.UserInputType.Touch
+			then
+				Picking = true
+				KeybindDisplayLabel.Text = "..."
+
+				wait(0.2)
+
+				local Event
+				Event = UserInputService.InputBegan:Connect(function(Input)
+					local Key
+
+					if Input.UserInputType == Enum.UserInputType.Keyboard then
+						Key = Input.KeyCode.Name
+					elseif Input.UserInputType == Enum.UserInputType.MouseButton1 then
+						Key = "MouseLeft"
+					elseif Input.UserInputType == Enum.UserInputType.MouseButton2 then
+						Key = "MouseRight"
+					end
+
+					local EndedEvent
+					EndedEvent = UserInputService.InputEnded:Connect(function(Input)
+						if
+							Input.KeyCode.Name == Key
+							or Key == "MouseLeft" and Input.UserInputType == Enum.UserInputType.MouseButton1
+							or Key == "MouseRight" and Input.UserInputType == Enum.UserInputType.MouseButton2
+						then
+							Picking = false
+
+							KeybindDisplayLabel.Text = Key
+							Keybind.Value = Key
+
+							Library:SafeCallback(Keybind.ChangedCallback, Input.KeyCode or Input.UserInputType)
+							Library:SafeCallback(Keybind.Changed, Input.KeyCode or Input.UserInputType)
+
+							Event:Disconnect()
+							EndedEvent:Disconnect()
+						end
+					end)
+				end)
+			end
+		end)
+
+		Creator.AddSignal(UserInputService.InputBegan, function(Input)
+			if not Picking and not UserInputService:GetFocusedTextBox() then
+				if Keybind.Mode == "Toggle" then
+					local Key = Keybind.Value
+
+					if Key == "MouseLeft" or Key == "MouseRight" then
+						if
+							Key == "MouseLeft" and Input.UserInputType == Enum.UserInputType.MouseButton1
+							or Key == "MouseRight" and Input.UserInputType == Enum.UserInputType.MouseButton2
+						then
+							Keybind.Toggled = not Keybind.Toggled
+							Keybind:DoClick()
+						end
+					elseif Input.UserInputType == Enum.UserInputType.Keyboard then
+						if Input.KeyCode.Name == Key then
+							Keybind.Toggled = not Keybind.Toggled
+							Keybind:DoClick()
+						end
+					end
+				end
+			end
+		end)
+
+		Library.Options[Idx] = Keybind
+		return Keybind
+	end
+
+	return Element
+end)()
+ElementsTable.Colorpicker = (function()
+	local Element = {}
+	Element.__index = Element
+	Element.__type = "Colorpicker"
+
+	function Element:New(Idx, Config)
+		assert(Config.Title, "Colorpicker - Missing Title")
+		assert(Config.Default, "AddColorPicker: Missing default value.")
+
+		local Colorpicker = {
+			Value = Config.Default,
+			Transparency = Config.Transparency or 0,
+			Type = "Colorpicker",
+			Title = type(Config.Title) == "string" and Config.Title or "Colorpicker",
+			Callback = Config.Callback or function(Color) end,
+		}
+
+		function Colorpicker:SetHSVFromRGB(Color)
+			local H, S, V = Color3.toHSV(Color)
+			Colorpicker.Hue = H
+			Colorpicker.Sat = S
+			Colorpicker.Vib = V
+		end
+
+		Colorpicker:SetHSVFromRGB(Colorpicker.Value)
+
+		local ColorpickerFrame = Components.Element(Config.Title, Config.Description, self.Container, true)
+
+		Colorpicker.SetTitle = ColorpickerFrame.SetTitle
+		Colorpicker.SetDesc = ColorpickerFrame.SetDesc
+		Colorpicker.Visible = ColorpickerFrame.Visible
+		Colorpicker.Elements = ColorpickerFrame
+
+		local DisplayFrameColor = New("Frame", {
+			Size = UDim2.fromScale(1, 1),
+			BackgroundColor3 = Colorpicker.Value,
+			Parent = ColorpickerFrame.Frame,
+		}, {
+			New("UICorner", {
+				CornerRadius = UDim.new(0, 4),
+			}),
+		})
+
+		local DisplayFrame = New("ImageLabel", {
+			Size = UDim2.fromOffset(26, 26),
+			Position = UDim2.new(1, -10, 0.5, 0),
+			AnchorPoint = Vector2.new(1, 0.5),
+			Parent = ColorpickerFrame.Frame,
+			Image = "http://www.roblox.com/asset/?id=14204231522",
+			ImageTransparency = 0.45,
+			ScaleType = Enum.ScaleType.Tile,
+			TileSize = UDim2.fromOffset(40, 40),
+		}, {
+			New("UICorner", {
+				CornerRadius = UDim.new(0, 4),
+			}),
+			DisplayFrameColor,
+		})
+
+		local function CreateColorDialog()
+			local Dialog = Components.Dialog:Create()
+			Dialog.Title.Text = Colorpicker.Title
+			Dialog.Root.Size = UDim2.fromOffset(430, 330)
+
+			local Hue, Sat, Vib = Colorpicker.Hue, Colorpicker.Sat, Colorpicker.Vib
+			local Transparency = Colorpicker.Transparency
+
+			local function CreateInput()
+				local Box = Components.Textbox()
+				Box.Frame.Parent = Dialog.Root
+				Box.Frame.Size = UDim2.new(0, 90, 0, 32)
+
+				return Box
+			end
+
+			local function CreateInputLabel(Text, Pos)
+				return New("TextLabel", {
+					FontFace = Font.new(
+						"rbxasset://fonts/families/GothamSSm.json",
+						Enum.FontWeight.Medium,
+						Enum.FontStyle.Normal
+					),
+					Text = Text,
+					TextColor3 = Color3.fromRGB(240, 240, 240),
+					TextSize = 13,
+					TextXAlignment = Enum.TextXAlignment.Left,
+					Size = UDim2.new(1, 0, 0, 32),
+					Position = Pos,
+					BackgroundTransparency = 1,
+					Parent = Dialog.Root,
+					ThemeTag = {
+						TextColor3 = "Text",
+					},
+				})
+			end
+
+			local function GetRGB()
+				local Value = Color3.fromHSV(Hue, Sat, Vib)
+				return { R = math.floor(Value.r * 255), G = math.floor(Value.g * 255), B = math.floor(Value.b * 255) }
+			end
+
+			local SatCursor = New("ImageLabel", {
+				Size = UDim2.new(0, 18, 0, 18),
+				ScaleType = Enum.ScaleType.Fit,
+				AnchorPoint = Vector2.new(0.5, 0.5),
+				BackgroundTransparency = 1,
+				Image = "http://www.roblox.com/asset/?id=4805639000",
+			})
+
+			local SatVibMap = New("ImageLabel", {
+				Size = UDim2.fromOffset(180, 160),
+				Position = UDim2.fromOffset(20, 55),
+				Image = "rbxassetid://4155801252",
+				BackgroundColor3 = Colorpicker.Value,
+				BackgroundTransparency = 0,
+				Parent = Dialog.Root,
+			}, {
+				New("UICorner", {
+					CornerRadius = UDim.new(0, 4),
+				}),
+				SatCursor,
+			})
+
+			local OldColorFrame = New("Frame", {
+				BackgroundColor3 = Colorpicker.Value,
+				Size = UDim2.fromScale(1, 1),
+				BackgroundTransparency = Colorpicker.Transparency,
+			}, {
+				New("UICorner", {
+					CornerRadius = UDim.new(0, 4),
+				}),
+			})
+
+			local OldColorFrameChecker = New("ImageLabel", {
+				Image = "http://www.roblox.com/asset/?id=14204231522",
+				ImageTransparency = 0.45,
+				ScaleType = Enum.ScaleType.Tile,
+				TileSize = UDim2.fromOffset(40, 40),
+				BackgroundTransparency = 1,
+				Position = UDim2.fromOffset(112, 220),
+				Size = UDim2.fromOffset(88, 24),
+				Parent = Dialog.Root,
+			}, {
+				New("UICorner", {
+					CornerRadius = UDim.new(0, 4),
+				}),
+				New("UIStroke", {
+					Thickness = 2,
+					Transparency = 0.75,
+				}),
+				OldColorFrame,
+			})
+
+			local DialogDisplayFrame = New("Frame", {
+				BackgroundColor3 = Colorpicker.Value,
+				Size = UDim2.fromScale(1, 1),
+				BackgroundTransparency = 0,
+			}, {
+				New("UICorner", {
+					CornerRadius = UDim.new(0, 4),
+				}),
+			})
+
+			local DialogDisplayFrameChecker = New("ImageLabel", {
+				Image = "http://www.roblox.com/asset/?id=14204231522",
+				ImageTransparency = 0.45,
+				ScaleType = Enum.ScaleType.Tile,
+				TileSize = UDim2.fromOffset(40, 40),
+				BackgroundTransparency = 1,
+				Position = UDim2.fromOffset(20, 220),
+				Size = UDim2.fromOffset(88, 24),
+				Parent = Dialog.Root,
+			}, {
+				New("UICorner", {
+					CornerRadius = UDim.new(0, 4),
+				}),
+				New("UIStroke", {
+					Thickness = 2,
+					Transparency = 0.75,
+				}),
+				DialogDisplayFrame,
+			})
+
+			local SequenceTable = {}
+
+			for Color = 0, 1, 0.1 do
+				table.insert(SequenceTable, ColorSequenceKeypoint.new(Color, Color3.fromHSV(Color, 1, 1)))
+			end
+
+			local HueSliderGradient = New("UIGradient", {
+				Color = ColorSequence.new(SequenceTable),
+				Rotation = 90,
+			})
+
+			local HueDragHolder = New("Frame", {
+				Size = UDim2.new(1, 0, 1, -10),
+				Position = UDim2.fromOffset(0, 5),
+				BackgroundTransparency = 1,
+			})
+
+			local HueDrag = New("ImageLabel", {
+				Size = UDim2.fromOffset(14, 14),
+				Image = "http://www.roblox.com/asset/?id=12266946128",
+				Parent = HueDragHolder,
+				ThemeTag = {
+					ImageColor3 = "DialogInput",
+				},
+			})
+
+			local HueSlider = New("Frame", {
+				Size = UDim2.fromOffset(12, 190),
+				Position = UDim2.fromOffset(210, 55),
+				Parent = Dialog.Root,
+			}, {
+				New("UICorner", {
+					CornerRadius = UDim.new(1, 0),
+				}),
+				HueSliderGradient,
+				HueDragHolder,
+			})
+
+			local HexInput = CreateInput()
+			HexInput.Frame.Position = UDim2.fromOffset(Config.Transparency and 260 or 240, 55)
+			CreateInputLabel("Hex", UDim2.fromOffset(Config.Transparency and 360 or 340, 55))
+
+			local RedInput = CreateInput()
+			RedInput.Frame.Position = UDim2.fromOffset(Config.Transparency and 260 or 240, 95)
+			CreateInputLabel("Red", UDim2.fromOffset(Config.Transparency and 360 or 340, 95))
+
+			local GreenInput = CreateInput()
+			GreenInput.Frame.Position = UDim2.fromOffset(Config.Transparency and 260 or 240, 135)
+			CreateInputLabel("Green", UDim2.fromOffset(Config.Transparency and 360 or 340, 135))
+
+			local BlueInput = CreateInput()
+			BlueInput.Frame.Position = UDim2.fromOffset(Config.Transparency and 260 or 240, 175)
+			CreateInputLabel("Blue", UDim2.fromOffset(Config.Transparency and 360 or 340, 175))
+
+			local AlphaInput
+			if Config.Transparency then
+				AlphaInput = CreateInput()
+				AlphaInput.Frame.Position = UDim2.fromOffset(260, 215)
+				CreateInputLabel("Alpha", UDim2.fromOffset(360, 215))
+			end
+
+			local TransparencySlider, TransparencyDrag, TransparencyColor
+			if Config.Transparency then
+				local TransparencyDragHolder = New("Frame", {
+					Size = UDim2.new(1, 0, 1, -10),
+					Position = UDim2.fromOffset(0, 5),
+					BackgroundTransparency = 1,
+				})
+
+				TransparencyDrag = New("ImageLabel", {
+					Size = UDim2.fromOffset(14, 14),
+					Image = "http://www.roblox.com/asset/?id=12266946128",
+					Parent = TransparencyDragHolder,
+					ThemeTag = {
+						ImageColor3 = "DialogInput",
+					},
+				})
+
+				TransparencyColor = New("Frame", {
+					Size = UDim2.fromScale(1, 1),
+				}, {
+					New("UIGradient", {
+						Transparency = NumberSequence.new({
+							NumberSequenceKeypoint.new(0, 0),
+							NumberSequenceKeypoint.new(1, 1),
+						}),
+						Rotation = 270,
+					}),
+					New("UICorner", {
+						CornerRadius = UDim.new(1, 0),
+					}),
+				})
+
+				TransparencySlider = New("Frame", {
+					Size = UDim2.fromOffset(12, 190),
+					Position = UDim2.fromOffset(230, 55),
+					Parent = Dialog.Root,
+					BackgroundTransparency = 1,
+				}, {
+					New("UICorner", {
+						CornerRadius = UDim.new(1, 0),
+					}),
+					New("ImageLabel", {
+						Image = "http://www.roblox.com/asset/?id=14204231522",
+						ImageTransparency = 0.45,
+						ScaleType = Enum.ScaleType.Tile,
+						TileSize = UDim2.fromOffset(40, 40),
+						BackgroundTransparency = 1,
+						Size = UDim2.fromScale(1, 1),
+						Parent = Dialog.Root,
+					}, {
+						New("UICorner", {
+							CornerRadius = UDim.new(1, 0),
+						}),
+					}),
+					TransparencyColor,
+					TransparencyDragHolder,
+				})
+			end
+
+			local function Display()
+				SatVibMap.BackgroundColor3 = Color3.fromHSV(Hue, 1, 1)
+				HueDrag.Position = UDim2.new(0, -1, Hue, -6)
+				SatCursor.Position = UDim2.new(Sat, 0, 1 - Vib, 0)
+				DialogDisplayFrame.BackgroundColor3 = Color3.fromHSV(Hue, Sat, Vib)
+
+				HexInput.Input.Text = "#" .. Color3.fromHSV(Hue, Sat, Vib):ToHex()
+				RedInput.Input.Text = GetRGB()["R"]
+				GreenInput.Input.Text = GetRGB()["G"]
+				BlueInput.Input.Text = GetRGB()["B"]
+
+				if Config.Transparency then
+					TransparencyColor.BackgroundColor3 = Color3.fromHSV(Hue, Sat, Vib)
+					DialogDisplayFrame.BackgroundTransparency = Transparency
+					TransparencyDrag.Position = UDim2.new(0, -1, 1 - Transparency, -6)
+					AlphaInput.Input.Text = Library:Round((1 - Transparency) * 100, 0) .. "%"
+				end
+			end
+
+			Creator.AddSignal(HexInput.Input.FocusLost, function(Enter)
+				if Enter then
+					local Success, Result = pcall(Color3.fromHex, HexInput.Input.Text)
+					if Success and typeof(Result) == "Color3" then
+						Hue, Sat, Vib = Color3.toHSV(Result)
+					end
+				end
+				Display()
+			end)
+
+			Creator.AddSignal(RedInput.Input.FocusLost, function(Enter)
+				if Enter then
+					local CurrentColor = GetRGB()
+					local Success, Result = pcall(Color3.fromRGB, RedInput.Input.Text, CurrentColor["G"], CurrentColor["B"])
+					if Success and typeof(Result) == "Color3" then
+						if tonumber(RedInput.Input.Text) <= 255 then
+							Hue, Sat, Vib = Color3.toHSV(Result)
+						end
+					end
+				end
+				Display()
+			end)
+
+			Creator.AddSignal(GreenInput.Input.FocusLost, function(Enter)
+				if Enter then
+					local CurrentColor = GetRGB()
+					local Success, Result =
+						pcall(Color3.fromRGB, CurrentColor["R"], GreenInput.Input.Text, CurrentColor["B"])
+					if Success and typeof(Result) == "Color3" then
+						if tonumber(GreenInput.Input.Text) <= 255 then
+							Hue, Sat, Vib = Color3.toHSV(Result)
+						end
+					end
+				end
+				Display()
+			end)
+
+			Creator.AddSignal(BlueInput.Input.FocusLost, function(Enter)
+				if Enter then
+					local CurrentColor = GetRGB()
+					local Success, Result =
+						pcall(Color3.fromRGB, CurrentColor["R"], CurrentColor["G"], BlueInput.Input.Text)
+					if Success and typeof(Result) == "Color3" then
+						if tonumber(BlueInput.Input.Text) <= 255 then
+							Hue, Sat, Vib = Color3.toHSV(Result)
+						end
+					end
+				end
+				Display()
+			end)
+
+			if Config.Transparency then
+				Creator.AddSignal(AlphaInput.Input.FocusLost, function(Enter)
+					if Enter then
+						pcall(function()
+							local Value = tonumber(AlphaInput.Input.Text)
+							if Value >= 0 and Value <= 100 then
+								Transparency = 1 - Value * 0.01
+							end
+						end)
+					end
+					Display()
+				end)
+			end
+
+			Creator.AddSignal(SatVibMap.InputBegan, function(Input)
+				if
+					Input.UserInputType == Enum.UserInputType.MouseButton1
+					or Input.UserInputType == Enum.UserInputType.Touch
+				then
+					while UserInputService:IsMouseButtonPressed(Enum.UserInputType.MouseButton1) do
+						local MinX = SatVibMap.AbsolutePosition.X
+						local MaxX = MinX + SatVibMap.AbsoluteSize.X
+						local MouseX = math.clamp(Mouse.X, MinX, MaxX)
+
+						local MinY = SatVibMap.AbsolutePosition.Y
+						local MaxY = MinY + SatVibMap.AbsoluteSize.Y
+						local MouseY = math.clamp(Mouse.Y, MinY, MaxY)
+
+						Sat = (MouseX - MinX) / (MaxX - MinX)
+						Vib = 1 - ((MouseY - MinY) / (MaxY - MinY))
+						Display()
+
+						RenderStepped:Wait()
+					end
+				end
+			end)
+
+			Creator.AddSignal(HueSlider.InputBegan, function(Input)
+				if
+					Input.UserInputType == Enum.UserInputType.MouseButton1
+					or Input.UserInputType == Enum.UserInputType.Touch
+				then
+					while UserInputService:IsMouseButtonPressed(Enum.UserInputType.MouseButton1) do
+						local MinY = HueSlider.AbsolutePosition.Y
+						local MaxY = MinY + HueSlider.AbsoluteSize.Y
+						local MouseY = math.clamp(Mouse.Y, MinY, MaxY)
+
+						Hue = ((MouseY - MinY) / (MaxY - MinY))
+						Display()
+
+						RenderStepped:Wait()
+					end
+				end
+			end)
+
+			if Config.Transparency then
+				Creator.AddSignal(TransparencySlider.InputBegan, function(Input)
+					if Input.UserInputType == Enum.UserInputType.MouseButton1 then
+						while UserInputService:IsMouseButtonPressed(Enum.UserInputType.MouseButton1) do
+							local MinY = TransparencySlider.AbsolutePosition.Y
+							local MaxY = MinY + TransparencySlider.AbsoluteSize.Y
+							local MouseY = math.clamp(Mouse.Y, MinY, MaxY)
+
+							Transparency = 1 - ((MouseY - MinY) / (MaxY - MinY))
+							Display()
+
+							RenderStepped:Wait()
+						end
+					end
+				end)
+			end
+
+			Display()
+
+			Dialog:Button("Done", function()
+				Colorpicker:SetValue({ Hue, Sat, Vib }, Transparency)
+			end)
+			Dialog:Button("Cancel")
+			Dialog:Open()
+		end
+
+		function Colorpicker:Display()
+			Colorpicker.Value = Color3.fromHSV(Colorpicker.Hue, Colorpicker.Sat, Colorpicker.Vib)
+
+			DisplayFrameColor.BackgroundColor3 = Colorpicker.Value
+			DisplayFrameColor.BackgroundTransparency = Colorpicker.Transparency
+
+			Element.Library:SafeCallback(Colorpicker.Callback, Colorpicker.Value)
+			Element.Library:SafeCallback(Colorpicker.Changed, Colorpicker.Value)
+		end
+
+		function Colorpicker:SetValue(HSV, Transparency)
+			local Color = Color3.fromHSV(HSV[1], HSV[2], HSV[3])
+
+			Colorpicker.Transparency = Transparency or 0
+			Colorpicker:SetHSVFromRGB(Color)
+			Colorpicker:Display()
+		end
+
+		function Colorpicker:SetValueRGB(Color, Transparency)
+			Colorpicker.Transparency = Transparency or 0
+			Colorpicker:SetHSVFromRGB(Color)
+			Colorpicker:Display()
+		end
+
+		function Colorpicker:OnChanged(Func)
+			Colorpicker.Changed = Func
+			Func(Colorpicker.Value)
+		end
+
+		function Colorpicker:Destroy()
+			ColorpickerFrame:Destroy()
+			Library.Options[Idx] = nil
+		end
+
+		Creator.AddSignal(ColorpickerFrame.Frame.MouseButton1Click, function()
+			CreateColorDialog()
+		end)
+
+		Colorpicker:Display()
+
+		Library.Options[Idx] = Colorpicker
+		return Colorpicker
+	end
+
+	return Element
+end)()
+ElementsTable.Input = (function()
+	local Element = {}
+	Element.__index = Element
+	Element.__type = "Input"
+
+	function Element:New(Idx, Config)
+		assert(Config.Title, "Input - Missing Title")
+		Config.Callback = Config.Callback or function() end
+
+		local Input = {
+			Value = Config.Default or "",
+			Numeric = Config.Numeric or false,
+			Finished = Config.Finished or false,
+			Callback = Config.Callback or function(Value) end,
+			Type = "Input",
+		}
+
+		local InputFrame = Components.Element(Config.Title, Config.Description, self.Container, false)
+
+		Input.SetTitle = InputFrame.SetTitle
+		Input.SetDesc = InputFrame.SetDesc
+		Input.Visible = InputFrame.Visible
+		Input.Elements = InputFrame
+
+		local Textbox = Components.Textbox(InputFrame.Frame, true)
+		Textbox.Frame.Position = UDim2.new(1, -10, 0.5, 0)
+		Textbox.Frame.AnchorPoint = Vector2.new(1, 0.5)
+		Textbox.Frame.Size = UDim2.fromOffset(160, 30)
+		Textbox.Input.Text = Config.Default or ""
+		Textbox.Input.PlaceholderText = Config.Placeholder or ""
+
+		local Box = Textbox.Input
+
+		function Input:SetValue(Text)
+			if Config.MaxLength and #Text > Config.MaxLength then
+				Text = Text:sub(1, Config.MaxLength)
+			end
+
+			if Input.Numeric then
+				if (not tonumber(Text)) and Text:len() > 0 then
+					Text = Input.Value
+				end
+			end
+
+			Input.Value = Text
+			Box.Text = Text
+
+			Library:SafeCallback(Input.Callback, Input.Value)
+			Library:SafeCallback(Input.Changed, Input.Value)
+		end
+
+		if Input.Finished then
+			AddSignal(Box.FocusLost, function(enter)
+				if not enter then
+					return
+				end
+				Input:SetValue(Box.Text)
+			end)
+		else
+			AddSignal(Box:GetPropertyChangedSignal("Text"), function()
+				Input:SetValue(Box.Text)
+			end)
+		end
+
+		function Input:OnChanged(Func)
+			Input.Changed = Func
+			Func(Input.Value)
+		end
+
+		function Input:Destroy()
+			InputFrame:Destroy()
+			Library.Options[Idx] = nil
+		end
+
+		Library.Options[Idx] = Input
+		return Input
+	end
+
+	return Element
+end)()
+
+local NotificationModule = Components.Notification
+NotificationModule:Init(GUI)
+
+local New = Creator.New
+
+local Icons = {
+	["lucide-accessibility"] = "rbxassetid://10709751939",
+	["lucide-activity"] = "rbxassetid://10709752035",
+	["lucide-air-vent"] = "rbxassetid://10709752131",
+	["lucide-airplay"] = "rbxassetid://10709752254",
+	["lucide-alarm-check"] = "rbxassetid://10709752405",
+	["lucide-alarm-clock"] = "rbxassetid://10709752630",
+	["lucide-alarm-clock-off"] = "rbxassetid://10709752508",
+	["lucide-alarm-minus"] = "rbxassetid://10709752732",
+	["lucide-alarm-plus"] = "rbxassetid://10709752825",
+	["lucide-album"] = "rbxassetid://10709752906",
+	["lucide-alert-circle"] = "rbxassetid://10709752996",
+	["lucide-alert-octagon"] = "rbxassetid://10709753064",
+	["lucide-alert-triangle"] = "rbxassetid://10709753149",
+	["lucide-align-center"] = "rbxassetid://10709753570",
+	["lucide-align-center-horizontal"] = "rbxassetid://10709753272",
+	["lucide-align-center-vertical"] = "rbxassetid://10709753421",
+	["lucide-align-end-horizontal"] = "rbxassetid://10709753692",
+	["lucide-align-end-vertical"] = "rbxassetid://10709753808",
+	["lucide-align-horizontal-distribute-center"] = "rbxassetid://10747779791",
+	["lucide-align-horizontal-distribute-end"] = "rbxassetid://10747784534",
+	["lucide-align-horizontal-distribute-start"] = "rbxassetid://10709754118",
+	["lucide-align-horizontal-justify-center"] = "rbxassetid://10709754204",
+	["lucide-align-horizontal-justify-end"] = "rbxassetid://10709754317",
+	["lucide-align-horizontal-justify-start"] = "rbxassetid://10709754436",
+	["lucide-align-horizontal-space-around"] = "rbxassetid://10709754590",
+	["lucide-align-horizontal-space-between"] = "rbxassetid://10709754749",
+	["lucide-align-justify"] = "rbxassetid://10709759610",
+	["lucide-align-left"] = "rbxassetid://10709759764",
+	["lucide-align-right"] = "rbxassetid://10709759895",
+	["lucide-align-start-horizontal"] = "rbxassetid://10709760051",
+	["lucide-align-start-vertical"] = "rbxassetid://10709760244",
+	["lucide-align-vertical-distribute-center"] = "rbxassetid://10709760351",
+	["lucide-align-vertical-distribute-end"] = "rbxassetid://10709760434",
+	["lucide-align-vertical-distribute-start"] = "rbxassetid://10709760612",
+	["lucide-align-vertical-justify-center"] = "rbxassetid://10709760814",
+	["lucide-align-vertical-justify-end"] = "rbxassetid://10709761003",
+	["lucide-align-vertical-justify-start"] = "rbxassetid://10709761176",
+	["lucide-align-vertical-space-around"] = "rbxassetid://10709761324",
+	["lucide-align-vertical-space-between"] = "rbxassetid://10709761434",
+	["lucide-anchor"] = "rbxassetid://10709761530",
+	["lucide-angry"] = "rbxassetid://10709761629",
+	["lucide-annoyed"] = "rbxassetid://10709761722",
+	["lucide-aperture"] = "rbxassetid://10709761813",
+	["lucide-apple"] = "rbxassetid://10709761889",
+	["lucide-archive"] = "rbxassetid://10709762233",
+	["lucide-archive-restore"] = "rbxassetid://10709762058",
+	["lucide-armchair"] = "rbxassetid://10709762327",
+	["lucide-arrow-big-down"] = "rbxassetid://10747796644",
+	["lucide-arrow-big-left"] = "rbxassetid://10709762574",
+	["lucide-arrow-big-right"] = "rbxassetid://10709762727",
+	["lucide-arrow-big-up"] = "rbxassetid://10709762879",
+	["lucide-arrow-down"] = "rbxassetid://10709767827",
+	["lucide-arrow-down-circle"] = "rbxassetid://10709763034",
+	["lucide-arrow-down-left"] = "rbxassetid://10709767656",
+	["lucide-arrow-down-right"] = "rbxassetid://10709767750",
+	["lucide-arrow-left"] = "rbxassetid://10709768114",
+	["lucide-arrow-left-circle"] = "rbxassetid://10709767936",
+	["lucide-arrow-left-right"] = "rbxassetid://10709768019",
+	["lucide-arrow-right"] = "rbxassetid://10709768347",
+	["lucide-arrow-right-circle"] = "rbxassetid://10709768226",
+	["lucide-arrow-up"] = "rbxassetid://10709768939",
+	["lucide-arrow-up-circle"] = "rbxassetid://10709768432",
+	["lucide-arrow-up-down"] = "rbxassetid://10709768538",
+	["lucide-arrow-up-left"] = "rbxassetid://10709768661",
+	["lucide-arrow-up-right"] = "rbxassetid://10709768787",
+	["lucide-asterisk"] = "rbxassetid://10709769095",
+	["lucide-at-sign"] = "rbxassetid://10709769286",
+	["lucide-award"] = "rbxassetid://10709769406",
+	["lucide-axe"] = "rbxassetid://10709769508",
+	["lucide-axis-3d"] = "rbxassetid://10709769598",
+	["lucide-baby"] = "rbxassetid://10709769732",
+	["lucide-backpack"] = "rbxassetid://10709769841",
+	["lucide-baggage-claim"] = "rbxassetid://10709769935",
+	["lucide-banana"] = "rbxassetid://10709770005",
+	["lucide-banknote"] = "rbxassetid://10709770178",
+	["lucide-bar-chart"] = "rbxassetid://10709773755",
+	["lucide-bar-chart-2"] = "rbxassetid://10709770317",
+	["lucide-bar-chart-3"] = "rbxassetid://10709770431",
+	["lucide-bar-chart-4"] = "rbxassetid://10709770560",
+	["lucide-bar-chart-horizontal"] = "rbxassetid://10709773669",
+	["lucide-barcode"] = "rbxassetid://10747360675",
+	["lucide-baseline"] = "rbxassetid://10709773863",
+	["lucide-bath"] = "rbxassetid://10709773963",
+	["lucide-battery"] = "rbxassetid://10709774640",
+	["lucide-battery-charging"] = "rbxassetid://10709774068",
+	["lucide-battery-full"] = "rbxassetid://10709774206",
+	["lucide-battery-low"] = "rbxassetid://10709774370",
+	["lucide-battery-medium"] = "rbxassetid://10709774513",
+	["lucide-beaker"] = "rbxassetid://10709774756",
+	["lucide-bed"] = "rbxassetid://10709775036",
+	["lucide-bed-double"] = "rbxassetid://10709774864",
+	["lucide-bed-single"] = "rbxassetid://10709774968",
+	["lucide-beer"] = "rbxassetid://10709775167",
+	["lucide-bell"] = "rbxassetid://10709775704",
+	["lucide-bell-minus"] = "rbxassetid://10709775241",
+	["lucide-bell-off"] = "rbxassetid://10709775320",
+	["lucide-bell-plus"] = "rbxassetid://10709775448",
+	["lucide-bell-ring"] = "rbxassetid://10709775560",
+	["lucide-bike"] = "rbxassetid://10709775894",
+	["lucide-binary"] = "rbxassetid://10709776050",
+	["lucide-bitcoin"] = "rbxassetid://10709776126",
+	["lucide-bluetooth"] = "rbxassetid://10709776655",
+	["lucide-bluetooth-connected"] = "rbxassetid://10709776240",
+	["lucide-bluetooth-off"] = "rbxassetid://10709776344",
+	["lucide-bluetooth-searching"] = "rbxassetid://10709776501",
+	["lucide-bold"] = "rbxassetid://10747813908",
+	["lucide-bomb"] = "rbxassetid://10709781460",
+	["lucide-bone"] = "rbxassetid://10709781605",
+	["lucide-book"] = "rbxassetid://10709781824",
+	["lucide-book-open"] = "rbxassetid://10709781717",
+	["lucide-bookmark"] = "rbxassetid://10709782154",
+	["lucide-bookmark-minus"] = "rbxassetid://10709781919",
+	["lucide-bookmark-plus"] = "rbxassetid://10709782044",
+	["lucide-bot"] = "rbxassetid://10709782230",
+	["lucide-box"] = "rbxassetid://10709782497",
+	["lucide-box-select"] = "rbxassetid://10709782342",
+	["lucide-boxes"] = "rbxassetid://10709782582",
+	["lucide-briefcase"] = "rbxassetid://10709782662",
+	["lucide-brush"] = "rbxassetid://10709782758",
+	["lucide-bug"] = "rbxassetid://10709782845",
+	["lucide-building"] = "rbxassetid://10709783051",
+	["lucide-building-2"] = "rbxassetid://10709782939",
+	["lucide-bus"] = "rbxassetid://10709783137",
+	["lucide-cake"] = "rbxassetid://10709783217",
+	["lucide-calculator"] = "rbxassetid://10709783311",
+	["lucide-calendar"] = "rbxassetid://10709789505",
+	["lucide-calendar-check"] = "rbxassetid://10709783474",
+	["lucide-calendar-check-2"] = "rbxassetid://10709783392",
+	["lucide-calendar-clock"] = "rbxassetid://10709783577",
+	["lucide-calendar-days"] = "rbxassetid://10709783673",
+	["lucide-calendar-heart"] = "rbxassetid://10709783835",
+	["lucide-calendar-minus"] = "rbxassetid://10709783959",
+	["lucide-calendar-off"] = "rbxassetid://10709788784",
+	["lucide-calendar-plus"] = "rbxassetid://10709788937",
+	["lucide-calendar-range"] = "rbxassetid://10709789053",
+	["lucide-calendar-search"] = "rbxassetid://10709789200",
+	["lucide-calendar-x"] = "rbxassetid://10709789407",
+	["lucide-calendar-x-2"] = "rbxassetid://10709789329",
+	["lucide-camera"] = "rbxassetid://10709789686",
+	["lucide-camera-off"] = "rbxassetid://10747822677",
+	["lucide-car"] = "rbxassetid://10709789810",
+	["lucide-carrot"] = "rbxassetid://10709789960",
+	["lucide-cast"] = "rbxassetid://10709790097",
+	["lucide-charge"] = "rbxassetid://10709790202",
+	["lucide-check"] = "rbxassetid://10709790644",
+	["lucide-check-circle"] = "rbxassetid://10709790387",
+	["lucide-check-circle-2"] = "rbxassetid://10709790298",
+	["lucide-check-square"] = "rbxassetid://10709790537",
+	["lucide-chef-hat"] = "rbxassetid://10709790757",
+	["lucide-cherry"] = "rbxassetid://10709790875",
+	["lucide-chevron-down"] = "rbxassetid://10709790948",
+	["lucide-chevron-first"] = "rbxassetid://10709791015",
+	["lucide-chevron-last"] = "rbxassetid://10709791130",
+	["lucide-chevron-left"] = "rbxassetid://10709791281",
+	["lucide-chevron-right"] = "rbxassetid://10709791437",
+	["lucide-chevron-up"] = "rbxassetid://10709791523",
+	["lucide-chevrons-down"] = "rbxassetid://10709796864",
+	["lucide-chevrons-down-up"] = "rbxassetid://10709791632",
+	["lucide-chevrons-left"] = "rbxassetid://10709797151",
+	["lucide-chevrons-left-right"] = "rbxassetid://10709797006",
+	["lucide-chevrons-right"] = "rbxassetid://10709797382",
+	["lucide-chevrons-right-left"] = "rbxassetid://10709797274",
+	["lucide-chevrons-up"] = "rbxassetid://10709797622",
+	["lucide-chevrons-up-down"] = "rbxassetid://10709797508",
+	["lucide-chrome"] = "rbxassetid://10709797725",
+	["lucide-circle"] = "rbxassetid://10709798174",
+	["lucide-circle-dot"] = "rbxassetid://10709797837",
+	["lucide-circle-ellipsis"] = "rbxassetid://10709797985",
+	["lucide-circle-slashed"] = "rbxassetid://10709798100",
+	["lucide-citrus"] = "rbxassetid://10709798276",
+	["lucide-clapperboard"] = "rbxassetid://10709798350",
+	["lucide-clipboard"] = "rbxassetid://10709799288",
+	["lucide-clipboard-check"] = "rbxassetid://10709798443",
+	["lucide-clipboard-copy"] = "rbxassetid://10709798574",
+	["lucide-clipboard-edit"] = "rbxassetid://10709798682",
+	["lucide-clipboard-list"] = "rbxassetid://10709798792",
+	["lucide-clipboard-signature"] = "rbxassetid://10709798890",
+	["lucide-clipboard-type"] = "rbxassetid://10709798999",
+	["lucide-clipboard-x"] = "rbxassetid://10709799124",
+	["lucide-clock"] = "rbxassetid://10709805144",
+	["lucide-clock-1"] = "rbxassetid://10709799535",
+	["lucide-clock-10"] = "rbxassetid://10709799718",
+	["lucide-clock-11"] = "rbxassetid://10709799818",
+	["lucide-clock-12"] = "rbxassetid://10709799962",
+	["lucide-clock-2"] = "rbxassetid://10709803876",
+	["lucide-clock-3"] = "rbxassetid://10709803989",
+	["lucide-clock-4"] = "rbxassetid://10709804164",
+	["lucide-clock-5"] = "rbxassetid://10709804291",
+	["lucide-clock-6"] = "rbxassetid://10709804435",
+	["lucide-clock-7"] = "rbxassetid://10709804599",
+	["lucide-clock-8"] = "rbxassetid://10709804784",
+	["lucide-clock-9"] = "rbxassetid://10709804996",
+	["lucide-cloud"] = "rbxassetid://10709806740",
+	["lucide-cloud-cog"] = "rbxassetid://10709805262",
+	["lucide-cloud-drizzle"] = "rbxassetid://10709805371",
+	["lucide-cloud-fog"] = "rbxassetid://10709805477",
+	["lucide-cloud-hail"] = "rbxassetid://10709805596",
+	["lucide-cloud-lightning"] = "rbxassetid://10709805727",
+	["lucide-cloud-moon"] = "rbxassetid://10709805942",
+	["lucide-cloud-moon-rain"] = "rbxassetid://10709805838",
+	["lucide-cloud-off"] = "rbxassetid://10709806060",
+	["lucide-cloud-rain"] = "rbxassetid://10709806277",
+	["lucide-cloud-rain-wind"] = "rbxassetid://10709806166",
+	["lucide-cloud-snow"] = "rbxassetid://10709806374",
+	["lucide-cloud-sun"] = "rbxassetid://10709806631",
+	["lucide-cloud-sun-rain"] = "rbxassetid://10709806475",
+	["lucide-cloudy"] = "rbxassetid://10709806859",
+	["lucide-clover"] = "rbxassetid://10709806995",
+	["lucide-code"] = "rbxassetid://10709810463",
+	["lucide-code-2"] = "rbxassetid://10709807111",
+	["lucide-codepen"] = "rbxassetid://10709810534",
+	["lucide-codesandbox"] = "rbxassetid://10709810676",
+	["lucide-coffee"] = "rbxassetid://10709810814",
+	["lucide-cog"] = "rbxassetid://10709810948",
+	["lucide-coins"] = "rbxassetid://10709811110",
+	["lucide-columns"] = "rbxassetid://10709811261",
+	["lucide-command"] = "rbxassetid://10709811365",
+	["lucide-compass"] = "rbxassetid://10709811445",
+	["lucide-component"] = "rbxassetid://10709811595",
+	["lucide-concierge-bell"] = "rbxassetid://10709811706",
+	["lucide-connection"] = "rbxassetid://10747361219",
+	["lucide-contact"] = "rbxassetid://10709811834",
+	["lucide-contrast"] = "rbxassetid://10709811939",
+	["lucide-cookie"] = "rbxassetid://10709812067",
+	["lucide-copy"] = "rbxassetid://10709812159",
+	["lucide-copyleft"] = "rbxassetid://10709812251",
+	["lucide-copyright"] = "rbxassetid://10709812311",
+	["lucide-corner-down-left"] = "rbxassetid://10709812396",
+	["lucide-corner-down-right"] = "rbxassetid://10709812485",
+	["lucide-corner-left-down"] = "rbxassetid://10709812632",
+	["lucide-corner-left-up"] = "rbxassetid://10709812784",
+	["lucide-corner-right-down"] = "rbxassetid://10709812939",
+	["lucide-corner-right-up"] = "rbxassetid://10709813094",
+	["lucide-corner-up-left"] = "rbxassetid://10709813185",
+	["lucide-corner-up-right"] = "rbxassetid://10709813281",
+	["lucide-cpu"] = "rbxassetid://10709813383",
+	["lucide-croissant"] = "rbxassetid://10709818125",
+	["lucide-crop"] = "rbxassetid://10709818245",
+	["lucide-cross"] = "rbxassetid://10709818399",
+	["lucide-crosshair"] = "rbxassetid://10709818534",
+	["lucide-crown"] = "rbxassetid://10709818626",
+	["lucide-cup-soda"] = "rbxassetid://10709818763",
+	["lucide-curly-braces"] = "rbxassetid://10709818847",
+	["lucide-currency"] = "rbxassetid://10709818931",
+	["lucide-container"] = "rbxassetid://17466205552",
+	["lucide-database"] = "rbxassetid://10709818996",
+	["lucide-delete"] = "rbxassetid://10709819059",
+	["lucide-diamond"] = "rbxassetid://10709819149",
+	["lucide-dice-1"] = "rbxassetid://10709819266",
+	["lucide-dice-2"] = "rbxassetid://10709819361",
+	["lucide-dice-3"] = "rbxassetid://10709819508",
+	["lucide-dice-4"] = "rbxassetid://10709819670",
+	["lucide-dice-5"] = "rbxassetid://10709819801",
+	["lucide-dice-6"] = "rbxassetid://10709819896",
+	["lucide-dices"] = "rbxassetid://10723343321",
+	["lucide-diff"] = "rbxassetid://10723343416",
+	["lucide-disc"] = "rbxassetid://10723343537",
+	["lucide-divide"] = "rbxassetid://10723343805",
+	["lucide-divide-circle"] = "rbxassetid://10723343636",
+	["lucide-divide-square"] = "rbxassetid://10723343737",
+	["lucide-dollar-sign"] = "rbxassetid://10723343958",
+	["lucide-download"] = "rbxassetid://10723344270",
+	["lucide-download-cloud"] = "rbxassetid://10723344088",
+	["lucide-droplet"] = "rbxassetid://10723344432",
+	["lucide-droplets"] = "rbxassetid://10734883356",
+	["lucide-drumstick"] = "rbxassetid://10723344737",
+	["lucide-edit"] = "rbxassetid://10734883598",
+	["lucide-edit-2"] = "rbxassetid://10723344885",
+	["lucide-edit-3"] = "rbxassetid://10723345088",
+	["lucide-egg"] = "rbxassetid://10723345518",
+	["lucide-egg-fried"] = "rbxassetid://10723345347",
+	["lucide-electricity"] = "rbxassetid://10723345749",
+	["lucide-electricity-off"] = "rbxassetid://10723345643",
+	["lucide-equal"] = "rbxassetid://10723345990",
+	["lucide-equal-not"] = "rbxassetid://10723345866",
+	["lucide-eraser"] = "rbxassetid://10723346158",
+	["lucide-euro"] = "rbxassetid://10723346372",
+	["lucide-expand"] = "rbxassetid://10723346553",
+	["lucide-external-link"] = "rbxassetid://10723346684",
+	["lucide-eye"] = "rbxassetid://10723346959",
+	["lucide-eye-off"] = "rbxassetid://10723346871",
+	["lucide-factory"] = "rbxassetid://10723347051",
+	["lucide-fan"] = "rbxassetid://10723354359",
+	["lucide-fast-forward"] = "rbxassetid://10723354521",
+	["lucide-feather"] = "rbxassetid://10723354671",
+	["lucide-figma"] = "rbxassetid://10723354801",
+	["lucide-file"] = "rbxassetid://10723374641",
+	["lucide-file-archive"] = "rbxassetid://10723354921",
+	["lucide-file-audio"] = "rbxassetid://10723355148",
+	["lucide-file-audio-2"] = "rbxassetid://10723355026",
+	["lucide-file-axis-3d"] = "rbxassetid://10723355272",
+	["lucide-file-badge"] = "rbxassetid://10723355622",
+	["lucide-file-badge-2"] = "rbxassetid://10723355451",
+	["lucide-file-bar-chart"] = "rbxassetid://10723355887",
+	["lucide-file-bar-chart-2"] = "rbxassetid://10723355746",
+	["lucide-file-box"] = "rbxassetid://10723355989",
+	["lucide-file-check"] = "rbxassetid://10723356210",
+	["lucide-file-check-2"] = "rbxassetid://10723356100",
+	["lucide-file-clock"] = "rbxassetid://10723356329",
+	["lucide-file-code"] = "rbxassetid://10723356507",
+	["lucide-file-cog"] = "rbxassetid://10723356830",
+	["lucide-file-cog-2"] = "rbxassetid://10723356676",
+	["lucide-file-diff"] = "rbxassetid://10723357039",
+	["lucide-file-digit"] = "rbxassetid://10723357151",
+	["lucide-file-down"] = "rbxassetid://10723357322",
+	["lucide-file-edit"] = "rbxassetid://10723357495",
+	["lucide-file-heart"] = "rbxassetid://10723357637",
+	["lucide-file-image"] = "rbxassetid://10723357790",
+	["lucide-file-input"] = "rbxassetid://10723357933",
+	["lucide-file-json"] = "rbxassetid://10723364435",
+	["lucide-file-json-2"] = "rbxassetid://10723364361",
+	["lucide-file-key"] = "rbxassetid://10723364605",
+	["lucide-file-key-2"] = "rbxassetid://10723364515",
+	["lucide-file-line-chart"] = "rbxassetid://10723364725",
+	["lucide-file-lock"] = "rbxassetid://10723364957",
+	["lucide-file-lock-2"] = "rbxassetid://10723364861",
+	["lucide-file-minus"] = "rbxassetid://10723365254",
+	["lucide-file-minus-2"] = "rbxassetid://10723365086",
+	["lucide-file-output"] = "rbxassetid://10723365457",
+	["lucide-file-pie-chart"] = "rbxassetid://10723365598",
+	["lucide-file-plus"] = "rbxassetid://10723365877",
+	["lucide-file-plus-2"] = "rbxassetid://10723365766",
+	["lucide-file-question"] = "rbxassetid://10723365987",
+	["lucide-file-scan"] = "rbxassetid://10723366167",
+	["lucide-file-search"] = "rbxassetid://10723366550",
+	["lucide-file-search-2"] = "rbxassetid://10723366340",
+	["lucide-file-signature"] = "rbxassetid://10723366741",
+	["lucide-file-spreadsheet"] = "rbxassetid://10723366962",
+	["lucide-file-symlink"] = "rbxassetid://10723367098",
+	["lucide-file-terminal"] = "rbxassetid://10723367244",
+	["lucide-file-text"] = "rbxassetid://10723367380",
+	["lucide-file-type"] = "rbxassetid://10723367606",
+	["lucide-file-type-2"] = "rbxassetid://10723367509",
+	["lucide-file-up"] = "rbxassetid://10723367734",
+	["lucide-file-video"] = "rbxassetid://10723373884",
+	["lucide-file-video-2"] = "rbxassetid://10723367834",
+	["lucide-file-volume"] = "rbxassetid://10723374172",
+	["lucide-file-volume-2"] = "rbxassetid://10723374030",
+	["lucide-file-warning"] = "rbxassetid://10723374276",
+	["lucide-file-x"] = "rbxassetid://10723374544",
+	["lucide-file-x-2"] = "rbxassetid://10723374378",
+	["lucide-files"] = "rbxassetid://10723374759",
+	["lucide-film"] = "rbxassetid://10723374981",
+	["lucide-filter"] = "rbxassetid://10723375128",
+	["lucide-fingerprint"] = "rbxassetid://10723375250",
+	["lucide-flag"] = "rbxassetid://10723375890",
+	["lucide-flag-off"] = "rbxassetid://10723375443",
+	["lucide-flag-triangle-left"] = "rbxassetid://10723375608",
+	["lucide-flag-triangle-right"] = "rbxassetid://10723375727",
+	["lucide-flame"] = "rbxassetid://10723376114",
+	["lucide-flashlight"] = "rbxassetid://10723376471",
+	["lucide-flashlight-off"] = "rbxassetid://10723376365",
+	["lucide-flask-conical"] = "rbxassetid://10734883986",
+	["lucide-flask-round"] = "rbxassetid://10723376614",
+	["lucide-flip-horizontal"] = "rbxassetid://10723376884",
+	["lucide-flip-horizontal-2"] = "rbxassetid://10723376745",
+	["lucide-flip-vertical"] = "rbxassetid://10723377138",
+	["lucide-flip-vertical-2"] = "rbxassetid://10723377026",
+	["lucide-flower"] = "rbxassetid://10747830374",
+	["lucide-flower-2"] = "rbxassetid://10723377305",
+	["lucide-focus"] = "rbxassetid://10723377537",
+	["lucide-folder"] = "rbxassetid://10723387563",
+	["lucide-folder-archive"] = "rbxassetid://10723384478",
+	["lucide-folder-check"] = "rbxassetid://10723384605",
+	["lucide-folder-clock"] = "rbxassetid://10723384731",
+	["lucide-folder-closed"] = "rbxassetid://10723384893",
+	["lucide-folder-cog"] = "rbxassetid://10723385213",
+	["lucide-folder-cog-2"] = "rbxassetid://10723385036",
+	["lucide-folder-down"] = "rbxassetid://10723385338",
+	["lucide-folder-edit"] = "rbxassetid://10723385445",
+	["lucide-folder-heart"] = "rbxassetid://10723385545",
+	["lucide-folder-input"] = "rbxassetid://10723385721",
+	["lucide-folder-key"] = "rbxassetid://10723385848",
+	["lucide-folder-lock"] = "rbxassetid://10723386005",
+	["lucide-folder-minus"] = "rbxassetid://10723386127",
+	["lucide-folder-open"] = "rbxassetid://10723386277",
+	["lucide-folder-output"] = "rbxassetid://10723386386",
+	["lucide-folder-plus"] = "rbxassetid://10723386531",
+	["lucide-folder-search"] = "rbxassetid://10723386787",
+	["lucide-folder-search-2"] = "rbxassetid://10723386674",
+	["lucide-folder-symlink"] = "rbxassetid://10723386930",
+	["lucide-folder-tree"] = "rbxassetid://10723387085",
+	["lucide-folder-up"] = "rbxassetid://10723387265",
+	["lucide-folder-x"] = "rbxassetid://10723387448",
+	["lucide-folders"] = "rbxassetid://10723387721",
+	["lucide-form-input"] = "rbxassetid://10723387841",
+	["lucide-forward"] = "rbxassetid://10723388016",
+	["lucide-frame"] = "rbxassetid://10723394389",
+	["lucide-framer"] = "rbxassetid://10723394565",
+	["lucide-frown"] = "rbxassetid://10723394681",
+	["lucide-fuel"] = "rbxassetid://10723394846",
+	["lucide-function-square"] = "rbxassetid://10723395041",
+	["lucide-gamepad"] = "rbxassetid://10723395457",
+	["lucide-gamepad-2"] = "rbxassetid://10723395215",
+	["lucide-gauge"] = "rbxassetid://10723395708",
+	["lucide-gavel"] = "rbxassetid://10723395896",
+	["lucide-gem"] = "rbxassetid://10723396000",
+	["lucide-ghost"] = "rbxassetid://10723396107",
+	["lucide-gift"] = "rbxassetid://10723396402",
+	["lucide-gift-card"] = "rbxassetid://10723396225",
+	["lucide-git-branch"] = "rbxassetid://10723396676",
+	["lucide-git-branch-plus"] = "rbxassetid://10723396542",
+	["lucide-git-commit"] = "rbxassetid://10723396812",
+	["lucide-git-compare"] = "rbxassetid://10723396954",
+	["lucide-git-fork"] = "rbxassetid://10723397049",
+	["lucide-git-merge"] = "rbxassetid://10723397165",
+	["lucide-git-pull-request"] = "rbxassetid://10723397431",
+	["lucide-git-pull-request-closed"] = "rbxassetid://10723397268",
+	["lucide-git-pull-request-draft"] = "rbxassetid://10734884302",
+	["lucide-glass"] = "rbxassetid://10723397788",
+	["lucide-glass-2"] = "rbxassetid://10723397529",
+	["lucide-glass-water"] = "rbxassetid://10723397678",
+	["lucide-glasses"] = "rbxassetid://10723397895",
+	["lucide-globe"] = "rbxassetid://10723404337",
+	["lucide-globe-2"] = "rbxassetid://10723398002",
+	["lucide-grab"] = "rbxassetid://10723404472",
+	["lucide-graduation-cap"] = "rbxassetid://10723404691",
+	["lucide-grape"] = "rbxassetid://10723404822",
+	["lucide-grid"] = "rbxassetid://10723404936",
+	["lucide-grip-horizontal"] = "rbxassetid://10723405089",
+	["lucide-grip-vertical"] = "rbxassetid://10723405236",
+	["lucide-hammer"] = "rbxassetid://10723405360",
+	["lucide-hand"] = "rbxassetid://10723405649",
+	["lucide-hand-metal"] = "rbxassetid://10723405508",
+	["lucide-hard-drive"] = "rbxassetid://10723405749",
+	["lucide-hard-hat"] = "rbxassetid://10723405859",
+	["lucide-hash"] = "rbxassetid://10723405975",
+	["lucide-haze"] = "rbxassetid://10723406078",
+	["lucide-headphones"] = "rbxassetid://10723406165",
+	["lucide-heart"] = "rbxassetid://10723406885",
+	["lucide-heart-crack"] = "rbxassetid://10723406299",
+	["lucide-heart-handshake"] = "rbxassetid://10723406480",
+	["lucide-heart-off"] = "rbxassetid://10723406662",
+	["lucide-heart-pulse"] = "rbxassetid://10723406795",
+	["lucide-help-circle"] = "rbxassetid://10723406988",
+	["lucide-hexagon"] = "rbxassetid://10723407092",
+	["lucide-highlighter"] = "rbxassetid://10723407192",
+	["lucide-history"] = "rbxassetid://10723407335",
+	["lucide-home"] = "rbxassetid://10723407389",
+	["lucide-hourglass"] = "rbxassetid://10723407498",
+	["lucide-ice-cream"] = "rbxassetid://10723414308",
+	["lucide-image"] = "rbxassetid://10723415040",
+	["lucide-image-minus"] = "rbxassetid://10723414487",
+	["lucide-image-off"] = "rbxassetid://10723414677",
+	["lucide-image-plus"] = "rbxassetid://10723414827",
+	["lucide-import"] = "rbxassetid://10723415205",
+	["lucide-inbox"] = "rbxassetid://10723415335",
+	["lucide-indent"] = "rbxassetid://10723415494",
+	["lucide-indian-rupee"] = "rbxassetid://10723415642",
+	["lucide-infinity"] = "rbxassetid://10723415766",
+	["lucide-info"] = "rbxassetid://10723415903",
+	["lucide-inspect"] = "rbxassetid://10723416057",
+	["lucide-italic"] = "rbxassetid://10723416195",
+	["lucide-japanese-yen"] = "rbxassetid://10723416363",
+	["lucide-joystick"] = "rbxassetid://10723416527",
+	["lucide-key"] = "rbxassetid://10723416652",
+	["lucide-keyboard"] = "rbxassetid://10723416765",
+	["lucide-lamp"] = "rbxassetid://10723417513",
+	["lucide-lamp-ceiling"] = "rbxassetid://10723416922",
+	["lucide-lamp-desk"] = "rbxassetid://10723417016",
+	["lucide-lamp-floor"] = "rbxassetid://10723417131",
+	["lucide-lamp-wall-down"] = "rbxassetid://10723417240",
+	["lucide-lamp-wall-up"] = "rbxassetid://10723417356",
+	["lucide-landmark"] = "rbxassetid://10723417608",
+	["lucide-languages"] = "rbxassetid://10723417703",
+	["lucide-laptop"] = "rbxassetid://10723423881",
+	["lucide-laptop-2"] = "rbxassetid://10723417797",
+	["lucide-lasso"] = "rbxassetid://10723424235",
+	["lucide-lasso-select"] = "rbxassetid://10723424058",
+	["lucide-laugh"] = "rbxassetid://10723424372",
+	["lucide-layers"] = "rbxassetid://10723424505",
+	["lucide-layout"] = "rbxassetid://10723425376",
+	["lucide-layout-dashboard"] = "rbxassetid://10723424646",
+	["lucide-layout-grid"] = "rbxassetid://10723424838",
+	["lucide-layout-list"] = "rbxassetid://10723424963",
+	["lucide-layout-template"] = "rbxassetid://10723425187",
+	["lucide-leaf"] = "rbxassetid://10723425539",
+	["lucide-library"] = "rbxassetid://10723425615",
+	["lucide-life-buoy"] = "rbxassetid://10723425685",
+	["lucide-lightbulb"] = "rbxassetid://10723425852",
+	["lucide-lightbulb-off"] = "rbxassetid://10723425762",
+	["lucide-line-chart"] = "rbxassetid://10723426393",
+	["lucide-link"] = "rbxassetid://10723426722",
+	["lucide-link-2"] = "rbxassetid://10723426595",
+	["lucide-link-2-off"] = "rbxassetid://10723426513",
+	["lucide-list"] = "rbxassetid://10723433811",
+	["lucide-list-checks"] = "rbxassetid://10734884548",
+	["lucide-list-end"] = "rbxassetid://10723426886",
+	["lucide-list-minus"] = "rbxassetid://10723426986",
+	["lucide-list-music"] = "rbxassetid://10723427081",
+	["lucide-list-ordered"] = "rbxassetid://10723427199",
+	["lucide-list-plus"] = "rbxassetid://10723427334",
+	["lucide-list-start"] = "rbxassetid://10723427494",
+	["lucide-list-video"] = "rbxassetid://10723427619",
+	["lucide-list-todo"] = "rbxassetid://17376008003",
+	["lucide-list-x"] = "rbxassetid://10723433655",
+	["lucide-loader"] = "rbxassetid://10723434070",
+	["lucide-loader-2"] = "rbxassetid://10723433935",
+	["lucide-locate"] = "rbxassetid://10723434557",
+	["lucide-locate-fixed"] = "rbxassetid://10723434236",
+	["lucide-locate-off"] = "rbxassetid://10723434379",
+	["lucide-lock"] = "rbxassetid://10723434711",
+	["lucide-log-in"] = "rbxassetid://10723434830",
+	["lucide-log-out"] = "rbxassetid://10723434906",
+	["lucide-luggage"] = "rbxassetid://10723434993",
+	["lucide-magnet"] = "rbxassetid://10723435069",
+	["lucide-mail"] = "rbxassetid://10734885430",
+	["lucide-mail-check"] = "rbxassetid://10723435182",
+	["lucide-mail-minus"] = "rbxassetid://10723435261",
+	["lucide-mail-open"] = "rbxassetid://10723435342",
+	["lucide-mail-plus"] = "rbxassetid://10723435443",
+	["lucide-mail-question"] = "rbxassetid://10723435515",
+	["lucide-mail-search"] = "rbxassetid://10734884739",
+	["lucide-mail-warning"] = "rbxassetid://10734885015",
+	["lucide-mail-x"] = "rbxassetid://10734885247",
+	["lucide-mails"] = "rbxassetid://10734885614",
+	["lucide-map"] = "rbxassetid://10734886202",
+	["lucide-map-pin"] = "rbxassetid://10734886004",
+	["lucide-map-pin-off"] = "rbxassetid://10734885803",
+	["lucide-maximize"] = "rbxassetid://10734886735",
+	["lucide-maximize-2"] = "rbxassetid://10734886496",
+	["lucide-medal"] = "rbxassetid://10734887072",
+	["lucide-megaphone"] = "rbxassetid://10734887454",
+	["lucide-megaphone-off"] = "rbxassetid://10734887311",
+	["lucide-meh"] = "rbxassetid://10734887603",
+	["lucide-menu"] = "rbxassetid://10734887784",
+	["lucide-message-circle"] = "rbxassetid://10734888000",
+	["lucide-message-square"] = "rbxassetid://10734888228",
+	["lucide-mic"] = "rbxassetid://10734888864",
+	["lucide-mic-2"] = "rbxassetid://10734888430",
+	["lucide-mic-off"] = "rbxassetid://10734888646",
+	["lucide-microscope"] = "rbxassetid://10734889106",
+	["lucide-microwave"] = "rbxassetid://10734895076",
+	["lucide-milestone"] = "rbxassetid://10734895310",
+	["lucide-minimize"] = "rbxassetid://10734895698",
+	["lucide-minimize-2"] = "rbxassetid://10734895530",
+	["lucide-minus"] = "rbxassetid://10734896206",
+	["lucide-minus-circle"] = "rbxassetid://10734895856",
+	["lucide-minus-square"] = "rbxassetid://10734896029",
+	["lucide-monitor"] = "rbxassetid://10734896881",
+	["lucide-monitor-off"] = "rbxassetid://10734896360",
+	["lucide-monitor-speaker"] = "rbxassetid://10734896512",
+	["lucide-moon"] = "rbxassetid://10734897102",
+	["lucide-more-horizontal"] = "rbxassetid://10734897250",
+	["lucide-more-vertical"] = "rbxassetid://10734897387",
+	["lucide-mountain"] = "rbxassetid://10734897956",
+	["lucide-mountain-snow"] = "rbxassetid://10734897665",
+	["lucide-mouse"] = "rbxassetid://10734898592",
+	["lucide-mouse-pointer"] = "rbxassetid://10734898476",
+	["lucide-mouse-pointer-2"] = "rbxassetid://10734898194",
+	["lucide-mouse-pointer-click"] = "rbxassetid://10734898355",
+	["lucide-move"] = "rbxassetid://10734900011",
+	["lucide-move-3d"] = "rbxassetid://10734898756",
+	["lucide-move-diagonal"] = "rbxassetid://10734899164",
+	["lucide-move-diagonal-2"] = "rbxassetid://10734898934",
+	["lucide-move-horizontal"] = "rbxassetid://10734899414",
+	["lucide-move-vertical"] = "rbxassetid://10734899821",
+	["lucide-music"] = "rbxassetid://10734905958",
+	["lucide-music-2"] = "rbxassetid://10734900215",
+	["lucide-music-3"] = "rbxassetid://10734905665",
+	["lucide-music-4"] = "rbxassetid://10734905823",
+	["lucide-navigation"] = "rbxassetid://10734906744",
+	["lucide-navigation-2"] = "rbxassetid://10734906332",
+	["lucide-navigation-2-off"] = "rbxassetid://10734906144",
+	["lucide-navigation-off"] = "rbxassetid://10734906580",
+	["lucide-network"] = "rbxassetid://10734906975",
+	["lucide-newspaper"] = "rbxassetid://10734907168",
+	["lucide-octagon"] = "rbxassetid://10734907361",
+	["lucide-option"] = "rbxassetid://10734907649",
+	["lucide-outdent"] = "rbxassetid://10734907933",
+	["lucide-package"] = "rbxassetid://10734909540",
+	["lucide-package-2"] = "rbxassetid://10734908151",
+	["lucide-package-check"] = "rbxassetid://10734908384",
+	["lucide-package-minus"] = "rbxassetid://10734908626",
+	["lucide-package-open"] = "rbxassetid://10734908793",
+	["lucide-package-plus"] = "rbxassetid://10734909016",
+	["lucide-package-search"] = "rbxassetid://10734909196",
+	["lucide-package-x"] = "rbxassetid://10734909375",
+	["lucide-paint-bucket"] = "rbxassetid://10734909847",
+	["lucide-paintbrush"] = "rbxassetid://10734910187",
+	["lucide-paintbrush-2"] = "rbxassetid://10734910030",
+	["lucide-palette"] = "rbxassetid://10734910430",
+	["lucide-palmtree"] = "rbxassetid://10734910680",
+	["lucide-paperclip"] = "rbxassetid://10734910927",
+	["lucide-party-popper"] = "rbxassetid://10734918735",
+	["lucide-pause"] = "rbxassetid://10734919336",
+	["lucide-pause-circle"] = "rbxassetid://10735024209",
+	["lucide-pause-octagon"] = "rbxassetid://10734919143",
+	["lucide-pen-tool"] = "rbxassetid://10734919503",
+	["lucide-pencil"] = "rbxassetid://10734919691",
+	["lucide-percent"] = "rbxassetid://10734919919",
+	["lucide-person-standing"] = "rbxassetid://10734920149",
+	["lucide-phone"] = "rbxassetid://10734921524",
+	["lucide-phone-call"] = "rbxassetid://10734920305",
+	["lucide-phone-forwarded"] = "rbxassetid://10734920508",
+	["lucide-phone-incoming"] = "rbxassetid://10734920694",
+	["lucide-phone-missed"] = "rbxassetid://10734920845",
+	["lucide-phone-off"] = "rbxassetid://10734921077",
+	["lucide-phone-outgoing"] = "rbxassetid://10734921288",
+	["lucide-pie-chart"] = "rbxassetid://10734921727",
+	["lucide-piggy-bank"] = "rbxassetid://10734921935",
+	["lucide-pin"] = "rbxassetid://10734922324",
+	["lucide-pin-off"] = "rbxassetid://10734922180",
+	["lucide-pipette"] = "rbxassetid://10734922497",
+	["lucide-pizza"] = "rbxassetid://10734922774",
+	["lucide-plane"] = "rbxassetid://10734922971",
+	["lucide-plane-landing"] = "rbxassetid://17376029914",
+	["lucide-play"] = "rbxassetid://10734923549",
+	["lucide-play-circle"] = "rbxassetid://10734923214",
+	["lucide-plus"] = "rbxassetid://10734924532",
+	["lucide-plus-circle"] = "rbxassetid://10734923868",
+	["lucide-plus-square"] = "rbxassetid://10734924219",
+	["lucide-podcast"] = "rbxassetid://10734929553",
+	["lucide-pointer"] = "rbxassetid://10734929723",
+	["lucide-pound-sterling"] = "rbxassetid://10734929981",
+	["lucide-power"] = "rbxassetid://10734930466",
+	["lucide-power-off"] = "rbxassetid://10734930257",
+	["lucide-printer"] = "rbxassetid://10734930632",
+	["lucide-puzzle"] = "rbxassetid://10734930886",
+	["lucide-quote"] = "rbxassetid://10734931234",
+	["lucide-radio"] = "rbxassetid://10734931596",
+	["lucide-radio-receiver"] = "rbxassetid://10734931402",
+	["lucide-rectangle-horizontal"] = "rbxassetid://10734931777",
+	["lucide-rectangle-vertical"] = "rbxassetid://10734932081",
+	["lucide-recycle"] = "rbxassetid://10734932295",
+	["lucide-redo"] = "rbxassetid://10734932822",
+	["lucide-redo-2"] = "rbxassetid://10734932586",
+	["lucide-refresh-ccw"] = "rbxassetid://10734933056",
+	["lucide-refresh-cw"] = "rbxassetid://10734933222",
+	["lucide-refrigerator"] = "rbxassetid://10734933465",
+	["lucide-regex"] = "rbxassetid://10734933655",
+	["lucide-repeat"] = "rbxassetid://10734933966",
+	["lucide-repeat-1"] = "rbxassetid://10734933826",
+	["lucide-reply"] = "rbxassetid://10734934252",
+	["lucide-reply-all"] = "rbxassetid://10734934132",
+	["lucide-rewind"] = "rbxassetid://10734934347",
+	["lucide-rocket"] = "rbxassetid://10734934585",
+	["lucide-rocking-chair"] = "rbxassetid://10734939942",
+	["lucide-rotate-3d"] = "rbxassetid://10734940107",
+	["lucide-rotate-ccw"] = "rbxassetid://10734940376",
+	["lucide-rotate-cw"] = "rbxassetid://10734940654",
+	["lucide-rss"] = "rbxassetid://10734940825",
+	["lucide-ruler"] = "rbxassetid://10734941018",
+	["lucide-russian-ruble"] = "rbxassetid://10734941199",
+	["lucide-sailboat"] = "rbxassetid://10734941354",
+	["lucide-save"] = "rbxassetid://10734941499",
+	["lucide-scale"] = "rbxassetid://10734941912",
+	["lucide-scale-3d"] = "rbxassetid://10734941739",
+	["lucide-scaling"] = "rbxassetid://10734942072",
+	["lucide-scan"] = "rbxassetid://10734942565",
+	["lucide-scan-face"] = "rbxassetid://10734942198",
+	["lucide-scan-line"] = "rbxassetid://10734942351",
+	["lucide-scissors"] = "rbxassetid://10734942778",
+	["lucide-screen-share"] = "rbxassetid://10734943193",
+	["lucide-screen-share-off"] = "rbxassetid://10734942967",
+	["lucide-scroll"] = "rbxassetid://10734943448",
+	["lucide-search"] = "rbxassetid://10734943674",
+	["lucide-send"] = "rbxassetid://10734943902",
+	["lucide-separator-horizontal"] = "rbxassetid://10734944115",
+	["lucide-separator-vertical"] = "rbxassetid://10734944326",
+	["lucide-server"] = "rbxassetid://10734949856",
+	["lucide-server-cog"] = "rbxassetid://10734944444",
+	["lucide-server-crash"] = "rbxassetid://10734944554",
+	["lucide-server-off"] = "rbxassetid://10734944668",
+	["lucide-settings"] = "rbxassetid://10734950309",
+	["lucide-settings-2"] = "rbxassetid://10734950020",
+	["lucide-share"] = "rbxassetid://10734950813",
+	["lucide-share-2"] = "rbxassetid://10734950553",
+	["lucide-sheet"] = "rbxassetid://10734951038",
+	["lucide-shield"] = "rbxassetid://10734951847",
+	["lucide-shield-alert"] = "rbxassetid://10734951173",
+	["lucide-shield-check"] = "rbxassetid://10734951367",
+	["lucide-shield-close"] = "rbxassetid://10734951535",
+	["lucide-shield-off"] = "rbxassetid://10734951684",
+	["lucide-shirt"] = "rbxassetid://10734952036",
+	["lucide-shopping-bag"] = "rbxassetid://10734952273",
+	["lucide-shopping-cart"] = "rbxassetid://10734952479",
+	["lucide-shovel"] = "rbxassetid://10734952773",
+	["lucide-shower-head"] = "rbxassetid://10734952942",
+	["lucide-shrink"] = "rbxassetid://10734953073",
+	["lucide-shrub"] = "rbxassetid://10734953241",
+	["lucide-shuffle"] = "rbxassetid://10734953451",
+	["lucide-sidebar"] = "rbxassetid://10734954301",
+	["lucide-sidebar-close"] = "rbxassetid://10734953715",
+	["lucide-sidebar-open"] = "rbxassetid://10734954000",
+	["lucide-sigma"] = "rbxassetid://10734954538",
+	["lucide-signal"] = "rbxassetid://10734961133",
+	["lucide-signal-high"] = "rbxassetid://10734954807",
+	["lucide-signal-low"] = "rbxassetid://10734955080",
+	["lucide-signal-medium"] = "rbxassetid://10734955336",
+	["lucide-signal-zero"] = "rbxassetid://10734960878",
+	["lucide-siren"] = "rbxassetid://10734961284",
+	["lucide-skip-back"] = "rbxassetid://10734961526",
+	["lucide-skip-forward"] = "rbxassetid://10734961809",
+	["lucide-skull"] = "rbxassetid://10734962068",
+	["lucide-slack"] = "rbxassetid://10734962339",
+	["lucide-slash"] = "rbxassetid://10734962600",
+	["lucide-slice"] = "rbxassetid://10734963024",
+	["lucide-sliders"] = "rbxassetid://10734963400",
+	["lucide-sliders-horizontal"] = "rbxassetid://10734963191",
+	["lucide-smartphone"] = "rbxassetid://10734963940",
+	["lucide-smartphone-charging"] = "rbxassetid://10734963671",
+	["lucide-smile"] = "rbxassetid://10734964441",
+	["lucide-smile-plus"] = "rbxassetid://10734964188",
+	["lucide-snowflake"] = "rbxassetid://10734964600",
+	["lucide-sofa"] = "rbxassetid://10734964852",
+	["lucide-sort-asc"] = "rbxassetid://10734965115",
+	["lucide-sort-desc"] = "rbxassetid://10734965287",
+	["lucide-speaker"] = "rbxassetid://10734965419",
+	["lucide-sprout"] = "rbxassetid://10734965572",
+	["lucide-square"] = "rbxassetid://10734965702",
+	["lucide-star"] = "rbxassetid://10734966248",
+	["lucide-star-half"] = "rbxassetid://10734965897",
+	["lucide-star-off"] = "rbxassetid://10734966097",
+	["lucide-stethoscope"] = "rbxassetid://10734966384",
+	["lucide-sticker"] = "rbxassetid://10734972234",
+	["lucide-sticky-note"] = "rbxassetid://10734972463",
+	["lucide-stop-circle"] = "rbxassetid://10734972621",
+	["lucide-stretch-horizontal"] = "rbxassetid://10734972862",
+	["lucide-stretch-vertical"] = "rbxassetid://10734973130",
+	["lucide-strikethrough"] = "rbxassetid://10734973290",
+	["lucide-subscript"] = "rbxassetid://10734973457",
+	["lucide-sun"] = "rbxassetid://10734974297",
+	["lucide-sun-dim"] = "rbxassetid://10734973645",
+	["lucide-sun-medium"] = "rbxassetid://10734973778",
+	["lucide-sun-moon"] = "rbxassetid://10734973999",
+	["lucide-sun-snow"] = "rbxassetid://10734974130",
+	["lucide-sunrise"] = "rbxassetid://10734974522",
+	["lucide-sunset"] = "rbxassetid://10734974689",
+	["lucide-superscript"] = "rbxassetid://10734974850",
+	["lucide-swiss-franc"] = "rbxassetid://10734975024",
+	["lucide-switch-camera"] = "rbxassetid://10734975214",
+	["lucide-sword"] = "rbxassetid://10734975486",
+	["lucide-swords"] = "rbxassetid://10734975692",
+	["lucide-syringe"] = "rbxassetid://10734975932",
+	["lucide-table"] = "rbxassetid://10734976230",
+	["lucide-table-2"] = "rbxassetid://10734976097",
+	["lucide-tablet"] = "rbxassetid://10734976394",
+	["lucide-tag"] = "rbxassetid://10734976528",
+	["lucide-tags"] = "rbxassetid://10734976739",
+	["lucide-target"] = "rbxassetid://10734977012",
+	["lucide-tent"] = "rbxassetid://10734981750",
+	["lucide-terminal"] = "rbxassetid://10734982144",
+	["lucide-terminal-square"] = "rbxassetid://10734981995",
+	["lucide-text-cursor"] = "rbxassetid://10734982395",
+	["lucide-text-cursor-input"] = "rbxassetid://10734982297",
+	["lucide-thermometer"] = "rbxassetid://10734983134",
+	["lucide-thermometer-snowflake"] = "rbxassetid://10734982571",
+	["lucide-thermometer-sun"] = "rbxassetid://10734982771",
+	["lucide-thumbs-down"] = "rbxassetid://10734983359",
+	["lucide-thumbs-up"] = "rbxassetid://10734983629",
+	["lucide-ticket"] = "rbxassetid://10734983868",
+	["lucide-timer"] = "rbxassetid://10734984606",
+	["lucide-timer-off"] = "rbxassetid://10734984138",
+	["lucide-timer-reset"] = "rbxassetid://10734984355",
+	["lucide-toggle-left"] = "rbxassetid://10734984834",
+	["lucide-toggle-right"] = "rbxassetid://10734985040",
+	["lucide-tornado"] = "rbxassetid://10734985247",
+	["lucide-toy-brick"] = "rbxassetid://10747361919",
+	["lucide-train"] = "rbxassetid://10747362105",
+	["lucide-trash"] = "rbxassetid://10747362393",
+	["lucide-trash-2"] = "rbxassetid://10747362241",
+	["lucide-tree-deciduous"] = "rbxassetid://10747362534",
+	["lucide-tree-pine"] = "rbxassetid://10747362748",
+	["lucide-trees"] = "rbxassetid://10747363016",
+	["lucide-trending-down"] = "rbxassetid://10747363205",
+	["lucide-trending-up"] = "rbxassetid://10747363465",
+	["lucide-triangle"] = "rbxassetid://10747363621",
+	["lucide-trophy"] = "rbxassetid://10747363809",
+	["lucide-truck"] = "rbxassetid://10747364031",
+	["lucide-tv"] = "rbxassetid://10747364593",
+	["lucide-tv-2"] = "rbxassetid://10747364302",
+	["lucide-type"] = "rbxassetid://10747364761",
+	["lucide-umbrella"] = "rbxassetid://10747364971",
+	["lucide-underline"] = "rbxassetid://10747365191",
+	["lucide-undo"] = "rbxassetid://10747365484",
+	["lucide-undo-2"] = "rbxassetid://10747365359",
+	["lucide-unlink"] = "rbxassetid://10747365771",
+	["lucide-unlink-2"] = "rbxassetid://10747397871",
+	["lucide-unlock"] = "rbxassetid://10747366027",
+	["lucide-upload"] = "rbxassetid://10747366434",
+	["lucide-upload-cloud"] = "rbxassetid://10747366266",
+	["lucide-usb"] = "rbxassetid://10747366606",
+	["lucide-user"] = "rbxassetid://10747373176",
+	["lucide-user-check"] = "rbxassetid://10747371901",
+	["lucide-user-cog"] = "rbxassetid://10747372167",
+	["lucide-user-minus"] = "rbxassetid://10747372346",
+	["lucide-user-plus"] = "rbxassetid://10747372702",
+	["lucide-user-x"] = "rbxassetid://10747372992",
+	["lucide-users"] = "rbxassetid://10747373426",
+	["lucide-utensils"] = "rbxassetid://10747373821",
+	["lucide-utensils-crossed"] = "rbxassetid://10747373629",
+	["lucide-venetian-mask"] = "rbxassetid://10747374003",
+	["lucide-verified"] = "rbxassetid://10747374131",
+	["lucide-vibrate"] = "rbxassetid://10747374489",
+	["lucide-vibrate-off"] = "rbxassetid://10747374269",
+	["lucide-video"] = "rbxassetid://10747374938",
+	["lucide-video-off"] = "rbxassetid://10747374721",
+	["lucide-view"] = "rbxassetid://10747375132",
+	["lucide-voicemail"] = "rbxassetid://10747375281",
+	["lucide-volume"] = "rbxassetid://10747376008",
+	["lucide-volume-1"] = "rbxassetid://10747375450",
+	["lucide-volume-2"] = "rbxassetid://10747375679",
+	["lucide-volume-x"] = "rbxassetid://10747375880",
+	["lucide-wallet"] = "rbxassetid://10747376205",
+	["lucide-wand"] = "rbxassetid://10747376565",
+	["lucide-wand-2"] = "rbxassetid://10747376349",
+	["lucide-watch"] = "rbxassetid://10747376722",
+	["lucide-waves"] = "rbxassetid://10747376931",
+	["lucide-webcam"] = "rbxassetid://10747381992",
+	["lucide-wifi"] = "rbxassetid://10747382504",
+	["lucide-wifi-off"] = "rbxassetid://10747382268",
+	["lucide-wind"] = "rbxassetid://10747382750",
+	["lucide-wrap-text"] = "rbxassetid://10747383065",
+	["lucide-wrench"] = "rbxassetid://10747383470",
+	["lucide-x"] = "rbxassetid://10747384394",
+	["lucide-x-circle"] = "rbxassetid://10747383819",
+	["lucide-x-octagon"] = "rbxassetid://10747384037",
+	["lucide-x-square"] = "rbxassetid://10747384217",
+	["lucide-zoom-in"] = "rbxassetid://10747384552",
+	["lucide-zoom-out"] = "rbxassetid://10747384679",
+	["lucide-cat"] = "rbxassetid://16935650691",
+	["lucide-message-circle-question"] = "rbxassetid://16970049192",
+	["lucide-webhook"] = "rbxassetid://17320556264",
+	["lucide-dumbbell"] = "rbxassetid://18273453053",
+    ["lucide-home-SakuraTeam"] = "rbxassetid://81460299233144",
+    ["lucide-kawai-SakuraTeam"] = "rbxassetid://86465146158904"
+}
+function Library:GetIcon(Name)
+	if Name ~= nil and Icons["lucide-" .. Name] then
+		return Icons["lucide-" .. Name]
+	end
+	return nil
+end
+
+local Elements = {}
+Elements.__index = Elements
+Elements.__namecall = function(Table, Key, ...)
+	return Elements[Key](...)
+end
+
+for _, ElementComponent in pairs(ElementsTable) do
+	Elements["Add" .. ElementComponent.__type] = function(self, Idx, Config)
+		ElementComponent.Container = self.Container
+		ElementComponent.Type = self.Type
+		ElementComponent.ScrollFrame = self.ScrollFrame
+		ElementComponent.Library = Library
+
+		return ElementComponent:New(Idx, Config)
+	end
+end
+
+Library.Elements = Elements
+
+if RunService:IsStudio() then
+	makefolder = function(...) return ... end;
+	makefile = function(...) return ... end;
+	isfile = function(...) return ... end;
+	isfolder = function(...) return ... end;
+	readfile = function(...) return ... end;
+	writefile = function(...) return ... end;
+	listfiles = function (...) return {...} end;
+end
+
+local SaveManager = {} do
+	SaveManager.Folder = "FluentSettings"
+	SaveManager.Ignore = {}
+	SaveManager.Parser = {
+		Toggle = {
+			Save = function(idx, object) 
+				return { type = "Toggle", idx = idx, value = object.Value } 
+			end,
+			Load = function(idx, data)
+				if SaveManager.Options[idx] then 
+					SaveManager.Options[idx]:SetValue(data.value)
+				end
+			end,
+		},
+		Slider = {
+			Save = function(idx, object)
+				return { type = "Slider", idx = idx, value = tostring(object.Value) }
+			end,
+			Load = function(idx, data)
+				if SaveManager.Options[idx] then 
+					SaveManager.Options[idx]:SetValue(data.value)
+				end
+			end,
+		},
+		Dropdown = {
+			Save = function(idx, object)
+				return { type = "Dropdown", idx = idx, value = object.Value, mutli = object.Multi }
+			end,
+			Load = function(idx, data)
+				if SaveManager.Options[idx] then 
+					SaveManager.Options[idx]:SetValue(data.value)
+				end
+			end,
+		},
+		Colorpicker = {
+			Save = function(idx, object)
+				return { type = "Colorpicker", idx = idx, value = object.Value:ToHex(), transparency = object.Transparency }
+			end,
+			Load = function(idx, data)
+				if SaveManager.Options[idx] then 
+					SaveManager.Options[idx]:SetValueRGB(Color3.fromHex(data.value), data.transparency)
+				end
+			end,
+		},
+		Keybind = {
+			Save = function(idx, object)
+				return { type = "Keybind", idx = idx, mode = object.Mode, key = object.Value }
+			end,
+			Load = function(idx, data)
+				if SaveManager.Options[idx] then 
+					SaveManager.Options[idx]:SetValue(data.key, data.mode)
+				end
+			end,
+		},
+
+		Input = {
+			Save = function(idx, object)
+				return { type = "Input", idx = idx, text = object.Value }
+			end,
+			Load = function(idx, data)
+				if SaveManager.Options[idx] and type(data.text) == "string" then
+					SaveManager.Options[idx]:SetValue(data.text)
+				end
+			end,
+		},
+	}
+	function SaveManager:SetIgnoreIndexes(list)
+		for _, key in next, list do
+			self.Ignore[key] = true
+		end
+	end
+	function SaveManager:SetFolder(folder)
+		self.Folder = folder;
+		self:BuildFolderTree()
+	end
+	function SaveManager:Save(name)
+        if not name then
+            return false, "No config file is selected"
+        end
+        local fullPath = self.Folder .. "/" .. name .. ".json"
+        local data = {
+            objects = {}
+        }
+        for idx, option in pairs(SaveManager.Options) do
+            if self.Parser[option.Type] and not self.Ignore[idx] then
+                table.insert(data.objects, self.Parser[option.Type].Save(idx, option))
+            end
+        end
+        local success, encoded = pcall(function() return httpService:JSONEncode(data) end)
+        if not success then
+            return false, "Failed to encode data"
+        end
+        writefile(fullPath, encoded)
+        return true
+    end
+
+	function SaveManager:Load(name)
+		if (not name) then
+			return false, "no config file is selected"
+		end
+
+		local file = self.Folder .. "/" .. name .. ".json"
+		if not isfile(file) then return false, "Create Config Save File" end
+
+		local success, decoded = pcall(httpService.JSONDecode, httpService, readfile(file))
+		if not success then return false, "decode error" end
+
+		for _, option in next, decoded.objects do
+			if self.Parser[option.type] and not self.Ignore[option.idx] then
+				task.spawn(function() self.Parser[option.type].Load(option.idx, option) end)
+			end
+		end
+
+		return true
+	end
+
+	function SaveManager:IgnoreThemeSettings()
+		self:SetIgnoreIndexes({ 
+			"InterfaceTheme", "AcrylicToggle", "TransparentToggle", "MenuKeybind"
+		})
+	end
+
+	function SaveManager:BuildFolderTree()
+		local paths = {
+			self.Folder,
+			self.Folder .. "/"
+		}
+
+		for i = 1, #paths do
+			local str = paths[i]
+			if not isfolder(str) then
+				makefolder(str)
+			end
+		end
+	end
+
+	function SaveManager:RefreshConfigList()
+		local list = listfiles(self.Folder .. "/")
+
+		local out = {}
+		for i = 1, #list do
+			local file = list[i]
+			if file:sub(-5) == ".json" then
+				local pos = file:find(".json", 1, true)
+				local start = pos
+
+				local char = file:sub(pos, pos)
+				while char ~= "/" and char ~= "\\" and char ~= "" do
+					pos = pos - 1
+					char = file:sub(pos, pos)
+				end
+
+				if char == "/" or char == "\\" then
+					local name = file:sub(pos + 1, start - 1)
+					if name ~= "options" then
+						table.insert(out, name)
+					end
+				end
+			end
+		end
+
+		return out
+	end
+
+	function SaveManager:SetLibrary(library)
+		self.Library = library
+		self.Options = library.Options
+	end
+
+	function SaveManager:LoadAutoloadConfig()
+		if isfile(self.Folder .. "/autoload.txt") then
+			local name = readfile(self.Folder .. "/autoload.txt")
+
+			local success, err = self:Load(name)
+			if not success then
+				return self.Library:Notify({
+					Title = "Interface",
+					Content = "Config loader",
+					SubContent = "Failed to load autoload config: " .. err,
+					Duration = 7
+				})
+			end
+
+			self.Library:Notify({
+				Title = "Interface",
+				Content = "Config loader",
+				SubContent = string.format("Auto loaded config %q", name),
+				Duration = 7
+			})
+		end
+	end
+
+	function SaveManager:BuildConfigSection(tab)
+		assert(self.Library, "Must set SaveManager.Library")
+
+		local section = tab:AddSection("Configuration")
+
+		section:AddInput("SaveManager_ConfigName",    { Title = "Config name" })
+		section:AddDropdown("SaveManager_ConfigList", { Title = "Config list", Values = self:RefreshConfigList(), AllowNull = true })
+
+		section:AddButton({
+			Title = "Create config",
+			Callback = function()
+				local name = SaveManager.Options.SaveManager_ConfigName.Value
+
+				if name:gsub(" ", "") == "" then 
+					return self.Library:Notify({
+						Title = "Interface",
+						Content = "Config loader",
+						SubContent = "Invalid config name (empty)",
+						Duration = 7
+					})
+				end
+
+				local success, err = self:Save(name)
+				if not success then
+					return self.Library:Notify({
+						Title = "Interface",
+						Content = "Config loader",
+						SubContent = "Failed to save config: " .. err,
+						Duration = 7
+					})
+				end
+
+				self.Library:Notify({
+					Title = "Interface",
+					Content = "Config loader",
+					SubContent = string.format("Created config %q", name),
+					Duration = 7
+				})
+
+				SaveManager.Options.SaveManager_ConfigList:SetValues(self:RefreshConfigList())
+				SaveManager.Options.SaveManager_ConfigList:SetValue(nil)
+			end
+		})
+
+		section:AddButton({Title = "Load config", Callback = function()
+			local name = SaveManager.Options.SaveManager_ConfigList.Value
+
+			local success, err = self:Load(name)
+			if not success then
+				return self.Library:Notify({
+					Title = "Interface",
+					Content = "Config loader",
+					SubContent = "Failed to load config: " .. err,
+					Duration = 7
+				})
+			end
+
+			self.Library:Notify({
+				Title = "Interface",
+				Content = "Config loader",
+				SubContent = string.format("Loaded config %q", name),
+				Duration = 7
+			})
+		end})
+
+		section:AddButton({Title = "Save config", Callback = function()
+			local name = SaveManager.Options.SaveManager_ConfigList.Value
+
+			local success, err = self:Save(name)
+			if not success then
+				return self.Library:Notify({
+					Title = "Interface",
+					Content = "Config loader",
+					SubContent = "Failed to overwrite config: " .. err,
+					Duration = 7
+				})
+			end
+
+			self.Library:Notify({
+				Title = "Interface",
+				Content = "Config loader",
+				SubContent = string.format("Overwrote config %q", name),
+				Duration = 7
+			})
+		end})
+
+		section:AddButton({Title = "Refresh list", Callback = function()
+			SaveManager.Options.SaveManager_ConfigList:SetValues(self:RefreshConfigList())
+			SaveManager.Options.SaveManager_ConfigList:SetValue(nil)
+		end})
+
+		local AutoloadButton
+		AutoloadButton = section:AddButton({Title = "Set as autoload", Description = "Current autoload config: none", Callback = function()
+			local name = SaveManager.Options.SaveManager_ConfigList.Value
+			writefile(self.Folder .. "/autoload.txt", name)
+			AutoloadButton:SetDesc("Current autoload config: " .. name)
+			self.Library:Notify({
+				Title = "Interface",
+				Content = "Config loader",
+				SubContent = string.format("Set %q to auto load", name),
+				Duration = 7
+			})
+		end})
+
+		if isfile(self.Folder .. "/autoload.txt") then
+			local name = readfile(self.Folder .. "/autoload.txt")
+			AutoloadButton:SetDesc("Current autoload config: " .. name)
+		end
+
+		SaveManager:SetIgnoreIndexes({ "SaveManager_ConfigList", "SaveManager_ConfigName" })
+	end
+end
+
+local InterfaceManager = {} do
+	InterfaceManager.Folder = "FluentSettings"
+	InterfaceManager.Settings = {
+		Acrylic = true,
+		Transparency = true,
+		MenuKeybind = "M"
+	}
+
+	function InterfaceManager:SetTheme(name)
+		InterfaceManager.Settings.Theme = name
+	end
+
+	function InterfaceManager:SetFolder(folder)
+		self.Folder = folder;
+		self:BuildFolderTree()
+	end
+
+	function InterfaceManager:SetLibrary(library)
+		self.Library = library
+	end
+
+	function InterfaceManager:BuildFolderTree()
+		local paths = {}
+
+		local parts = self.Folder:split("/")
+		for idx = 1, #parts do
+			paths[#paths + 1] = table.concat(parts, "/", 1, idx)
+		end
+
+		table.insert(paths, self.Folder)
+		table.insert(paths, self.Folder .. "/")
+
+		for i = 1, #paths do
+			local str = paths[i]
+			if not isfolder(str) then
+				makefolder(str)
+			end
+		end
+	end
+
+	function InterfaceManager:SaveSettings()
+		writefile(self.Folder .. "/options.json", httpService:JSONEncode(InterfaceManager.Settings))
+	end
+
+	function InterfaceManager:LoadSettings()
+		local path = self.Folder .. "/options.json"
+		if isfile(path) then
+			local data = readfile(path)
+			local success, decoded = pcall(httpService.JSONDecode, httpService, data)
+
+			if success then
+				for i, v in next, decoded do
+					InterfaceManager.Settings[i] = v
+				end
+			end
+		end
+	end
+
+	function InterfaceManager:BuildInterfaceSection(tab)
+		assert(self.Library, "Must set InterfaceManager.Library")
+		local Library = self.Library
+		local Settings = InterfaceManager.Settings
+
+		InterfaceManager:LoadSettings()
+
+		local section = tab:AddSection("Interface")
+		local InterfaceTheme = section:AddDropdown("InterfaceTheme", {
+			Title = "Theme",
+			Description = "Changes the interface theme.",
+			Values = Library.Themes,
+			Default = self.Library.Theme,
+			Callback = function(Value)
+				Library:SetTheme(Value)
+				Settings.Theme = Value
+				InterfaceManager:SaveSettings()
+			end
+		})
+
+		InterfaceTheme:SetValue(Settings.Theme)
+
+		if Library.UseAcrylic then
+			section:AddToggle("AcrylicToggle", {
+				Title = "Acrylic",
+				Description = "The blurred background requires graphic quality 8+",
+				Default = Settings.Acrylic,
+				Callback = function(Value)
+					Library:ToggleAcrylic(Value)
+					Settings.Acrylic = Value
+					InterfaceManager:SaveSettings()
+				end
+			})
+		end
+
+		section:AddToggle("TransparentToggle", {
+			Title = "Transparency",
+			Description = "Makes the interface transparent.",
+			Default = Settings.Transparency,
+			Callback = function(Value)
+				Library:ToggleTransparency(Value)
+				Settings.Transparency = Value
+				InterfaceManager:SaveSettings()
+			end
+		})
+
+		local MenuKeybind = section:AddKeybind("MenuKeybind", { Title = "Minimize Bind", Default = Library.MinimizeKey.Name or Settings.MenuKeybind })
+		MenuKeybind:OnChanged(function()
+			Settings.MenuKeybind = MenuKeybind.Value
+			InterfaceManager:SaveSettings()
+		end)
+		Library.MinimizeKeybind = MenuKeybind
+	end
+end
+
+function Library:CreateWindow(Config)
+	assert(Config.Title, "Window - Missing Title")
+
+	if Library.Window then
+		print("You cannot create more than one window.")
+		return
+	end
+
+	Library.MinimizeKey = Config.MinimizeKey or Enum.KeyCode.LeftControl
+	Library.UseAcrylic = Config.Acrylic or false
+	Library.Acrylic = Config.Acrylic or false
+	Library.Theme = Config.Theme or "Dark"
+	if Config.Acrylic then
+		Acrylic.init()
+	end
+
+	local Window = Components.Window({
+		Parent = GUI,
+		Size = Config.Size,
+		Title = Config.Title,
+		SubTitle = Config.SubTitle,
+		TabWidth = Config.TabWidth,
+	})
+
+	Library.Window = Window
+	InterfaceManager:SetTheme(Config.Theme)
+	Library:SetTheme(Config.Theme)
+
+	return Window
+end
+
+function Library:SetTheme(Value)
+	if Library.Window and table.find(Library.Themes, Value) then
+		Library.Theme = Value
+		Creator.UpdateTheme()
+	end
+end
+
+function Library:Destroy()
+	if Library.Window then
+		Library.Unloaded = true
+		if Library.UseAcrylic then
+			Library.Window.AcrylicPaint.Model:Destroy()
+		end
+		Creator.Disconnect()
+		Library.GUI:Destroy()
+	end
+end
+
+function Library:ToggleAcrylic(Value)
+	if Library.Window then
+		if Library.UseAcrylic then
+			Library.Acrylic = Value
+			Library.Window.AcrylicPaint.Model.Transparency = Value and 0.98 or 1
+			if Value then
+				Acrylic.Enable()
+			else
+				Acrylic.Disable()
+			end
+		end
+	end
+end
+
+function Library:ToggleTransparency(Value)
+	if Library.Window then
+		Library.Window.AcrylicPaint.Frame.Background.BackgroundTransparency = Value and 0.35 or 0
+	end
+end
+
+function Library:Notify(Config)
+	return NotificationModule:New(Config)
+end
+
+if getgenv then
+	getgenv().Fluent = Library
+else
+	Fluent = Library
+end
+
+local Dragging, DragInput, MousePos, StartPos = false
+
+local MinimizeButton = New("TextButton", {
+    BackgroundTransparency = 1,
+    Size = UDim2.new(0, 50, 0, 50),
+    BorderSizePixel = 0
+}, {
+    New("ImageLabel", {
+        Image = "rbxassetid://86465146158904",
+        Size = UDim2.new(1, 0, 1, 0),
+        Position = UDim2.new(0.5, 0, 0.5, 0),
+        AnchorPoint = Vector2.new(0.5, 0.5),
+        BackgroundTransparency = 1,
+    }, {
+        New("UIAspectRatioConstraint", {
+            AspectRatio = 1,
+            AspectType = Enum.AspectType.FitWithinMaxSize,
+        })
+    })
+})
+
+local Minimizer = New("Frame", {
+    Parent = GUI,
+    Size = MinimizeButton.Size,
+    Position = UDim2.new(0, 20, 0.025, 0),
+    BackgroundTransparency = 1,
+    ZIndex = 999999999,
+}, {
+    New("Frame", {
+        BackgroundColor3 = Color3.fromRGB(0, 0, 0),
+        Size = UDim2.new(1, 0, 1, 0),
+        BackgroundTransparency = 0.5,
+        BorderSizePixel = 0
+    }, {
+        New("UICorner", {
+            CornerRadius = UDim.new(0.25, 0),
+        }),
+        MinimizeButton
+    })
+})
+
+Creator.AddSignal(Minimizer.InputBegan, function(Input)
+    if Input.UserInputType == Enum.UserInputType.MouseButton1 or Input.UserInputType == Enum.UserInputType.Touch then
+        Dragging = true
+        MousePos = Input.Position
+        StartPos = Minimizer.Position
+
+        Input.Changed:Connect(function()
+            if Input.UserInputState == Enum.UserInputState.End then
+                Dragging = false
+            end
+        end)
+    end
+end)
+
+Creator.AddSignal(MinimizeButton.InputBegan, function(Input)
+    if Input.UserInputType == Enum.UserInputType.MouseButton1 or Input.UserInputType == Enum.UserInputType.Touch then
+        Dragging = true
+        MousePos = Input.Position
+        StartPos = Minimizer.Position
+
+        Input.Changed:Connect(function()
+            if Input.UserInputState == Enum.UserInputState.End then
+                Dragging = false
+            end
+        end)
+    end
+end)
+
+Creator.AddSignal(MinimizeButton.InputChanged, function(Input)
+    if Input.UserInputType == Enum.UserInputType.MouseMovement or Input.UserInputType == Enum.UserInputType.Touch then
+        DragInput = Input
+    end
+end)
+
+Creator.AddSignal(Minimizer.InputChanged, function(Input)
+    if Input.UserInputType == Enum.UserInputType.MouseMovement or Input.UserInputType == Enum.UserInputType.Touch then
+        DragInput = Input
+    end
+end)
+
+Creator.AddSignal(UserInputService.InputChanged, function(Input)
+    if Input == DragInput and Dragging then
+        local GuiInset = game:GetService("GuiService"):GetGuiInset()
+        local Delta = Input.Position - MousePos
+        local ViewportSize = workspace.Camera.ViewportSize
+        local CurrentX = StartPos.X.Scale + (Delta.X / ViewportSize.X)
+        local CurrentY = StartPos.Y.Scale + (Delta.Y / ViewportSize.Y)
+
+        if CurrentX < 0 or CurrentX > (ViewportSize.X - Minimizer.AbsoluteSize.X) / ViewportSize.X then
+            if CurrentX < 0 then
+                CurrentX = 0
+            else
+                CurrentX = (ViewportSize.X - Minimizer.AbsoluteSize.X) / ViewportSize.X
+            end
+        end
+
+        if CurrentY < 0 or CurrentY > ((ViewportSize.Y + GuiInset.Y) - Minimizer.AbsoluteSize.Y) / (ViewportSize.Y + GuiInset.Y) then
+            if CurrentY < 0 then
+                CurrentY = 0
+            else
+                CurrentY = ((ViewportSize.Y + GuiInset.Y) - Minimizer.AbsoluteSize.Y) / (ViewportSize.Y + GuiInset.Y)
+            end
+        end
+
+        Minimizer.Position = UDim2.fromScale(CurrentX, CurrentY)
+    end
+end)
+
+AddSignal(MinimizeButton.MouseButton1Click, function()
+    Library.Window:Minimize()
+end)
+
+return Library, SaveManager, InterfaceManager
