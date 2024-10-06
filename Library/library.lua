@@ -1,9 +1,3 @@
---[[
-   Library: Sakura Team
-   Author: Nguyen Nhat Sakura
-   License: MIT
-]]
-
 local Lighting = game:GetService("Lighting")
 local RunService = game:GetService("RunService")
 local LocalPlayer = game:GetService("Players").LocalPlayer
@@ -25,56 +19,8 @@ local Themes = {
 		"Aqua",
 		"Amethyst",
 		"Rose",
-		"Sakura",
-        "SakuraTeam"
+		"Sakura"
 	},
-    SakuraTeam = {
-        Name = "SakuraTeam",
-        Accent = Color3.fromRGB(0, 255, 0),
-    
-        AcrylicMain = Color3.fromRGB(0, 0, 0),
-        AcrylicBorder = Color3.fromRGB(50, 0, 100),
-        AcrylicGradient = ColorSequence.new(Color3.fromRGB(20, 20, 20), Color3.fromRGB(0, 0, 0)),
-    
-        TitleBarLine = Color3.fromRGB(255, 0, 255),
-        Tab = Color3.fromRGB(100, 0, 255),
-    
-        Element = Color3.fromRGB(60, 60, 60),
-        ElementBorder = Color3.fromRGB(80, 80, 80),
-        InElementBorder = Color3.fromRGB(100, 100, 100),
-        ElementTransparency = 0.85,
-    
-        ToggleSlider = Color3.fromRGB(0, 255, 0),
-		ToggleCorner = Color3.fromRGB(96, 96, 99),
-        ToggleToggled = Color3.fromRGB(0, 0, 0),
-    
-        SliderRail = Color3.fromRGB(80, 0, 160),
-    
-        DropdownFrame = Color3.fromRGB(50, 50, 50),
-        DropdownHolder = Color3.fromRGB(30, 30, 30),
-        DropdownBorder = Color3.fromRGB(60, 60, 60),
-        DropdownOption = Color3.fromRGB(0, 255, 0),
-    
-        Keybind = Color3.fromRGB(0, 255, 0),
-    
-        Input = Color3.fromRGB(40, 40, 40),
-        InputFocused = Color3.fromRGB(0, 0, 0),
-        InputIndicator = Color3.fromRGB(80, 80, 80),
-    
-        Dialog = Color3.fromRGB(0, 0, 0),
-        DialogHolder = Color3.fromRGB(20, 20, 20),
-        DialogHolderLine = Color3.fromRGB(40, 40, 40),
-        DialogButton = Color3.fromRGB(30, 30, 30),
-        DialogButtonBorder = Color3.fromRGB(0, 255, 0),
-        DialogBorder = Color3.fromRGB(0, 255, 0),
-        DialogInput = Color3.fromRGB(40, 40, 40),
-        DialogInputLine = Color3.fromRGB(0, 255, 0),
-    
-        Text = Color3.fromRGB(255, 255, 255),
-        SubText = Color3.fromRGB(200, 200, 200),
-        Hover = Color3.fromRGB(100, 0, 255),
-        HoverChange = 0.1,
-    },
 	Dark = {
 		Name = "Dark",
 		Accent = Color3.fromRGB(96, 205, 255),
@@ -506,7 +452,7 @@ end
 
 function Linear:step(state, dt)
 	local position = state.value
-	local velocity = self._velocity
+	local velocity = self._velocity -- Linear motion ignores the state's velocity
 	local goal = self._targetValue
 
 	local dPos = dt * velocity
@@ -561,46 +507,89 @@ function Spring.new(targetValue, options)
 end
 
 function Spring:step(state, dt)
-	local dampingRatio = self._dampingRatio
-	local angularFrequency = self._frequency * 2 * math.pi
-	local targetValue = self._targetValue
-	local currentValue = state.value
-	local velocity = state.velocity or 0
+	-- Copyright 2018 Parker Stebbins (parker@fractality.io)
+	-- github.com/Fraktality/Spring
+	-- Distributed under the MIT license
 
-	local offset = currentValue - targetValue
-	local decay = math.exp(-dampingRatio * angularFrequency * dt)
+	local d = self._dampingRatio
+	local f = self._frequency * 2 * math.pi
+	local g = self._targetValue
+	local p0 = state.value
+	local v0 = state.velocity or 0
 
-	local newValue, newVelocity
+	local offset = p0 - g
+	local decay = math.exp(-d * f * dt)
 
-	if dampingRatio == 1 then
-		newValue = (offset * (1 + angularFrequency * dt) + velocity * dt) * decay + targetValue
-		newVelocity = (velocity * (1 - angularFrequency * dt) - offset * (angularFrequency ^ 2 * dt)) * decay
-	elseif dampingRatio < 1 then
-		local c = math.sqrt(1 - dampingRatio ^ 2)
-		local cosTerm = math.cos(angularFrequency * c * dt)
-		local sinTerm = math.sin(angularFrequency * c * dt)
-		local zTerm = (c > EPS) and (sinTerm / c) or (angularFrequency * dt)
-		local yTerm = (angularFrequency * c > EPS) and (sinTerm / (angularFrequency * c)) or dt
-		newValue = (offset * (cosTerm + dampingRatio * zTerm) + velocity * yTerm) * decay + targetValue
-		newVelocity = (velocity * (cosTerm - zTerm * dampingRatio) - offset * (angularFrequency * zTerm)) * decay
-	else
-		local c = math.sqrt(dampingRatio ^ 2 - 1)
-		local r1 = -angularFrequency * (dampingRatio - c)
-		local r2 = -angularFrequency * (dampingRatio + c)
-		local expCoefficient1 = (velocity - offset * r1) / (2 * angularFrequency * c)
-		local expCoefficient2 = offset - expCoefficient1
-		local expTerm1 = expCoefficient2 * math.exp(r1 * dt)
-		local expTerm2 = expCoefficient1 * math.exp(r2 * dt)
-		newValue = expTerm1 + expTerm2 + targetValue
-		newVelocity = expTerm1 * r1 + expTerm2 * r2
+	local p1, v1
+
+	if d == 1 then -- Critically damped
+		p1 = (offset * (1 + f * dt) + v0 * dt) * decay + g
+		v1 = (v0 * (1 - f * dt) - offset * (f * f * dt)) * decay
+	elseif d < 1 then -- Underdamped
+		local c = math.sqrt(1 - d * d)
+
+		local i = math.cos(f * c * dt)
+		local j = math.sin(f * c * dt)
+
+		-- Damping ratios approaching 1 can cause division by small numbers.
+		-- To fix that, group terms around z=j/c and find an approximation for z.
+		-- Start with the definition of z:
+		--    z = sin(dt*f*c)/c
+		-- Substitute a=dt*f:
+		--    z = sin(a*c)/c
+		-- Take the Maclaurin expansion of z with respect to c:
+		--    z = a - (a^3*c^2)/6 + (a^5*c^4)/120 + O(c^6)
+		--    z ≈ a - (a^3*c^2)/6 + (a^5*c^4)/120
+		-- Rewrite in Horner form:
+		--    z ≈ a + ((a*a)*(c*c)*(c*c)/20 - c*c)*(a*a*a)/6
+
+		local z
+		if c > EPS then
+			z = j / c
+		else
+			local a = dt * f
+			z = a + ((a * a) * (c * c) * (c * c) / 20 - c * c) * (a * a * a) / 6
+		end
+
+		-- Frequencies approaching 0 present a similar problem.
+		-- We want an approximation for y as f approaches 0, where:
+		--    y = sin(dt*f*c)/(f*c)
+		-- Substitute b=dt*c:
+		--    y = sin(b*c)/b
+		-- Now reapply the process from z.
+
+		local y
+		if f * c > EPS then
+			y = j / (f * c)
+		else
+			local b = f * c
+			y = dt + ((dt * dt) * (b * b) * (b * b) / 20 - b * b) * (dt * dt * dt) / 6
+		end
+
+		p1 = (offset * (i + d * z) + v0 * y) * decay + g
+		v1 = (v0 * (i - z * d) - offset * (z * f)) * decay
+	else -- Overdamped
+		local c = math.sqrt(d * d - 1)
+
+		local r1 = -f * (d - c)
+		local r2 = -f * (d + c)
+
+		local co2 = (v0 - offset * r1) / (2 * f * c)
+		local co1 = offset - co2
+
+		local e1 = co1 * math.exp(r1 * dt)
+		local e2 = co2 * math.exp(r2 * dt)
+
+		p1 = e1 + e2 + g
+		v1 = e1 * r1 + e2 * r2
 	end
 
-	local complete = math.abs(newVelocity) < VELOCITY_THRESHOLD and math.abs(newValue - targetValue) < POSITION_THRESHOLD
+	local complete = math.abs(v1) < VELOCITY_THRESHOLD and math.abs(p1 - g) < POSITION_THRESHOLD
 
 	return {
 		complete = complete,
-		value = complete and targetValue or newValue,
-		velocity = newVelocity,
+		value = complete and g or p1,
+		velocity = v1,
 	}
 end
 
@@ -608,6 +597,7 @@ local noop = function() end
 
 local BaseMotor = {}
 BaseMotor.__index = BaseMotor
+
 function BaseMotor.new()
 	return setmetatable({
 		_onStep = Signal.new(),
@@ -772,6 +762,7 @@ function GroupMotor:step(deltaTime)
 	for _, motor in pairs(self._motors) do
 		local complete = motor:step(deltaTime)
 		if not complete then
+			-- If any of the sub-motors are incomplete, the group motor will not be complete either
 			allMotorsComplete = false
 		end
 	end
@@ -957,15 +948,19 @@ end
 function Creator.New(Name, Properties, Children)
 	local Object = Instance.new(Name)
 
+	-- Default properties
 	for Name, Value in next, Creator.DefaultProperties[Name] or {} do
 		Object[Name] = Value
 	end
+
+	-- Properties
 	for Name, Value in next, Properties or {} do
 		if Name ~= "ThemeTag" then
 			Object[Name] = Value
 		end
 	end
 
+	-- Children
 	for _, Child in next, Children or {} do
 		Child.Parent = Object
 	end
@@ -1460,7 +1455,7 @@ Components.Element = (function()
 			},
 		}, {
 			New("UICorner", {
-				CornerRadius = UDim.new(0, 9),
+				CornerRadius = UDim.new(0, 4),
 			}),
 			Element.Border,
 			Element.LabelHolder,
@@ -1558,7 +1553,7 @@ Components.Section = (function()
 				TextTransparency = 0,
 				FontFace = Font.new("rbxassetid://12187365364", Enum.FontWeight.SemiBold, Enum.FontStyle.Normal),
 				TextSize = 18,
-				TextXAlignment = "Center",
+				TextXAlignment = "Left",
 				TextYAlignment = "Center",
 				Size = UDim2.new(1, -16, 0, 18),
 				Position = UDim2.fromOffset(0, 2),
@@ -2261,7 +2256,7 @@ Components.Textbox = (function()
 			},
 		}, {
 			New("UICorner", {
-				CornerRadius = UDim.new(0, 9),
+				CornerRadius = UDim.new(0, 4),
 			}),
 			New("UIStroke", {
 				ApplyStrokeMode = Enum.ApplyStrokeMode.Border,
@@ -2454,8 +2449,8 @@ Components.TitleBar = (function()
 
 		TitleBar.CloseButton = BarButton(Components.Assets.Close, UDim2.new(1, -4, 0, 4), TitleBar.Frame, function()
 			Library.Window:Dialog({
-				Title = "Close  Hub",
-				Content = "Are you sure you want to exit SakuraTeam Hub?",
+				Title = "Close",
+				Content = "Are you sure you want to unload the interface?",
 				Buttons = {
 					{
 						Title = "Yes",
@@ -2469,10 +2464,12 @@ Components.TitleBar = (function()
 				},
 			})
 		end)
-		TitleBar.MinButton = BarButton(Components.Assets.Min, UDim2.new(1, -40, 0, 4), TitleBar.Frame, function()
+		TitleBar.MaxButton = BarButton(Components.Assets.Max, UDim2.new(1, -40, 0, 4), TitleBar.Frame, function()
+			Config.Window.Maximize(not Config.Window.Maximized)
+		end)
+		TitleBar.MinButton = BarButton(Components.Assets.Min, UDim2.new(1, -80, 0, 4), TitleBar.Frame, function()
 			Library.Window:Minimize()
 		end)
-
 
 		return TitleBar
 	end
@@ -2512,7 +2509,7 @@ Components.Window = (function()
 			},
 		}, {
 			New("UICorner", {
-				CornerRadius = UDim.new(1, 9),
+				CornerRadius = UDim.new(0, 2),
 			}),
 		})
 
@@ -2580,7 +2577,7 @@ Components.Window = (function()
 			Window.ContainerAnim,
 			Window.ContainerHolder
 		})
-
+		
 		Window.Root = New("Frame", {
 			BackgroundTransparency = 0.7,
 			Size = Window.Size,
@@ -2613,15 +2610,6 @@ Components.Window = (function()
 			SubTitle = Config.SubTitle,
 			Parent = Window.Root,
 			Window = Window,
-		}, {
-			New("ImageLabel", {
-				Size = UDim2.fromOffset(24, 24),
-				Position = UDim2.new(0, 8, 0.5, -12),
-				AnchorPoint = Vector2.new(0, 0.5),
-				Image = "rbxassetid://12143948578",
-				BackgroundTransparency = 1,
-			}),
-			Window.TitleBar
 		})
 
 		if Library.UseAcrylic then
@@ -2901,8 +2889,8 @@ ElementsTable.Button = (function()
 		local ButtonFrame = Components.Element(Config.Title, Config.Description, self.Container, true, Config)
 
 		local ButtonIco = New("ImageLabel", {
-			Image = "rbxassetid://17293879614",
-			Size = UDim2.fromOffset(20, 20),
+			Image = "rbxassetid://10709791437",
+			Size = UDim2.fromOffset(16, 16),
 			AnchorPoint = Vector2.new(1, 0.5),
 			Position = UDim2.new(1, -10, 0.5, 0),
 			BackgroundTransparency = 1,
@@ -2947,17 +2935,17 @@ ElementsTable.Toggle = (function()
 			AnchorPoint = Vector2.new(0, 0.5),
 			Size = UDim2.fromOffset(14, 14),
 			Position = UDim2.new(0, 2, 0.5, 0),
-			Image = "http://www.roblox.com/asset/?id=12288739321",
-			ImageTransparency = 0,
+			Image = "http://www.roblox.com/asset/?id=12266946128",
+			ImageTransparency = 0.5,
 			ThemeTag = {
-				ImageColor3 = "ToggleCorner",
+				ImageColor3 = "ToggleSlider",
 			},
 		})
 
 		local ToggleBorder = New("UIStroke", {
 			Transparency = 0.5,
 			ThemeTag = {
-				Color = "ToggleCorner",
+				Color = "ToggleSlider",
 			},
 		})
 
@@ -2972,7 +2960,7 @@ ElementsTable.Toggle = (function()
 			},
 		}, {
 			New("UICorner", {
-				CornerRadius = UDim.new(0, 10),
+				CornerRadius = UDim.new(0, 9),
 			}),
 			ToggleBorder,
 			ToggleCircle,
@@ -2987,8 +2975,8 @@ ElementsTable.Toggle = (function()
 			Value = not not Value
 			Toggle.Value = Value
 
-			Creator.OverrideTag(ToggleBorder, { Color = Toggle.Value and "Accent" or "ToggleCorner" })
-			Creator.OverrideTag(ToggleCircle, { ImageColor3 = Toggle.Value and "ToggleToggled" or "ToggleCorner" })
+			Creator.OverrideTag(ToggleBorder, { Color = Toggle.Value and "Accent" or "ToggleSlider" })
+			Creator.OverrideTag(ToggleCircle, { ImageColor3 = Toggle.Value and "ToggleToggled" or "ToggleSlider" })
 			TweenService:Create(
 				ToggleCircle,
 				TweenInfo.new(0.25, Enum.EasingStyle.Quint, Enum.EasingDirection.Out),
@@ -3069,7 +3057,7 @@ ElementsTable.Dropdown = (function()
 		})
 
 		local DropdownIco = New("ImageLabel", {
-			Image = "rbxassetid://16848361091",
+			Image = "rbxassetid://10709790948",
 			Size = UDim2.fromOffset(16, 16),
 			AnchorPoint = Vector2.new(1, 0.5),
 			Position = UDim2.new(1, -8, 0.5, 0),
@@ -3090,7 +3078,7 @@ ElementsTable.Dropdown = (function()
 			},
 		}, {
 			New("UICorner", {
-				CornerRadius = UDim.new(0, 9),
+				CornerRadius = UDim.new(0, 5),
 			}),
 			New("UIStroke", {
 				Transparency = 0.5,
@@ -3132,7 +3120,7 @@ ElementsTable.Dropdown = (function()
 		}, {
 			DropdownScrollFrame,
 			New("UICorner", {
-				CornerRadius = UDim.new(0, 9),
+				CornerRadius = UDim.new(0, 7),
 			}),
 			New("UIStroke", {
 				ApplyStrokeMode = Enum.ApplyStrokeMode.Border,
@@ -3249,6 +3237,7 @@ ElementsTable.Dropdown = (function()
 			else
 				Str = Dropdown.Value or ""
 			end
+
 			DropdownDisplay.Text = (Str == "" and "--" or Str)
 		end
 
@@ -3293,7 +3282,7 @@ ElementsTable.Dropdown = (function()
 					},
 				}, {
 					New("UICorner", {
-						CornerRadius = UDim.new(0, 9),
+						CornerRadius = UDim.new(0, 2),
 					}),
 				})
 
@@ -3327,7 +3316,7 @@ ElementsTable.Dropdown = (function()
 					ButtonSelector,
 					ButtonLabel,
 					New("UICorner", {
-						CornerRadius = UDim.new(0, 9),
+						CornerRadius = UDim.new(0, 6),
 					}),
 				})
 
@@ -3570,8 +3559,8 @@ ElementsTable.Slider = (function()
 		local SliderDot = New("ImageLabel", {
 			AnchorPoint = Vector2.new(0, 0.5),
 			Position = UDim2.new(0, -7, 0.5, 0),
-			Size = UDim2.fromOffset(20, 20),
-			Image = "http://www.roblox.com/asset/?id=15969672655",
+			Size = UDim2.fromOffset(14, 14),
+			Image = "http://www.roblox.com/asset/?id=12266946128",
 			ThemeTag = {
 				ImageColor3 = "Accent",
 			},
@@ -3580,13 +3569,13 @@ ElementsTable.Slider = (function()
 		local SliderRail = New("Frame", {
 			BackgroundTransparency = 1,
 			Position = UDim2.fromOffset(7, 0),
-			Size = UDim2.new(1, -10, 1, 0),
+			Size = UDim2.new(1, -14, 1, 0),
 		}, {
 			SliderDot,
 		})
 
 		local SliderFill = New("Frame", {
-			Size = UDim2.new(1, 0, 1, 0),
+			Size = UDim2.new(0, 0, 1, 0),
 			ThemeTag = {
 				BackgroundColor3 = "Accent",
 			},
@@ -3749,7 +3738,7 @@ ElementsTable.Keybind = (function()
 			},
 		}, {
 			New("UICorner", {
-				CornerRadius = UDim.new(0, 9),
+				CornerRadius = UDim.new(0, 5),
 			}),
 			New("UIPadding", {
 				PaddingLeft = UDim.new(0, 8),
@@ -5304,9 +5293,6 @@ local Icons = {
 	["lucide-cat"] = "rbxassetid://16935650691",
 	["lucide-message-circle-question"] = "rbxassetid://16970049192",
 	["lucide-webhook"] = "rbxassetid://17320556264",
-	["lucide-dumbbell"] = "rbxassetid://18273453053",
-    ["lucide-home-SakuraTeam"] = "rbxassetid://81460299233144",
-    ["lucide-kawai-SakuraTeam"] = "rbxassetid://86465146158904"
 }
 function Library:GetIcon(Name)
 	if Name ~= nil and Icons["lucide-" .. Name] then
@@ -5410,35 +5396,44 @@ local SaveManager = {} do
 			end,
 		},
 	}
+
 	function SaveManager:SetIgnoreIndexes(list)
 		for _, key in next, list do
 			self.Ignore[key] = true
 		end
 	end
+
 	function SaveManager:SetFolder(folder)
 		self.Folder = folder;
 		self:BuildFolderTree()
 	end
+
 	function SaveManager:Save(name)
-        if not name then
-            return false, "No config file is selected"
-        end
-        local fullPath = self.Folder .. "/" .. name .. ".json"
-        local data = {
-            objects = {}
-        }
-        for idx, option in pairs(SaveManager.Options) do
-            if self.Parser[option.Type] and not self.Ignore[idx] then
-                table.insert(data.objects, self.Parser[option.Type].Save(idx, option))
-            end
-        end
-        local success, encoded = pcall(function() return httpService:JSONEncode(data) end)
-        if not success then
-            return false, "Failed to encode data"
-        end
-        writefile(fullPath, encoded)
-        return true
-    end
+		if (not name) then
+			return false, "no config file is selected"
+		end
+
+		local fullPath = self.Folder .. "/" .. name .. ".json"
+
+		local data = {
+			objects = {}
+		}
+
+		for idx, option in next, SaveManager.Options do
+			if not self.Parser[option.Type] then continue end
+			if self.Ignore[idx] then continue end
+
+			table.insert(data.objects, self.Parser[option.Type].Save(idx, option))
+		end	
+
+		local success, encoded = pcall(httpService.JSONEncode, httpService, data)
+		if not success then
+			return false, "failed to encode data"
+		end
+
+		writefile(fullPath, encoded)
+		return true
+	end
 
 	function SaveManager:Load(name)
 		if (not name) then
@@ -5453,7 +5448,7 @@ local SaveManager = {} do
 
 		for _, option in next, decoded.objects do
 			if self.Parser[option.type] and not self.Ignore[option.idx] then
-				task.spawn(function() self.Parser[option.type].Load(option.idx, option) end)
+				task.spawn(function() self.Parser[option.type].Load(option.idx, option) end) -- task.spawn() so the config loading wont get stuck.
 			end
 		end
 
@@ -5647,6 +5642,8 @@ local SaveManager = {} do
 
 		SaveManager:SetIgnoreIndexes({ "SaveManager_ConfigList", "SaveManager_ConfigName" })
 	end
+
+	-- SaveManager:BuildFolderTree()
 end
 
 local InterfaceManager = {} do
@@ -5841,117 +5838,6 @@ else
 	Fluent = Library
 end
 
-local Dragging, DragInput, MousePos, StartPos = false
-
-local MinimizeButton = New("TextButton", {
-    BackgroundTransparency = 1,
-    Size = UDim2.new(0, 50, 0, 50),
-    BorderSizePixel = 0
-}, {
-    New("ImageLabel", {
-        Image = "rbxassetid://86465146158904",
-        Size = UDim2.new(1, 0, 1, 0),
-        Position = UDim2.new(0.5, 0, 0.5, 0),
-        AnchorPoint = Vector2.new(0.5, 0.5),
-        BackgroundTransparency = 1,
-    }, {
-        New("UIAspectRatioConstraint", {
-            AspectRatio = 1,
-            AspectType = Enum.AspectType.FitWithinMaxSize,
-        })
-    })
-})
-
-local Minimizer = New("Frame", {
-    Parent = GUI,
-    Size = MinimizeButton.Size,
-    Position = UDim2.new(0, 20, 0.025, 0),
-    BackgroundTransparency = 1,
-    ZIndex = 999999999,
-}, {
-    New("Frame", {
-        BackgroundColor3 = Color3.fromRGB(0, 0, 0),
-        Size = UDim2.new(1, 0, 1, 0),
-        BackgroundTransparency = 0.5,
-        BorderSizePixel = 0
-    }, {
-        New("UICorner", {
-            CornerRadius = UDim.new(0.25, 0),
-        }),
-        MinimizeButton
-    })
-})
-
-Creator.AddSignal(Minimizer.InputBegan, function(Input)
-    if Input.UserInputType == Enum.UserInputType.MouseButton1 or Input.UserInputType == Enum.UserInputType.Touch then
-        Dragging = true
-        MousePos = Input.Position
-        StartPos = Minimizer.Position
-
-        Input.Changed:Connect(function()
-            if Input.UserInputState == Enum.UserInputState.End then
-                Dragging = false
-            end
-        end)
-    end
-end)
-
-Creator.AddSignal(MinimizeButton.InputBegan, function(Input)
-    if Input.UserInputType == Enum.UserInputType.MouseButton1 or Input.UserInputType == Enum.UserInputType.Touch then
-        Dragging = true
-        MousePos = Input.Position
-        StartPos = Minimizer.Position
-
-        Input.Changed:Connect(function()
-            if Input.UserInputState == Enum.UserInputState.End then
-                Dragging = false
-            end
-        end)
-    end
-end)
-
-Creator.AddSignal(MinimizeButton.InputChanged, function(Input)
-    if Input.UserInputType == Enum.UserInputType.MouseMovement or Input.UserInputType == Enum.UserInputType.Touch then
-        DragInput = Input
-    end
-end)
-
-Creator.AddSignal(Minimizer.InputChanged, function(Input)
-    if Input.UserInputType == Enum.UserInputType.MouseMovement or Input.UserInputType == Enum.UserInputType.Touch then
-        DragInput = Input
-    end
-end)
-
-Creator.AddSignal(UserInputService.InputChanged, function(Input)
-    if Input == DragInput and Dragging then
-        local GuiInset = game:GetService("GuiService"):GetGuiInset()
-        local Delta = Input.Position - MousePos
-        local ViewportSize = workspace.Camera.ViewportSize
-        local CurrentX = StartPos.X.Scale + (Delta.X / ViewportSize.X)
-        local CurrentY = StartPos.Y.Scale + (Delta.Y / ViewportSize.Y)
-
-        if CurrentX < 0 or CurrentX > (ViewportSize.X - Minimizer.AbsoluteSize.X) / ViewportSize.X then
-            if CurrentX < 0 then
-                CurrentX = 0
-            else
-                CurrentX = (ViewportSize.X - Minimizer.AbsoluteSize.X) / ViewportSize.X
-            end
-        end
-
-        if CurrentY < 0 or CurrentY > ((ViewportSize.Y + GuiInset.Y) - Minimizer.AbsoluteSize.Y) / (ViewportSize.Y + GuiInset.Y) then
-            if CurrentY < 0 then
-                CurrentY = 0
-            else
-                CurrentY = ((ViewportSize.Y + GuiInset.Y) - Minimizer.AbsoluteSize.Y) / (ViewportSize.Y + GuiInset.Y)
-            end
-        end
-
-        Minimizer.Position = UDim2.fromScale(CurrentX, CurrentY)
-    end
-end)
-
-AddSignal(MinimizeButton.MouseButton1Click, function()
-    Library.Window:Minimize()
-end)
-
 return Library, SaveManager, InterfaceManager
+
+--Lots of Love Prime Andy....
